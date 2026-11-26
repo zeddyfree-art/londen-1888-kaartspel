@@ -3,7 +3,6 @@ import { el, bg, ICOON, opslag, melding, modaal, banner } from "./gemeen.js";
 import { zetBibliotheek, DATABESTANDEN, B, kaartDef } from "../motor/bibliotheek.js";
 import { nieuweRun, runActie, VERSIE } from "../motor/run.js";
 import { maakGevecht, doe as gevechtDoe } from "../motor/gevecht.js";
-import { maakSeed } from "../motor/toeval.js";
 import { kaartEl } from "./kaart-dom.js";
 import { gevechtScherm } from "./gevecht-scherm.js";
 import { kaartScherm, knoopScherm, beloningScherm, eindScherm, stapelScherm, plekArt } from "./run-scherm.js";
@@ -101,9 +100,7 @@ function nieuweRunKiezen() {
     if (alle) toon = helden;
     else {
       // drie willekeurige ontgrendelde helden
-      const r = { rng: maakSeed() };
-      toon = [...vrij].sort(() => 0).map(h => ({ h, k: Math.random() })).sort((a, b) => a.k - b.k).slice(0, 3).map(x => x.h);
-      void r;
+      toon = vrij.map(h => ({ h, k: Math.random() })).sort((a, b) => a.k - b.k).slice(0, 3).map(x => x.h);
     }
     const tegels = el("div", { class: "tegels" }, toon.map(h => heldTegel(h, keuze.held === h.id)));
     scherm("Kies je held", stapKlasse, alle ? "Alle helden van deze klasse. Win runs om er meer te ontgrendelen." : "Drie helden die vannacht wakker zijn.", tegels,

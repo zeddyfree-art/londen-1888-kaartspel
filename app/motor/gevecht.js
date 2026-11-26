@@ -361,6 +361,7 @@ export function treffer(g, bron, doel, schade, gruwel = 0, opt = {}) {
     return;
   }
   if (doel.statussen.vervloekt > 0) { schade *= 2; doel.statussen.vervloekt = 0; }
+  if (doel.uid === g.held && schade > 0) schade = Math.max(0, schade - (B().helden[g.ctx.held]?.vermogen?.taai || 0));
   let echt = 0;
   if (doel.schroot != null) { doel.schroot -= 1; echt = 1; }
   else {

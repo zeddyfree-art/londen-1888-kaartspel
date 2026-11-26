@@ -10,14 +10,14 @@
    "vermogen": "De eerste wachter van de deur: bij toeslaan roept hij een Verdronkene op.",
    "art": "monsters/bisschop-van-het-slib.jpg", "sfeer": "In 1348 probeerde hij de kamer te verzegelen. Vathrûn heeft hem gehouden." },
  { "id": "vathrun", "naam": "Vathrûn", "soort": "vijand", "baas": true, "groot": true, "rol": "god", "god": "vathrun",
-   "leven": 30, "aanval": 3, "gruwel": 1, "teller": 3, "kenmerken": ["salvo"],
+   "leven": 27, "aanval": 3, "gruwel": 1, "teller": 3, "kenmerken": ["salvo"],
    "vermogen": "Neemt twee vakken in. Drie fasen: elke keer dat hij valt, staat hij op in een nieuwe gedaante.",
    "fasen": [
-     { "faseNaam": "Die onder de rivier ademt", "faseTekst": "Een bleek oog gaat open in het groene water.", "leven": 30, "aanval": 3, "gruwel": 1, "teller": 3, "kenmerken": ["salvo"] },
-     { "faseNaam": "De Mist rijst", "faseTekst": "De gele adem slaat over de kades. Al je kaarten krijgen 1 Mist.", "leven": 30, "aanval": 3, "gruwel": 2, "teller": 3,
+     { "faseNaam": "Die onder de rivier ademt", "faseTekst": "Een bleek oog gaat open in het groene water.", "leven": 27, "aanval": 3, "gruwel": 1, "teller": 3, "kenmerken": ["salvo"] },
+     { "faseNaam": "De Mist rijst", "faseTekst": "De gele adem slaat over de kades. Al je kaarten krijgen 1 Mist.", "leven": 27, "aanval": 3, "gruwel": 2, "teller": 3,
        "bijFase": [{ "doe": "status", "status": "mist", "aantal": 1, "op": "alle-vijanden" }, { "doe": "oproepen", "kaart": "verdronkene", "keer": 2 }],
        "bijToeslaan": [{ "doe": "status", "status": "mist", "aantal": 1 }] },
-     { "faseNaam": "Het Riool loopt onder", "faseTekst": "De vloed komt door de riolen omhoog. Al je kaarten krijgen 2 Pest.", "leven": 30, "aanval": 4, "gruwel": 2, "teller": 3, "kenmerken": ["salvo"],
+     { "faseNaam": "Het Riool loopt onder", "faseTekst": "De vloed komt door de riolen omhoog. Al je kaarten krijgen 2 Pest.", "leven": 27, "aanval": 4, "gruwel": 2, "teller": 3, "kenmerken": ["salvo"],
        "bijFase": [{ "doe": "status", "status": "pest", "aantal": 2, "op": "alle-vijanden" }] }
    ],
    "art": "goden/vathrun.jpg", "sfeer": "Al eeuwen ligt er iets in het slib onder de Theems." }

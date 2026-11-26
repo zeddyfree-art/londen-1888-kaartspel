@@ -92,7 +92,7 @@ export function gevechtScherm(app, opties) {
     k.dataset.doel = `u:${u.uid}`;
     bindDetail(k, () => (u.soort === "held" ? { ...B().helden[u.id], soort: "held" } : kaartDef(u.id, u.verbeterd)), () => opties.g().eenheden[u.uid]);
     if (u.kant === "speler" && !u.groot) bindSleep(k, { soort: "eenheid", uid: u.uid });
-    else k.addEventListener("click", () => tikDoel(`u:${u.uid}`));
+    else bindLang(k, () => tikDoel(`u:${u.uid}`));
     return k;
   }
 
@@ -315,6 +315,21 @@ export function gevechtScherm(app, opties) {
       k.addEventListener("pointerup", los);
       k.addEventListener("pointercancel", los);
     });
+  }
+
+  /** Kaarten die je niet sleept (vijanden): tikken is kiezen, lang drukken toont de hele tekst. */
+  function bindLang(k, tik) {
+    let timer = null, lang = false, start = null;
+    k.addEventListener("pointerdown", e => {
+      lang = false; start = { x: e.clientX, y: e.clientY };
+      clearTimeout(timer);
+      timer = setTimeout(() => { lang = true; toonDetail(k); }, 480);
+    });
+    k.addEventListener("pointermove", e => { if (start && Math.hypot(e.clientX - start.x, e.clientY - start.y) > 10) clearTimeout(timer); });
+    const stop = () => { clearTimeout(timer); start = null; };
+    k.addEventListener("pointerup", () => { stop(); if (!lang && !S.bezig) tik(); });
+    k.addEventListener("pointercancel", stop);
+    k.addEventListener("contextmenu", e => e.preventDefault());
   }
 
   let hoverEl = null;

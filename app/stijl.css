@@ -104,7 +104,7 @@ img { -webkit-user-drag: none; }
 .kaart .naam {
   position: absolute; left: 0; right: 0; top: 60%; transform: translateY(-50%); padding: .2em .4em; text-align: center;
   font-family: var(--display); font-size: 1.05em; color: var(--goud-licht); line-height: 1.05;
-  background: linear-gradient(90deg, transparent, rgba(12,9,6,.92) 12%, rgba(12,9,6,.92) 88%, transparent); text-shadow: 0 1px 2px #000;
+  background: linear-gradient(90deg, transparent, rgba(12,9,6,.92) 12%, rgba(12,9,6,.92) 88%, transparent); text-shadow: 0 1px 2px #000; z-index: 2;
 }
 .kaart .tekstvak {
   position: absolute; left: 0; right: 0; bottom: 0; height: 34%; padding: .55em .55em .4em; background: var(--perkament);
@@ -122,7 +122,7 @@ body.verlicht .kaart.occult { --rand: var(--violet); box-shadow: 0 0 calc(var(--
 .kaart .verbeterd-teken { color: var(--groen); }
 
 /* getallen: aanval, leven, schroot, teller */
-.stat { position: absolute; display: grid; place-items: center; font-weight: 700; font-size: 1.25em; color: #fff; text-shadow: 0 1px 2px #000; z-index: 2; }
+.stat { position: absolute; display: grid; place-items: center; font-weight: 700; font-size: 1.25em; color: #fff; text-shadow: 0 1px 2px #000; z-index: 3; }
 .stat svg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; filter: drop-shadow(0 1px 2px rgba(0,0,0,.8)); }
 .stat.aanval { left: .2em; bottom: .2em; width: 2.2em; height: 2.2em; }
 .stat.leven, .stat.schroot { right: .2em; bottom: .2em; width: 2.2em; height: 2.2em; }
@@ -190,12 +190,12 @@ body.verlicht .kaart.occult { --rand: var(--violet); box-shadow: 0 0 calc(var(--
 .hand .kaart:hover, .hand .kaart.gekozen { transform: translateY(-14%) scale(1.06) !important; z-index: 10; }
 .hand .kaart.kan-niet { filter: saturate(.35) brightness(.7); }
 .hand .kaart.weg { opacity: 0; }
-.acties { display: flex; flex-direction: column; gap: 8px; align-items: stretch; align-self: center; flex: none; width: 150px; }
+.acties { display: flex; flex-direction: column; gap: 8px; align-items: stretch; align-self: center; flex: none; width: 164px; }
 .fluitje { display: flex; align-items: center; gap: 8px; min-height: 52px; padding: 6px 10px; border-radius: 6px; border: 1px solid var(--line); background: rgba(0,0,0,.45); cursor: pointer; text-align: left; }
 .fluitje .fi { width: 38px; height: 38px; border-radius: 50%; background-size: cover; background-position: center; border: 2px solid #6b5a3a; flex: none; }
 .fluitje.opgeladen { border-color: var(--goud); box-shadow: 0 0 14px rgba(232,207,134,.45); }
 .fluitje.opgeladen .fi { border-color: var(--goud-licht); }
-.fluitje b { font-family: var(--display); font-size: 16px; display: block; color: var(--goud-licht); font-weight: 400; }
+.fluitje b { font-family: var(--display); font-size: 15px; display: block; color: var(--goud-licht); font-weight: 400; }
 .fluitje span { font-size: 12px; color: var(--muted); }
 .terugroep { min-height: 52px; border: 2px dashed rgba(159,225,192,.35); border-radius: 6px; display: grid; place-items: center; text-align: center; font-size: 13px; color: var(--muted); padding: 4px; }
 .terugroep.doelwit { border-color: #9fe1c0; color: #9fe1c0; background: rgba(159,225,192,.08); }
