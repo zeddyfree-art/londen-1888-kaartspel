@@ -1,0 +1,119 @@
+{
+ "datum": "2026-11-26",
+ "runsPerStand": 105,
+ "standen": {
+  "ontspannen": {
+   "winkans": 96.2,
+   "perHeld": {
+    "hu-yiping": 93.3,
+    "tobias-hale": 93.3,
+    "cornelius-bray": 100,
+    "aggie-pruitt": 100,
+    "arjan-singh": 86.7,
+    "mahmoud-fathy": 100,
+    "ang-nima": 100
+   },
+   "verlorenPerAkte": [
+    0,
+    0,
+    3.8
+   ],
+   "verlorenIn": {
+    "Vathrûn ontwaakt": 4
+   },
+   "beurtenPerGevecht": 17.8,
+   "gevechtenPerRun": 10.9,
+   "vaakstInWinst": {
+    "olifantengeweer": 133,
+    "kruisbeeld-deur": 127,
+    "boksbeugel": 125,
+    "kerkbank": 124,
+    "sjouwer": 101,
+    "omgevallen-kar": 101,
+    "bokser": 91,
+    "hagelgeweer": 90,
+    "breekijzer": 88,
+    "wijwater": 84
+   }
+  },
+  "normaal": {
+   "winkans": 69.5,
+   "perHeld": {
+    "hu-yiping": 60,
+    "tobias-hale": 86.7,
+    "cornelius-bray": 46.7,
+    "aggie-pruitt": 73.3,
+    "arjan-singh": 86.7,
+    "mahmoud-fathy": 53.3,
+    "ang-nima": 80
+   },
+   "verlorenPerAkte": [
+    0,
+    1.9,
+    28.6
+   ],
+   "verlorenIn": {
+    "Vathrûn ontwaakt": 26,
+    "De deur met zeven zegels": 2,
+    "De Bisschop van het Slib": 2,
+    "De riolen van Bazalgette": 1,
+    "De pestput onder Aldgate": 1
+   },
+   "beurtenPerGevecht": 18.2,
+   "gevechtenPerRun": 10.7,
+   "vaakstInWinst": {
+    "olifantengeweer": 115,
+    "kruisbeeld-deur": 100,
+    "kerkbank": 91,
+    "boksbeugel": 88,
+    "sjouwer": 73,
+    "omgevallen-kar": 73,
+    "bokser": 69,
+    "hagelgeweer": 65,
+    "breekijzer": 63,
+    "wijwater": 62
+   }
+  },
+  "genadeloos": {
+   "winkans": 26.7,
+   "perHeld": {
+    "hu-yiping": 33.3,
+    "tobias-hale": 20,
+    "cornelius-bray": 13.3,
+    "aggie-pruitt": 20,
+    "arjan-singh": 40,
+    "mahmoud-fathy": 13.3,
+    "ang-nima": 46.7
+   },
+   "verlorenPerAkte": [
+    4.8,
+    25.7,
+    42.9
+   ],
+   "verlorenIn": {
+    "Vathrûn ontwaakt": 28,
+    "De deur met zeven zegels": 16,
+    "De Bisschop van het Slib": 13,
+    "Een Scheur onder het museum": 12,
+    "Een Scheur aan de Theems": 5,
+    "Onder de markt van Covent Garden": 1,
+    "De riolen van Bazalgette": 1,
+    "Een loge in Pall Mall": 1
+   },
+   "beurtenPerGevecht": 20.4,
+   "gevechtenPerRun": 8.7,
+   "vaakstInWinst": {
+    "kruisbeeld-deur": 45,
+    "kerkbank": 43,
+    "olifantengeweer": 40,
+    "sjouwer": 28,
+    "omgevallen-kar": 28,
+    "boksbeugel": 28,
+    "bokser": 27,
+    "zandzakken": 27,
+    "wijwater": 23,
+    "breekijzer": 23
+   }
+  }
+ }
+}

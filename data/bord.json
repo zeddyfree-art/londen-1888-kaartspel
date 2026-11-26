@@ -1,0 +1,124 @@
+{
+ "plekken": [
+  {
+   "id": "hampstead",
+   "naam": "Hampstead",
+   "x": 250,
+   "y": 60
+  },
+  {
+   "id": "marylebone",
+   "naam": "Marylebone",
+   "x": 150,
+   "y": 190
+  },
+  {
+   "id": "kings-cross",
+   "naam": "King's Cross",
+   "x": 390,
+   "y": 150
+  },
+  {
+   "id": "bloomsbury",
+   "naam": "Bloomsbury",
+   "x": 380,
+   "y": 250
+  },
+  {
+   "id": "soho",
+   "naam": "Soho",
+   "x": 260,
+   "y": 290
+  },
+  {
+   "id": "mayfair",
+   "naam": "Mayfair",
+   "x": 120,
+   "y": 340
+  },
+  {
+   "id": "covent-garden",
+   "naam": "Covent Garden",
+   "x": 400,
+   "y": 330
+  },
+  {
+   "id": "leicester-square",
+   "naam": "Leicester Square",
+   "x": 300,
+   "y": 375
+  },
+  {
+   "id": "pall-mall",
+   "naam": "Pall Mall",
+   "x": 200,
+   "y": 430
+  },
+  {
+   "id": "strand",
+   "naam": "Strand",
+   "x": 440,
+   "y": 410
+  },
+  {
+   "id": "city",
+   "naam": "The City",
+   "x": 580,
+   "y": 380
+  },
+  {
+   "id": "spitalfields",
+   "naam": "Spitalfields",
+   "x": 640,
+   "y": 230
+  },
+  {
+   "id": "whitechapel",
+   "naam": "Whitechapel",
+   "x": 750,
+   "y": 290
+  },
+  {
+   "id": "whitehall",
+   "naam": "Whitehall",
+   "x": 310,
+   "y": 480
+  },
+  {
+   "id": "westminster",
+   "naam": "Westminster",
+   "x": 290,
+   "y": 580
+  },
+  {
+   "id": "chelsea",
+   "naam": "Chelsea",
+   "x": 100,
+   "y": 610
+  },
+  {
+   "id": "southwark",
+   "naam": "Southwark",
+   "x": 520,
+   "y": 560
+  },
+  {
+   "id": "st-katharine-docks",
+   "naam": "St Katharine Docks",
+   "x": 680,
+   "y": 440
+  },
+  {
+   "id": "wapping",
+   "naam": "Wapping",
+   "x": 790,
+   "y": 480
+  },
+  {
+   "id": "limehouse",
+   "naam": "Limehouse",
+   "x": 910,
+   "y": 420
+  }
+ ]
+}

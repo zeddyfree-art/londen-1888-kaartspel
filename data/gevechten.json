@@ -1,0 +1,65 @@
+{
+ "vathrun": {
+  "akten": [
+   {
+    "gewoon": [
+     { "id": "lantaarndragers-kade", "naam": "Lantaarndragers op de kade", "plek": "wapping", "bigben": 4,
+       "golven": [["cultist", "lantaarndrager"], ["lantaarndrager", { "id": "rivierwiedde", "rij": "riool" }]] },
+     { "id": "wier-limehouse", "naam": "Wier in de Limehouse Cut", "plek": "limehouse", "bigben": 4,
+       "golven": [["rivierwiedde", { "id": "cultist", "rij": "riool" }], ["verdronkene", "cultist"]] },
+     { "id": "mist-whitechapel", "naam": "Mist over Whitechapel", "plek": "whitechapel", "bigben": 4,
+       "golven": [["mistdwaler", "cultist"], ["cultist", "mistdwaler", { "id": "cultist", "rij": "riool" }]] },
+     { "id": "kruipers-spitalfields", "naam": "Kruipers onder Spitalfields", "plek": "spitalfields", "bigben": 4,
+       "golven": [[{ "id": "rioolkruiper", "rij": "riool" }, "cultist"], ["logebroeder", { "id": "rioolkruiper", "rij": "riool" }]] },
+     { "id": "genootschap-dokken", "naam": "Het Genootschap in de dokken", "plek": "st-katharine-docks", "bigben": 4,
+       "golven": [["logebroeder", "cultist"], ["logebroeder", "lantaarndrager"]] }
+    ],
+    "elite": [
+     { "id": "scheur-theems", "naam": "Een Scheur aan de Theems", "plek": "southwark", "soort": "elite", "bigben": 3,
+       "golven": [["verdronkene", "mistdwaler"], ["rivierwiedde", { "id": "verdronkene", "rij": "riool" }], ["logebroeder", "rivierwiedde"]] }
+    ],
+    "baas": { "id": "brine-wasserij", "naam": "Moeder Brine in de wasserij", "plek": "southwark", "soort": "baas", "bigben": 4,
+       "golven": [["logebroeder", "cultist", "cultist"], ["moeder-brine", { "id": "verdronkene", "rij": "riool" }]] },
+    "plekken": ["wapping", "limehouse", "whitechapel", "spitalfields", "st-katharine-docks", "southwark"]
+   },
+   {
+    "gewoon": [
+     { "id": "loge-pall-mall", "naam": "Een loge in Pall Mall", "plek": "pall-mall", "bigben": 4,
+       "golven": [["logebroeder", "logebroeder"], ["lantaarndrager", "mistdwaler", "cultist"]] },
+     { "id": "mist-soho", "naam": "Mist in de stegen van Soho", "plek": "soho", "bigben": 4,
+       "golven": [["mistdwaler", { "id": "rioolkruiper", "rij": "riool" }], ["mistdwaler", "verdronkene"]] },
+     { "id": "verdronkenen-strand", "naam": "Verdronkenen aan de Strand", "plek": "strand", "bigben": 4,
+       "golven": [["verdronkene", "cultist"], ["verdronkene", { "id": "rivierwiedde", "rij": "riool" }]] },
+     { "id": "riolen-covent-garden", "naam": "Onder de markt van Covent Garden", "plek": "covent-garden", "bigben": 4,
+       "golven": [[{ "id": "rioolkruiper", "rij": "riool" }, { "id": "rioolkruiper", "rij": "riool" }], ["lantaarndrager", "logebroeder"]] },
+     { "id": "seance-marylebone", "naam": "Een seance die misging", "plek": "marylebone", "bigben": 4,
+       "golven": [["mistdwaler", "lantaarndrager"], ["verdronkene", "mistdwaler"]] }
+    ],
+    "elite": [
+     { "id": "scheur-bloomsbury", "naam": "Een Scheur onder het museum", "plek": "bloomsbury", "soort": "elite", "bigben": 3,
+       "golven": [["verdronkene", "rivierwiedde"], ["mistdwaler", { "id": "rioolkruiper", "rij": "riool" }], ["logebroeder", "verdronkene", "lantaarndrager"]] }
+    ],
+    "baas": { "id": "bisschop-southwark", "naam": "De Bisschop van het Slib", "plek": "mayfair", "soort": "baas", "bigben": 4,
+       "golven": [["verdronkene", "lantaarndrager"], ["bisschop-van-het-slib", "cultist"]] },
+    "plekken": ["mayfair", "soho", "marylebone", "pall-mall", "bloomsbury", "covent-garden", "strand"]
+   },
+   {
+    "gewoon": [
+     { "id": "riolen-bazalgette", "naam": "De riolen van Bazalgette", "plek": "riolen", "bigben": 4,
+       "golven": [[{ "id": "rioolkruiper", "rij": "riool" }, "rivierwiedde"], ["verdronkene", { "id": "rioolkruiper", "rij": "riool" }]] },
+     { "id": "pestput", "naam": "De pestput onder Aldgate", "plek": "pestputten", "bigben": 4,
+       "golven": [["verdronkene", "mistdwaler"], ["logebroeder", "verdronkene"]] },
+     { "id": "ondergrondse", "naam": "Een tunnel van de Ondergrondse", "plek": "ondergrondse", "bigben": 4,
+       "golven": [["lantaarndrager", "logebroeder"], ["mistdwaler", "rivierwiedde"]] }
+    ],
+    "elite": [
+     { "id": "zeven-zegels", "naam": "De deur met zeven zegels", "plek": "hart", "soort": "elite", "bigben": 3,
+       "golven": [["logebroeder", "logebroeder", "lantaarndrager"], ["verdronkene", "rivierwiedde"], ["mistdwaler", { "id": "rioolkruiper", "rij": "riool" }]] }
+    ],
+    "baas": { "id": "vathrun-ontwaakt", "naam": "Vathrûn ontwaakt", "plek": "hart", "soort": "baas", "bigben": 5,
+       "golven": [["verdronkene", { "id": "rivierwiedde", "rij": "riool" }], ["vathrun"]] },
+    "plekken": ["riolen", "ondergrondse", "pestputten", "hart"]
+   }
+  ]
+ }
+}

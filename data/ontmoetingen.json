@@ -1,0 +1,65 @@
+[
+ { "id": "rapport-penhallow", "god": "vathrun", "titel": "Het verloren rapport", "art": "personen/josiah-penhallow.jpg",
+   "tekst": "In een kelder aan de kade ligt een natte map, dichtgebonden met touw. Op de voorkant staat in sierlijk handschrift: J. Penhallow, ingenieur. Binnenin beschrijft hij een gemetselde kamer op twaalf meter diepte, en een deur met zeven zegels. De laatste bladzijden zijn in een ander handschrift geschreven. Of in hetzelfde, maar door een hand die het vergeten is.",
+   "keuzes": [
+     { "tekst": "Lees alles, tot de laatste bladzijde", "uitkomst": { "geest": -3, "kaart": "klasse-zeldzaam" }, "gevolg": "Je weet nu wat hij hoorde achter de deur. Je wou dat je het niet wist." },
+     { "tekst": "Breng de map naar Hoofdinspecteur Voss", "uitkomst": { "ponden": 25 }, "gevolg": "Voss leest zwijgend. Dan schuift hij je een envelop toe: 'Voor de onkosten. Vertel het niemand.'" },
+     { "tekst": "Verbrand hem in de kachel", "uitkomst": { "geest": 2 }, "gevolg": "Het papier sist voordat het brandt, alsof het nat is van binnenuit." }
+   ] },
+ { "id": "offerande-brine", "god": "vathrun", "titel": "De offerande", "art": "personen/moeder-brine.jpg",
+   "tekst": "Op de trappen bij de waterkant staan mensen in een halve kring. Een oude vrouw met een schort gooit munten in de vloed en zingt iets zonder woorden. Ze ziet je staan en glimlacht vriendelijk. 'Wil je ook iets geven, lieverd? De rivier vergeet niemand die geeft.'",
+   "keuzes": [
+     { "tekst": "Gooi 15 Ponden in het water", "vereist": { "ponden": 15 }, "uitkomst": { "ponden": -15, "artefact": true, "geest": -1 }, "gevolg": "Iets in het water pakt de munten aan. Wat er terugkomt, is ouder dan de stad." },
+     { "tekst": "Verstoor de offerande", "uitkomst": { "gevecht": "elite" }, "gevolg": "Het gezang stopt. Allemaal draaien ze tegelijk hun hoofd naar je toe." },
+     { "tekst": "Loop door", "uitkomst": {}, "gevolg": "Achter je gaat het zingen verder." }
+   ] },
+ { "id": "martha-roeit", "god": "vathrun", "titel": "Een roeister in de mist", "art": "personen/martha-penhallow.jpg",
+   "tekst": "Een jonge vrouw legt aan bij de trappen van Wapping Old Stairs. Ze roeit al drie weken elke nacht de rivier op en af. 'Mijn vader is ingenieur. Hij groef iets op en toen was hij weg. Jullie zoeken hetzelfde als ik, toch?'",
+   "keuzes": [
+     { "tekst": "Vraag haar mee te gaan", "uitkomst": { "bondgenoot": "martha-penhallow" }, "gevolg": "Ze knikt, en bindt de boot vast alsof ze niet van plan is hem ooit nog los te maken." },
+     { "tekst": "Laat haar je naar de overkant roeien", "uitkomst": { "lichaam": 6 }, "gevolg": "Een uur op het water, zonder dat er iets uit de mist komt. Je rust uit." }
+   ] },
+ { "id": "springtij", "god": "vathrun", "titel": "Springtij", "art": "plekken/st-katharine-docks.jpg",
+   "tekst": "Het water staat hoger dan het hoort. De kelders van de pakhuizen lopen vol en in de straten drijven vaten, kisten en iets wat je liever niet bekijkt. Een van de kisten is van ijzer, en hij is nog dicht.",
+   "keuzes": [
+     { "tekst": "Wad het water in en haal de kist", "uitkomst": { "lichaam": -4, "kaart": "klasse" , "ponden": 10 }, "gevolg": "Het water is koud en iets raakt je been. Maar de kist is van jou." },
+     { "tekst": "Help de bewoners naar boven", "uitkomst": { "geest": 3 }, "gevolg": "Een oude man drukt je de hand. 'God zegene je.' Je voelt je minder alleen." }
+   ] },
+ { "id": "ademende-deur", "god": "vathrun", "titel": "De ademende deur", "art": "achterkanten/scheur.jpg",
+   "tekst": "Onder een rioolrooster hoor je het: een lange, natte zucht, en daarna stilte. Dan weer. Het ritme van iets dat slaapt en dat veel groter is dan jij. Je zou kunnen luisteren. Wie luistert, leert.",
+   "keuzes": [
+     { "tekst": "Luister, tot je het begrijpt", "uitkomst": { "geest": -4, "verbeter": 2 }, "gevolg": "Je begrijpt het. Je kaarten ook." },
+     { "tekst": "Leg je oor er niet tegen", "uitkomst": {}, "gevolg": "Verstandig. Het ritme volgt je nog een straat lang." }
+   ] },
+ { "id": "rivierpolitie", "god": "vathrun", "titel": "De rivierpolitie", "art": "spullen/bondgenoot-agent.jpg",
+   "tekst": "Een sloep van de Thames Division glijdt langs de kade. De agenten aan boord zien bleek. 'We hebben er vannacht al drie opgevist,' zegt de sergeant. 'Allemaal met hun ogen open. Kunt u iets voor ons doen, of wij iets voor u?'",
+   "keuzes": [
+     { "tekst": "Vraag om versterking", "uitkomst": { "bondgenoot": "agent" }, "gevolg": "Een jonge agent stapt aan wal. Hij doet zijn best om niet te trillen." },
+     { "tekst": "Vraag om hun medicijnkist", "uitkomst": { "middeltje": "carbol", "lichaam": 3 }, "gevolg": "Carbol, verband, en een slok uit de fles van de sergeant." }
+   ] },
+ { "id": "heler", "god": null, "titel": "Een heler in Petticoat Lane", "art": "plekken/spitalfields.jpg",
+   "tekst": "Een man in een te grote jas houdt zijn handen in zijn mouwen. 'Ik koop alles, meneer. Ook wat u liever kwijt bent. Vooral dat.'",
+   "keuzes": [
+     { "tekst": "Verkoop hem een kaart uit je stapel", "uitkomst": { "verwijder": 1, "ponden": 20 }, "gevolg": "Hij telt het geld twee keer, de tweede keer hardop." },
+     { "tekst": "Koop een flesje van onder de toonbank (12 Ponden)", "vereist": { "ponden": 12 }, "uitkomst": { "ponden": -12, "middeltje": "willekeurig" }, "gevolg": "Er zit geen etiket op. Dat is meestal een goed teken." },
+     { "tekst": "Niets, dank je", "uitkomst": {}, "gevolg": "Hij haalt zijn schouders op en verdwijnt in de menigte." }
+   ] },
+ { "id": "krantenjongen-gerucht", "god": null, "titel": "Laatste editie", "art": "monsters/krantenjongen.jpg",
+   "tekst": "'Extra! Extra! Verdwijningen in de East End! Scotland Yard tast in het duister!' De jongen houdt je een krant voor. Op de achterkant staat een advertentie voor een wapensmid in de Strand, met een prijs die te mooi is om waar te zijn.",
+   "keuzes": [
+     { "tekst": "Ga naar de wapensmid (20 Ponden)", "vereist": { "ponden": 20 }, "uitkomst": { "ponden": -20, "kaart": "klasse-ongewoon" }, "gevolg": "De prijs klopte. Het wapen ook." },
+     { "tekst": "Lees de krant bij een kop thee", "uitkomst": { "geest": 2 }, "gevolg": "Even is de wereld gewoon: beurskoersen en een ruzie in het parlement." }
+   ] },
+ { "id": "vechtschool", "god": null, "titel": "Een kelder onder een wasserij", "art": "plekken/limehouse.jpg",
+   "tekst": "Door een rooster hoor je stokken tegen elkaar slaan, en een vrouw die in het Kantonees tellen roept. Havenkinderen leren hier vechten. De lerares kijkt naar je handen. 'Je slaat te hard en te laat. Kom, ik laat het je zien.'",
+   "keuzes": [
+     { "tekst": "Train een uur mee", "uitkomst": { "lichaam": -3, "verbeter": 1 }, "gevolg": "Je hebt overal blauwe plekken. Maar je slaat nu op tijd." },
+     { "tekst": "Geef de kinderen een paar shilling (10 Ponden)", "vereist": { "ponden": 10 }, "uitkomst": { "ponden": -10, "geest": 3 }, "gevolg": "Ze buigen allemaal tegelijk. Je weet niet goed wat je ermee aan moet." }
+   ] },
+ { "id": "oude-soldaat", "god": null, "titel": "Een oude soldaat", "art": "plekken/whitehall.jpg",
+   "tekst": "Op een bankje bij de Horse Guards zit een man met één been en een rij medailles. 'Ik heb in de Krim dingen gezien die niemand gelooft. Jij gelooft ze wel, ik zie het aan je ogen.' Hij biedt je zijn heupfles aan, of zijn oude sabel.",
+   "keuzes": [
+     { "tekst": "Neem de sabel", "uitkomst": { "kaart": "lancierssabel" }, "gevolg": "'Hij is botter dan ik,' zegt hij. 'Maar niet veel.'" },
+     { "tekst": "Drink een slok en luister naar zijn verhaal", "uitkomst": { "geest": 2, "lichaam": 2 }, "gevolg": "Het is een goed verhaal. Het einde is niet waar, en dat is maar goed ook." }
+   ] }
+]

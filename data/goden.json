@@ -1,0 +1,237 @@
+[
+ {
+  "id": "vathrun",
+  "naam": "Vathrûn",
+  "titel": "Die onder de rivier ademt",
+  "verhaal": "Al eeuwen ligt er iets in het slib onder de Theems. Elke vloed brengt een beetje van zijn adem mee: de gele mist die over de kades kruipt. Sinds de nieuwe riolen zijn gegraven, heeft die adem een weg naar boven gevonden. Wie de mist inademt, droomt van groene diepten en wordt met natte voeten wakker.",
+  "speelbaar": true,
+  "regel": "De mist kruipt over de kades: telkens als Big Ben slaat, krijgen al je kaarten in de Straat 1 Mist. Vijanden in het Riool hebben +2 Leven.",
+  "spelregel": {
+   "golfMist": "straat",
+   "rioolLeven": 2
+  },
+  "monsters": [
+   "rivierwiedde",
+   "verdronkene",
+   "rioolkruiper",
+   "mistdwaler",
+   "logebroeder",
+   "cultist",
+   "lantaarndrager"
+  ],
+  "luitenant": "moeder-brine",
+  "episch": "bisschop-van-het-slib",
+  "eindbaas": "vathrun",
+  "art": "goden/vathrun.jpg",
+  "sfeer": "sfeer-vathrun"
+ },
+ {
+  "id": "azh-ilareth",
+  "naam": "Azh-Ilareth",
+  "titel": "De ster die te veel is",
+  "verhaal": "Op een heldere novembernacht verscheen er een ster die op geen enkele kaart staat. Ze is wit met een rand van ziekelijk violet en komt elke nacht een fractie dichterbij. Wie te lang kijkt, gaat haar tekenen, op muren, in kantlijnen en in het zand. Dichters schrijven verzen die ze zich niet herinneren, en de spiegels in de salons van Mayfair tonen een hemel die niet boven Londen hangt.",
+  "speelbaar": false,
+  "regel": null,
+  "spelregel": {},
+  "monsters": [
+   "sterrenkind",
+   "spiegelgast",
+   "lantaarndrager",
+   "kraaienzwerm",
+   "mistdwaler"
+  ],
+  "episch": "de-dichter-zonder-ogen",
+  "art": "goden/azh-ilareth.jpg",
+  "sfeer": "sfeer-azh-ilareth"
+ },
+ {
+  "id": "nebet-ankhu",
+  "naam": "Nebet-Ankhu",
+  "titel": "De farao zonder gezicht",
+  "verhaal": "In de vallei bij Thebe ligt een graf dat geen farao ooit heeft gebouwd. Expedities brengen de kisten naar Londen, en de egyptomanie doet de rest: elke salon wil een mummie, elke loge een scarabee. In de pakhuizen van de dokken breekt iets de zegels van binnenuit. Het draagt steeds een ander gezicht, telkens van iemand die je kent.",
+  "speelbaar": false,
+  "regel": null,
+  "spelregel": {},
+  "monsters": [
+   "shabti-wachter",
+   "logebroeder",
+   "sluierhond",
+   "rioolkruiper",
+   "kraaienzwerm"
+  ],
+  "episch": "gemaskerde-hogepriester",
+  "art": "goden/nebet-ankhu.jpg",
+  "sfeer": "sfeer-nebet-ankhu"
+ },
+ {
+  "id": "ysmara",
+  "naam": "Ysmara",
+  "titel": "De Doornkoningin, die de kinderen roept",
+  "verhaal": "Voordat er een stad was, stond hier een woud, en in het woud hield een koningin hof onder de meidoorns. De Romeinen kapten haar bos en bouwden er Londen op. Maar wortels sterven niet. Elke zeven generaties roept ze haar kinderen terug. Dit najaar bloeit de meidoorn in november, dwars door de straatstenen heen, en lopen kinderen 's nachts zingend hun bed uit. Sommigen komen terug. Niet allemaal als zichzelf.",
+  "speelbaar": false,
+  "regel": null,
+  "spelregel": {},
+  "monsters": [
+   "wisselkind",
+   "doornridder",
+   "dwaallicht",
+   "kraaienzwerm",
+   "mistdwaler"
+  ],
+  "episch": "groene-jager",
+  "art": "goden/ysmara.jpg",
+  "sfeer": "sfeer-ysmara"
+ },
+ {
+  "id": "morghast",
+  "naam": "Morghast",
+  "titel": "De Slaper in de knekelputten",
+  "verhaal": "In 1665 gooiden ze de pestdoden in putten onder de City, honderden op elkaar, met kalk ertussen. Onder de onderste laag lag iets dat al veel langer sliep, en het werd wakker van de geur. De cholera van '49 en '54 voedde het opnieuw. Nu graven de mannen van de nieuwe ondergrondse spoorlijn dwars door de oude putten, en een genootschap van chirurgen betaalt lijkenrovers voor lichamen die nog bewegen. De doden van Londen blijven niet meer liggen.",
+  "speelbaar": false,
+  "regel": null,
+  "spelregel": {},
+  "monsters": [
+   "knekelman",
+   "lijkenrover",
+   "pestdokter",
+   "rioolkruiper",
+   "logebroeder"
+  ],
+  "episch": "de-anatoom",
+  "art": "goden/morghast.jpg",
+  "sfeer": "sfeer-morghast"
+ },
+ {
+  "id": "ommeth",
+  "naam": "Ommeth",
+  "titel": "De Herder die zijn kudde telt",
+  "verhaal": "In de East End trekt een prediker rond, Broeder Absalom Crewe, met een processie die elke avond langer wordt. Ze zingen een psalm die niemand kent, op een wijs die je de hele nacht blijft horen. Wie meeloopt, vergeet zijn naam en antwoordt alleen nog op 'kudde'. Ommeth heeft geen lichaam. Zijn lichaam is de menigte, en de menigte groeit.",
+  "speelbaar": false,
+  "regel": null,
+  "spelregel": {},
+  "monsters": [
+   "kuddeleider",
+   "zingend-koor",
+   "logebroeder",
+   "kraaienzwerm",
+   "lantaarndrager"
+  ],
+  "episch": "broeder-absalom",
+  "art": "goden/ommeth.jpg",
+  "sfeer": "sfeer-ommeth"
+ },
+ {
+  "id": "karathos",
+  "naam": "Karathos",
+  "titel": "De Verdeelde, die heel wil worden",
+  "verhaal": "In 1307 braken de Tempeliers iets in zeven stukken en verstopten ze over de wereld. Het British Museum heeft er in dertig jaar, zonder het te weten, vier in één vitrine gezet. Nu roepen ze elkaar 's nachts. De bewakers horen ze fluisteren, de conservator slaapt niet meer, en elke relikwie die je vindt, is een splinter die heel wil worden.",
+  "speelbaar": false,
+  "regel": null,
+  "spelregel": {},
+  "monsters": [
+   "splintergeest",
+   "vitrinewachter",
+   "reliekjager",
+   "sluierhond",
+   "kraaienzwerm"
+  ],
+  "episch": "de-conservator",
+  "art": "goden/karathos.jpg",
+  "sfeer": "sfeer-karathos"
+ },
+ {
+  "id": "ulvereth",
+  "naam": "Ulvereth",
+  "titel": "De Hemel die omslaat",
+  "verhaal": "Sinds de herfst gedraagt het weer boven Londen zich alsof iemand het bespeelt. Op dinsdag vriest de Theems dicht, voor het eerst sinds de laatste vorstmarkt van 1814. Op woensdag smelt het ijs in één nacht, en drijven er dingen boven die niemand in het water heeft gegooid. De barometers op Hampstead wijzen naar een stand die niet op de schaal staat. En soms, heel soms, is het een dag zo mooi dat je vergeet waarom je bang was.",
+  "speelbaar": false,
+  "regel": null,
+  "spelregel": {},
+  "monsters": [
+   "rijpwicht",
+   "smogslang",
+   "bliksemvanger",
+   "verdronkene",
+   "kraaienzwerm"
+  ],
+  "episch": "koning-van-de-vorstmarkt",
+  "art": "goden/ulvereth.jpg",
+  "sfeer": "sfeer-ulvereth"
+ },
+ {
+  "id": "sirrhae",
+  "naam": "Sirrhae",
+  "titel": "De Stem achter de waaier",
+  "verhaal": "Niemand weet wie de gastvrouw is van de salon die elke week op een ander adres in Mayfair opengaat. Wie er geweest is, praat over haar zoals je over een eerste liefde praat. Dichters stoppen met schrijven, bankiers met rekenen, en een parlementslid stelde een vraag in het Lagerhuis die hij zich daarna niet herinnerde. Ze vraagt nooit iets. Ze laat je het aanbieden.",
+  "speelbaar": false,
+  "regel": null,
+  "spelregel": {},
+  "monsters": [
+   "bewonderaar",
+   "maskerdanser",
+   "betoverde-dichter",
+   "spiegelgast",
+   "lantaarndrager"
+  ],
+  "episch": "de-muze",
+  "art": "goden/sirrhae.jpg",
+  "sfeer": "sfeer-sirrhae"
+ },
+ {
+  "id": "ouroch",
+  "naam": "Ouroch",
+  "titel": "De Dertiende Slag",
+  "verhaal": "Sinds 1884 loopt de hele wereld op de tijd van Greenwich. Londen heeft de tijd van iedereen ingepikt, en iets wil hem terug. In Westminster slaat de klok dertien. Wie de dertiende slag hoort, verliest een uur dat hij nooit heeft beleefd. Klokkenmakers vinden tandwielen in hun brood, en in Spitalfields lopen mensen die al twintig jaar dood zijn, op weg naar een afspraak.",
+  "speelbaar": false,
+  "regel": null,
+  "spelregel": {},
+  "monsters": [
+   "opwindsoldaat",
+   "tijdverlorene",
+   "slingerhond",
+   "mistdwaler",
+   "logebroeder"
+  ],
+  "episch": "de-uurwerkman",
+  "art": "goden/ouroch.jpg",
+  "sfeer": "sfeer-ouroch"
+ },
+ {
+  "id": "yth-nemora",
+  "naam": "Yth-Nemora",
+  "titel": "De Leugen die rondgaat",
+  "verhaal": "In de herfst van 1888 drukken de kranten meer moord en geheim dan ooit, en de stad slurpt het op. Sommige berichten staan in kranten die nooit gedrukt zijn. Getuigen herinneren zich dingen die niet gebeurd zijn, en agenten zweren op sporen die er gisteren nog niet waren. Tegen de ochtend is het waar geworden. Iets leeft van wat Londen gelooft, en het wil dat Londen alles gelooft.",
+  "speelbaar": false,
+  "regel": null,
+  "spelregel": {},
+  "monsters": [
+   "krantenjongen",
+   "leugenaar",
+   "gerucht",
+   "mistdwaler",
+   "kraaienzwerm"
+  ],
+  "episch": "de-redacteur",
+  "art": "goden/yth-nemora.jpg",
+  "sfeer": "sfeer-yth-nemora"
+ },
+ {
+  "id": "gul-marrach",
+  "naam": "Gul-Marrach",
+  "titel": "De Onzichtbare Hand",
+  "verhaal": "In de City praten ze over de markt alsof het een persoon is. De markt is nerveus, de markt eist, de markt vergeeft niet. Op Threadneedle Street weet een handvol makelaars dat dat geen beeldspraak is. Onder de Bank of England zit iets dat zich voedt met schuld en honger. Het heeft de prijs van brood laten stijgen, de huur, de doodskisten. En sinds kort leent het terug, aan iedereen, tegen een rente die niemand ziet.",
+  "speelbaar": false,
+  "regel": null,
+  "spelregel": {},
+  "monsters": [
+   "deurwaarder",
+   "schuldspook",
+   "goudworm",
+   "lijkenrover",
+   "logebroeder"
+  ],
+  "episch": "de-makelaar",
+  "art": "goden/gul-marrach.jpg",
+  "sfeer": "sfeer-gul-marrach"
+ }
+]

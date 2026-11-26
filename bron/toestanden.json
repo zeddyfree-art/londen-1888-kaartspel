@@ -1,0 +1,86 @@
+[
+  {
+    "id": "gewond",
+    "naam": "Gewond",
+    "soort": "Lichaam",
+    "tekst": "Je hebt maar 1 actie per ronde. Verwijder bij het ziekenhuis (The City)."
+  },
+  {
+    "id": "verslaafd",
+    "naam": "Verslaafd",
+    "soort": "Lichaam",
+    "tekst": "Aan het begin van elke ronde: betaal 1 Pond of verlies 1 Geest. Verwijder bij de gaarkeuken met een Charisma-test (9)."
+  },
+  {
+    "id": "gezocht",
+    "naam": "Gezocht",
+    "soort": "Wet",
+    "tekst": "Je kunt niet winkelen. Verwijder bij de politie (Whitehall) door 2 Pond te betalen."
+  },
+  {
+    "id": "schuld",
+    "naam": "Schuld",
+    "soort": "Geld",
+    "tekst": "Je leende 3 Pond bij de bank. Elke ronde: gooi een dobbelsteen, bij 1 verlies je 1 Lichaam (de schuldeiser stuurt iemand). Los af in The City voor 4 Pond."
+  },
+  {
+    "id": "gezegend",
+    "naam": "Gezegend",
+    "soort": "Zegen",
+    "tekst": "Eén keer per ronde: gooi één dobbelsteen opnieuw. Verdwijnt als je Vervloekt wordt."
+  },
+  {
+    "id": "vervloekt",
+    "naam": "Vervloekt",
+    "soort": "Vloek",
+    "tekst": "Bij elke test is een 6 een 1. Verwijder in de kerk (Westminster). Verdwijnt als je Gezegend wordt."
+  },
+  {
+    "id": "verdwaald",
+    "naam": "Verdwaald",
+    "soort": "Reizen",
+    "tekst": "Je kunt niets doen en hebt geen ontmoetingen. In je beurt: doe een Waarneming-test (8) om terug te keren naar een willekeurige plek."
+  },
+  {
+    "id": "waanzin-paranoia",
+    "naam": "Waanzin: achtervolgingswaan",
+    "soort": "Waanzin",
+    "tekst": "Je kunt geen spullen ruilen met andere helden."
+  },
+  {
+    "id": "waanzin-slapeloos",
+    "naam": "Waanzin: slapeloosheid",
+    "soort": "Waanzin",
+    "tekst": "Rusten herstelt geen Geest meer."
+  },
+  {
+    "id": "waanzin-stemmen",
+    "naam": "Waanzin: de stemmen",
+    "soort": "Waanzin",
+    "tekst": "Elke spreuk kost 1 Geest extra, maar je gooit er 1 dobbelsteen extra bij."
+  },
+  {
+    "id": "waanzin-hoogmoed",
+    "naam": "Waanzin: grootheidswaan",
+    "soort": "Waanzin",
+    "tekst": "Je moet elk monster op je plek aanvallen, ook als je dat niet wilt."
+  },
+  {
+    "id": "waanzin-tekenen",
+    "naam": "Waanzin: het teken",
+    "soort": "Waanzin",
+    "tekst": "Je tekent overal hetzelfde symbool. Aan het eind van elke ronde: gooi een dobbelsteen, bij 1 opent er een Scheur op jouw plek."
+  },
+  {
+    "id": "betoverd",
+    "naam": "Betoverd",
+    "soort": "Betovering",
+    "tekst": "Aan het eind van elke ronde verlies je 1 Geest, en nog 1 als het team een gunst van Sirrhae weigert. Verbreek het in de abdij (Westminster), of laat een held op jouw plek je terughalen bij Rondkijken (Charisma 8)."
+  },
+  {
+    "id": "schuld-hand",
+    "naam": "Schuld aan de Hand",
+    "soort": "Geld",
+    "tekst": "Je leende bij de Onzichtbare Hand. Elke ronde: gooi een dobbelsteen, bij 1 daalt de Mist met 1. Los af in The City voor 5 Pond."
+  }
+]

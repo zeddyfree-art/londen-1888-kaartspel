@@ -1,0 +1,22 @@
+[
+ { "id": "zegen-dunstan", "naam": "Zegen van Sint-Dunstan", "soort": "spreuk", "klasse": "kracht", "zeldzaamheid": "gewoon", "doel": "eigen", "geest": 1,
+   "effect": [{ "doe": "status", "status": "gezegend", "aantal": 2 }],
+   "effectVerlicht": [{ "doe": "status", "status": "gezegend", "aantal": 3 }, { "doe": "status", "status": "woede", "aantal": 2 }],
+   "verbeterd": { "effect": [{ "doe": "status", "status": "gezegend", "aantal": 3 }], "effectVerlicht": [{ "doe": "status", "status": "gezegend", "aantal": 4 }, { "doe": "status", "status": "woede", "aantal": 3 }] },
+   "art": "spreuken/zegen-dunstan.jpg", "sfeer": "Dunstan greep de duivel bij de neus met een gloeiende tang." },
+ { "id": "bloedoffer", "naam": "Bloedoffer", "soort": "spreuk", "klasse": "kracht", "zeldzaamheid": "ongewoon", "doel": "eigen", "geest": 0,
+   "effect": [{ "doe": "lichaam", "aantal": -2 }, { "doe": "status", "status": "woede", "aantal": 4 }],
+   "effectVerlicht": [{ "doe": "lichaam", "aantal": -2 }, { "doe": "status", "status": "woede", "aantal": 6 }, { "doe": "teller", "aantal": -1 }, { "doe": "geest", "aantal": -1 }],
+   "verbeterd": { "effect": [{ "doe": "lichaam", "aantal": -2 }, { "doe": "status", "status": "woede", "aantal": 5 }], "effectVerlicht": [{ "doe": "lichaam", "aantal": -2 }, { "doe": "status", "status": "woede", "aantal": 8 }, { "doe": "teller", "aantal": -1 }, { "doe": "geest", "aantal": -1 }] },
+   "art": "spreuken/bloedoffer.jpg", "sfeer": "Een paar druppels op de stenen. Meer vraagt het niet. Nog niet." },
+ { "id": "kracht-rivier", "naam": "Kracht van de rivier", "soort": "spreuk", "klasse": "kracht", "zeldzaamheid": "ongewoon", "doel": "eigen", "geest": 1,
+   "effect": [{ "doe": "aanval", "aantal": 2 }],
+   "effectVerlicht": [{ "doe": "aanval", "aantal": 3 }, { "doe": "status", "status": "doorns", "aantal": 2 }, { "doe": "geest", "aantal": -1 }],
+   "verbeterd": { "effect": [{ "doe": "aanval", "aantal": 3 }], "effectVerlicht": [{ "doe": "aanval", "aantal": 4 }, { "doe": "status", "status": "doorns", "aantal": 3 }, { "doe": "geest", "aantal": -1 }] },
+   "art": "spreuken/kracht-rivier.jpg", "sfeer": "De Theems geeft. Wat ze terugvraagt, merk je later." },
+ { "id": "kring-van-zout", "naam": "Kring van zout en ijzer", "soort": "spreuk", "klasse": "kennis", "zeldzaamheid": "gewoon", "doel": "eigen", "geest": 1,
+   "effect": [{ "doe": "status", "status": "gezegend", "aantal": 1, "op": "eigen-rij" }],
+   "effectVerlicht": [{ "doe": "status", "status": "gezegend", "aantal": 2, "op": "eigen-rij" }, { "doe": "geest", "aantal": -1 }],
+   "verbeterd": { "effect": [{ "doe": "status", "status": "gezegend", "aantal": 2, "op": "eigen-rij" }] },
+   "art": "spreuken/zout-en-ijzer.jpg", "sfeer": "Zout voor wat leeft, ijzer voor wat niet meer leeft." }
+]

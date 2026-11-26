@@ -1,0 +1,371 @@
+{
+  "naam": "Londen, 1888",
+  "breedte": 1000,
+  "hoogte": 700,
+  "plekken": [
+    {
+      "id": "hampstead",
+      "naam": "Hampstead",
+      "x": 250,
+      "y": 60,
+      "dienst": "sterrenwacht",
+      "sfeer": "Heide, mist in de holtes, een koperen koepel op de heuvel."
+    },
+    {
+      "id": "marylebone",
+      "naam": "Marylebone",
+      "x": 150,
+      "y": 190,
+      "dienst": "seance",
+      "ondergronds": true,
+      "sfeer": "Nette gevels, zware gordijnen, en achter elk raam lijkt een seance aan de gang."
+    },
+    {
+      "id": "kings-cross",
+      "naam": "King's Cross",
+      "x": 390,
+      "y": 150,
+      "dienst": "station",
+      "ondergronds": true,
+      "sfeer": "Stoom, rook en het gebulder van de nachttrein naar het noorden."
+    },
+    {
+      "id": "bloomsbury",
+      "naam": "Bloomsbury",
+      "x": 380,
+      "y": 250,
+      "dienst": "bibliotheek",
+      "sfeer": "Het British Museum en de ronde leeszaal, vol boeken die niet allemaal in de catalogus staan."
+    },
+    {
+      "id": "soho",
+      "naam": "Soho",
+      "x": 260,
+      "y": 290,
+      "dienst": "occulte-boekwinkel",
+      "sfeer": "Smalle straatjes, buitenlandse cafés en een boekwinkel die alleen 's avonds opengaat."
+    },
+    {
+      "id": "mayfair",
+      "naam": "Mayfair",
+      "x": 120,
+      "y": 340,
+      "dienst": "salon",
+      "sfeer": "Herenhuizen, rijtuigen met wapenschilden en salons waar over geesten wordt gefluisterd."
+    },
+    {
+      "id": "covent-garden",
+      "naam": "Covent Garden",
+      "x": 400,
+      "y": 330,
+      "dienst": "markt",
+      "sfeer": "Bloemenkoopvrouwen, groentekramen, de opera en het gedrang van de nachtmarkt."
+    },
+    {
+      "id": "leicester-square",
+      "naam": "Leicester Square",
+      "x": 300,
+      "y": 375,
+      "dienst": "theater",
+      "sfeer": "Het Alhambra, gaslicht, affiches van goochelaars en mesmeristen."
+    },
+    {
+      "id": "pall-mall",
+      "naam": "Pall Mall",
+      "x": 200,
+      "y": 430,
+      "dienst": "club",
+      "sfeer": "Herenclubs met leren stoelen, waar men na het diner over expedities praat."
+    },
+    {
+      "id": "strand",
+      "naam": "Strand",
+      "x": 440,
+      "y": 410,
+      "dienst": "universiteit",
+      "rivier": true,
+      "sfeer": "King's College, kranten, koffiehuizen en de nieuwe Embankment langs het water."
+    },
+    {
+      "id": "city",
+      "naam": "The City",
+      "x": 580,
+      "y": 380,
+      "dienst": "ziekenhuis",
+      "rivier": true,
+      "ondergronds": true,
+      "sfeer": "Banken, St Paul's en het oude ziekenhuis van Barts."
+    },
+    {
+      "id": "spitalfields",
+      "naam": "Spitalfields",
+      "x": 640,
+      "y": 230,
+      "dienst": "gaarkeuken",
+      "sfeer": "Een overdekte markt, zijdewevers op zolders en een lange rij voor de gaarkeuken."
+    },
+    {
+      "id": "whitechapel",
+      "naam": "Whitechapel",
+      "x": 750,
+      "y": 290,
+      "dienst": "logementen",
+      "sfeer": "Overvolle logementen, slagers en nauwe steegjes waar je beter niet alleen loopt."
+    },
+    {
+      "id": "whitehall",
+      "naam": "Whitehall",
+      "x": 310,
+      "y": 480,
+      "dienst": "politie",
+      "sfeer": "Ministeries, Scotland Yard en agenten in lange capes."
+    },
+    {
+      "id": "westminster",
+      "naam": "Westminster",
+      "x": 290,
+      "y": 580,
+      "dienst": "kerk",
+      "rivier": true,
+      "ondergronds": true,
+      "sfeer": "De abdij, het Parlement en een klok die soms één slag te veel slaat."
+    },
+    {
+      "id": "chelsea",
+      "naam": "Chelsea",
+      "x": 100,
+      "y": 610,
+      "dienst": "kunstenaars",
+      "rivier": true,
+      "sfeer": "Ateliers, schilders aan de oever en het tehuis voor oud-soldaten."
+    },
+    {
+      "id": "southwark",
+      "naam": "Southwark",
+      "x": 520,
+      "y": 560,
+      "dienst": "markt",
+      "rivier": true,
+      "sfeer": "De zuidoever: brouwerijen, wasserijen en het oude Borough-marktplein."
+    },
+    {
+      "id": "st-katharine-docks",
+      "naam": "St Katharine Docks",
+      "x": 680,
+      "y": 440,
+      "dienst": "haven",
+      "rivier": true,
+      "sfeer": "Pakhuizen vol kisten uit verre landen, en schepen naar Alexandrië, Calcutta en Veracruz."
+    },
+    {
+      "id": "wapping",
+      "naam": "Wapping",
+      "x": 790,
+      "y": 480,
+      "dienst": "rivierpolitie",
+      "rivier": true,
+      "sfeer": "Trappen naar het water, zeemanskroegen en de post van de rivierpolitie."
+    },
+    {
+      "id": "limehouse",
+      "naam": "Limehouse",
+      "x": 910,
+      "y": 420,
+      "dienst": "markt",
+      "rivier": true,
+      "sfeer": "Chinese winkeltjes, touwslagerijen en de walm van thee en kolen."
+    }
+  ],
+  "overzee": [
+    {
+      "id": "thebe",
+      "naam": "Thebe, Egypte",
+      "via": "st-katharine-docks",
+      "kosten": 2,
+      "sfeer": "Graven in de rotsen, verzengende hitte en een vallei waar de schaduwen verkeerd vallen."
+    },
+    {
+      "id": "himalaya",
+      "naam": "Klooster van de Witte Wolken, Himalaya",
+      "via": "st-katharine-docks",
+      "kosten": 2,
+      "sfeer": "Een klooster op een bergkam, monniken die zwijgen en een bel die vanzelf luidt."
+    },
+    {
+      "id": "yucatan",
+      "naam": "Tempel in het oerwoud, Yucatán",
+      "via": "st-katharine-docks",
+      "kosten": 2,
+      "sfeer": "Een overwoekerde trappiramide, regen die nooit ophoudt en beelden die allemaal dezelfde kant op kijken."
+    }
+  ],
+  "routes": [
+    [
+      "hampstead",
+      "marylebone"
+    ],
+    [
+      "hampstead",
+      "kings-cross"
+    ],
+    [
+      "marylebone",
+      "kings-cross"
+    ],
+    [
+      "marylebone",
+      "mayfair"
+    ],
+    [
+      "marylebone",
+      "soho"
+    ],
+    [
+      "kings-cross",
+      "bloomsbury"
+    ],
+    [
+      "kings-cross",
+      "spitalfields"
+    ],
+    [
+      "bloomsbury",
+      "soho"
+    ],
+    [
+      "bloomsbury",
+      "covent-garden"
+    ],
+    [
+      "bloomsbury",
+      "city"
+    ],
+    [
+      "soho",
+      "mayfair"
+    ],
+    [
+      "soho",
+      "leicester-square"
+    ],
+    [
+      "covent-garden",
+      "leicester-square"
+    ],
+    [
+      "covent-garden",
+      "strand"
+    ],
+    [
+      "leicester-square",
+      "pall-mall"
+    ],
+    [
+      "leicester-square",
+      "whitehall"
+    ],
+    [
+      "mayfair",
+      "pall-mall"
+    ],
+    [
+      "mayfair",
+      "chelsea"
+    ],
+    [
+      "pall-mall",
+      "whitehall"
+    ],
+    [
+      "whitehall",
+      "westminster"
+    ],
+    [
+      "whitehall",
+      "strand"
+    ],
+    [
+      "westminster",
+      "chelsea"
+    ],
+    [
+      "westminster",
+      "southwark"
+    ],
+    [
+      "strand",
+      "city"
+    ],
+    [
+      "city",
+      "spitalfields"
+    ],
+    [
+      "city",
+      "st-katharine-docks"
+    ],
+    [
+      "city",
+      "southwark"
+    ],
+    [
+      "spitalfields",
+      "whitechapel"
+    ],
+    [
+      "whitechapel",
+      "st-katharine-docks"
+    ],
+    [
+      "whitechapel",
+      "wapping"
+    ],
+    [
+      "whitechapel",
+      "limehouse"
+    ],
+    [
+      "st-katharine-docks",
+      "wapping"
+    ],
+    [
+      "st-katharine-docks",
+      "southwark"
+    ],
+    [
+      "wapping",
+      "limehouse"
+    ]
+  ],
+  "rivier": [
+    "chelsea",
+    "westminster",
+    "strand",
+    "southwark",
+    "city",
+    "st-katharine-docks",
+    "wapping",
+    "limehouse"
+  ],
+  "diensten": {
+    "sterrenwacht": "Bekijk de bovenste 2 Onheilskaarten. Leg er één onderop de stapel, of leg ze terug in een volgorde naar keuze.",
+    "seance": "Verlies 1 Geest en krijg 1 Aanwijzing.",
+    "station": "Neem de trein: reis naar een plek met een Scheur, waar ook in Londen (1 Pond).",
+    "bibliotheek": "Studeer: doe een Kennis-test (8). Gelukt: trek 2 spreuken en houd er één.",
+    "occulte-boekwinkel": "Koop spreuken: trek 3 spreuken, koop er één voor 2 Pond.",
+    "salon": "Doe een Charisma-test (8). Gelukt: krijg 2 Pond of een Bondgenoot uit de spullenstapel.",
+    "markt": "Winkelen: trek 3 spullen en koop wat je kunt betalen.",
+    "theater": "Werken: krijg 2 Pond. Wie meer wil, waagt een extra nummer (Charisma 9): mislukt −1 Pond, gelukt +1, ruim gehaald (3 boven het doel) +2.",
+    "club": "Ruil 3 Pond voor een Artefact-gerucht: trek een Artefact als je deze ronde naar een overzeese plek reist.",
+    "universiteit": "Laat een Artefact of Boek onderzoeken: krijg 1 Aanwijzing.",
+    "ziekenhuis": "Laat je verzorgen (alle Lichaam voor 1 Pond), laat Gewond verwijderen, of leen 3 Pond bij de bank (Schuld) en los later 4 Pond af.",
+    "gaarkeuken": "Eet en rust: herstel 2 Geest.",
+    "logementen": "Hoor geruchten: kijk welke plek als volgende een Scheur krijgt. Of betaal een sekte (1 Pond en 1 Geest, Charisma 8) om een Scheur te openen: lukt het, dan kies jij de plek, anders het toeval. Er komt altijd een monster mee.",
+    "politie": "Verwijder de toestand Gezocht, of vraag een agent mee: krijg de Bondgenoot Agent op ronde.",
+    "kerk": "Verwijder de toestand Vervloekt, of krijg Gezegend als je die nog niet hebt.",
+    "kunstenaars": "Laat je portret schilderen: herstel 1 Geest en verwijder één Waanzin-kaart (Kennis-test 9).",
+    "haven": "Koop een bootkaartje (2 Pond) naar een overzeese plek.",
+    "rivierpolitie": "Leen een roeiboot: reis meteen naar elke andere plek aan de rivier."
+  },
+  "rivierpad": "M0,665 C120,665 230,650 300,600 S400,470 500,480 S640,500 720,505 S860,470 1000,455"
+}

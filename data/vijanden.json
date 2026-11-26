@@ -1,0 +1,533 @@
+[
+ {
+  "id": "rivierwiedde",
+  "naam": "Rivierwiedde",
+  "soort": "vijand",
+  "leven": 10,
+  "aanval": 3,
+  "gruwel": 1,
+  "teller": 3,
+  "art": "monsters/rivierwiedde.jpg",
+  "bron": "Verschijnt alleen aan de rivier. Na een verloren gevecht word je 1 plek de rivier op gesleept.",
+  "sfeer": "Sleept je de diepte in.",
+  "bijToeslaan": [
+   {
+    "doe": "status",
+    "status": "mist",
+    "aantal": 1
+   }
+  ]
+ },
+ {
+  "id": "verdronkene",
+  "naam": "Verdronkene",
+  "soort": "vijand",
+  "leven": 10,
+  "aanval": 2,
+  "gruwel": 2,
+  "teller": 3,
+  "art": "monsters/verdronkene.jpg",
+  "bron": "Komt terug: als hij verslagen wordt, gooi een dobbelsteen. Bij 1 of 2 verschijnt hij aan de rivier opnieuw.",
+  "komtTerug": true
+ },
+ {
+  "id": "rioolkruiper",
+  "naam": "Rioolkruiper",
+  "soort": "vijand",
+  "leven": 11,
+  "aanval": 3,
+  "gruwel": 1,
+  "teller": 2,
+  "art": "monsters/rioolkruiper.jpg",
+  "bron": "Beweegt na elke Onheilsfase 1 plek naar de dichtstbijzijnde held.",
+  "rij": "riool",
+  "kenmerken": [
+   "achterhoede"
+  ]
+ },
+ {
+  "id": "mistdwaler",
+  "naam": "Mistdwaler",
+  "soort": "vijand",
+  "leven": 9,
+  "aanval": 1,
+  "gruwel": 2,
+  "teller": 3,
+  "art": "monsters/mistdwaler.jpg",
+  "bron": "Na een gewonnen gevecht trek je geen trofee: de mist lost op.",
+  "kenmerken": [
+   "salvo"
+  ]
+ },
+ {
+  "id": "logebroeder",
+  "naam": "Logebroeder",
+  "soort": "vijand",
+  "leven": 9,
+  "aanval": 2,
+  "gruwel": 0,
+  "teller": 3,
+  "mens": true,
+  "art": "monsters/logebroeder.jpg",
+  "bron": "Een mens. Win je het gevecht, dan krijg je 1 Aanwijzing: hij praat.",
+  "buit": 6,
+  "reactie": {
+   "bij": "bondgenoot-geraakt",
+   "effect": [
+    {
+     "doe": "status",
+     "status": "woede",
+     "aantal": 1,
+     "op": "zelf"
+    }
+   ]
+  }
+ },
+ {
+  "id": "lantaarndrager",
+  "naam": "Lantaarndrager",
+  "soort": "vijand",
+  "leven": 10,
+  "aanval": 2,
+  "gruwel": 1,
+  "teller": 3,
+  "mens": true,
+  "art": "monsters/lantaarndrager.jpg",
+  "bron": "Een mens. Zolang hij op het bord staat, kost elke spreuk 1 Geest extra.",
+  "spreukDuurder": true
+ },
+ {
+  "id": "sterrenkind",
+  "naam": "Sterrenkind",
+  "soort": "vijand",
+  "leven": 10,
+  "aanval": 2,
+  "gruwel": 3,
+  "teller": 3,
+  "art": "monsters/sterrenkind.jpg",
+  "bron": "Een held die dit gevecht verliest, krijgt een Waanzin-kaart."
+ },
+ {
+  "id": "spiegelgast",
+  "naam": "Spiegelgast",
+  "soort": "vijand",
+  "leven": 11,
+  "aanval": 2,
+  "gruwel": 2,
+  "teller": 3,
+  "art": "monsters/spiegelgast.jpg",
+  "bron": "Je mag hem niet met wapens bevechten, alleen met spreuken of Kennis in plaats van Kracht."
+ },
+ {
+  "id": "kraaienzwerm",
+  "naam": "Kraaienzwerm",
+  "soort": "vijand",
+  "leven": 9,
+  "aanval": 1,
+  "gruwel": 1,
+  "teller": 2,
+  "art": "monsters/kraaienzwerm.jpg",
+  "bron": "Snel: hij beweegt elke Onheilsfase 2 plekken.",
+  "kenmerken": [
+   "salvo"
+  ]
+ },
+ {
+  "id": "shabti-wachter",
+  "naam": "Shabti-wachter",
+  "soort": "vijand",
+  "leven": 14,
+  "aanval": 3,
+  "gruwel": 1,
+  "teller": 4,
+  "art": "monsters/shabti-wachter.jpg",
+  "bron": "Je moet hem twee keer verslaan.",
+  "statussen": {
+   "bescherming": 3
+  }
+ },
+ {
+  "id": "sluierhond",
+  "naam": "Sluierhond",
+  "soort": "vijand",
+  "leven": 10,
+  "aanval": 3,
+  "gruwel": 2,
+  "teller": 2,
+  "art": "monsters/sluierhond.jpg",
+  "bron": "Als er geen held op zijn plek is, beweegt hij naar de held met de meeste Artefacten."
+ },
+ {
+  "id": "wisselkind",
+  "naam": "Wisselkind",
+  "soort": "vijand",
+  "leven": 9,
+  "aanval": 2,
+  "gruwel": 2,
+  "teller": 3,
+  "art": "monsters/wisselkind.jpg",
+  "bron": "Het lijkt een gewoon kind, tot het lacht. Verlies je het gevecht, dan steelt het 1 Pond."
+ },
+ {
+  "id": "doornridder",
+  "naam": "Doornridder",
+  "soort": "vijand",
+  "leven": 13,
+  "aanval": 3,
+  "gruwel": 1,
+  "teller": 3,
+  "art": "monsters/doornridder.jpg",
+  "bron": "Een gestalte van verwilderde meidoorn in de vorm van een ridder. Je moet hem twee keer verslaan.",
+  "statussen": {
+   "doorns": 2
+  }
+ },
+ {
+  "id": "dwaallicht",
+  "naam": "Dwaallicht",
+  "soort": "vijand",
+  "leven": 9,
+  "aanval": 2,
+  "gruwel": 1,
+  "teller": 2,
+  "art": "monsters/dwaallicht.jpg",
+  "bron": "Snel: het beweegt elke Onheilsfase 2 plekken. Na een gewonnen gevecht trek je geen trofee: het licht dooft gewoon."
+ },
+ {
+  "id": "knekelman",
+  "naam": "Knekelman",
+  "soort": "vijand",
+  "leven": 10,
+  "aanval": 2,
+  "gruwel": 2,
+  "teller": 3,
+  "art": "monsters/knekelman.jpg",
+  "bron": "Komt terug: als hij verslagen wordt, gooi een dobbelsteen. Bij 1 of 2 staat hij op een willekeurige plek weer op.",
+  "komtTerug": true
+ },
+ {
+  "id": "lijkenrover",
+  "naam": "Lijkenrover",
+  "soort": "vijand",
+  "leven": 9,
+  "aanval": 2,
+  "gruwel": 0,
+  "teller": 3,
+  "mens": true,
+  "art": "monsters/lijkenrover.jpg",
+  "bron": "Een mens, met een spade en een zak. Win je het gevecht, dan laat hij zijn beurs vallen: 2 Pond.",
+  "buit": 6
+ },
+ {
+  "id": "pestdokter",
+  "naam": "Pestdokter",
+  "soort": "vijand",
+  "leven": 10,
+  "aanval": 2,
+  "gruwel": 3,
+  "teller": 3,
+  "art": "monsters/pestdokter.jpg",
+  "bron": "Een gestalte met een snavelmasker uit een andere eeuw. Een held die dit gevecht verliest, krijgt een Waanzin-kaart.",
+  "bijToeslaan": [
+   {
+    "doe": "status",
+    "status": "pest",
+    "aantal": 2
+   }
+  ]
+ },
+ {
+  "id": "cultist",
+  "naam": "Cultist",
+  "soort": "vijand",
+  "leven": 5,
+  "aanval": 2,
+  "gruwel": 0,
+  "teller": 2,
+  "mens": true,
+  "art": "monsters/cultist.jpg",
+  "bron": "Iemand uit de kudde van Ommeth, die zijn naam is vergeten. Je kunt hem verslaan of bekeren (Charisma 8): dan loopt hij naar huis en krijg je 1 Aanwijzing."
+ },
+ {
+  "id": "kuddeleider",
+  "naam": "Kuddeleider",
+  "soort": "vijand",
+  "leven": 10,
+  "aanval": 2,
+  "gruwel": 1,
+  "teller": 3,
+  "mens": true,
+  "art": "monsters/kuddeleider.jpg",
+  "bron": "Een mens met een herdersstaf en een stem die draagt. Versla je hem, dan vluchten alle cultisten op zijn plek."
+ },
+ {
+  "id": "zingend-koor",
+  "naam": "Zingend koor",
+  "soort": "vijand",
+  "leven": 9,
+  "aanval": 2,
+  "gruwel": 2,
+  "teller": 3,
+  "mens": true,
+  "art": "monsters/zingend-koor.jpg",
+  "bron": "Zes stemmen die als één zingen. Elke held op dezelfde plek verliest elke ronde 1 Geest.",
+  "bijToeslaan": [
+   {
+    "doe": "status",
+    "status": "woede",
+    "aantal": 1,
+    "op": "alle-eigen"
+   }
+  ]
+ },
+ {
+  "id": "splintergeest",
+  "naam": "Splintergeest",
+  "soort": "vijand",
+  "leven": 10,
+  "aanval": 2,
+  "gruwel": 2,
+  "teller": 3,
+  "art": "monsters/splintergeest.jpg",
+  "bron": "Een schim van glas en echo. Verlies je, dan grijpt hij een Artefact van je en vlucht."
+ },
+ {
+  "id": "vitrinewachter",
+  "naam": "Vitrinewachter",
+  "soort": "vijand",
+  "leven": 14,
+  "aanval": 3,
+  "gruwel": 1,
+  "teller": 4,
+  "art": "monsters/vitrinewachter.jpg",
+  "bron": "Een harnas uit de wapenzaal dat zijn post heeft verlaten. Je moet hem drie keer raken.",
+  "statussen": {
+   "bescherming": 3
+  }
+ },
+ {
+  "id": "reliekjager",
+  "naam": "Reliekjager",
+  "soort": "vijand",
+  "leven": 9,
+  "aanval": 2,
+  "gruwel": 0,
+  "teller": 2,
+  "mens": true,
+  "art": "monsters/reliekjager.jpg",
+  "bron": "Een mens van het Genootschap, met een catalogus en een mes. Hij loopt naar de held met de meeste Artefacten. Win je, dan krijg je 1 Aanwijzing: zijn catalogus.",
+  "buit": 6
+ },
+ {
+  "id": "rijpwicht",
+  "naam": "Rijpwicht",
+  "soort": "vijand",
+  "leven": 10,
+  "aanval": 3,
+  "gruwel": 1,
+  "teller": 3,
+  "art": "monsters/rijpwicht.jpg",
+  "bron": "Een kind van rijp en wind. Elke held op zijn plek verliest elke ronde 1 Lichaam."
+ },
+ {
+  "id": "smogslang",
+  "naam": "Smogslang",
+  "soort": "vijand",
+  "leven": 9,
+  "aanval": 2,
+  "gruwel": 2,
+  "teller": 2,
+  "art": "monsters/smogslang.jpg",
+  "bron": "Een slang van gele smog. Snel: hij beweegt elke Onheilsfase 2 plekken."
+ },
+ {
+  "id": "bliksemvanger",
+  "naam": "Bliksemvanger",
+  "soort": "vijand",
+  "leven": 9,
+  "aanval": 2,
+  "gruwel": 0,
+  "teller": 3,
+  "mens": true,
+  "art": "monsters/bliksemvanger.jpg",
+  "bron": "Een mens van de Bond van de Windroos, met een koperen staf. Win je, dan vertelt hij je iets: 1 Aanwijzing.",
+  "buit": 6
+ },
+ {
+  "id": "bewonderaar",
+  "naam": "Bewonderaar",
+  "soort": "vijand",
+  "leven": 9,
+  "aanval": 2,
+  "gruwel": 1,
+  "teller": 2,
+  "mens": true,
+  "art": "monsters/bewonderaar.jpg",
+  "bron": "Een mens die alleen nog over haar praat. Bekoring: weersta hem met Charisma. Hij loopt naar de dichtstbijzijnde held.",
+  "bijToeslaan": [
+   {
+    "doe": "status",
+    "status": "bekoring",
+    "aantal": 1
+   }
+  ]
+ },
+ {
+  "id": "maskerdanser",
+  "naam": "Maskerdanser",
+  "soort": "vijand",
+  "leven": 10,
+  "aanval": 2,
+  "gruwel": 2,
+  "teller": 3,
+  "art": "monsters/maskerdanser.jpg",
+  "bron": "Een danser zonder gezicht achter het masker. Bekoring: weersta hem met Charisma.",
+  "bijToeslaan": [
+   {
+    "doe": "status",
+    "status": "bekoring",
+    "aantal": 1
+   }
+  ]
+ },
+ {
+  "id": "betoverde-dichter",
+  "naam": "Betoverde dichter",
+  "soort": "vijand",
+  "leven": 9,
+  "aanval": 2,
+  "gruwel": 1,
+  "teller": 3,
+  "mens": true,
+  "art": "monsters/betoverde-dichter.jpg",
+  "bron": "Een dichter die alleen nog haar naam rijmt. Bekoring: weersta hem met Charisma. Verlies je, dan leent hij 1 Pond van je, voor bloemen.",
+  "bijToeslaan": [
+   {
+    "doe": "status",
+    "status": "vervloekt",
+    "aantal": 1
+   }
+  ]
+ },
+ {
+  "id": "opwindsoldaat",
+  "naam": "Opwindsoldaat",
+  "soort": "vijand",
+  "leven": 14,
+  "aanval": 3,
+  "gruwel": 1,
+  "teller": 4,
+  "art": "monsters/opwindsoldaat.jpg",
+  "bron": "Een tinnen soldaat zo groot als een man, met een sleutel in zijn rug. Je moet hem drie keer raken.",
+  "statussen": {
+   "bescherming": 3
+  }
+ },
+ {
+  "id": "tijdverlorene",
+  "naam": "Tijdverlorene",
+  "soort": "vijand",
+  "leven": 10,
+  "aanval": 2,
+  "gruwel": 2,
+  "teller": 3,
+  "art": "monsters/tijdverlorene.jpg",
+  "bron": "Iemand die al jaren op weg is naar een afspraak. Verlies je, dan raak je Verdwaald, tussen twee uren in."
+ },
+ {
+  "id": "slingerhond",
+  "naam": "Slingerhond",
+  "soort": "vijand",
+  "leven": 10,
+  "aanval": 3,
+  "gruwel": 1,
+  "teller": 2,
+  "art": "monsters/slingerhond.jpg",
+  "bron": "Een hond van messing met een slinger als staart. Hij loopt elke Onheilsfase naar de dichtstbijzijnde held."
+ },
+ {
+  "id": "krantenjongen",
+  "naam": "Krantenjongen",
+  "soort": "vijand",
+  "leven": 9,
+  "aanval": 2,
+  "gruwel": 0,
+  "teller": 2,
+  "mens": true,
+  "art": "monsters/krantenjongen.jpg",
+  "bron": "Een jongen met een stapel kranten van morgen. Snel: hij beweegt elke Onheilsfase 2 plekken. Verlies je, dan steelt hij 1 Aanwijzing.",
+  "bijToeslaan": [
+   {
+    "doe": "status",
+    "status": "inkt",
+    "aantal": 1
+   }
+  ]
+ },
+ {
+  "id": "leugenaar",
+  "naam": "Leugenaar",
+  "soort": "vijand",
+  "leven": 9,
+  "aanval": 2,
+  "gruwel": 0,
+  "teller": 3,
+  "mens": true,
+  "art": "monsters/leugenaar.jpg",
+  "bron": "Een getuige die alles heeft gezien, behalve wat er gebeurde. Win je, dan krijg je 1 Aanwijzing. Of die waar is, weet je pas later.",
+  "buit": 6
+ },
+ {
+  "id": "gerucht",
+  "naam": "Gerucht",
+  "soort": "vijand",
+  "leven": 9,
+  "aanval": 2,
+  "gruwel": 2,
+  "teller": 3,
+  "art": "monsters/gerucht.jpg",
+  "bron": "Een fluistering met een lichaam. Na een gewonnen gevecht trek je geen trofee: het gerucht lost op. Verlies je, dan is wat je zeker wist weer onzeker.",
+  "bijToeslaan": [
+   {
+    "doe": "status",
+    "status": "inkt",
+    "aantal": 1
+   }
+  ]
+ },
+ {
+  "id": "deurwaarder",
+  "naam": "Deurwaarder",
+  "soort": "vijand",
+  "leven": 10,
+  "aanval": 2,
+  "gruwel": 0,
+  "teller": 3,
+  "mens": true,
+  "art": "monsters/deurwaarder.jpg",
+  "bron": "Een mens met een dagvaarding en een knuppel. Verlies je, dan heb je Schuld."
+ },
+ {
+  "id": "schuldspook",
+  "naam": "Schuldspook",
+  "soort": "vijand",
+  "leven": 10,
+  "aanval": 2,
+  "gruwel": 2,
+  "teller": 3,
+  "art": "monsters/schuldspook.jpg",
+  "bron": "De schim van iemand die nooit kon afbetalen. Verlies je, dan neemt hij 2 Pond mee."
+ },
+ {
+  "id": "goudworm",
+  "naam": "Goudworm",
+  "soort": "vijand",
+  "leven": 11,
+  "aanval": 3,
+  "gruwel": 1,
+  "teller": 3,
+  "art": "monsters/goudworm.jpg",
+  "bron": "Een worm die door de kluizen kruipt en munten eet. Win je, dan krijg je 3 Pond uit zijn buik.",
+  "buit": 10
+ }
+]

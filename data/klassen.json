@@ -1,0 +1,14 @@
+[
+  { "id": "kennis", "naam": "Kennis", "rol": "Occultist", "kleur": "#7b4fa8", "kleur2": "#c9a54a", "speelbaar": false,
+    "kort": "Spreuken en rituelen. Manipuleert tellers en speelt het meest met Verlichting.",
+    "held": { "aanval": 2, "teller": 4 }, "kenmerken": [] },
+  { "id": "waarneming", "naam": "Waarneming", "rol": "Speurder", "kleur": "#2b8a86", "speelbaar": false,
+    "kort": "Aanwijzingen en Deducties. Ontmaskert vijanden en mikt op elk doel.",
+    "held": { "aanval": 2, "teller": 3 }, "kenmerken": [] },
+  { "id": "kracht", "naam": "Kracht", "rol": "Vechter", "kleur": "#8e2a22", "speelbaar": true,
+    "kort": "Trofeeën, barricades, Doorns, Gezegend en Bescherming. Wie doodt, wordt sterker.",
+    "held": { "aanval": 3, "teller": 3 }, "kenmerken": ["trofee"] },
+  { "id": "charisma", "naam": "Charisma", "rol": "Aanvoerder", "kleur": "#c07a1e", "speelbaar": false,
+    "kort": "Veel bondgenoten en Ponden. Overtuigt menselijke vijanden om over te lopen.",
+    "held": { "aanval": 1, "teller": 3 }, "kenmerken": [] }
+]

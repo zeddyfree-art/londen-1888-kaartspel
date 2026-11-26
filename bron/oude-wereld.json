@@ -1,0 +1,245 @@
+{
+  "naam": "Kaarten van de Oude Wereld",
+  "regios": [
+    {
+      "id": "thebe",
+      "naam": "Thebe, Egypte",
+      "aankomst": { "naam": "Luxor, de kade", "tekst": "Feloeka's, ezeldrijvers, handelaars in echte en valse oudheden. Hier huur je een gids en hier vaart de boot terug." },
+      "hart": {
+        "naam": "Het naamloze graf",
+        "tekst": "Achter een deur zonder cartouche ligt een graf dat geen farao heeft gebouwd. In de grafkamer staat een wachter van zwart basalt, en zijn ogen gaan open als je lamp hem raakt.",
+        "keuzes": [
+          { "label": "De wachter bevechten (Kracht 10)", "test": { "kenmerk": "kracht", "moeilijkheid": 10 } },
+          { "label": "De bezwering op de deur uitspreken (Kennis 10)", "test": { "kenmerk": "kennis", "moeilijkheid": 10 } },
+          { "label": "Langs de wachter sluipen (Waarneming 10)", "test": { "kenmerk": "scherpte", "moeilijkheid": 10 } }
+        ],
+        "gelukt": "De wachter zakt terug in zijn nis. Op de sarcofaag liggen grafgiften die nog niemand heeft aangeraakt.",
+        "mislukt": "De basalten vuist raakt je. Je strompelt terug naar de gang. Morgen probeer je het opnieuw, of niet.",
+        "schatten": ["canope-naamloze-farao", "zonneschijf-aton"]
+      },
+      "gevaren": [
+        { "id": "instorting", "naam": "Instorting", "tekst": "Het plafond kraakt en een regen van steen en zand komt naar beneden.", "effect": [{ "lichaam": -2 }] },
+        { "id": "vloek", "naam": "De vloek van de farao", "tekst": "Op de drempel staat een vervloeking. Je las hem pas toen je eroverheen stapte.", "effect": [{ "toestand": "vervloekt" }] },
+        { "id": "grafrovers", "naam": "Grafrovers", "tekst": "Mannen met messen uit Gurna. Ze willen wat jij hebt gevonden.", "effect": [{ "lichaam": -1 }, { "geest": -1 }] }
+      ],
+      "leeg": [
+        { "naam": "Een stille middag", "tekst": "De hitte trilt boven de rotsen. Niets beweegt, behalve een gier hoog in de lucht." },
+        { "naam": "Een schildering", "tekst": "Op de wand zie je een koning die een offer brengt. Iemand heeft zijn gezicht weggekrabd." },
+        { "naam": "Voetsporen", "tekst": "In het zand lopen sporen die je voorgaan. Ze zijn van vanochtend." },
+        { "naam": "De wind", "tekst": "Een warme wind uit de woestijn. Je gids mompelt een gebed en loopt door." },
+        { "naam": "Een scherf", "tekst": "Een scherf aardewerk met een hand erop. Hij is ouder dan Rome." },
+        { "naam": "Avondrood", "tekst": "De kliffen kleuren rood. Het is mooi, en je hebt even geen haast." }
+      ],
+      "tegels": [
+        { "id": "vallei-der-koningen", "naam": "De Vallei der Koningen", "tekst": "Tientallen ingangen in de rotswand, de meeste dichtgeslibd. Eén heeft verse krassen rond het slot.",
+          "keuzes": [
+            { "label": "Het slot forceren (Kracht 9)", "test": { "kenmerk": "kracht", "moeilijkheid": 9 }, "gelukt": { "tekst": "De deur geeft mee. In de eerste kamer staat een kist met grafgiften die de dieven niet meekregen.", "effect": [{ "trek": "artefacten" }] }, "mislukt": { "tekst": "Je schouder geeft eerder mee dan de deur.", "effect": [{ "lichaam": -1 }] } },
+            { "label": "De krassen lezen (Waarneming 8)", "test": { "kenmerk": "scherpte", "moeilijkheid": 8 }, "gelukt": { "tekst": "De dieven zijn teruggekomen, drie keer, en telkens met minder mannen. Je weet nu waar ze heen gingen.", "effect": [{ "aanwijzing": 2 }] }, "mislukt": { "tekst": "Het zijn gewoon krassen.", "effect": [] } }
+          ] },
+        { "id": "karnak", "naam": "Karnak", "tekst": "Een woud van zuilen, zo hoog dat je hals pijn doet. Op een zuil staat een tekst die verschuift als je beweegt.",
+          "keuzes": [
+            { "label": "De tekst lezen (Kennis 9)", "test": { "kenmerk": "kennis", "moeilijkheid": 9 }, "gelukt": { "tekst": "Het is een lijst van priesters, en de laatste naam is die van een god die geen naam heeft. Je schrijft het over.", "effect": [{ "aanwijzing": 2 }, { "trek": "spreuken" }] }, "mislukt": { "tekst": "De tekens bewegen sneller dan jij kunt lezen.", "effect": [{ "geest": -1 }] } },
+            { "label": "Een priesterbeeldje uit het gruis halen", "tekst": "Klein, van blauw faience, met een gezicht dat te veel weet. Het is warm in je hand.", "effect": [{ "pond": 3 }] }
+          ] },
+        { "id": "deir-el-bahari", "naam": "Deir el-Bahari", "tekst": "Hier vonden ze in 1881 de schuilplaats van de koninklijke mummies. De schacht is leeggehaald. Bijna.",
+          "keuzes": [
+            { "label": "Afdalen in de schacht (Kracht 9)", "test": { "kenmerk": "kracht", "moeilijkheid": 9 }, "gelukt": { "tekst": "Op de bodem, onder een laag puin, ligt een kistje dat de museummensen over het hoofd zagen.", "effect": [{ "trek": "artefacten" }, { "pond": 2 }] }, "mislukt": { "tekst": "Het touw slipt. Je landt hard.", "effect": [{ "lichaam": -2 }] } },
+            { "label": "Met de bewaker praten (Charisma 8)", "test": { "kenmerk": "overtuiging", "moeilijkheid": 8 }, "gelukt": { "tekst": "Hij vertelt over de nacht dat de mummies werden weggedragen, en over de ene kist die bleef liggen, omdat niemand hem durfde op te tillen.", "effect": [{ "aanwijzing": 2 }] }, "mislukt": { "tekst": "Hij wil bakhshish, en daarna nog meer.", "effect": [{ "pond": -1 }] } }
+          ] },
+        { "id": "medinet-habu", "naam": "Medinet Habu", "tekst": "Een tempel als een vesting, met reliëfs van een oorlog tegen volken uit de zee. Eén van de vijanden heeft geen gezicht.",
+          "keuzes": [
+            { "label": "Het reliëf onderzoeken (Waarneming 9)", "test": { "kenmerk": "scherpte", "moeilijkheid": 9 }, "gelukt": { "tekst": "Achter het gezichtloze figuur zit een losse steen. Erachter: een rol papyrus, droog en heel.", "effect": [{ "aanwijzing": 2 }, { "trofee": 1 }] }, "mislukt": { "tekst": "Hoe langer je kijkt, hoe meer het jouw gezicht wordt.", "effect": [{ "geest": -2 }] } },
+            { "label": "Schuilen in de schaduw", "tekst": "Je rust een uur tussen de zuilen. De stenen houden de koelte van de nacht vast.", "effect": [{ "lichaam": 1 }, { "geest": 1 }] }
+          ] },
+        { "id": "gurna", "naam": "Gurna", "tekst": "Het dorp is gebouwd bovenop de graven. In elke kelder zit een ingang, en elke familie weet welke.",
+          "keuzes": [
+            { "label": "Een familie overhalen je haar graf te tonen (Charisma 9)", "test": { "kenmerk": "overtuiging", "moeilijkheid": 9 }, "gelukt": { "tekst": "De grootmoeder neemt je mee naar beneden. Ze laat je een beeldje zien, en dan geeft ze het je. 'Het wil weg,' zegt ze.", "effect": [{ "trek": "artefacten" }] }, "mislukt": { "tekst": "De deuren gaan dicht. In Gurna vertrouwen ze geen vreemden.", "effect": [{ "geest": -1 }] } },
+            { "label": "Spullen kopen op de markt", "tekst": "Een lamp, een touw, een mes. Alles net iets te duur, alles net goed genoeg.", "effect": [{ "pond": -1 }, { "trek": "spullen" }] }
+          ] },
+        { "id": "kamp-harrowgate", "naam": "Het kamp van de Harrowgate-expeditie", "tekst": "Witte tenten, een Engelse vlag, kisten met het merk van Sir Lucius Harrowgate. Er is niemand. Het eten staat nog op tafel.",
+          "keuzes": [
+            { "label": "De kisten doorzoeken (Waarneming 8)", "test": { "kenmerk": "scherpte", "moeilijkheid": 8 }, "gelukt": { "tekst": "Vrachtbrieven, een kaart van het graf en een buidel sovereigns. Harrowgate betaalt goed, en had haast.", "effect": [{ "aanwijzing": 2 }, { "pond": 3 }] }, "mislukt": { "tekst": "Je hoort voetstappen buiten en vlucht met lege handen.", "effect": [] } },
+            { "label": "Het dagboek van de opzichter lezen (Kennis 8)", "test": { "kenmerk": "kennis", "moeilijkheid": 8 }, "gelukt": { "tekst": "De laatste bladzijde: 'Vanavond openen we de binnenste kamer. Morgen naar huis.' Er is geen morgen in het dagboek.", "effect": [{ "aanwijzing": 2 }, { "trofee": 1 }] }, "mislukt": { "tekst": "Het handschrift wordt onleesbaar, en dan rood.", "effect": [{ "geest": -1 }] } }
+          ] },
+        { "id": "woestijnweg", "naam": "De woestijnweg", "tekst": "Een oude processieweg de woestijn in, langs halfbegraven sfinxen. Aan het eind staat een tent van een eenzame kluizenaar.",
+          "keuzes": [
+            { "label": "De kluizenaar bezoeken (Charisma 8)", "test": { "kenmerk": "overtuiging", "moeilijkheid": 8 }, "gelukt": { "tekst": "Hij is een Kopt, een monnik, en hij waakt hier al veertig jaar. Hij zegent je en geeft je water uit een bron die er niet hoort te zijn.", "effect": [{ "toestand": "gezegend" }, { "aanwijzing": 1 }] }, "mislukt": { "tekst": "Hij wijst je de weg terug, zonder een woord.", "effect": [{ "geest": -1 }] } },
+            { "label": "Een sfinx uitgraven (Kracht 8)", "test": { "kenmerk": "kracht", "moeilijkheid": 8 }, "gelukt": { "tekst": "Onder de klauwen van de sfinx ligt een offerkuil vol amuletten.", "effect": [{ "pond": 2 }, { "trek": "spullen" }] }, "mislukt": { "tekst": "Het zand stroomt even snel terug als je het weggraaft.", "effect": [{ "lichaam": -1 }] } }
+          ] }
+      ]
+    },
+    {
+      "id": "himalaya",
+      "naam": "Klooster van de Witte Wolken, Himalaya",
+      "aankomst": { "naam": "Darjeeling", "tekst": "Theeplantages tegen de helling, het kleine treintje, dragers die wachten op werk. Hier huur je een gids en hier begint de terugreis." },
+      "hart": {
+        "naam": "Boven de wolken",
+        "tekst": "Op de top, boven de wolken, staat een stenen poort zonder muur eromheen. Ervoor zit de Wachter van de pas: een gestalte van sneeuw en gebedsvlaggen, met de ogen van een oude vrouw.",
+        "keuzes": [
+          { "label": "Haar raadsel beantwoorden (Kennis 10)", "test": { "kenmerk": "kennis", "moeilijkheid": 10 } },
+          { "label": "Een lied voor haar zingen (Charisma 10)", "test": { "kenmerk": "overtuiging", "moeilijkheid": 10 } },
+          { "label": "Doorlopen, tegen de storm in (Kracht 10)", "test": { "kenmerk": "kracht", "moeilijkheid": 10 } }
+        ],
+        "gelukt": "De Wachter buigt haar hoofd en laat je door de poort. Aan de andere kant ligt wat de monniken al eeuwen bewaren.",
+        "mislukt": "De storm slaat je terug naar beneden. Je komt bij in een sneeuwhut, met bevroren vingers.",
+        "schatten": ["kristallen-gebedsmolen", "sneeuwleeuwmantel"]
+      },
+      "gevaren": [
+        { "id": "kou", "naam": "Kou", "tekst": "De temperatuur zakt in een uur twintig graden. Je vingers worden wit.", "effect": [{ "lichaam": -1 }, { "geest": -1 }] },
+        { "id": "lawine", "naam": "Lawine", "tekst": "Een donderslag boven je, en dan komt de berg naar beneden.", "effect": [{ "lichaam": -2 }] },
+        { "id": "stilte", "naam": "De stilte", "tekst": "Geen wind, geen vogels, geen hartslag. Alleen een stilte die naar binnen kruipt.", "effect": [{ "geest": -2 }] }
+      ],
+      "leeg": [
+        { "naam": "Gebedsvlaggen", "tekst": "Duizend gebedsvlaggen klapperen in de wind. Elk gebed gaat met de wind mee naar het westen." },
+        { "naam": "Een gier", "tekst": "Een lammergier cirkelt boven je, geduldig." },
+        { "naam": "Ijle lucht", "tekst": "Elke stap kost moeite. Je drager glimlacht en wacht op je." },
+        { "naam": "Een stenen hoop", "tekst": "Iemand heeft hier stenen gestapeld, met op elke steen een gebed. Je legt er een bij." },
+        { "naam": "De zon op de toppen", "tekst": "De zon raakt de toppen en ze worden goud. Het duurt een minuut." },
+        { "naam": "Een bel", "tekst": "Ver weg luidt een bel. Niemand trekt aan het touw." }
+      ],
+      "tegels": [
+        { "id": "hoge-pas", "naam": "De hoge pas", "tekst": "Een smal pad tussen twee rotswanden, met ijs op de stenen en de afgrond aan je linkerhand.",
+          "keuzes": [
+            { "label": "Doorzetten (Kracht 9)", "test": { "kenmerk": "kracht", "moeilijkheid": 9 }, "gelukt": { "tekst": "Aan de andere kant ligt een verlaten handelskaravaan. Wat de handelaars achterlieten, is nu van jou.", "effect": [{ "pond": 3 }, { "trek": "spullen" }] }, "mislukt": { "tekst": "Je glijdt uit en grijpt je net vast.", "effect": [{ "lichaam": -2 }] } },
+            { "label": "De tekens op de rots lezen (Waarneming 8)", "test": { "kenmerk": "scherpte", "moeilijkheid": 8 }, "gelukt": { "tekst": "Krijttekens van eerdere reizigers wijzen een veiliger pad, en een grot waar iemand een dagboek achterliet.", "effect": [{ "aanwijzing": 2 }] }, "mislukt": { "tekst": "De tekens zijn door de wind uitgewist.", "effect": [] } }
+          ] },
+        { "id": "klooster-witte-wolken", "naam": "Het Klooster van de Witte Wolken", "tekst": "Witte muren op een bergkam, monniken die zwijgen en een bel die vanzelf luidt. De abt laat je binnen alsof hij je verwachtte.",
+          "keuzes": [
+            { "label": "Met de monniken mediteren (Kennis 8)", "test": { "kenmerk": "kennis", "moeilijkheid": 8 }, "gelukt": { "tekst": "Na een dag stilte begrijp je iets wat je in Londen nooit zou begrijpen. De abt geeft je een tekst mee.", "effect": [{ "trek": "spreuken" }, { "geest": 2 }] }, "mislukt": { "tekst": "Je gedachten blijven razen. De monniken knikken vriendelijk.", "effect": [{ "geest": 1 }] } },
+            { "label": "De bibliotheek bezoeken (Kennis 9)", "test": { "kenmerk": "kennis", "moeilijkheid": 9 }, "gelukt": { "tekst": "In een kist met palmbladeren vind je een kaart van de sterren boven Londen, getekend vierhonderd jaar geleden.", "effect": [{ "aanwijzing": 2 }, { "trofee": 1 }] }, "mislukt": { "tekst": "De bladeren zijn te broos om aan te raken.", "effect": [] } }
+          ] },
+        { "id": "hol-kluizenaar", "naam": "Het hol van de kluizenaar", "tekst": "In een grot boven de boomgrens woont een kluizenaar die al twaalf jaar niet heeft gesproken. Hij wijst naar de grond voor zijn vuur.",
+          "keuzes": [
+            { "label": "Bij hem zitten en wachten (Charisma 9)", "test": { "kenmerk": "overtuiging", "moeilijkheid": 9 }, "gelukt": { "tekst": "Na een nacht zegt hij één zin. Je zult hem nooit vergeten, en je wordt er sterker van.", "effect": [{ "trofee": 2 }] }, "mislukt": { "tekst": "Hij blijft zwijgen. Je vertrekt bij dageraad, vreemd licht van binnen.", "effect": [{ "geest": 1 }] } },
+            { "label": "Zijn bezit doorzoeken terwijl hij slaapt", "tekst": "Een gebedsmolen, een schaal, een stuk turkoois. Je neemt het turkoois. Hij doet zijn ogen open en kijkt je aan, zonder iets te zeggen.", "effect": [{ "pond": 3 }, { "geest": -2 }] }
+          ] },
+        { "id": "brug-gebedsvlaggen", "naam": "De brug van gebedsvlaggen", "tekst": "Een touwbrug over een kloof, behangen met vlaggen. Onder je, heel ver weg, een rivier als een draad.",
+          "keuzes": [
+            { "label": "Oversteken (Kracht 8)", "test": { "kenmerk": "kracht", "moeilijkheid": 8 }, "gelukt": { "tekst": "Aan de overkant hangt een tas aan een paal, achtergelaten door een reiziger die de brug niet vertrouwde. Hij is nu van jou.", "effect": [{ "trek": "spullen" }, { "aanwijzing": 1 }] }, "mislukt": { "tekst": "Halverwege breekt een plank. Je hangt even aan je handen.", "effect": [{ "lichaam": -1 }, { "geest": -1 }] } },
+            { "label": "Een vlag ophangen voor wie je mist", "tekst": "De wind neemt je gebed mee. Je voelt je lichter.", "effect": [{ "geest": 2 }] }
+          ] },
+        { "id": "verlaten-fort", "naam": "Het verlaten fort", "tekst": "Een dzong op een rots, al honderd jaar leeg. In de grote zaal staan de harnassen van een vergeten leger in rijen.",
+          "keuzes": [
+            { "label": "De wapenkamer doorzoeken (Waarneming 9)", "test": { "kenmerk": "scherpte", "moeilijkheid": 9 }, "gelukt": { "tekst": "Achter een tapijt zit een deur, en achter de deur een kist met geld en een vreemd mes.", "effect": [{ "trek": "artefacten" }, { "pond": 2 }] }, "mislukt": { "tekst": "Een van de harnassen draait zijn hoofd naar je toe.", "effect": [{ "geest": -2 }] } },
+            { "label": "Op de muur de wacht houden", "tekst": "Je ziet de hele vallei, en verderop rook uit een dorp. Je weet nu de weg.", "effect": [{ "aanwijzing": 1 }] }
+          ] },
+        { "id": "gletsjer", "naam": "De gletsjer", "tekst": "Een rivier van blauw ijs, bezaaid met spleten. In het ijs zie je iets liggen, heel diep, een gestalte met uitgestrekte armen.",
+          "keuzes": [
+            { "label": "Naar beneden klimmen (Kracht 10)", "test": { "kenmerk": "kracht", "moeilijkheid": 10 }, "gelukt": { "tekst": "Het is een reiziger, al eeuwen bevroren. In zijn hand een zakje met zaden, en een amulet.", "effect": [{ "trek": "artefacten" }, { "trofee": 1 }] }, "mislukt": { "tekst": "Het ijs is te glad. Je komt koud en leeg boven.", "effect": [{ "lichaam": -2 }] } },
+            { "label": "De spleten in kaart brengen (Kennis 8)", "test": { "kenmerk": "kennis", "moeilijkheid": 8 }, "gelukt": { "tekst": "Je vindt een veilige weg over het ijs, en schrijft hem op voor wie na je komt.", "effect": [{ "aanwijzing": 2 }] }, "mislukt": { "tekst": "Je raakt in de war tussen al dat blauw.", "effect": [{ "geest": -1 }] } }
+          ] },
+        { "id": "dorp-dragers", "naam": "Het dorp van de dragers", "tekst": "Lage stenen huizen, jakken, rook van boterlampen. De dragers die met westerlingen werken, wonen hier.",
+          "keuzes": [
+            { "label": "Een maaltijd delen (Charisma 7)", "test": { "kenmerk": "overtuiging", "moeilijkheid": 7 }, "gelukt": { "tekst": "Boterthee, tsampa en verhalen. Een oude drager vertelt over de poort boven de wolken.", "effect": [{ "aanwijzing": 2 }, { "lichaam": 2 }] }, "mislukt": { "tekst": "Je verstaat elkaar niet, maar het eten is warm.", "effect": [{ "lichaam": 1 }] } },
+            { "label": "Spullen ruilen", "tekst": "Je ruilt een mes tegen een warme jas en een zak gedroogd vlees.", "effect": [{ "pond": -1 }, { "trek": "spullen" }] }
+          ] }
+      ]
+    },
+    {
+      "id": "yucatan",
+      "naam": "Tempel in het oerwoud, Yucatán",
+      "aankomst": { "naam": "Progreso, de haven", "tekst": "Balen sisal op de kade, Engelse en Duitse handelaars, regen die nooit ophoudt. Hier huur je een gids en hier vertrekt de boot." },
+      "hart": {
+        "naam": "De tempel onder de tempel",
+        "tekst": "Onder de trappiramide ligt een tweede, oudere tempel. In de laatste zaal staat een altaar met een stenen kalender, en ervoor kronkelt de Gevederde Wachter: een slang met veren van jade.",
+        "keuzes": [
+          { "label": "De kalender lezen terwijl de slang kijkt (Kennis 10)", "test": { "kenmerk": "kennis", "moeilijkheid": 10 } },
+          { "label": "De slang bevechten (Kracht 10)", "test": { "kenmerk": "kracht", "moeilijkheid": 10 } },
+          { "label": "Het verborgen mechaniek vinden (Waarneming 10)", "test": { "kenmerk": "scherpte", "moeilijkheid": 10 } }
+        ],
+        "gelukt": "De slang trekt zich terug in de schaduw. Op het altaar ligt wat de priesters bewaarden voor het einde van de telling.",
+        "mislukt": "De slang slaat toe. Het gif brandt. Je komt bij in de regen, buiten de tempel.",
+        "schatten": ["kalendersteen", "obsidiaanspiegel"]
+      },
+      "gevaren": [
+        { "id": "koorts", "naam": "Koorts", "tekst": "Je rilt in de hitte. De muggen hebben je gevonden.", "effect": [{ "lichaam": -1 }, { "geest": -1 }] },
+        { "id": "gif", "naam": "Gif", "tekst": "Een slang, een spin, een doorn. Je ziet niet eens wat het was.", "effect": [{ "lichaam": -2 }] },
+        { "id": "oerwoud", "naam": "Het oerwoud sluit", "tekst": "Het pad is weg. Overal groen, overal hetzelfde. Uren later vind je je eigen sporen terug.", "effect": [{ "geest": -2 }] }
+      ],
+      "leeg": [
+        { "naam": "Brulapen", "tekst": "Boven je brullen de apen. Je gids lacht om je schrik." },
+        { "naam": "Regen", "tekst": "Het regent zo hard dat je je eigen voeten niet ziet. Na tien minuten is het voorbij." },
+        { "naam": "Een stèle", "tekst": "Een steen met een gezicht, half begroeid. Het kijkt de kant op waar je heen gaat." },
+        { "naam": "Vlinders", "tekst": "Duizenden blauwe vlinders op een open plek. Ze vliegen allemaal tegelijk op." },
+        { "naam": "Een cenote", "tekst": "Een gat in de grond, vol helder water. Je drinkt, en het water is koud." },
+        { "naam": "Avond", "tekst": "De nacht valt in een kwartier. De vuurvliegjes gaan aan." }
+      ],
+      "tegels": [
+        { "id": "cenote", "naam": "De cenote", "tekst": "Een rond meer in de kalksteen, met steile wanden. Op de bodem, heel diep, glanzen dingen.",
+          "keuzes": [
+            { "label": "Duiken (Kracht 9)", "test": { "kenmerk": "kracht", "moeilijkheid": 9 }, "gelukt": { "tekst": "Je komt boven met een jade masker en een handvol gouden bellen.", "effect": [{ "trek": "artefacten" }, { "pond": 2 }] }, "mislukt": { "tekst": "Het water is dieper dan het lijkt. Je haalt het maar net.", "effect": [{ "lichaam": -2 }] } },
+            { "label": "De offers op de rand lezen (Kennis 8)", "test": { "kenmerk": "kennis", "moeilijkheid": 8 }, "gelukt": { "tekst": "De offers zijn recent. Iemand in het dorp brengt ze nog, elke maand, en je weet nu wie.", "effect": [{ "aanwijzing": 2 }] }, "mislukt": { "tekst": "Je verstaat de tekens niet.", "effect": [] } }
+          ] },
+        { "id": "sterrenhuis", "naam": "Het sterrenhuis", "tekst": "Een ronde toren met smalle ramen, elk gericht op een ster. Op de vloer liggen tabellen in rode verf.",
+          "keuzes": [
+            { "label": "De tabellen doorrekenen (Kennis 9)", "test": { "kenmerk": "kennis", "moeilijkheid": 9 }, "gelukt": { "tekst": "Ze voorspellen de nachten van dit jaar. Je weet nu wat er komt.", "effect": [{ "aanwijzing": 2 }, { "trofee": 1 }] }, "mislukt": { "tekst": "De getallen draaien tot je duizelt.", "effect": [{ "geest": -1 }] } },
+            { "label": "Een nacht in de toren slapen", "tekst": "Je droomt van sterren die vallen, en je wordt uitgerust wakker.", "effect": [{ "lichaam": 1 }, { "geest": 1 }] }
+          ] },
+        { "id": "kamp-chicleros", "naam": "Het kamp van de chicleros", "tekst": "Mannen die het hars van de sapotilleboom tappen, maanden in het oerwoud. Ze kennen elk pad.",
+          "keuzes": [
+            { "label": "Hun vertrouwen winnen (Charisma 8)", "test": { "kenmerk": "overtuiging", "moeilijkheid": 8 }, "gelukt": { "tekst": "Een van hen loopt een dag met je mee, en wijst je een ingang die niet op je kaart staat.", "effect": [{ "aanwijzing": 2 }, { "trek": "bondgenoot" }] }, "mislukt": { "tekst": "Ze lachen en gaan verder met tappen.", "effect": [] } },
+            { "label": "Ruilen met tabak", "tekst": "Voor een pakje tabak krijg je een zak hars, die in Londen goed geld opbrengt.", "effect": [{ "pond": 3 }] }
+          ] },
+        { "id": "verlaten-hacienda", "naam": "De verlaten haciënda", "tekst": "Een groot huis met een veranda, door het oerwoud ingenomen. In de eetkamer staat de tafel nog gedekt, voor twaalf.",
+          "keuzes": [
+            { "label": "Het kantoor doorzoeken (Waarneming 8)", "test": { "kenmerk": "scherpte", "moeilijkheid": 8 }, "gelukt": { "tekst": "In een lade: brieven aan een Londens bankhuis, en een buidel zilveren pesos.", "effect": [{ "aanwijzing": 2 }, { "pond": 2 }] }, "mislukt": { "tekst": "Een lade klemt. Als je hem lostrekt, valt er iets met poten uit.", "effect": [{ "lichaam": -1 }] } },
+            { "label": "Aan tafel gaan zitten", "tekst": "Je gaat zitten op de dertiende stoel. Iets aan het hoofd van de tafel heft zijn glas. Je staat snel op.", "effect": [{ "geest": -2 }, { "trofee": 1 }] }
+          ] },
+        { "id": "rivier-onder-de-grond", "naam": "De rivier onder de grond", "tekst": "Een grot met een rivier die nergens vandaan komt en nergens heen gaat. In de wanden zijn handen geschilderd.",
+          "keuzes": [
+            { "label": "Met de stroom mee waden (Kracht 9)", "test": { "kenmerk": "kracht", "moeilijkheid": 9 }, "gelukt": { "tekst": "De rivier brengt je naar een kamer vol offers, die niemand meer heeft gezien sinds de Spanjaarden kwamen.", "effect": [{ "trek": "artefacten" }] }, "mislukt": { "tekst": "De stroom sleurt je mee, tegen de rotsen.", "effect": [{ "lichaam": -2 }] } },
+            { "label": "De handen tellen (Waarneming 8)", "test": { "kenmerk": "scherpte", "moeilijkheid": 8 }, "gelukt": { "tekst": "Het zijn er 52, net als de jaren van een eeuw hier. Eén hand is nieuw, en is van een Europeaan.", "effect": [{ "aanwijzing": 2 }] }, "mislukt": { "tekst": "Je telt en telt, en komt elke keer op een ander getal.", "effect": [{ "geest": -1 }] } }
+          ] },
+        { "id": "veld-steles", "naam": "Het veld van de stèles", "tekst": "Tientallen rechtopstaande stenen, elk met een koning en een datum. De laatste steen is leeg, maar er staat een datum op.",
+          "keuzes": [
+            { "label": "De datum omrekenen (Kennis 9)", "test": { "kenmerk": "kennis", "moeilijkheid": 9 }, "gelukt": { "tekst": "Het is een dag in 1888. Over twee weken. Je schrijft hem op met trillende hand.", "effect": [{ "aanwijzing": 3 }] }, "mislukt": { "tekst": "Je komt op een datum die niet kan bestaan.", "effect": [{ "geest": -1 }] } },
+            { "label": "Een afdruk maken op papier", "tekst": "Met houtskool en papier neem je de lege steen over. In Londen zal iemand weten wat het is.", "effect": [{ "aanwijzing": 1 }, { "trofee": 1 }] }
+          ] },
+        { "id": "ruine-slang", "naam": "De ruïne met de slang", "tekst": "Een ingestort paleis, met over de hele gevel een stenen slang met veren. Uit de bek komt een trap naar beneden.",
+          "keuzes": [
+            { "label": "De trap af gaan (Kracht 9)", "test": { "kenmerk": "kracht", "moeilijkheid": 9 }, "gelukt": { "tekst": "Beneden ligt een schatkamer, half ingestort. Wat je kunt dragen, neem je mee.", "effect": [{ "pond": 3 }, { "trek": "artefacten" }] }, "mislukt": { "tekst": "Een tree breekt onder je voet.", "effect": [{ "lichaam": -2 }] } },
+            { "label": "Een offer brengen aan de slang", "tekst": "Je legt een munt in de stenen bek. Je gids knikt goedkeurend. Het voelt alsof je toestemming hebt gekregen.", "effect": [{ "pond": -1 }, { "toestand": "gezegend" }, { "aanwijzing": 1 }] }
+          ] }
+      ]
+    }
+  ],
+  "schatten": [
+    { "id": "canope-naamloze-farao", "naam": "Canope van de naamloze farao", "episch": true, "schat": true, "herkomst": "Uit het naamloze graf bij Thebe", "tekst": "Episch. Leg af: de Mist stijgt met 1 en je herstelt al je Geest.", "gebruik": { "effect": [{ "mist": 1 }, { "geest": 9 }] }, "prompt": "an ancient Egyptian canopic jar of black alabaster with a lid shaped like a featureless head, faintly glowing hieroglyphs, on a dusty stone shelf in a tomb" },
+    { "id": "zonneschijf-aton", "naam": "Zonneschijf van Aton", "episch": true, "schat": true, "herkomst": "Uit het naamloze graf bij Thebe", "tekst": "Episch. +2 bij Kracht-tests en +2 bij Gruwel-tests. De zon brandt: aan het begin van elke Onheilsfase, gooi een dobbelsteen, bij 1 verlies je 1 Lichaam.", "bonus": { "kracht": 2, "gruwel": 2 }, "vloek": { "kans": 1, "effect": [{ "lichaam": -1 }] }, "prompt": "a golden sun disc of the pharaoh Akhenaten with rays ending in small hands, radiating warm light, on red linen" },
+    { "id": "kristallen-gebedsmolen", "naam": "Kristallen gebedsmolen", "episch": true, "schat": true, "herkomst": "Van achter de poort boven de wolken", "tekst": "Episch. +1 bij Kennis-tests en +2 bij spreuken. Eén keer per ronde: draai hem en herstel 1 Geest.", "bonus": { "kennis": 1, "spreuk": 2 }, "gebruik": { "perRonde": true, "effect": [{ "geest": 1 }] }, "prompt": "a small Tibetan prayer wheel made of clear rock crystal with silver fittings, a faint light swirling inside, on a monastery altar cloth" },
+    { "id": "sneeuwleeuwmantel", "naam": "Mantel van de sneeuwleeuw", "episch": true, "schat": true, "herkomst": "Van achter de poort boven de wolken", "tekst": "Episch. +2 bij gevechten en +2 bij Gruwel-tests. De mantel is warm, maar zwaar: −1 bij Waarneming-tests.", "bonus": { "gevecht": 2, "gruwel": 2, "scherpte": -1 }, "prompt": "a heavy white fur cloak with a turquoise-studded clasp shaped like a snow lion's head, draped over a carved wooden chest in a mountain monastery" },
+    { "id": "kalendersteen", "naam": "Kalendersteen", "episch": true, "schat": true, "herkomst": "Van het altaar onder de tempel in Yucatán", "tekst": "Episch. Leg af: bekijk de volgende 3 Onheilskaarten en leg er één onderop de stapel. De Mist stijgt met 1.", "gebruik": { "effect": [{ "mist": 1 }] }, "kijkOnheil": 3, "prompt": "a round Maya calendar stone carved with glyphs and a central face, small enough to hold in two hands, glowing faintly green, on a jungle altar" },
+    { "id": "obsidiaanspiegel", "naam": "Obsidiaanspiegel van de Gevederde Slang", "episch": true, "schat": true, "herkomst": "Van het altaar onder de tempel in Yucatán", "tekst": "Episch. +2 bij Waarneming-tests en +2 overzee. Wie erin kijkt, ziet soms te veel: aan het begin van elke Onheilsfase, gooi een dobbelsteen, bij 1 verlies je 1 Geest.", "bonus": { "scherpte": 2, "overzee": 2 }, "vloek": { "kans": 1, "effect": [{ "geest": -1 }] }, "prompt": "a polished black obsidian mirror in a frame of jade feathers shaped like a serpent, reflecting a faint green light, on a stone altar in the jungle" }
+  ],
+  "helden": [
+    { "id": "mahmoud-fathy", "naam": "Ra'is Mahmoud Fathy", "leeftijd": 52, "beroep": "Opzichter van opgravingen, Luxor", "rol": "Opzichter", "start": "St Katharine Docks", "uitbreiding": "oude-wereld",
+      "achtergrond": "Dertig jaar lang leidde Mahmoud Fathy de ploegen van de westerse expedities in Luxor: honderd man met manden, één man die wist waar je moest graven. In 1881 stond hij in de schacht van Deir el-Bahari toen de koninklijke mummies naar boven kwamen. Hij kwam naar Londen met een zending kisten, om erop te letten, en omdat één ervan bij elke haven zwaarder werd.",
+      "kenmerken": { "kennis": 2, "scherpte": 3, "kracht": 3, "overtuiging": 2 }, "lichaam": 7, "geest": 5,
+      "vermogen": { "naam": "Honderd dragers", "tekst": "Eén keer per expeditie mag je je kist vooruit laten dragen: wat erin zit, is meteen van jou, alsof je al terug bent in de dokken." },
+      "eigenaardigheid": "Telt alles twee keer, en de tweede keer hardop.",
+      "uitrusting": ["Opzichtersstok", "Kaart van de Vallei"], "bondgenoot": null,
+      "prompt": "a dignified Egyptian man in his fifties, 1888, weathered brown face with a grey trimmed beard, white turban and a dark galabeya under a European tweed jacket, holding a long wooden overseer's staff, standing among wooden crates on a foggy London dock, gas lamps behind him" },
+    { "id": "ang-nima", "naam": "Ang Nima Sherpa", "leeftijd": 34, "beroep": "Drager en gids, Darjeeling", "rol": "Bergdrager", "start": "Hampstead", "uitbreiding": "oude-wereld",
+      "achtergrond": "Ang Nima droeg kisten voor de landmeters van de Great Trigonometrical Survey, over passen waar de Engelsen zelf niet overheen kwamen. Een geleerde van de Survey nam hem mee naar Londen om zijn kaarten te verklaren. Nu woont hij in een kamer op Hampstead en kijkt hij 's avonds naar de sterren boven de heide, die hier verkeerd staan.",
+      "kenmerken": { "kennis": 1, "scherpte": 3, "kracht": 4, "overtuiging": 2 }, "lichaam": 8, "geest": 5,
+      "vermogen": { "naam": "Gids van de pas", "tekst": "Overzee negeer je de eerste ramp van elke expeditie, en dat geldt ook voor elke held in dezelfde regio als jij. In Londen draag je 1 spul meer." },
+      "eigenaardigheid": "Loopt altijd een halve pas achter je, en ziet alles wat jij mist.",
+      "uitrusting": ["Kukri", "Bergtouw"], "bondgenoot": null,
+      "prompt": "a sturdy Sherpa man in his mid-thirties, 1888, wind-burned face and calm dark eyes, long black hair tied back, a thick maroon wool chuba robe under a borrowed English overcoat, a kukri knife in his sash and a coil of rope over his shoulder, standing on Hampstead Heath at dusk in the fog" },
+    { "id": "teresa-canul", "naam": "Teresa Canul", "leeftijd": 29, "beroep": "Fotografe, Mérida", "rol": "Fotografe", "start": "Covent Garden", "uitbreiding": "oude-wereld",
+      "achtergrond": "Teresa Canul leerde fotograferen in het atelier van haar oom in Mérida, en sprak Maya met haar moeder en Spaans met haar vader. Een Engelse expeditie huurde haar om de tempels vast te leggen, plaat voor plaat. Op de laatste plaat staat iets wat er niet stond toen ze de sluiter opende. Ze bracht de plaat naar Londen, naar de enige mensen die haar misschien zouden geloven.",
+      "kenmerken": { "kennis": 3, "scherpte": 4, "kracht": 1, "overtuiging": 2 }, "lichaam": 5, "geest": 7,
+      "vermogen": { "naam": "Glasplaat", "tekst": "Overzee zie je bij het ontdekken van een plek eerst de Gevaarkaart. Eén keer per expeditie mag je hem onderop leggen en de volgende trekken." },
+      "eigenaardigheid": "Kijkt eerst door haar lens, en pas dan met haar eigen ogen.",
+      "uitrusting": ["Camera met glasplaten", "Machete"], "bondgenoot": null,
+      "prompt": "a young Mexican woman of Maya descent in her late twenties, 1888, warm brown skin and sharp dark eyes, black hair in a braid, a white embroidered huipil blouse under a dark travelling jacket, holding a brass and mahogany field camera on a tripod, standing in the Covent Garden market colonnade at dawn in the fog" }
+  ],
+  "persoonlijk": [
+    { "id": "opzichtersstok", "held": "mahmoud-fathy", "naam": "Opzichtersstok", "soort": "Wapen", "bonus": { "gevecht": 1 }, "tekst": "+1 bij gevechten. Dertig jaar lang wees hij ermee waar gegraven moest worden.", "prompt": "a long polished wooden overseer's staff with a brass ferrule and a carved palm-leaf handle, leaning against a stack of excavation baskets" },
+    { "id": "kaart-vallei", "held": "mahmoud-fathy", "naam": "Kaart van de Vallei", "soort": "Reizen", "bonus": { "overzee": 1 }, "tekst": "Overzee: +1 bij alle tests. Met de hand getekend, met elk graf dat hij ooit opende.", "prompt": "a hand-drawn map of the Valley of the Kings on yellowed paper with Arabic and English notes, folded on a dusty wooden table with a brass compass" },
+    { "id": "kukri", "held": "ang-nima", "naam": "Kukri", "soort": "Wapen", "bonus": { "gevecht": 2 }, "tekst": "+2 bij gevechten. Voor hout, voor touw, en voor wat er 's nachts om de tent sluipt.", "prompt": "a curved Nepalese kukri knife with a horn handle in a worn leather scabbard, on a folded wool blanket" },
+    { "id": "bergtouw", "held": "ang-nima", "naam": "Bergtouw", "soort": "Gereedschap", "bonusOntmoeting": { "kracht": 1 }, "tekst": "+1 bij Kracht-tests tijdens ontmoetingen. Hennep, gedraaid in Darjeeling, en het heeft nog nooit losgelaten.", "prompt": "a thick coil of hand-twisted hemp climbing rope with an iron hook, lying on a stone step" },
+    { "id": "camera-glasplaten", "held": "teresa-canul", "naam": "Camera met glasplaten", "soort": "Gereedschap", "bonusOntmoeting": { "scherpte": 1 }, "tekst": "+1 bij Waarneming-tests tijdens ontmoetingen. De lens ziet wat het oog liever mist.", "prompt": "a Victorian mahogany and brass field camera with a black bellows and a box of glass photographic plates, on a wooden table" },
+    { "id": "machete", "held": "teresa-canul", "naam": "Machete", "soort": "Wapen", "bonus": { "gevecht": 1 }, "tekst": "+1 bij gevechten. In het oerwoud is het geen wapen, maar een weg.", "prompt": "a worn steel machete with a wooden handle wrapped in cord, lying on a jungle leaf" }
+  ]
+}

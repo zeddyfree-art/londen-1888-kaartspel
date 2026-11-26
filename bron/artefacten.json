@@ -1,0 +1,423 @@
+[
+  {
+    "id": "zwarte-spiegel",
+    "naam": "De zwarte spiegel",
+    "herkomst": "Gepoetst obsidiaan, ooit van een hofastroloog",
+    "tekst": "Eén keer per ronde: bekijk de bovenste Onheilskaart of de volgende Scheur. Gebruik je hem twee rondes achter elkaar, verlies dan 1 Geest.",
+    "prompt": "a polished black obsidian scrying mirror in a worn leather case, reflecting a faint violet star, on a dark velvet cloth"
+  },
+  {
+    "id": "scarabee",
+    "naam": "Scarabee van de dageraad",
+    "herkomst": "Groene steen uit het lege graf bij Thebe",
+    "tekst": "Als je Lichaam op 0 zou komen, leg de scarabee af en houd 1 Lichaam over.",
+    "prompt": "an ancient green stone scarab amulet with gold-leaf wings, glowing faintly at dawn, resting in a museum specimen tray"
+  },
+  {
+    "id": "hand-van-glorie",
+    "naam": "Hand van glorie",
+    "herkomst": "Een gedroogde hand met kaarsen op de vingers",
+    "tekst": "Eén keer per ronde mag je een gevecht ontwijken. Het monster blijft staan en je ontmoeting is voorbij.",
+    "prompt": "a dried withered human hand holding five lit candles on its fingertips, in a dark Victorian cabinet of curiosities"
+  },
+  {
+    "id": "klokkenbel",
+    "naam": "Bel van de Witte Wolken",
+    "herkomst": "Een bronzen tempelbel uit de Himalaya",
+    "tekst": "Eén keer per ronde: luid de bel. Alle helden op jouw plek herstellen 2 Geest, en de monsters daar hebben deze ronde geen Gruwel.",
+    "prompt": "an ornate bronze Himalayan temple bell with a carved dragon handle and prayer inscriptions, snow light from a monastery window"
+  },
+  {
+    "id": "jade-masker",
+    "naam": "Jade dodenmasker",
+    "herkomst": "Uit een kamer onder de piramide in Yucatán",
+    "tekst": "+2 bij Charisma-tests en bij Gruwel-tests.",
+    "prompt": "an ancient Mesoamerican jade mosaic death mask with shell and obsidian eyes, lying on wet jungle stones in torchlight"
+  },
+  {
+    "id": "sterrenkaart",
+    "naam": "Kaart van de verkeerde hemel",
+    "herkomst": "Een sterrenkaart met één ster te veel",
+    "tekst": "Leg af: sluit een Scheur waar dan ook in Londen.",
+    "prompt": "an old hand-drawn celestial chart on yellowed parchment with constellations in ink and one extra star painted in glowing violet"
+  },
+  {
+    "id": "verzegelde-kruik",
+    "naam": "Verzegelde kruik",
+    "herkomst": "Een canopenkruik waarvan de zegel nog heel is",
+    "tekst": "Leg af: verwijder een episch monster van het bord. Het bijbehorende mysterie geldt als opgelost.",
+    "prompt": "an ancient Egyptian canopic jar with a jackal-headed lid, sealed with intact dark wax and cord, on a dusty wooden crate"
+  },
+  {
+    "id": "kristallen-schedel",
+    "naam": "Kristallen schedel",
+    "herkomst": "Bergkristal, door niemand gemaakt",
+    "tekst": "+2 bij Kennis-tests. Aan het begin van elke Onheilsfase: gooi een dobbelsteen, bij 1 verlies je 1 Geest.",
+    "prompt": "a life-sized human skull carved from clear rock crystal, refracting candlelight into rainbow shards, on a black lacquered table"
+  },
+  {
+    "id": "vuurtoren-lens",
+    "naam": "Lens van de verloren expeditie",
+    "herkomst": "Teruggevonden in het ijs, aan boord van een verlaten schip",
+    "tekst": "Je mag Waarneming gebruiken in plaats van Kennis om Scheuren te sluiten.",
+    "prompt": "a heavy brass-framed glass lens covered in frost and cracks, recovered from Arctic ice, glowing pale blue"
+  },
+  {
+    "id": "tempeliersszwaard",
+    "naam": "Zwaard van de Tempeliers",
+    "episch": true,
+    "herkomst": "Gevonden onder de Temple Church, in een kist zonder naam",
+    "tekst": "Episch. +4 bij gevechten. Het zwaard wil bloed: elke keer dat je in een gevecht mist, verlies je 1 Geest.",
+    "bonus": {
+      "gevecht": 4
+    },
+    "gevechtMis": [
+      {
+        "geest": -1
+      }
+    ],
+    "prompt": "a medieval crusader longsword with a worn cross-hilt and a faintly glowing red blade lying on a stone tomb effigy"
+  },
+  {
+    "id": "stanzas-dzyan",
+    "naam": "Stanza's van Dzyan",
+    "episch": true,
+    "herkomst": "Een palmbladhandschrift uit een klooster boven de wolken",
+    "tekst": "Episch. +2 bij Kennis-tests en +2 bij spreuken. Aan het begin van elke Onheilsfase: gooi een dobbelsteen, bij 1 of 2 verlies je 1 Geest.",
+    "bonus": {
+      "kennis": 2,
+      "spreuk": 2
+    },
+    "vloek": {
+      "kans": 2,
+      "effect": [
+        {
+          "geest": -1
+        }
+      ]
+    },
+    "prompt": "a stack of ancient palm-leaf manuscript pages bound with silk cord, covered in glowing unknown script, in a Himalayan monastery"
+  },
+  {
+    "id": "teruglopend-horloge",
+    "naam": "Horloge dat terugloopt",
+    "episch": true,
+    "herkomst": "Het tikt, maar de wijzers lopen de verkeerde kant op",
+    "tekst": "Episch. Leg af en doe een Kennis-test (10): gelukt, de tijd loopt terug en de Mist stijgt met 2. Mislukt: de Mist daalt met 1 en je krijgt een Waanzin.",
+    "gebruik": {
+      "test": {
+        "kenmerk": "kennis",
+        "moeilijkheid": 10
+      },
+      "effect": [
+        {
+          "mist": 2
+        }
+      ],
+      "mislukt": [
+        {
+          "mist": -1
+        },
+        {
+          "waanzin": true
+        }
+      ]
+    },
+    "prompt": "an ornate gold pocket watch with its hands spinning backwards, tiny gears floating out of the open case"
+  },
+  {
+    "id": "elixer-paracelsus",
+    "naam": "Elixer van Paracelsus",
+    "episch": true,
+    "herkomst": "Een flesje met een zwevende gouden druppel erin",
+    "tekst": "Episch. Leg af en doe een Kennis-test (8): gelukt, herstel al je Lichaam en Geest en verwijder Gewond. Mislukt: krijg een Waanzin.",
+    "gebruik": {
+      "test": {
+        "kenmerk": "kennis",
+        "moeilijkheid": 8
+      },
+      "effect": [
+        {
+          "lichaam": 20
+        },
+        {
+          "geest": 20
+        },
+        {
+          "verwijder": "gewond"
+        }
+      ],
+      "mislukt": [
+        {
+          "waanzin": true
+        }
+      ]
+    },
+    "prompt": "a small alchemical glass phial with a single suspended drop of molten gold glowing inside, on an alchemist's bench"
+  },
+  {
+    "id": "ring-gyges",
+    "naam": "Ring van Gyges",
+    "episch": true,
+    "herkomst": "Een gouden ring uit een bronzen paard, zegt de handelaar",
+    "tekst": "Episch. Eén keer per ronde: draai de steen naar binnen en word onzichtbaar. −1 Geest, en monsters negeren je deze ronde.",
+    "gebruik": {
+      "perRonde": true,
+      "prijs": [
+        {
+          "geest": -1
+        }
+      ],
+      "vlag": "doodsmasker"
+    },
+    "prompt": "an ancient gold ring with a bezel turned inward, a hand half fading into transparency around it"
+  },
+  {
+    "id": "hart-leviathan",
+    "naam": "Hart van de Leviathan",
+    "herkomst": "Een versteend hart, opgevist uit de Noordzee",
+    "tekst": "+2 bij Kracht-tests. Het klopt nog: aan het begin van elke Onheilsfase, gooi een dobbelsteen, bij 1 verlies je 1 Lichaam.",
+    "bonus": {
+      "kracht": 2
+    },
+    "vloek": {
+      "kans": 1,
+      "effect": [
+        {
+          "lichaam": -1
+        }
+      ]
+    },
+    "prompt": "a huge petrified heart of dark stone veined with green, encrusted with barnacles, on a ship's chart table"
+  },
+  {
+    "id": "bloedsteen",
+    "naam": "Bloedsteen van Babylon",
+    "herkomst": "Een rode steen met spijkerschrift",
+    "tekst": "Eén keer per ronde: druk hem in je hand tot het bloedt. −1 Lichaam, +1 Aanwijzing.",
+    "gebruik": {
+      "perRonde": true,
+      "prijs": [
+        {
+          "lichaam": -1
+        }
+      ],
+      "effect": [
+        {
+          "aanwijzing": 1
+        }
+      ]
+    },
+    "prompt": "a polished blood-red stone cylinder seal carved with cuneiform, resting on a cloth with a fresh drop of blood"
+  },
+  {
+    "id": "monnikskap",
+    "naam": "Kap van de monniken van Lindisfarne",
+    "herkomst": "Grove wol, nog altijd ruikend naar zee en wierook",
+    "tekst": "+2 bij Gruwel-tests. Wie hem draagt, zwijgt liever: −1 bij Charisma-tests.",
+    "bonus": {
+      "gruwel": 2,
+      "overtuiging": -1
+    },
+    "prompt": "an old coarse brown monk's hood folded on a stone windowsill overlooking a stormy northern sea"
+  },
+  {
+    "id": "botten-dobbelstenen",
+    "naam": "Dobbelstenen van bot",
+    "herkomst": "Gewonnen in een speelhol in Limehouse, van iemand die niet meer terugkwam",
+    "tekst": "Push your luck. Eén keer per ronde: gooi een dobbelsteen. 4 tot 6: krijg 2 Pond. 1 tot 3: verlies 1 Geest.",
+    "gebruik": {
+      "perRonde": true,
+      "gok": {
+        "goed": [
+          {
+            "pond": 2
+          }
+        ],
+        "slecht": [
+          {
+            "geest": -1
+          }
+        ]
+      }
+    },
+    "prompt": "three yellowed bone dice carved with strange symbols instead of pips, on a green gaming table under a hanging lamp"
+  },
+  {
+    "id": "noorderkompas",
+    "naam": "Kompas dat naar niets wijst",
+    "herkomst": "De naald wijst niet naar het noorden, maar naar iets",
+    "tekst": "Elke ronde 1 extra stap, en overzee +2 bij alle tests. Aan het begin van elke Onheilsfase: gooi een dobbelsteen, bij 1 raak je Verdwaald.",
+    "bonus": {
+      "stap": 1,
+      "overzee": 2
+    },
+    "vloek": {
+      "kans": 1,
+      "effect": [
+        {
+          "toestand": "verdwaald"
+        }
+      ]
+    },
+    "prompt": "an antique brass compass whose needle points down into the table, glowing faintly violet"
+  },
+  {
+    "id": "banshee-kam",
+    "naam": "Kam van de Banshee",
+    "herkomst": "Zilver en been, met grijze haren tussen de tanden",
+    "tekst": "Leg af: kam je haar en zing haar lied. De Mist stijgt met 2. Je krijgt een Waanzin.",
+    "gebruik": {
+      "effect": [
+        {
+          "mist": 2
+        },
+        {
+          "waanzin": true
+        }
+      ]
+    },
+    "prompt": "an old silver and bone hair comb tangled with long grey hairs, lying on a dark Irish moor stone"
+  },
+  {
+    "id": "apenpoot",
+    "naam": "De gedroogde apenpoot",
+    "herkomst": "Een fakir sprak er een wens over uit",
+    "tekst": "Leg af en doe een wens: trek een artefact en een spul, en krijg 3 Pond. Maar elke wens heeft een prijs: de Mist daalt met 1 en je krijgt een Waanzin.",
+    "gebruik": {
+      "effect": [
+        {
+          "trek": "artefacten"
+        },
+        {
+          "trek": "spullen"
+        },
+        {
+          "pond": 3
+        },
+        {
+          "mist": -1
+        },
+        {
+          "waanzin": true
+        }
+      ]
+    },
+    "prompt": "a shrivelled mummified monkey's paw with three curled fingers on a dusty mantelpiece"
+  },
+  {
+    "id": "scepter-akhenaten",
+    "naam": "Scepter van Achnaton",
+    "herkomst": "Goud en lapis, uit een graf dat officieel niet bestaat",
+    "tekst": "+2 bij Charisma-tests en +1 bij Kennis-tests. De zonnegod is jaloers: aan het begin van elke Onheilsfase, gooi een dobbelsteen, bij 1 verschijnt er een monster op jouw plek.",
+    "bonus": {
+      "overtuiging": 2,
+      "kennis": 1
+    },
+    "vloek": {
+      "kans": 1,
+      "effect": [
+        {
+          "monster": true
+        }
+      ]
+    },
+    "prompt": "an Egyptian gold and lapis lazuli sceptre topped with a sun disk with rays ending in tiny hands"
+  },
+  {
+    "id": "hoorn-herne",
+    "naam": "Hoorn van Herne de Jager",
+    "herkomst": "Een jachthoorn uit Windsor Great Park",
+    "tekst": "+3 bij gevechten: de wilde jacht rijdt met je mee. Maar de jacht trekt prooi aan: aan het begin van elke Onheilsfase, gooi een dobbelsteen, bij 1 verschijnt er een monster op jouw plek.",
+    "bonus": {
+      "gevecht": 3
+    },
+    "vloek": {
+      "kans": 1,
+      "effect": [
+        {
+          "monster": true
+        }
+      ]
+    },
+    "prompt": "an ancient curved hunting horn made from a stag's antler bound with bronze, on mossy roots in a dark forest"
+  },
+  {
+    "id": "henochtafel",
+    "naam": "Henochische tafel",
+    "herkomst": "Een wastafel met letters van engelen",
+    "tekst": "+2 bij spreuken. Leg af: trek 2 spreuken.",
+    "bonus": {
+      "spreuk": 2
+    },
+    "gebruik": {
+      "effect": [
+        {
+          "trek": "spreuken"
+        },
+        {
+          "trek": "spreuken"
+        }
+      ]
+    },
+    "prompt": "a round wax tablet engraved with a grid of angelic letters and a seven-pointed star, on red silk"
+  },
+  {
+    "id": "cycloopoog",
+    "naam": "Oog van de cycloop",
+    "herkomst": "Een glazen oog zo groot als een vuist",
+    "tekst": "+2 bij Waarneming-tests. Het blijft kijken, ook 's nachts: aan het begin van elke Onheilsfase, gooi een dobbelsteen, bij 1 verlies je 1 Geest.",
+    "bonus": {
+      "scherpte": 2
+    },
+    "vloek": {
+      "kans": 1,
+      "effect": [
+        {
+          "geest": -1
+        }
+      ]
+    },
+    "prompt": "a fist-sized antique glass eye with a vivid amber iris in a curiosity cabinet drawer"
+  },
+  {
+    "id": "rattenkroon",
+    "naam": "Kroon van de Rattenkoning",
+    "herkomst": "Een kroon van ijzerdraad uit de riolen onder Smithfield",
+    "tekst": "Eén keer per ronde: de ratten brengen je geheimen. +1 Aanwijzing. Aan het begin van elke Onheilsfase: gooi een dobbelsteen, bij 1 word je Vervloekt.",
+    "gebruik": {
+      "perRonde": true,
+      "effect": [
+        {
+          "aanwijzing": 1
+        }
+      ]
+    },
+    "vloek": {
+      "kans": 1,
+      "effect": [
+        {
+          "toestand": "vervloekt"
+        }
+      ]
+    },
+    "prompt": "a crude crown of twisted iron wire and rat skulls on a damp brick ledge in a sewer, many small eyes in the dark"
+  },
+  {
+    "id": "medaillon",
+    "naam": "Medaillon met een lok haar",
+    "herkomst": "Van iemand die van je hield, al weet je niet meer wie",
+    "tekst": "+1 bij Gruwel-tests. Leg af: herstel 4 Geest.",
+    "bonus": {
+      "gruwel": 1
+    },
+    "gebruik": {
+      "effect": [
+        {
+          "geest": 4
+        }
+      ]
+    },
+    "prompt": "an open oval silver locket with a curl of auburn hair and a faded tiny portrait inside, on black lace"
+  }
+]

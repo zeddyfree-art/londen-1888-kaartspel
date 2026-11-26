@@ -1,0 +1,691 @@
+[
+  {
+    "id": "webley",
+    "naam": "Dienstrevolver",
+    "soort": "Wapen",
+    "prijs": 2,
+    "tekst": "+2 bij gevechten.",
+    "bonus": {
+      "gevecht": 2
+    }
+  },
+  {
+    "id": "olifantengeweer",
+    "naam": "Olifantengeweer",
+    "soort": "Wapen",
+    "prijs": 4,
+    "tekst": "+3 bij gevechten. Neemt beide handen in beslag.",
+    "bonus": {
+      "gevecht": 3
+    }
+  },
+  {
+    "id": "wandelstokdegen",
+    "naam": "Wandelstok met degen",
+    "soort": "Wapen",
+    "prijs": 2,
+    "tekst": "+1 bij gevechten. Mag je ook meenemen naar plekken waar wapens verboden zijn.",
+    "bonus": {
+      "gevecht": 1
+    }
+  },
+  {
+    "id": "ossenzweep",
+    "naam": "Ossenzweep",
+    "soort": "Wapen",
+    "prijs": 1,
+    "tekst": "+1 bij gevechten. Eén keer per ronde: gooi een Kracht-dobbelsteen opnieuw tijdens een ontmoeting.",
+    "bonus": {
+      "gevecht": 1
+    }
+  },
+  {
+    "id": "dynamiet",
+    "naam": "Staaf dynamiet",
+    "soort": "Wapen",
+    "prijs": 2,
+    "tekst": "Leg af: versla meteen een gewoon monster op jouw plek. Je verliest zelf 1 Lichaam.",
+    "gebruik": "dynamiet"
+  },
+  {
+    "id": "zilveren-kogels",
+    "naam": "Zilveren kogels",
+    "soort": "Wapen",
+    "prijs": 2,
+    "tekst": "Met een revolver of geweer: +2 extra tegen monsters met Gruwel 2 of meer. Leg af na het gevecht."
+  },
+  {
+    "id": "stormlantaarn",
+    "naam": "Stormlantaarn",
+    "soort": "Gereedschap",
+    "prijs": 1,
+    "tekst": "+1 bij Waarneming-tests tijdens ontmoetingen (die spelen zich 's nachts af)."
+  },
+  {
+    "id": "gladstonetas",
+    "naam": "Gladstonetas",
+    "soort": "Gereedschap",
+    "prijs": 1,
+    "tekst": "Je mag één spul extra dragen.",
+    "bonus": {
+      "draag": 1
+    }
+  },
+  {
+    "id": "camera",
+    "naam": "Reiscamera met platen",
+    "soort": "Gereedschap",
+    "prijs": 3,
+    "tekst": "Na een gewonnen gevecht: krijg 1 Aanwijzing. Het bewijs staat op de plaat."
+  },
+  {
+    "id": "kompas",
+    "naam": "Koperen kompas",
+    "soort": "Gereedschap",
+    "prijs": 1,
+    "tekst": "Overzee: +1 bij alle tests.",
+    "bonus": {
+      "overzee": 1
+    }
+  },
+  {
+    "id": "breekijzer",
+    "naam": "Breekijzer",
+    "soort": "Gereedschap",
+    "prijs": 1,
+    "tekst": "+1 bij gevechten, en +1 bij Kracht-tests tijdens ontmoetingen.",
+    "bonus": {
+      "gevecht": 1
+    }
+  },
+  {
+    "id": "bradshaw",
+    "naam": "Spoorboekje",
+    "soort": "Reizen",
+    "prijs": 1,
+    "tekst": "Leg af: reis met de trein vanuit King's Cross zonder te betalen, of reis 2 extra stappen.",
+    "gebruik": "stappen2"
+  },
+  {
+    "id": "rijtuig",
+    "naam": "Rijtuigkaart",
+    "soort": "Reizen",
+    "prijs": 1,
+    "tekst": "Leg af: reis 2 extra stappen.",
+    "gebruik": "stappen2"
+  },
+  {
+    "id": "ondergronds",
+    "naam": "Kaartje voor de Ondergrondse",
+    "soort": "Reizen",
+    "prijs": 1,
+    "tekst": "Leg af: reis van een station van de Ondergrondse naar elk ander station.",
+    "gebruik": "ondergronds"
+  },
+  {
+    "id": "laudanum",
+    "naam": "Flesje laudanum",
+    "soort": "Middel",
+    "prijs": 1,
+    "tekst": "Leg af: herstel 2 Geest. Gooi een dobbelsteen: bij 1 krijg je de toestand Verslaafd.",
+    "gebruik": "laudanum"
+  },
+  {
+    "id": "carbol",
+    "naam": "Carbolzuur en verband",
+    "soort": "Middel",
+    "prijs": 1,
+    "tekst": "Leg af: herstel 2 Lichaam van een held op jouw plek.",
+    "gebruik": "carbol"
+  },
+  {
+    "id": "vlugzout",
+    "naam": "Vlugzout",
+    "soort": "Middel",
+    "prijs": 1,
+    "tekst": "Leg af: herstel 2 Geest.",
+    "gebruik": "vlugzout"
+  },
+  {
+    "id": "chloroform",
+    "naam": "Chloroform",
+    "soort": "Middel",
+    "prijs": 2,
+    "tekst": "Leg af: een menselijk monster op jouw plek is meteen verslagen.",
+    "gebruik": "chloroform"
+  },
+  {
+    "id": "boek-grimoire",
+    "naam": "Een Vlaamse grimoire",
+    "soort": "Boek",
+    "prijs": 3,
+    "tekst": "Doe een Kennis-test (8): trek een spreuk. Je verliest 1 Geest, gelukt of niet.",
+    "gebruik": "grimoire"
+  },
+  {
+    "id": "boek-reisverslag",
+    "naam": "Reisverslag van een vermiste ontdekker",
+    "soort": "Boek",
+    "prijs": 2,
+    "tekst": "Overzee, na een mislukte test: +2 op die test. Daarna krijg je 1 Aanwijzing en leg je dit boek af."
+  },
+  {
+    "id": "boek-astrologie",
+    "naam": "Tabellen van de nachthemel",
+    "soort": "Boek",
+    "prijs": 2,
+    "tekst": "+1 bij Kennis-tests. Eén keer per spel: kijk naar de bovenste Onheilskaart.",
+    "bonus": {
+      "kennis": 1
+    }
+  },
+  {
+    "id": "boek-egyptisch",
+    "naam": "Woordenboek van het oud-Egyptisch",
+    "soort": "Boek",
+    "prijs": 2,
+    "tekst": "+2 bij alle tests in Thebe."
+  },
+  {
+    "id": "bondgenoot-straatjongens",
+    "naam": "Bende straatjochies",
+    "soort": "Bondgenoot",
+    "prijs": 2,
+    "tekst": "Eén keer per ronde: krijg 1 Aanwijzing van een plek op maximaal 2 stappen afstand. Om de twee rondes willen ze een Pond, anders gaan ze ervandoor.",
+    "gebruik": "straatjongens"
+  },
+  {
+    "id": "bondgenoot-journalist",
+    "naam": "Journaliste van de avondkrant",
+    "soort": "Bondgenoot",
+    "prijs": 2,
+    "tekst": "+1 bij Charisma-tests. Je mag een gerucht verwijderen door 2 Aanwijzingen in te leveren.",
+    "bonus": {
+      "overtuiging": 1
+    }
+  },
+  {
+    "id": "bondgenoot-koetsier",
+    "naam": "Nachtkoetsier",
+    "soort": "Bondgenoot",
+    "prijs": 3,
+    "tekst": "Elke ronde mag je 1 extra stap reizen.",
+    "bonus": {
+      "stap": 1
+    }
+  },
+  {
+    "id": "bondgenoot-agent",
+    "naam": "Agent op ronde",
+    "soort": "Bondgenoot",
+    "prijs": 0,
+    "tekst": "+1 bij gevechten tegen menselijke monsters. Verlaat je als je de toestand Gezocht krijgt.",
+    "bonus": {
+      "gevechtMens": 1
+    }
+  },
+  {
+    "id": "bondgenoot-gids",
+    "naam": "Expeditiegids",
+    "soort": "Bondgenoot",
+    "prijs": 3,
+    "tekst": "Overzee: +1 bij alle tests.",
+    "bonus": {
+      "overzee": 1
+    }
+  },
+  {
+    "id": "dier-raaf",
+    "naam": "Raaf uit de Tower",
+    "soort": "Dier",
+    "prijs": 2,
+    "tekst": "Eén keer per ronde: kijk welk monster als volgende verschijnt. Als je de raaf aflegt, daalt de Mist met 1."
+  },
+  {
+    "id": "dier-terrier",
+    "naam": "Rattenvanger-terriër",
+    "soort": "Dier",
+    "prijs": 1,
+    "tekst": "+1 bij gevechten op plekken aan de rivier."
+  },
+  {
+    "id": "dier-kanarie",
+    "naam": "Kanarie in een kooitje",
+    "soort": "Dier",
+    "prijs": 1,
+    "tekst": "Waarschuwt voor kwade lucht: onheilskaarten kosten jou nooit Geest."
+  },
+  {
+    "id": "dier-kat",
+    "naam": "Zwarte straatkat",
+    "soort": "Dier",
+    "prijs": 1,
+    "tekst": "+1 bij Waarneming-tests tijdens ontmoetingen. Gezegend en Vervloekt hebben geen effect op jou zolang de kat bij je is."
+  },
+  {
+    "id": "dier-paard",
+    "naam": "Trouwe ruin",
+    "soort": "Dier",
+    "prijs": 3,
+    "tekst": "Elke ronde mag je 1 extra stap reizen. Overzee: +1 bij Kracht-tests.",
+    "bonus": {
+      "stap": 1
+    }
+  },
+  {
+    "id": "jachtkruisboog",
+    "naam": "Jachtkruisboog",
+    "soort": "Wapen",
+    "prijs": 3,
+    "tekst": "+2 bij gevechten. Geruisloos: niemand hoort je in de mist.",
+    "bonus": {
+      "gevecht": 2
+    },
+    "prompt": "a Victorian hunting crossbow of dark walnut and blued steel with a quiver of iron-tipped bolts"
+  },
+  {
+    "id": "lancierssabel",
+    "naam": "Sabel van de Lanciers",
+    "soort": "Wapen",
+    "prijs": 3,
+    "tekst": "+2 bij gevechten, en +1 bij Kracht-tests tijdens ontmoetingen.",
+    "bonus": {
+      "gevecht": 2
+    },
+    "bonusOntmoeting": {
+      "kracht": 1
+    },
+    "prompt": "a curved British cavalry sabre with a brass hilt and a worn leather scabbard, regimental tassel"
+  },
+  {
+    "id": "hagelgeweer",
+    "naam": "Dubbelloops hagelgeweer",
+    "soort": "Wapen",
+    "prijs": 5,
+    "tekst": "+3 bij gevechten. Wat je raakt, blijft liggen.",
+    "bonus": {
+      "gevecht": 3
+    },
+    "prompt": "a double-barrelled Victorian shotgun broken open, two brass cartridges beside it"
+  },
+  {
+    "id": "boksbeugel",
+    "naam": "Koperen boksbeugel",
+    "soort": "Wapen",
+    "prijs": 1,
+    "tekst": "+1 bij gevechten, en nog +1 tegen menselijke monsters.",
+    "bonus": {
+      "gevecht": 1,
+      "gevechtMens": 1
+    },
+    "prompt": "a dented brass knuckleduster lying on a scrap of newspaper in a pub"
+  },
+  {
+    "id": "werpmessen",
+    "naam": "Werpmessen van een circusartiest",
+    "soort": "Wapen",
+    "prijs": 2,
+    "tekst": "+1 bij gevechten. Eén keer per ronde mag je een Kracht-test opnieuw gooien.",
+    "bonus": {
+      "gevecht": 1
+    },
+    "herworp": "kracht",
+    "prompt": "a fan of slim balanced throwing knives in a red velvet circus roll"
+  },
+  {
+    "id": "gewijde-dolk",
+    "naam": "Gewijde dolk",
+    "soort": "Wapen",
+    "prijs": 2,
+    "tekst": "+1 bij gevechten en +1 bij Gruwel-tests.",
+    "bonus": {
+      "gevecht": 1,
+      "gruwel": 1
+    },
+    "prompt": "a slender silver dagger with a cross-shaped hilt wrapped in a white linen cloth on a church pew"
+  },
+  {
+    "id": "harpoen",
+    "naam": "Harpoen van een walvisvaarder",
+    "soort": "Wapen",
+    "prijs": 3,
+    "tekst": "+3 bij gevechten. Maar wie loopt er nu met een harpoen door Mayfair? −1 bij Charisma-tests.",
+    "bonus": {
+      "gevecht": 3,
+      "overtuiging": -1
+    },
+    "prompt": "a heavy iron whaling harpoon with a barbed head and coiled tarred rope on wet dock planks"
+  },
+  {
+    "id": "vergrootglas",
+    "naam": "Vergrootglas met hoornen greep",
+    "soort": "Gereedschap",
+    "prijs": 1,
+    "tekst": "+1 bij Waarneming-tests tijdens ontmoetingen.",
+    "bonusOntmoeting": {
+      "scherpte": 1
+    },
+    "prompt": "a large magnifying glass with a carved horn handle resting on a letter with a wax seal"
+  },
+  {
+    "id": "inbrekersgereedschap",
+    "naam": "Inbrekersgereedschap",
+    "soort": "Gereedschap",
+    "prijs": 2,
+    "tekst": "Eén keer per ronde mag je een Waarneming-test opnieuw gooien.",
+    "herworp": "scherpte",
+    "prompt": "a rolled leather pouch of lock picks, a small jemmy and a dark lantern"
+  },
+  {
+    "id": "dokterstas",
+    "naam": "Dokterstas",
+    "soort": "Middel",
+    "prijs": 2,
+    "tekst": "Leg af: herstel 3 Lichaam.",
+    "gebruik": "effect",
+    "effect": [
+      {
+        "lichaam": 3
+      }
+    ],
+    "prompt": "an open black leather doctor's bag with glass bottles, bandages and a stethoscope"
+  },
+  {
+    "id": "riolenkaart",
+    "naam": "Kaart van de riolen",
+    "soort": "Reizen",
+    "prijs": 2,
+    "tekst": "Elke ronde mag je 1 extra stap reizen. Onder de straten is het nooit druk.",
+    "bonus": {
+      "stap": 1
+    },
+    "prompt": "a stained hand-drawn map of the London sewers with brick tunnels in red ink, held down by a candle stub"
+  },
+  {
+    "id": "notitieboek",
+    "naam": "Notitieboek van een rechercheur",
+    "soort": "Boek",
+    "prijs": 3,
+    "tekst": "+1 bij Waarneming-tests.",
+    "bonus": {
+      "scherpte": 1
+    },
+    "prompt": "a battered black notebook with a pencil, pages full of sketches of footprints and faces"
+  },
+  {
+    "id": "veldkijker",
+    "naam": "Veldkijker van de marine",
+    "soort": "Gereedschap",
+    "prijs": 3,
+    "tekst": "Leg af: je ziet iets wat niemand anders ziet. Krijg 2 Aanwijzingen.",
+    "gebruik": "effect",
+    "effect": [
+      {
+        "aanwijzing": 2
+      }
+    ],
+    "prompt": "a brass naval telescope extended on a windowsill overlooking a foggy river"
+  },
+  {
+    "id": "kruisbeeld",
+    "naam": "Zilveren kruisbeeld",
+    "soort": "Gereedschap",
+    "prijs": 2,
+    "tekst": "+1 bij Gruwel-tests en +1 bij Kennis-tests tijdens ontmoetingen.",
+    "bonus": {
+      "gruwel": 1
+    },
+    "bonusOntmoeting": {
+      "kennis": 1
+    },
+    "prompt": "a small tarnished silver crucifix on a fine chain draped over a prayer book"
+  },
+  {
+    "id": "brandewijn",
+    "naam": "Flacon brandewijn",
+    "soort": "Middel",
+    "prijs": 1,
+    "tekst": "Leg af: herstel 1 Lichaam en 1 Geest.",
+    "gebruik": "effect",
+    "effect": [
+      {
+        "lichaam": 1
+      },
+      {
+        "geest": 1
+      }
+    ],
+    "prompt": "a silver hip flask of brandy, its cap open, beside a glowing pipe"
+  },
+  {
+    "id": "morfine",
+    "naam": "Morfine-injectie",
+    "soort": "Middel",
+    "prijs": 2,
+    "tekst": "Leg af: herstel 3 Lichaam, maar je wordt er wazig van: −1 Geest.",
+    "gebruik": "effect",
+    "effect": [
+      {
+        "lichaam": 3
+      },
+      {
+        "geest": -1
+      }
+    ],
+    "prompt": "a glass and nickel hypodermic syringe in a velvet case with a small brown morphine vial"
+  },
+  {
+    "id": "wijwater",
+    "naam": "Wijwater uit de abdij",
+    "soort": "Middel",
+    "prijs": 1,
+    "tekst": "Leg af: verwijder Vervloekt en herstel 1 Geest.",
+    "gebruik": "effect",
+    "effect": [
+      {
+        "verwijder": "vervloekt"
+      },
+      {
+        "geest": 1
+      }
+    ],
+    "prompt": "a small stoppered glass vial of holy water with a wax seal stamped with a cross"
+  },
+  {
+    "id": "cocawijn",
+    "naam": "Cocawijn van Mariani",
+    "soort": "Middel",
+    "prijs": 2,
+    "tekst": "Leg af: herstel 2 Geest en 1 Lichaam. Aanbevolen door de paus, zegt het etiket.",
+    "gebruik": "effect",
+    "effect": [
+      {
+        "geest": 2
+      },
+      {
+        "lichaam": 1
+      }
+    ],
+    "prompt": "a dark green Victorian tonic wine bottle with an ornate illegible label and a small glass beside it"
+  },
+  {
+    "id": "necrologium",
+    "naam": "Necrologium van Whitby",
+    "soort": "Boek",
+    "prijs": 4,
+    "tekst": "+1 bij Kennis-tests en +1 bij spreuken.",
+    "bonus": {
+      "kennis": 1,
+      "spreuk": 1
+    },
+    "prompt": "a thick leather-bound register of the dead with a black ribbon and gothic tooling, a sprig of dried yew on top"
+  },
+  {
+    "id": "atlas",
+    "naam": "Atlas van de oude wereld",
+    "soort": "Boek",
+    "prijs": 2,
+    "tekst": "Overzee: +1 bij alle tests.",
+    "bonus": {
+      "overzee": 1
+    },
+    "prompt": "a large atlas open on a map of Egypt and the Himalayas with brass dividers on the page"
+  },
+  {
+    "id": "spiritistendagboek",
+    "naam": "Dagboek van een spiritiste",
+    "soort": "Boek",
+    "prijs": 2,
+    "tekst": "+1 bij spreuken.",
+    "bonus": {
+      "spreuk": 1
+    },
+    "prompt": "a lady's diary bound in violet silk with a planchette and pressed lilies between the pages"
+  },
+  {
+    "id": "bondgenoot-kruidenvrouw",
+    "naam": "Kruidenvrouw uit Limehouse",
+    "soort": "Bondgenoot",
+    "prijs": 3,
+    "tekst": "Eén keer per ronde: zij verbindt je wonden. Herstel 1 Lichaam.",
+    "gebruik": "effect",
+    "perRonde": true,
+    "effect": [
+      {
+        "lichaam": 1
+      }
+    ],
+    "prompt": "an old woman's weathered hands grinding herbs in a stone mortar among hanging bundles of dried plants"
+  },
+  {
+    "id": "bondgenoot-bokser",
+    "naam": "Bokser uit Bethnal Green",
+    "soort": "Bondgenoot",
+    "prijs": 4,
+    "tekst": "+2 bij gevechten. Hij vecht met je mee.",
+    "bonus": {
+      "gevecht": 2
+    },
+    "prompt": "a pair of worn leather boxing gloves hanging from a nail above a sawdust ring"
+  },
+  {
+    "id": "bondgenoot-bibliothecaris",
+    "naam": "Oude bibliothecaris",
+    "soort": "Bondgenoot",
+    "prijs": 3,
+    "tekst": "Eén keer per ronde mag je een Kennis-test opnieuw gooien.",
+    "herworp": "kennis",
+    "prompt": "a pair of round wire spectacles on a towering stack of catalogue cards and dusty folios"
+  },
+  {
+    "id": "bondgenoot-inbreker",
+    "naam": "Gentleman-inbreker",
+    "soort": "Bondgenoot",
+    "prijs": 3,
+    "tekst": "+1 bij Waarneming-tests en +1 bij Charisma-tests.",
+    "bonus": {
+      "scherpte": 1,
+      "overtuiging": 1
+    },
+    "prompt": "a silk top hat, white gloves and a black domino mask laid on a velvet chair"
+  },
+  {
+    "id": "bondgenoot-medium",
+    "naam": "Medium uit Marylebone",
+    "soort": "Bondgenoot",
+    "prijs": 2,
+    "tekst": "Eén keer per ronde: zij roept de doden aan. −1 Geest, +1 Aanwijzing.",
+    "gebruik": "effect",
+    "perRonde": true,
+    "effect": [
+      {
+        "geest": -1
+      },
+      {
+        "aanwijzing": 1
+      }
+    ],
+    "prompt": "a crystal ball on a fringed tablecloth with a single candle and a lady's lace glove"
+  },
+  {
+    "id": "bondgenoot-sjouwer",
+    "naam": "Sjouwer uit de dokken",
+    "soort": "Bondgenoot",
+    "prijs": 2,
+    "tekst": "Je mag één spul extra dragen, en +1 bij Kracht-tests tijdens ontmoetingen.",
+    "bonus": {
+      "draag": 1
+    },
+    "bonusOntmoeting": {
+      "kracht": 1
+    },
+    "prompt": "a docker's cargo hook and a heavy coil of rope on a stack of tea chests"
+  },
+  {
+    "id": "dier-bloedhond",
+    "naam": "Bloedhond",
+    "soort": "Dier",
+    "prijs": 3,
+    "tekst": "+2 bij Waarneming-tests tijdens ontmoetingen. Hij vindt elk spoor.",
+    "bonusOntmoeting": {
+      "scherpte": 2
+    },
+    "prompt": "a sad-eyed bloodhound with long ears sniffing the cobbles under a gas lamp"
+  },
+  {
+    "id": "dier-kerkuil",
+    "naam": "Kerkuil",
+    "soort": "Dier",
+    "prijs": 2,
+    "tekst": "Eén keer per ronde: bekijk de bovenste Onheilskaart.",
+    "gebruik": "kijk1",
+    "prompt": "a pale barn owl perched on a gravestone, its white face glowing in the moonlight"
+  },
+  {
+    "id": "dier-mastiff",
+    "naam": "Engelse mastiff",
+    "soort": "Dier",
+    "prijs": 3,
+    "tekst": "+1 bij gevechten en +1 bij Gruwel-tests. Niets laat hem schrikken.",
+    "bonus": {
+      "gevecht": 1,
+      "gruwel": 1
+    },
+    "prompt": "a huge fawn English mastiff with a studded collar sitting calmly in a doorway"
+  },
+  {
+    "id": "dier-fret",
+    "naam": "Fret van een rattenvanger",
+    "soort": "Dier",
+    "prijs": 1,
+    "tekst": "+1 bij Waarneming-tests tijdens ontmoetingen, en +1 bij Kracht-tests tijdens ontmoetingen.",
+    "bonusOntmoeting": {
+      "scherpte": 1,
+      "kracht": 1
+    },
+    "prompt": "a sleek ferret peeking out of a rat-catcher's canvas bag"
+  },
+  {
+    "id": "fosforbom",
+    "naam": "Fosforbom",
+    "soort": "Wapen",
+    "prijs": 3,
+    "tekst": "Leg af: versla meteen een gewoon monster op jouw plek. Je verliest zelf 1 Lichaam.",
+    "gebruik": "dynamiet",
+    "prompt": "a glass globe filled with glowing green phosphorus liquid, stoppered with a cork and a rag fuse"
+  },
+  {
+    "id": "zakhorloge-zilver",
+    "naam": "Zilveren zakhorloge",
+    "soort": "Gereedschap",
+    "prijs": 2,
+    "tekst": "Leg af bij een heler: krijg 4 Pond.",
+    "gebruik": "effect",
+    "effect": [
+      {
+        "pond": 4
+      }
+    ],
+    "prompt": "an engraved silver pocket watch with its lid open, chain spilling over a pawnbroker's counter"
+  }
+]
