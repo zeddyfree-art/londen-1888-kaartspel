@@ -1,0 +1,360 @@
+[
+  {
+    "id": "zout-en-ijzer",
+    "naam": "Kring van zout en ijzer",
+    "soort": "Bescherming",
+    "test": "kennis",
+    "moeilijkheid": 7,
+    "prijs": "1 Geest",
+    "tekst": "Deze ronde mag geen monster jouw plek binnenkomen. Mislukt: verlies nog 1 Geest."
+  },
+  {
+    "id": "woord-van-sluiting",
+    "naam": "Woord van sluiting",
+    "soort": "Bezwering",
+    "test": "kennis",
+    "moeilijkheid": 9,
+    "prijs": "2 Geest",
+    "tekst": "Sluit een Scheur op jouw plek zonder Aanwijzingen in te leveren. Mislukt: er verschijnt een monster.",
+    "auto": "sluit"
+  },
+  {
+    "id": "verbanning",
+    "naam": "Hermetische verbanning",
+    "soort": "Gevecht",
+    "test": "kennis",
+    "moeilijkheid": 8,
+    "prijs": "1 Geest",
+    "tekst": "Gebruik bij een gevecht Kennis in plaats van Kracht.",
+    "auto": "gevecht"
+  },
+  {
+    "id": "spiegelgang",
+    "naam": "Spiegelgang",
+    "soort": "Reizen",
+    "test": "kennis",
+    "moeilijkheid": 8,
+    "prijs": "1 Geest",
+    "tekst": "Stap in een spiegel en kom uit op elke plek in Londen. Mislukt: krijg de toestand Verdwaald.",
+    "auto": "reisOveral"
+  },
+  {
+    "id": "astrale-reis",
+    "naam": "Astrale reis",
+    "soort": "Reizen",
+    "test": "kennis",
+    "moeilijkheid": 9,
+    "prijs": "2 Geest",
+    "tekst": "Doe deze ronde een ontmoeting op een plek naar keuze, ook overzee, zonder erheen te reizen."
+  },
+  {
+    "id": "tarot",
+    "naam": "Tarotlegging",
+    "soort": "Waarzeggen",
+    "test": "overtuiging",
+    "moeilijkheid": 7,
+    "prijs": "1 Geest",
+    "tekst": "Bekijk de bovenste 3 Onheilskaarten en leg er één onderop de stapel.",
+    "auto": "kijk3"
+  },
+  {
+    "id": "theebladeren",
+    "naam": "Lezing van de theebladeren",
+    "soort": "Waarzeggen",
+    "test": "scherpte",
+    "moeilijkheid": 7,
+    "prijs": "geen",
+    "tekst": "Krijg 1 Aanwijzing. Maar één keer per ronde, door wie dan ook.",
+    "auto": "aanwijzing"
+  },
+  {
+    "id": "henochiaanse-aanroeping",
+    "naam": "Henochiaanse aanroeping",
+    "soort": "Gevecht",
+    "test": "kennis",
+    "moeilijkheid": 10,
+    "prijs": "3 Geest",
+    "tekst": "Versla meteen een monster op jouw plek, ook een episch monster (haal dan 2 leven af). Mislukt: krijg een Waanzin-kaart.",
+    "auto": "versla"
+  },
+  {
+    "id": "sympathiepop",
+    "naam": "Sympathiepop",
+    "soort": "Bescherming",
+    "test": "kennis",
+    "moeilijkheid": 8,
+    "prijs": "1 Lichaam",
+    "tekst": "Tot het eind van de ronde neemt de pop alle Lichaamsschade van één held over."
+  },
+  {
+    "id": "mesmerisme",
+    "naam": "Mesmerisme",
+    "soort": "Beïnvloeding",
+    "test": "overtuiging",
+    "moeilijkheid": 8,
+    "prijs": "1 Geest",
+    "tekst": "Een menselijk monster op jouw plek vertrekt naar een plek naar keuze, of vertelt je iets: krijg 2 Aanwijzingen.",
+    "auto": "mesmerisme"
+  },
+  {
+    "id": "kaars-van-terugkeer",
+    "naam": "Kaars van terugkeer",
+    "soort": "Herstel",
+    "test": "kennis",
+    "moeilijkheid": 8,
+    "prijs": "1 Geest",
+    "tekst": "Herstel 3 Lichaam bij een held op jouw plek.",
+    "auto": "genees3"
+  },
+  {
+    "id": "wake-van-de-wachter",
+    "naam": "Wake van de wachter",
+    "soort": "Bescherming",
+    "test": "scherpte",
+    "moeilijkheid": 8,
+    "prijs": "1 Geest",
+    "tekst": "Tot je volgende beurt verlies jij en elke held op jouw plek geen Geest door Gruwel.",
+    "auto": "wake"
+  },
+  {
+    "id": "pentagram",
+    "naam": "Het kleine pentagram",
+    "soort": "Bescherming",
+    "test": "kennis",
+    "moeilijkheid": 7,
+    "prijs": "geen",
+    "tekst": "Gooi bij je volgende Gruwel-test 1 dobbelsteen extra.",
+    "auto": "pentagram"
+  },
+  {
+    "id": "doodsmasker",
+    "naam": "Doodsmasker",
+    "soort": "Beïnvloeding",
+    "test": "overtuiging",
+    "moeilijkheid": 9,
+    "prijs": "2 Geest",
+    "tekst": "Monsters negeren jou deze ronde. Je mag door hun plek reizen en ze hoeven je niet aan te vallen.",
+    "auto": "doodsmasker"
+  },
+  {
+    "id": "zegen-dunstan",
+    "naam": "Zegen van Sint-Dunstan",
+    "soort": "Bescherming",
+    "test": "kennis",
+    "moeilijkheid": 8,
+    "prijs": "1 Geest",
+    "tekst": "Je wordt Gezegend.",
+    "auto": "effect",
+    "effect": [
+      {
+        "toestand": "gezegend"
+      }
+    ],
+    "prompt": "a blacksmith's horseshoe held up by a hand, blazing with golden holy light above an anvil"
+  },
+  {
+    "id": "bloedoffer",
+    "naam": "Bloedoffer",
+    "soort": "Waarzeggen",
+    "test": "kennis",
+    "moeilijkheid": 7,
+    "prijs": "2 Lichaam",
+    "tekst": "Je bloed laat zien wat verborgen is: krijg 2 Aanwijzingen. Mislukt: verlies ook 1 Geest.",
+    "auto": "effect",
+    "effect": [
+      {
+        "aanwijzing": 2
+      }
+    ],
+    "mislukt": [
+      {
+        "geest": -1
+      }
+    ],
+    "prompt": "drops of blood falling into a silver bowl of water, forming glowing red sigils"
+  },
+  {
+    "id": "fluistering-doden",
+    "naam": "Fluistering van de doden",
+    "soort": "Waarzeggen",
+    "test": "kennis",
+    "moeilijkheid": 9,
+    "prijs": "2 Geest",
+    "tekst": "Riskant. De doden vertellen alles: krijg 3 Aanwijzingen. Mislukt: ze blijven fluisteren, je krijgt een Waanzin.",
+    "auto": "effect",
+    "effect": [
+      {
+        "aanwijzing": 3
+      }
+    ],
+    "mislukt": [
+      {
+        "waanzin": true
+      }
+    ],
+    "prompt": "pale ghostly hands reaching out of a dark grave towards a lit candle held by a living hand"
+  },
+  {
+    "id": "kracht-rivier",
+    "naam": "Kracht van de rivier",
+    "soort": "Herstel",
+    "test": "kennis",
+    "moeilijkheid": 8,
+    "prijs": "1 Geest",
+    "tekst": "Het koude water van de Theems sluit je wonden: herstel 3 Lichaam.",
+    "auto": "effect",
+    "effect": [
+      {
+        "lichaam": 3
+      }
+    ],
+    "prompt": "hands cupping glowing river water that streams upward in silver threads, fog over the Thames"
+  },
+  {
+    "id": "goud-uit-lood",
+    "naam": "Goud uit lood",
+    "soort": "Alchemie",
+    "test": "kennis",
+    "moeilijkheid": 9,
+    "prijs": "1 Geest",
+    "tekst": "Krijg 3 Pond. Mislukt: de oude krachten nemen het je kwalijk, je wordt Vervloekt.",
+    "auto": "effect",
+    "effect": [
+      {
+        "pond": 3
+      }
+    ],
+    "mislukt": [
+      {
+        "toestand": "vervloekt"
+      }
+    ],
+    "prompt": "a lump of grey lead in tongs turning to glowing gold over an alchemist's crucible"
+  },
+  {
+    "id": "helderziendheid",
+    "naam": "Helderziendheid",
+    "soort": "Waarzeggen",
+    "test": "scherpte",
+    "moeilijkheid": 9,
+    "prijs": "1 Geest",
+    "tekst": "Krijg 2 Aanwijzingen. Mislukt: verlies nog 1 Geest.",
+    "auto": "effect",
+    "effect": [
+      {
+        "aanwijzing": 2
+      }
+    ],
+    "mislukt": [
+      {
+        "geest": -1
+      }
+    ],
+    "prompt": "a woman's eyes reflected in a dark mirror, the pupils glowing with distant visions of London streets"
+  },
+  {
+    "id": "ontbinding",
+    "naam": "Ontbinding",
+    "soort": "Bescherming",
+    "test": "overtuiging",
+    "moeilijkheid": 8,
+    "prijs": "1 Geest",
+    "tekst": "Verbreek wat aan je kleeft: verwijder Vervloekt, Verslaafd en Gezocht.",
+    "auto": "effect",
+    "effect": [
+      {
+        "verwijder": "vervloekt"
+      },
+      {
+        "verwijder": "verslaafd"
+      },
+      {
+        "verwijder": "gezocht"
+      }
+    ],
+    "prompt": "knotted black cords unravelling and burning away around a raised open palm"
+  },
+  {
+    "id": "klokken-wekroep",
+    "naam": "Wekroep van de klokken",
+    "soort": "Bezwering",
+    "test": "overtuiging",
+    "moeilijkheid": 10,
+    "prijs": "2 Geest",
+    "tekst": "Push your luck, en maar één keer per potje. Alle klokken van Londen luiden tegelijk en de Mist trekt op: Mist +1. Mislukt: de klank trekt iets aan, er verschijnt een monster.",
+    "auto": "effect",
+    "effect": [
+      {
+        "mist": 1
+      }
+    ],
+    "mislukt": [
+      {
+        "monster": true
+      }
+    ],
+    "prompt": "a bronze church bell swinging in a belfry, glowing rings of sound pushing back green fog over the rooftops",
+    "perSpel": true
+  },
+  {
+    "id": "grote-verbanning",
+    "naam": "Grote verbanningsformule",
+    "soort": "Gevecht",
+    "test": "kennis",
+    "moeilijkheid": 11,
+    "prijs": "3 Geest",
+    "tekst": "Push your luck. Versla meteen een monster op jouw plek, ook een episch monster (haal dan 2 leven af). Mislukt: krijg een Waanzin.",
+    "auto": "versla",
+    "prompt": "a magus in a white robe raising a staff crowned with a blazing star, a towering shadow recoiling"
+  },
+  {
+    "id": "sleutel-salomo",
+    "naam": "Sleutel van Salomo",
+    "soort": "Bezwering",
+    "test": "kennis",
+    "moeilijkheid": 8,
+    "prijs": "3 Geest",
+    "tekst": "Sluit een Scheur op jouw plek zonder Aanwijzingen in te leveren. Duur, maar zeker. Mislukt: er verschijnt een monster.",
+    "auto": "sluit",
+    "prompt": "a heavy iron key engraved with Hebrew-style sigils turning in a glowing violet lock floating in the air"
+  },
+  {
+    "id": "gebed-mercurius",
+    "naam": "Gebed tot Mercurius",
+    "soort": "Beïnvloeding",
+    "test": "overtuiging",
+    "moeilijkheid": 7,
+    "prijs": "geen",
+    "tekst": "Een gunstige wind in je zaken: krijg 1 Pond. Maar één keer per ronde.",
+    "auto": "effect",
+    "perRonde": true,
+    "effect": [
+      {
+        "pond": 1
+      }
+    ],
+    "prompt": "a small bronze statuette of Mercury on a merchant's desk with coins glinting in candlelight"
+  },
+  {
+    "id": "etherische-projectie",
+    "naam": "Etherische projectie",
+    "soort": "Reizen",
+    "test": "kennis",
+    "moeilijkheid": 7,
+    "prijs": "2 Geest",
+    "tekst": "Je geest reist vooruit en je lichaam volgt: ga naar elke plek in Londen. Mislukt: krijg de toestand Verdwaald.",
+    "auto": "reisOveral",
+    "prompt": "a translucent silver double of a sleeping gentleman rising from his body and drifting through a window"
+  },
+  {
+    "id": "ogen-nacht",
+    "naam": "Ogen van de nacht",
+    "soort": "Waarzeggen",
+    "test": "scherpte",
+    "moeilijkheid": 7,
+    "prijs": "1 Geest",
+    "tekst": "Bekijk de bovenste 3 Onheilskaarten en leg er één onderop de stapel.",
+    "auto": "kijk3",
+    "prompt": "many glowing eyes opening in the dark around a fortune teller's lamp"
+  }
+]

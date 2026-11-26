@@ -1,0 +1,475 @@
+[
+  {
+    "id": "rivierwiedde",
+    "naam": "Rivierwiedde",
+    "gruwel": 1,
+    "taaiheid": 10,
+    "schade": 2,
+    "leven": 2,
+    "eigenschap": "Verschijnt alleen aan de rivier. Na een verloren gevecht word je 1 plek de rivier op gesleept.",
+    "prompt": "a tangle of black river weed shaped like a reaching human figure rising from the Thames mud at low tide",
+    "alleenRivier": true
+  },
+  {
+    "id": "verdronkene",
+    "naam": "Verdronkene",
+    "gruwel": 2,
+    "taaiheid": 10,
+    "schade": 1,
+    "leven": 2,
+    "eigenschap": "Komt terug: als hij verslagen wordt, gooi een dobbelsteen. Bij 1 of 2 verschijnt hij aan de rivier opnieuw.",
+    "prompt": "a pale drowned Victorian sailor with milky eyes and dripping clothes standing on stone river steps at night",
+    "komtTerug": true
+  },
+  {
+    "id": "rioolkruiper",
+    "naam": "Rioolkruiper",
+    "gruwel": 1,
+    "taaiheid": 11,
+    "schade": 2,
+    "leven": 2,
+    "eigenschap": "Beweegt na elke Onheilsfase 1 plek naar de dichtstbijzijnde held.",
+    "prompt": "a long eyeless pale creature with too many joints crawling out of a brick Victorian sewer tunnel by lantern light",
+    "beweging": {
+      "type": "naarHeld",
+      "stappen": 1
+    }
+  },
+  {
+    "id": "mistdwaler",
+    "naam": "Mistdwaler",
+    "gruwel": 2,
+    "taaiheid": 9,
+    "schade": 1,
+    "leven": 2,
+    "eigenschap": "Na een gewonnen gevecht trek je geen trofee: de mist lost op.",
+    "prompt": "a tall thin silhouette made of yellow London fog, faintly human, drifting between gas lamps on a cobbled street",
+    "geenTrofee": true
+  },
+  {
+    "id": "logebroeder",
+    "naam": "Logebroeder",
+    "gruwel": 0,
+    "taaiheid": 9,
+    "schade": 1,
+    "leven": 2,
+    "eigenschap": "Een mens. Win je het gevecht, dan krijg je 1 Aanwijzing: hij praat.",
+    "prompt": "a hooded Victorian cultist in a dark robe over a gentleman's suit, holding a dagger and a lantern, in a candlelit cellar",
+    "mens": true,
+    "beloning": {
+      "aanwijzing": 1
+    }
+  },
+  {
+    "id": "lantaarndrager",
+    "naam": "Lantaarndrager",
+    "gruwel": 1,
+    "taaiheid": 10,
+    "schade": 1,
+    "leven": 2,
+    "eigenschap": "Een mens. Zolang hij op het bord staat, kost elke spreuk 1 Geest extra.",
+    "prompt": "a Victorian occultist in a white ceremonial robe holding a pale violet lantern, standing in an ornate lodge temple with painted pillars",
+    "mens": true,
+    "spreukDuurder": 1
+  },
+  {
+    "id": "sterrenkind",
+    "naam": "Sterrenkind",
+    "gruwel": 3,
+    "taaiheid": 10,
+    "schade": 1,
+    "leven": 2,
+    "eigenschap": "Een held die dit gevecht verliest, krijgt een Waanzin-kaart.",
+    "prompt": "a small glowing childlike figure with a face like a cracked white star, standing barefoot on a rooftop in the moonlight",
+    "verliesWaanzin": true
+  },
+  {
+    "id": "spiegelgast",
+    "naam": "Spiegelgast",
+    "gruwel": 2,
+    "taaiheid": 11,
+    "schade": 1,
+    "leven": 2,
+    "eigenschap": "Je mag hem niet met wapens bevechten, alleen met spreuken of Kennis in plaats van Kracht.",
+    "prompt": "a distorted reflection of a Victorian lady stepping out of a gilded mirror in a dim drawing room",
+    "vechtMet": "kennis"
+  },
+  {
+    "id": "kraaienzwerm",
+    "naam": "Kraaienzwerm",
+    "gruwel": 1,
+    "taaiheid": 9,
+    "schade": 1,
+    "leven": 2,
+    "eigenschap": "Snel: hij beweegt elke Onheilsfase 2 plekken.",
+    "prompt": "a swirling flock of black crows forming the shape of a screaming face above Victorian chimneys at dusk",
+    "beweging": {
+      "type": "willekeurig",
+      "stappen": 2
+    }
+  },
+  {
+    "id": "shabti-wachter",
+    "naam": "Shabti-wachter",
+    "gruwel": 1,
+    "taaiheid": 12,
+    "schade": 2,
+    "leven": 3,
+    "eigenschap": "Je moet hem twee keer verslaan.",
+    "prompt": "a life-sized ancient Egyptian funerary statue of glazed blue faience coming to life among museum crates, cracks glowing gold"
+  },
+  {
+    "id": "sluierhond",
+    "naam": "Sluierhond",
+    "gruwel": 2,
+    "taaiheid": 10,
+    "schade": 2,
+    "leven": 2,
+    "eigenschap": "Als er geen held op zijn plek is, beweegt hij naar de held met de meeste Artefacten.",
+    "prompt": "a gaunt jackal-headed hound wrapped in tattered linen veils, eyes like embers, prowling an East London alley",
+    "beweging": {
+      "type": "naarArtefact",
+      "stappen": 1
+    }
+  },
+  {
+    "id": "wisselkind",
+    "naam": "Wisselkind",
+    "gruwel": 2,
+    "taaiheid": 9,
+    "schade": 1,
+    "leven": 2,
+    "eigenschap": "Het lijkt een gewoon kind, tot het lacht. Verlies je het gevecht, dan steelt het 1 Pond.",
+    "prompt": "a small Victorian child in a too-clean Sunday dress with a face like carved pale wood and black glossy eyes, smiling too widely, standing in a foggy alley with hawthorn twigs in her hair",
+    "verliesPond": 1
+  },
+  {
+    "id": "doornridder",
+    "naam": "Doornridder",
+    "gruwel": 1,
+    "taaiheid": 11,
+    "schade": 2,
+    "leven": 3,
+    "eigenschap": "Een gestalte van verwilderde meidoorn in de vorm van een ridder. Je moet hem twee keer verslaan.",
+    "prompt": "a tall knight-shaped figure made entirely of twisted black hawthorn branches and white blossoms, a helm of thorns, standing in a gaslit London square at night"
+  },
+  {
+    "id": "dwaallicht",
+    "naam": "Dwaallicht",
+    "gruwel": 1,
+    "taaiheid": 9,
+    "schade": 1,
+    "leven": 2,
+    "eigenschap": "Snel: het beweegt elke Onheilsfase 2 plekken. Na een gewonnen gevecht trek je geen trofee: het licht dooft gewoon.",
+    "prompt": "a cluster of pale green floating lights like candle flames drifting over a foggy park pond at night, faintly shaped like a beckoning hand",
+    "beweging": {
+      "type": "willekeurig",
+      "stappen": 2
+    },
+    "geenTrofee": true
+  },
+  {
+    "id": "knekelman",
+    "naam": "Knekelman",
+    "gruwel": 2,
+    "taaiheid": 10,
+    "schade": 1,
+    "leven": 2,
+    "eigenschap": "Komt terug: als hij verslagen wordt, gooi een dobbelsteen. Bij 1 of 2 staat hij op een willekeurige plek weer op.",
+    "prompt": "a skeleton held together with grave soil and old lime, rags of a 1665 plague shroud, climbing out of a broken brick vault under a London street by lantern light",
+    "komtTerug": true
+  },
+  {
+    "id": "lijkenrover",
+    "naam": "Lijkenrover",
+    "gruwel": 0,
+    "taaiheid": 9,
+    "schade": 1,
+    "leven": 2,
+    "eigenschap": "Een mens, met een spade en een zak. Win je het gevecht, dan laat hij zijn beurs vallen: 2 Pond.",
+    "prompt": "a gaunt Victorian resurrection man in a battered top hat and muddy coat, holding a spade and a sack, crouched by a churchyard wall in the fog",
+    "mens": true,
+    "beloning": {
+      "pond": 2
+    }
+  },
+  {
+    "id": "pestdokter",
+    "naam": "Pestdokter",
+    "gruwel": 3,
+    "taaiheid": 10,
+    "schade": 1,
+    "leven": 2,
+    "eigenschap": "Een gestalte met een snavelmasker uit een andere eeuw. Een held die dit gevecht verliest, krijgt een Waanzin-kaart.",
+    "prompt": "a tall figure in a long black waxed coat and a beaked plague doctor mask with glass eyes, holding a cane, standing in a Victorian hospital corridor lit by a single gas jet",
+    "verliesWaanzin": true
+  },
+  {
+    "id": "cultist",
+    "naam": "Cultist",
+    "gruwel": 0,
+    "taaiheid": 8,
+    "schade": 1,
+    "leven": 1,
+    "eigenschap": "Iemand uit de kudde van Ommeth, die zijn naam is vergeten. Je kunt hem verslaan of bekeren (Charisma 8): dan loopt hij naar huis en krijg je 1 Aanwijzing.",
+    "prompt": "a hollow-eyed Victorian dockworker in a flat cap and patched coat, holding a tallow candle, mouth open in a silent hymn, standing in a fog-filled alley",
+    "mens": true,
+    "bekeren": true
+  },
+  {
+    "id": "kuddeleider",
+    "naam": "Kuddeleider",
+    "gruwel": 1,
+    "taaiheid": 10,
+    "schade": 1,
+    "leven": 2,
+    "eigenschap": "Een mens met een herdersstaf en een stem die draagt. Versla je hem, dan vluchten alle cultisten op zijn plek.",
+    "prompt": "a broad-shouldered Victorian man in a long grey smock carrying a shepherd's crook hung with tin bells, leading a line of followers through a fog-bound street",
+    "mens": true,
+    "verjaagtCultisten": true
+  },
+  {
+    "id": "zingend-koor",
+    "naam": "Zingend koor",
+    "gruwel": 2,
+    "taaiheid": 9,
+    "schade": 1,
+    "leven": 2,
+    "eigenschap": "Zes stemmen die als één zingen. Elke held op dezelfde plek verliest elke ronde 1 Geest.",
+    "prompt": "six pale Victorian choir singers in grubby white surplices standing shoulder to shoulder, their mouths stretched impossibly wide in one shared note, in an abandoned mission hall",
+    "mens": true,
+    "aura": {
+      "geest": -1
+    }
+  },
+  {
+    "id": "splintergeest",
+    "naam": "Splintergeest",
+    "gruwel": 2,
+    "taaiheid": 10,
+    "schade": 1,
+    "leven": 2,
+    "eigenschap": "Een schim van glas en echo. Verlies je, dan grijpt hij een Artefact van je en vlucht.",
+    "prompt": "a translucent spectral figure made of cracked black glass shards floating in a Victorian museum corridor, reaching out with long fingers toward a glowing relic",
+    "steeltArtefact": true
+  },
+  {
+    "id": "vitrinewachter",
+    "naam": "Vitrinewachter",
+    "gruwel": 1,
+    "taaiheid": 12,
+    "schade": 2,
+    "leven": 3,
+    "eigenschap": "Een harnas uit de wapenzaal dat zijn post heeft verlaten. Je moet hem drie keer raken.",
+    "prompt": "an empty medieval suit of Templar armour with a white surcoat and red cross walking out of a museum display case, its visor dark, a sword in hand, Victorian gallery lit by moonlight"
+  },
+  {
+    "id": "reliekjager",
+    "naam": "Reliekjager",
+    "gruwel": 0,
+    "taaiheid": 9,
+    "schade": 1,
+    "leven": 2,
+    "eigenschap": "Een mens van het Genootschap, met een catalogus en een mes. Hij loopt naar de held met de meeste Artefacten. Win je, dan krijg je 1 Aanwijzing: zijn catalogus.",
+    "prompt": "a sharp-featured Victorian collector's agent in a bowler hat and long overcoat, holding an annotated catalogue and a thin knife, lurking in a foggy alley behind an auction house",
+    "mens": true,
+    "beweging": {
+      "type": "naarArtefact"
+    },
+    "beloning": {
+      "aanwijzing": 1
+    }
+  },
+  {
+    "id": "rijpwicht",
+    "naam": "Rijpwicht",
+    "gruwel": 1,
+    "taaiheid": 10,
+    "schade": 2,
+    "leven": 2,
+    "eigenschap": "Een kind van rijp en wind. Elke held op zijn plek verliest elke ronde 1 Lichaam.",
+    "prompt": "a small hunched figure made of hoarfrost and frozen breath, with long icicle fingers, crouching on a frosted Victorian rooftop under a pale moon",
+    "aura": {
+      "lichaam": -1
+    }
+  },
+  {
+    "id": "smogslang",
+    "naam": "Smogslang",
+    "gruwel": 2,
+    "taaiheid": 9,
+    "schade": 1,
+    "leven": 2,
+    "eigenschap": "Een slang van gele smog. Snel: hij beweegt elke Onheilsfase 2 plekken.",
+    "prompt": "a vast serpent made of thick yellow-green London smog coiling between gas lamps and chimney pots, two dim lamp-like eyes glowing in the murk",
+    "beweging": {
+      "type": "willekeurig",
+      "stappen": 2
+    }
+  },
+  {
+    "id": "bliksemvanger",
+    "naam": "Bliksemvanger",
+    "gruwel": 0,
+    "taaiheid": 9,
+    "schade": 1,
+    "leven": 2,
+    "eigenschap": "Een mens van de Bond van de Windroos, met een koperen staf. Win je, dan vertelt hij je iets: 1 Aanwijzing.",
+    "prompt": "a wild-eyed Victorian man in an oilskin coat holding a tall copper lightning rod crackling with sparks, standing on a rooftop in a thunderstorm",
+    "mens": true,
+    "beloning": {
+      "aanwijzing": 1
+    }
+  },
+  {
+    "id": "bewonderaar",
+    "naam": "Bewonderaar",
+    "gruwel": 1,
+    "taaiheid": 9,
+    "schade": 1,
+    "leven": 2,
+    "eigenschap": "Een mens die alleen nog over haar praat. Bekoring: weersta hem met Charisma. Hij loopt naar de dichtstbijzijnde held.",
+    "prompt": "a well-dressed young Victorian gentleman with a carnation in his lapel and a fixed adoring smile, holding out a perfumed invitation card, stepping out of fog",
+    "mens": true,
+    "bekoring": true,
+    "beweging": {
+      "type": "naarHeld"
+    }
+  },
+  {
+    "id": "maskerdanser",
+    "naam": "Maskerdanser",
+    "gruwel": 2,
+    "taaiheid": 10,
+    "schade": 1,
+    "leven": 2,
+    "eigenschap": "Een danser zonder gezicht achter het masker. Bekoring: weersta hem met Charisma.",
+    "prompt": "a slender masked dancer in a black domino costume and white porcelain Venetian mask, mid-pirouette in an empty Victorian ballroom, nothing visible behind the eye holes",
+    "bekoring": true
+  },
+  {
+    "id": "betoverde-dichter",
+    "naam": "Betoverde dichter",
+    "gruwel": 1,
+    "taaiheid": 9,
+    "schade": 1,
+    "leven": 2,
+    "eigenschap": "Een dichter die alleen nog haar naam rijmt. Bekoring: weersta hem met Charisma. Verlies je, dan leent hij 1 Pond van je, voor bloemen.",
+    "prompt": "a pale dishevelled Victorian poet with long hair and an open collar, ink-stained fingers clutching pages covered with one repeated name, standing in a candlelit garret",
+    "mens": true,
+    "bekoring": true,
+    "verliesPond": 1
+  },
+  {
+    "id": "opwindsoldaat",
+    "naam": "Opwindsoldaat",
+    "gruwel": 1,
+    "taaiheid": 12,
+    "schade": 2,
+    "leven": 3,
+    "eigenschap": "Een tinnen soldaat zo groot als een man, met een sleutel in zijn rug. Je moet hem drie keer raken.",
+    "prompt": "a man-sized Victorian tin toy soldier with chipped red paint and a large brass winding key in its back, marching stiffly through a foggy street with a bayonet"
+  },
+  {
+    "id": "tijdverlorene",
+    "naam": "Tijdverlorene",
+    "gruwel": 2,
+    "taaiheid": 10,
+    "schade": 1,
+    "leven": 2,
+    "eigenschap": "Iemand die al jaren op weg is naar een afspraak. Verlies je, dan raak je Verdwaald, tussen twee uren in.",
+    "prompt": "a faded translucent Victorian gentleman from an earlier decade in an outdated frock coat, staring at a pocket watch with no hands, walking through a wall in a foggy street",
+    "verliesToestand": "verdwaald"
+  },
+  {
+    "id": "slingerhond",
+    "naam": "Slingerhond",
+    "gruwel": 1,
+    "taaiheid": 10,
+    "schade": 2,
+    "leven": 2,
+    "eigenschap": "Een hond van messing met een slinger als staart. Hij loopt elke Onheilsfase naar de dichtstbijzijnde held.",
+    "prompt": "a lean hound made of brass and clockwork, its tail a swinging pendulum, eyes of watch-glass, prowling through a Victorian alley at night",
+    "beweging": {
+      "type": "naarHeld"
+    }
+  },
+  {
+    "id": "krantenjongen",
+    "naam": "Krantenjongen",
+    "gruwel": 0,
+    "taaiheid": 9,
+    "schade": 1,
+    "leven": 2,
+    "eigenschap": "Een jongen met een stapel kranten van morgen. Snel: hij beweegt elke Onheilsfase 2 plekken. Verlies je, dan steelt hij 1 Aanwijzing.",
+    "prompt": "a grinning ragged Victorian newsboy in an oversized cap with a satchel of newspapers whose headlines are moving, shouting on a foggy street corner, eyes far too old for his face",
+    "mens": true,
+    "beweging": {
+      "type": "willekeurig",
+      "stappen": 2
+    },
+    "verliesAanw": 1
+  },
+  {
+    "id": "leugenaar",
+    "naam": "Leugenaar",
+    "gruwel": 0,
+    "taaiheid": 9,
+    "schade": 1,
+    "leven": 2,
+    "eigenschap": "Een getuige die alles heeft gezien, behalve wat er gebeurde. Win je, dan krijg je 1 Aanwijzing. Of die waar is, weet je pas later.",
+    "prompt": "a shabby Victorian man in a bowler hat with an earnest honest face, hand on heart, swearing an oath in a dim pub while his shadow on the wall laughs",
+    "mens": true,
+    "beloning": {
+      "aanwijzing": 1
+    }
+  },
+  {
+    "id": "gerucht",
+    "naam": "Gerucht",
+    "gruwel": 2,
+    "taaiheid": 9,
+    "schade": 1,
+    "leven": 2,
+    "eigenschap": "Een fluistering met een lichaam. Na een gewonnen gevecht trek je geen trofee: het gerucht lost op. Verlies je, dan is wat je zeker wist weer onzeker.",
+    "prompt": "a whispering shape made of torn paper scraps and cigarette smoke drifting through a crowded Victorian street, faces of passers-by turned toward it, mouths moving",
+    "geenTrofee": true,
+    "maaktOnzeker": true
+  },
+  {
+    "id": "deurwaarder",
+    "naam": "Deurwaarder",
+    "gruwel": 0,
+    "taaiheid": 10,
+    "schade": 1,
+    "leven": 2,
+    "eigenschap": "Een mens met een dagvaarding en een knuppel. Verlies je, dan heb je Schuld.",
+    "prompt": "a heavy-set Victorian bailiff in a bowler hat and long coat, holding a rolled summons and a cudgel, blocking a narrow tenement doorway",
+    "mens": true,
+    "verliesToestand": "schuld"
+  },
+  {
+    "id": "schuldspook",
+    "naam": "Schuldspook",
+    "gruwel": 2,
+    "taaiheid": 10,
+    "schade": 1,
+    "leven": 2,
+    "eigenschap": "De schim van iemand die nooit kon afbetalen. Verlies je, dan neemt hij 2 Pond mee.",
+    "prompt": "a translucent grey ghost of a Victorian debtor in prison rags, chains of coins around its wrists, holding out empty hands in a debtors' prison corridor",
+    "verliesPond": 2
+  },
+  {
+    "id": "goudworm",
+    "naam": "Goudworm",
+    "gruwel": 1,
+    "taaiheid": 11,
+    "schade": 2,
+    "leven": 2,
+    "eigenschap": "Een worm die door de kluizen kruipt en munten eet. Win je, dan krijg je 3 Pond uit zijn buik.",
+    "prompt": "a long segmented worm with a hide of fused gold coins burrowing out of a bank vault wall, coins spilling from its mouth, lit by a single lantern",
+    "beloning": {
+      "pond": 3
+    }
+  }
+]

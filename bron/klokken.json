@@ -1,0 +1,489 @@
+{
+  "versie": 2,
+  "datum": "2026-11-23",
+  "potjes": 39857,
+  "formule": "logit(kans) = logit(basis[speelduur][god][stand][helden]) - plafond[stand] * (1 - exp(-T / plafond[stand])), T = som van zwaarte[klok][stand]",
+  "basis": {
+    "vathrun": {
+      "ontspannen": {
+        "2": 0.925,
+        "4": 0.927
+      },
+      "normaal": {
+        "2": 0.708,
+        "4": 0.75
+      },
+      "genadeloos": {
+        "2": 0.267,
+        "4": 0.19
+      }
+    },
+    "azh-ilareth": {
+      "ontspannen": {
+        "2": 0.897,
+        "4": 0.928
+      },
+      "normaal": {
+        "2": 0.718,
+        "4": 0.731
+      },
+      "genadeloos": {
+        "2": 0.278,
+        "4": 0.268
+      }
+    },
+    "nebet-ankhu": {
+      "ontspannen": {
+        "2": 0.937,
+        "4": 0.942
+      },
+      "normaal": {
+        "2": 0.826,
+        "4": 0.829
+      },
+      "genadeloos": {
+        "2": 0.426,
+        "4": 0.279
+      }
+    },
+    "ysmara": {
+      "ontspannen": {
+        "2": 0.93,
+        "4": 0.951
+      },
+      "normaal": {
+        "2": 0.715,
+        "4": 0.81
+      },
+      "genadeloos": {
+        "2": 0.224,
+        "4": 0.229
+      }
+    },
+    "morghast": {
+      "ontspannen": {
+        "2": 0.912,
+        "4": 0.914
+      },
+      "normaal": {
+        "2": 0.729,
+        "4": 0.75
+      },
+      "genadeloos": {
+        "2": 0.285,
+        "4": 0.21
+      }
+    },
+    "ommeth": {
+      "ontspannen": {
+        "2": 0.87,
+        "4": 0.969
+      },
+      "normaal": {
+        "2": 0.648,
+        "4": 0.623
+      },
+      "genadeloos": {
+        "2": 0.167,
+        "4": 0.13
+      }
+    },
+    "karathos": {
+      "ontspannen": {
+        "2": 0.907,
+        "4": 0.981
+      },
+      "normaal": {
+        "2": 0.673,
+        "4": 0.87
+      },
+      "genadeloos": {
+        "2": 0.29,
+        "4": 0.241
+      }
+    },
+    "ulvereth": {
+      "ontspannen": {
+        "2": 0.944,
+        "4": 0.957
+      },
+      "normaal": {
+        "2": 0.784,
+        "4": 0.772
+      },
+      "genadeloos": {
+        "2": 0.253,
+        "4": 0.216
+      }
+    },
+    "sirrhae": {
+      "ontspannen": {
+        "2": 0.944,
+        "4": 0.981
+      },
+      "normaal": {
+        "2": 0.747,
+        "4": 0.747
+      },
+      "genadeloos": {
+        "2": 0.401,
+        "4": 0.216
+      }
+    },
+    "ouroch": {
+      "ontspannen": {
+        "2": 0.858,
+        "4": 0.932
+      },
+      "normaal": {
+        "2": 0.549,
+        "4": 0.735
+      },
+      "genadeloos": {
+        "2": 0.302,
+        "4": 0.154
+      }
+    },
+    "yth-nemora": {
+      "ontspannen": {
+        "2": 0.944,
+        "4": 0.994
+      },
+      "normaal": {
+        "2": 0.71,
+        "4": 0.796
+      },
+      "genadeloos": {
+        "2": 0.117,
+        "4": 0.154
+      }
+    },
+    "gul-marrach": {
+      "ontspannen": {
+        "2": 0.92,
+        "4": 0.957
+      },
+      "normaal": {
+        "2": 0.636,
+        "4": 0.796
+      },
+      "genadeloos": {
+        "2": 0.253,
+        "4": 0.241
+      }
+    }
+  },
+  "basisLang": {
+    "vathrun": {
+      "ontspannen": {
+        "2": 0.853,
+        "4": 0.877
+      },
+      "normaal": {
+        "2": 0.671,
+        "4": 0.708
+      },
+      "genadeloos": {
+        "2": 0.295,
+        "4": 0.269
+      }
+    },
+    "azh-ilareth": {
+      "ontspannen": {
+        "2": 0.838,
+        "4": 0.87
+      },
+      "normaal": {
+        "2": 0.683,
+        "4": 0.757
+      },
+      "genadeloos": {
+        "2": 0.287,
+        "4": 0.285
+      }
+    },
+    "nebet-ankhu": {
+      "ontspannen": {
+        "2": 0.858,
+        "4": 0.873
+      },
+      "normaal": {
+        "2": 0.705,
+        "4": 0.739
+      },
+      "genadeloos": {
+        "2": 0.359,
+        "4": 0.296
+      }
+    },
+    "ysmara": {
+      "ontspannen": {
+        "2": 0.784,
+        "4": 0.874
+      },
+      "normaal": {
+        "2": 0.634,
+        "4": 0.766
+      },
+      "genadeloos": {
+        "2": 0.202,
+        "4": 0.237
+      }
+    },
+    "morghast": {
+      "ontspannen": {
+        "2": 0.876,
+        "4": 0.9
+      },
+      "normaal": {
+        "2": 0.758,
+        "4": 0.775
+      },
+      "genadeloos": {
+        "2": 0.378,
+        "4": 0.27
+      }
+    },
+    "ommeth": {
+      "ontspannen": {
+        "2": 0.858,
+        "4": 0.907
+      },
+      "normaal": {
+        "2": 0.537,
+        "4": 0.648
+      },
+      "genadeloos": {
+        "2": 0.068,
+        "4": 0.093
+      }
+    },
+    "karathos": {
+      "ontspannen": {
+        "2": 0.821,
+        "4": 0.895
+      },
+      "normaal": {
+        "2": 0.599,
+        "4": 0.821
+      },
+      "genadeloos": {
+        "2": 0.302,
+        "4": 0.142
+      }
+    },
+    "ulvereth": {
+      "ontspannen": {
+        "2": 0.883,
+        "4": 0.969
+      },
+      "normaal": {
+        "2": 0.648,
+        "4": 0.772
+      },
+      "genadeloos": {
+        "2": 0.167,
+        "4": 0.241
+      }
+    },
+    "sirrhae": {
+      "ontspannen": {
+        "2": 0.87,
+        "4": 0.957
+      },
+      "normaal": {
+        "2": 0.71,
+        "4": 0.685
+      },
+      "genadeloos": {
+        "2": 0.154,
+        "4": 0.08
+      }
+    },
+    "ouroch": {
+      "ontspannen": {
+        "2": 0.821,
+        "4": 0.895
+      },
+      "normaal": {
+        "2": 0.698,
+        "4": 0.772
+      },
+      "genadeloos": {
+        "2": 0.068,
+        "4": 0.093
+      }
+    },
+    "yth-nemora": {
+      "ontspannen": {
+        "2": 0.895,
+        "4": 0.969
+      },
+      "normaal": {
+        "2": 0.821,
+        "4": 0.809
+      },
+      "genadeloos": {
+        "2": 0.191,
+        "4": 0.167
+      }
+    },
+    "gul-marrach": {
+      "ontspannen": {
+        "2": 0.66,
+        "4": 0.92
+      },
+      "normaal": {
+        "2": 0.599,
+        "4": 0.71
+      },
+      "genadeloos": {
+        "2": 0.093,
+        "4": 0.13
+      }
+    }
+  },
+  "plafond": {
+    "ontspannen": 14.732,
+    "normaal": 12.563,
+    "genadeloos": 7.696
+  },
+  "klokken": [
+    {
+      "id": "dikke-mist",
+      "zwaarte": {
+        "ontspannen": 0.479,
+        "normaal": 0.718,
+        "genadeloos": 1.318
+      }
+    },
+    {
+      "id": "lege-zakken",
+      "zwaarte": {
+        "ontspannen": 0.35,
+        "normaal": 0.451,
+        "genadeloos": 0.896
+      }
+    },
+    {
+      "id": "gesloten-lijnen",
+      "zwaarte": {
+        "ontspannen": 0.289,
+        "normaal": 0.339,
+        "genadeloos": 0.745
+      }
+    },
+    {
+      "id": "zware-benen",
+      "zwaarte": {
+        "ontspannen": 0.223,
+        "normaal": 0.229,
+        "genadeloos": 0.613
+      }
+    },
+    {
+      "id": "zwijgende-getuigen",
+      "zwaarte": {
+        "ontspannen": 0.19,
+        "normaal": 0.212,
+        "genadeloos": 0.655
+      }
+    },
+    {
+      "id": "taaie-wezens",
+      "zwaarte": {
+        "ontspannen": 0.357,
+        "normaal": 0.337,
+        "genadeloos": 0.718
+      }
+    },
+    {
+      "id": "huiveringwekkend",
+      "zwaarte": {
+        "ontspannen": 0.373,
+        "normaal": 0.285,
+        "genadeloos": 0.728
+      }
+    },
+    {
+      "id": "scheurende-stad",
+      "zwaarte": {
+        "ontspannen": 0.501,
+        "normaal": 0.506,
+        "genadeloos": 1.118
+      }
+    },
+    {
+      "id": "slapeloze-nachten",
+      "zwaarte": {
+        "ontspannen": 0.634,
+        "normaal": 0.964,
+        "genadeloos": 1.14
+      }
+    },
+    {
+      "id": "geen-tweede-worp",
+      "zwaarte": {
+        "ontspannen": 0.688,
+        "normaal": 0.731,
+        "genadeloos": 0.845
+      }
+    },
+    {
+      "id": "ongeduldige-god",
+      "zwaarte": {
+        "ontspannen": 1.045,
+        "normaal": 1.22,
+        "genadeloos": 1.691
+      }
+    },
+    {
+      "id": "dertien-slagen",
+      "zwaarte": {
+        "ontspannen": 1.268,
+        "normaal": 1.533,
+        "genadeloos": 1.361
+      }
+    },
+    {
+      "id": "geen-genade",
+      "zwaarte": {
+        "ontspannen": 0.388,
+        "normaal": 0.46,
+        "genadeloos": 0
+      }
+    }
+  ],
+  "basisNieuweGoden": "De basis van de zeven nieuwe goden komt uit de testbot (80 potjes per instelling, zonder klokken), nog niet uit het gefitte model. Bij de volgende meting met tools/meet-klokken.js gaan ze mee.",
+  "oudeWereld": {
+    "gewoon": {
+      "ontspannen": {
+        "2": 0.13,
+        "4": -0.06
+      },
+      "normaal": {
+        "2": -0.18,
+        "4": -0.12
+      },
+      "genadeloos": {
+        "2": -0.12,
+        "4": 0.02
+      }
+    },
+    "lang": {
+      "ontspannen": {
+        "2": -0.15,
+        "4": -0.47
+      },
+      "normaal": {
+        "2": -0.37,
+        "4": -0.18
+      },
+      "genadeloos": {
+        "2": 0.14,
+        "4": -0.42
+      }
+    }
+  },
+  "oudeWereldUitleg": "Verschil in logit van de winkans met de uitbreiding Kaarten van de Oude Wereld aan, per stand en aantal helden: gemiddelde over twaalf goden, testbot met 80 (gewoon) en 40 (De Lange Nacht) potjes per instelling."
+}

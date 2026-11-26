@@ -1,0 +1,729 @@
+[
+  {
+    "id": "hu-yiping",
+    "naam": "Hu Yiping",
+    "leeftijd": 26,
+    "beroep": "Houdt een vechtschool in Limehouse",
+    "rol": "Vechtsporter",
+    "start": "Limehouse",
+    "achtergrond": "Haar vader stookte de ketels van theeklippers. Zelf leert ze havenkinderen stokvechten in een kelder onder een wasserij. Sinds drie van haar leerlingen 's nachts naar de rivier zijn gelopen en niet terugkwamen, houdt ze haar stok binnen handbereik.",
+    "kenmerken": {
+      "kennis": 1,
+      "scherpte": 3,
+      "kracht": 4,
+      "overtuiging": 2
+    },
+    "lichaam": 7,
+    "geest": 5,
+    "vermogen": {
+      "naam": "Ademdiscipline",
+      "tekst": "Eén keer per ronde mag je bij een Kracht-test één dobbelsteen opnieuw gooien."
+    },
+    "eigenaardigheid": "Weigert vuurwapens te dragen.",
+    "uitrusting": [
+      "Bamboestok",
+      "Gedroogde gember"
+    ],
+    "bondgenoot": null,
+    "prompt": "young Chinese woman in her mid-twenties, 1888 East London, practical dark padded jacket and trousers, hair tightly braided, holding a worn bamboo fighting staff, calm watchful expression, steam and lantern light of a basement laundry behind her"
+  },
+  {
+    "id": "ambrose-pell",
+    "naam": "Professor Ambrose Pell",
+    "leeftijd": 61,
+    "beroep": "Beheerder van een sterrenwacht op Hampstead Heath",
+    "rol": "Sterrenkundige",
+    "start": "Hampstead",
+    "achtergrond": "Veertig jaar lang tekende hij elke ster boven Londen in zijn kaartenboeken. Op een heldere novembernacht stond er één te veel. Elke nacht staat hij een fractie dichter bij de maan, en niemand bij de Royal Society wil zijn platen zien.",
+    "kenmerken": {
+      "kennis": 4,
+      "scherpte": 3,
+      "kracht": 1,
+      "overtuiging": 2
+    },
+    "lichaam": 5,
+    "geest": 7,
+    "vermogen": {
+      "naam": "Sterrenkaart",
+      "tekst": "Aan het begin van elke ronde mag je de bovenste Onheilskaart bekijken en hem bovenop of onderop de stapel leggen."
+    },
+    "eigenaardigheid": "Slaapt overdag, en slecht.",
+    "uitrusting": [
+      "Koperen zakkijker",
+      "Kaartenboek"
+    ],
+    "bondgenoot": null,
+    "prompt": "elderly English astronomer, sixty years old, white mutton-chop whiskers, rumpled tweed coat and woollen scarf, brass telescope under one arm, standing in a domed observatory at night, cold starlight from the open roof slit"
+  },
+  {
+    "id": "hester-quayle",
+    "naam": "Hester Quayle",
+    "leeftijd": 34,
+    "beroep": "Catalogusbeambte in de leeszaal van het British Museum",
+    "rol": "Bibliothecaris",
+    "start": "Bloomsbury",
+    "achtergrond": "De enige vrouw achter de balie van de ronde leeszaal, en de enige die weet waar alles staat. Een boek dat niet in de catalogus voorkomt, keert elke ochtend terug op een andere plank. Zij is van plan uit te zoeken wie het daar neerlegt.",
+    "kenmerken": {
+      "kennis": 4,
+      "scherpte": 4,
+      "kracht": 1,
+      "overtuiging": 1
+    },
+    "lichaam": 5,
+    "geest": 7,
+    "vermogen": {
+      "naam": "Catalogus",
+      "tekst": "Als je een Boek trekt (bij winkelen of studeren), trek je er één extra. Houd er één en leg de rest terug."
+    },
+    "eigenaardigheid": "Kan geen boek ongelezen laten liggen.",
+    "uitrusting": [
+      "Leesbril",
+      "Indexkaartjes"
+    ],
+    "bondgenoot": {
+      "naam": "Mr. Panizzi",
+      "soort": "museumkat",
+      "tekst": "Eén keer per ronde: als je een Aanwijzing zou verliezen, houdt Panizzi hem vast. Je verliest hem niet."
+    },
+    "prompt": "woman in her thirties, 1888, high-collared dark grey dress, spectacles, hair pinned up, carrying a stack of leather-bound books, a large tabby cat on the reading desk beside her, the great domed reading room of a Victorian library glowing in the background"
+  },
+  {
+    "id": "bridie-kavanagh",
+    "naam": "Bridie Kavanagh",
+    "leeftijd": 29,
+    "beroep": "Wasvrouw in Southwark",
+    "rol": "Volksheks",
+    "start": "Southwark",
+    "achtergrond": "Haar grootmoeder uit County Clare liet haar een keukenboek na met recepten die niets met eten te maken hebben. Bridie leest theebladeren voor de buren, voor een penny per kopje. De laatste tijd vormen de bladeren in elk kopje dezelfde figuur.",
+    "kenmerken": {
+      "kennis": 3,
+      "scherpte": 2,
+      "kracht": 2,
+      "overtuiging": 3
+    },
+    "lichaam": 6,
+    "geest": 6,
+    "vermogen": {
+      "naam": "Theebladeren",
+      "tekst": "Als een spreuk mislukt, mag je een voorwerp afleggen om hem meteen opnieuw te proberen."
+    },
+    "eigenaardigheid": "Draagt altijd zout in haar schortzak.",
+    "uitrusting": [
+      "Grootmoeders keukenboek",
+      "1 spreuk"
+    ],
+    "bondgenoot": {
+      "naam": "Molly",
+      "soort": "ekster",
+      "tekst": "Eén keer per ronde mag Molly een klein voorwerp naar een held op een aangrenzende plek brengen."
+    },
+    "prompt": "Irish washerwoman around thirty, 1888 London, rolled-up sleeves and patched apron, auburn hair escaping a headscarf, reading tea leaves in a chipped cup, a magpie perched on a washtub, steam and candlelight in a cramped kitchen"
+  },
+  {
+    "id": "albert-gosling",
+    "naam": "Albert Gosling",
+    "bijnaam": "De Grote Orsini",
+    "leeftijd": 42,
+    "beroep": "Goochelaar in het Alhambra-theater, Leicester Square",
+    "rol": "Toneelmagiër",
+    "start": "Leicester Square",
+    "achtergrond": "Achter het Italiaanse toneelpak zit een jongen uit Bermondsey die als kind al kaarten kon laten verdwijnen. Op een avond verdween zijn assistente midden in een truc echt. Sinds die avond oefent hij met trucs die hij nooit op het toneel zou durven tonen.",
+    "kenmerken": {
+      "kennis": 1,
+      "scherpte": 3,
+      "kracht": 2,
+      "overtuiging": 4
+    },
+    "lichaam": 6,
+    "geest": 6,
+    "vermogen": {
+      "naam": "Verdwijntruc",
+      "tekst": "Je sluit Scheuren met Charisma in plaats van Kennis: wat de Grote Orsini laat verdwijnen, blijft weg. Eén keer per ronde mag je ook een voorwerp ruilen met een held op een andere plek in Londen."
+    },
+    "eigenaardigheid": "Kan niet tegen applaus dat te lang duurt.",
+    "uitrusting": [
+      "Wandelstok met verborgen lemmet",
+      "1 spreuk"
+    ],
+    "bondgenoot": {
+      "naam": "Garibaldi",
+      "soort": "witte duif",
+      "tekst": "Eén keer per spel: Garibaldi brengt een bericht en je mag direct naar een willekeurige plek in Londen reizen."
+    },
+    "prompt": "Victorian music-hall stage magician in his forties, waxed moustache, black tailcoat with red-lined cape, holding a fan of playing cards, a white dove on his shoulder, footlights glowing from below, red velvet theatre curtain behind"
+  },
+  {
+    "id": "septimus-crane",
+    "naam": "Dr. Septimus Crane",
+    "leeftijd": 68,
+    "beroep": "Emeritus hoogleraar vergelijkende taalkunde, King's College",
+    "rol": "Hoogleraar",
+    "start": "Strand",
+    "achtergrond": "Hij ontcijferde drie dode talen en schreef er zeven boeken over die niemand las. Nu brengt een koerier hem elke week een kleitablet zonder afzender. Het schrift lijkt nergens op, maar hij kan het toch lezen. Dat baart hem zorgen.",
+    "kenmerken": {
+      "kennis": 4,
+      "scherpte": 2,
+      "kracht": 1,
+      "overtuiging": 3
+    },
+    "lichaam": 4,
+    "geest": 8,
+    "vermogen": {
+      "naam": "Ontcijferen",
+      "tekst": "Bij een Kennis-test gooi je één extra dobbelsteen voor elke Aanwijzing die je hebt (maximaal twee extra)."
+    },
+    "eigenaardigheid": "Verbetert ieders uitspraak, ook die van monsters.",
+    "uitrusting": [
+      "Vergrootglas",
+      "Kleitablet"
+    ],
+    "bondgenoot": null,
+    "prompt": "frail English professor near seventy, bald with long white side whiskers, academic gown over a black frock coat, examining a clay tablet under a magnifying glass, cluttered study full of books and maps, warm oil-lamp light"
+  },
+  {
+    "id": "odile-fairweather",
+    "naam": "Madame Odile Fairweather",
+    "leeftijd": 45,
+    "beroep": "Spiritistisch medium uit New Orleans, nu in Marylebone",
+    "rol": "Medium",
+    "start": "Marylebone",
+    "achtergrond": "Ze groeide op in het Franse Kwartier van New Orleans, bij een grootmoeder die de doden bij naam aansprak. In Londen zijn haar seances voor de helft toneel: verborgen draden, een tafel die kraakt op commando. Over de andere helft praat ze liever niet. Een stem die ze nooit heeft uitgenodigd, komt nu elke seance terug en noemt de namen van mensen die nog leven.",
+    "kenmerken": {
+      "kennis": 3,
+      "scherpte": 3,
+      "kracht": 1,
+      "overtuiging": 3
+    },
+    "lichaam": 5,
+    "geest": 7,
+    "vermogen": {
+      "naam": "Voorgevoel",
+      "tekst": "Eén keer per spel mag je een Onheilskaart negeren voordat hij wordt uitgevoerd. Leg hem weg en trek een nieuwe."
+    },
+    "eigenaardigheid": "Kan niet in een kamer met spiegels slapen.",
+    "uitrusting": [
+      "Kristallen bol",
+      "Seancetafeltje"
+    ],
+    "bondgenoot": null,
+    "prompt": "Creole woman of colour from New Orleans in her mid-forties, warm brown skin, high cheekbones, knowing half-smile, a tall tignon headwrap of saffron and emerald silk, heavy gold hoop earrings, a deep plum gown with gold embroidery and a fringed paisley shawl, a small gris-gris charm bag on a cord at her wrist, seated at a round seance table with her ringed hands spread around a crystal ball, tarot cards fanned beside it, warm red-gold candlelight from below, dried herbs and a painted saint's candle on a shelf behind her, faint ghostly mist curling at the edges"
+  },
+  {
+    "id": "cordelia-vane",
+    "naam": "Lady Cordelia Vane",
+    "leeftijd": 31,
+    "beroep": "Weduwe en erfgename van een rederij",
+    "rol": "Rijke dame",
+    "start": "Mayfair",
+    "achtergrond": "Ze erfde van haar man een vloot van negen schepen en een kantoor vol vragen. Elk schip dat terugkeert uit de zuidelijke zeeën, meert aan met één bemanningslid minder dan bij vertrek. In het logboek staat steeds dezelfde aantekening: hij ging naar beneden om te luisteren.",
+    "kenmerken": {
+      "kennis": 2,
+      "scherpte": 2,
+      "kracht": 2,
+      "overtuiging": 4
+    },
+    "lichaam": 6,
+    "geest": 6,
+    "vermogen": {
+      "naam": "Salonkringen",
+      "tekst": "Als je winkelt, kost alles 1 Pond minder (minimaal 1)."
+    },
+    "eigenaardigheid": "Draagt nog altijd rouwzwart, uit gewoonte.",
+    "uitrusting": [
+      "Damespistool",
+      "3 Pond"
+    ],
+    "bondgenoot": null,
+    "prompt": "pale aristocratic English widow of thirty-one, standing upright and composed, striking auburn hair swept up under a small black mourning bonnet with a short veil pushed back, cool grey eyes, severe black bombazine mourning gown with a high crape collar and a single cameo brooch, a ship's logbook held closed against her chest with gloved hands, behind her a tall rain-streaked window of a Mayfair shipping office with masts faint in the fog, cold silver-blue daylight from the side, no candles"
+  },
+  {
+    "id": "silas-rook",
+    "naam": "Silas Rook",
+    "leeftijd": 50,
+    "beroep": "Privédetective, voorheen Scotland Yard",
+    "rol": "Detective",
+    "start": "Whitechapel",
+    "achtergrond": "Hij werd van de Yard gestuurd omdat hij te veel vragen stelde over de verkeerde zaken. Nu huurt hij een kamer boven een slagerij in Whitechapel en neemt hij elke zaak aan die anderen laten liggen. Zijn notitieboek staat vol tekeningen van een symbool dat hij op zeven muren heeft gevonden.",
+    "kenmerken": {
+      "kennis": 2,
+      "scherpte": 4,
+      "kracht": 3,
+      "overtuiging": 1
+    },
+    "lichaam": 7,
+    "geest": 5,
+    "vermogen": {
+      "naam": "Dossier",
+      "tekst": "Je mag een Aanwijzing uitgeven om bij elke soort test een dobbelsteen opnieuw te gooien, niet alleen bij Kennis en Waarneming."
+    },
+    "eigenaardigheid": "Vertrouwt geen enkele agent in uniform.",
+    "uitrusting": [
+      "Revolver",
+      "Notitieboek"
+    ],
+    "bondgenoot": null,
+    "prompt": "weathered former police detective around fifty, 1888 Whitechapel, grey stubble, bowler hat and long rain-soaked overcoat, notebook in one hand, standing in a foggy cobbled alley under a single gas lamp, chalk symbol on the brick wall behind"
+  },
+  {
+    "id": "winnie-lusk",
+    "naam": "Winifred \"Winnie\" Lusk",
+    "leeftijd": 23,
+    "beroep": "Secretaresse van een genootschap voor paranormaal onderzoek",
+    "rol": "Onderzoeker",
+    "start": "Westminster",
+    "achtergrond": "Ze typt elk verslag van spookverschijningen uit dat het genootschap binnenkrijgt, en ze houdt een eigen kaartsysteem bij. Haar kaartjes laten een patroon zien dat de heren in het bestuur weglachen: alle meldingen liggen op een kaart van Londen in een spiraal.",
+    "kenmerken": {
+      "kennis": 3,
+      "scherpte": 4,
+      "kracht": 1,
+      "overtuiging": 2
+    },
+    "lichaam": 5,
+    "geest": 7,
+    "vermogen": {
+      "naam": "Kruisverwijzing",
+      "tekst": "Eén keer per ronde mag een held op jouw plek één dobbelsteen opnieuw gooien."
+    },
+    "eigenaardigheid": "Schrijft alles op, ook wat ze beter kan vergeten.",
+    "uitrusting": [
+      "Typemachine",
+      "Kaartsysteem"
+    ],
+    "bondgenoot": null,
+    "prompt": "bright young woman in her early twenties, 1888, white shirtwaist blouse and dark skirt, ink-stained fingers, pencil behind her ear, sitting at an early typewriter surrounded by index card drawers and a pinned map of London with string lines"
+  },
+  {
+    "id": "esme-valentine",
+    "naam": "Esme Valentine",
+    "leeftijd": 27,
+    "beroep": "Zangeres in een Covent Garden music hall",
+    "rol": "Zangeres",
+    "start": "Covent Garden",
+    "achtergrond": "Haar diepe alt vult elke zaal, en sinds kort laat hij ook de gaslampen flakkeren. Ze heeft een lied in haar hoofd waarvan ze de woorden niet kent en de melodie niet kwijtraakt. Wie het hoort, kijkt een ogenblik naar iets wat er niet is.",
+    "kenmerken": {
+      "kennis": 3,
+      "scherpte": 2,
+      "kracht": 1,
+      "overtuiging": 4
+    },
+    "lichaam": 5,
+    "geest": 7,
+    "vermogen": {
+      "naam": "Lied dat bindt",
+      "tekst": "Een spreuk die jij uitspreekt, mag ook een held op een aangrenzende plek helpen."
+    },
+    "eigenaardigheid": "Neuriet als ze bang is, en dat hoort iedereen.",
+    "uitrusting": [
+      "Bladmuziek zonder titel",
+      "1 spreuk"
+    ],
+    "bondgenoot": null,
+    "prompt": "music-hall singer in her late twenties, 1888, emerald green satin gown with feathers in dark curled hair, singing on a small stage, gas footlights flaring unnaturally bright, smoky audience silhouettes, theatrical warm and green light"
+  },
+  {
+    "id": "tobias-hale",
+    "naam": "Sergeant Tobias Hale",
+    "leeftijd": 38,
+    "beroep": "Oud-soldaat, portier in Chelsea",
+    "rol": "Soldaat",
+    "start": "Chelsea",
+    "achtergrond": "Hij overleefde de woestijn bij Maiwand en kwam terug met een kogel in zijn schouder en dromen die hij niemand vertelt. Nu bewaakt hij de poort van een tehuis voor oud-militairen. Daar is hij de enige die ziet dat sommige bewoners 's nachts in looppas het terrein af gaan, met hun ogen dicht.",
+    "kenmerken": {
+      "kennis": 1,
+      "scherpte": 2,
+      "kracht": 4,
+      "overtuiging": 3
+    },
+    "lichaam": 8,
+    "geest": 4,
+    "vermogen": {
+      "naam": "Doorvechter",
+      "tekst": "Als je een monster verslaat, mag je meteen nog een monster op jouw plek aanvallen."
+    },
+    "eigenaardigheid": "Zit altijd met zijn rug naar de muur.",
+    "uitrusting": [
+      "Dienstgeweer",
+      "Medaille van de veldtocht"
+    ],
+    "bondgenoot": null,
+    "prompt": "broad-shouldered British army veteran in his late thirties, 1888, scarlet tunic worn open over a work shirt, campaign medal on his chest, rifle slung, scar across his cheek, standing guard at an iron gate at dusk, red brick and wet cobbles"
+  },
+  {
+    "id": "cornelius-bray",
+    "naam": "Dr. Cornelius Bray",
+    "leeftijd": 44,
+    "beroep": "Egyptoloog en avonturier",
+    "rol": "Archeoloog",
+    "start": "St Katharine Docks",
+    "achtergrond": "Hij is net terug uit Thebe, met kisten die het museum niet heeft besteld. Een ervan is leeg op de verzegeling na, en die is van binnenuit verbroken. Hij heeft liever een schop dan een pen in zijn hand, maar nu moet hij voor het eerst echt gaan lezen.",
+    "kenmerken": {
+      "kennis": 3,
+      "scherpte": 3,
+      "kracht": 3,
+      "overtuiging": 1
+    },
+    "lichaam": 7,
+    "geest": 5,
+    "vermogen": {
+      "naam": "Opgraving",
+      "tekst": "Als je een Artefact krijgt, trek je er twee. Houd er één en leg de ander onderop de stapel."
+    },
+    "eigenaardigheid": "Raakt dingen aan die hij niet aan zou moeten raken.",
+    "uitrusting": [
+      "Bijl van de opgraving",
+      "Lantaarn"
+    ],
+    "bondgenoot": null,
+    "prompt": "rugged explorer-archaeologist in his mid-forties, 1888, sun-browned skin, khaki field jacket and canvas trousers, battered pith helmet under his arm, crowbar in hand, standing beside an opened wooden crate stamped with Egyptian markings in a dim dockside warehouse"
+  },
+  {
+    "id": "clementine-ashby",
+    "naam": "Clementine Ashby",
+    "leeftijd": 19,
+    "beroep": "Violiste in een strijkkwartet in Soho",
+    "rol": "Violiste",
+    "start": "Soho",
+    "achtergrond": "Sinds de zomer droomt ze elke nacht van een kust die niet bestaat, en ze wordt wakker met een melodie die ze moet opschrijven. Het kwartet speelt haar stukken graag. De mensen die ernaar luisteren, slapen daarna onrustig en dromen allemaal over dezelfde kust.",
+    "kenmerken": {
+      "kennis": 2,
+      "scherpte": 3,
+      "kracht": 1,
+      "overtuiging": 4
+    },
+    "lichaam": 5,
+    "geest": 7,
+    "vermogen": {
+      "naam": "Droommelodie",
+      "tekst": "Eén keer per ronde mag een held op jouw plek 1 Geest herstellen."
+    },
+    "eigenaardigheid": "Speelt in haar slaap viool, zonder viool.",
+    "uitrusting": [
+      "Viool",
+      "Partituur in eigen hand"
+    ],
+    "bondgenoot": null,
+    "prompt": "pale young woman of nineteen, 1888, simple lavender dress, long loose fair hair, eyes half-closed, playing the violin by a rain-streaked window in a Soho garret, sheet music scattered on the floor, dreamy blue-grey light"
+  },
+  {
+    "id": "owen-marsh",
+    "naam": "Detective Sergeant Owen Marsh",
+    "leeftijd": 35,
+    "beroep": "Rechercheur bij de CID, Scotland Yard",
+    "rol": "Rechercheur",
+    "start": "Whitehall",
+    "achtergrond": "Een keurige man die gelooft in procedure, bewijs en het reglement. Hij kreeg een stapel dossiers toegeschoven die niemand anders wilde: verdwijningen zonder lichaam, zonder motief, zonder sporen. Hij gelooft nog steeds in het reglement, maar hij leest het nu anders.",
+    "kenmerken": {
+      "kennis": 2,
+      "scherpte": 3,
+      "kracht": 3,
+      "overtuiging": 2
+    },
+    "lichaam": 6,
+    "geest": 6,
+    "vermogen": {
+      "naam": "Bevoegdheid",
+      "tekst": "Eén keer per ronde mag je gratis één extra stap reizen."
+    },
+    "eigenaardigheid": "Vult voor elke ontmoeting een formulier in.",
+    "uitrusting": [
+      "Revolver",
+      "Politiefluitje"
+    ],
+    "bondgenoot": null,
+    "prompt": "neat Victorian police detective in his mid-thirties, 1888, trim moustache, dark three-piece suit, overcoat and bowler hat, holding a thick case file tied with string, standing in a lamp-lit stone corridor of a police headquarters"
+  },
+  {
+    "id": "violet-thorne",
+    "naam": "Miss Violet Thorne",
+    "leeftijd": 33,
+    "beroep": "Koerierster voor het Foreign Office",
+    "rol": "Spionne",
+    "start": "Pall Mall",
+    "achtergrond": "Officieel brengt ze diplomatieke post rond. In werkelijkheid leest ze elke brief voordat ze hem bezorgt, en ze onthoudt alles. De laatste maanden gaan er brieven tussen ambassades die in geen enkele taal geschreven zijn, maar wel allemaal zijn ondertekend met hetzelfde zegel.",
+    "kenmerken": {
+      "kennis": 2,
+      "scherpte": 4,
+      "kracht": 2,
+      "overtuiging": 2
+    },
+    "lichaam": 6,
+    "geest": 6,
+    "vermogen": {
+      "naam": "Onderschepping",
+      "tekst": "Als er een monster op jouw plek verschijnt, mag je meteen één plek verder reizen, zonder te vechten."
+    },
+    "eigenaardigheid": "Gebruikt nooit twee keer dezelfde naam.",
+    "uitrusting": [
+      "Derringer in haar mof",
+      "Briefopener"
+    ],
+    "bondgenoot": null,
+    "prompt": "composed woman in her early thirties, 1888, dark violet travelling dress and short cape, gloved hands holding a sealed envelope with an unusual wax seal, sharp attentive gaze, a gentlemen's club corridor with brass lamps behind her"
+  },
+  {
+    "id": "ezra-whitlock",
+    "naam": "Broeder Ezra Whitlock",
+    "leeftijd": 47,
+    "beroep": "Kok van een gaarkeuken in Spitalfields",
+    "rol": "Gelovige kok",
+    "start": "Spitalfields",
+    "achtergrond": "Hij was ooit kok in een herenclub. Nu schept hij soep voor wie geen geld heeft, en hij bidt bij elke ketel. De rij wordt elke week langer, en steeds vaker staan er mensen in die niet eten en hem alleen maar aankijken.",
+    "kenmerken": {
+      "kennis": 1,
+      "scherpte": 2,
+      "kracht": 3,
+      "overtuiging": 4
+    },
+    "lichaam": 7,
+    "geest": 5,
+    "vermogen": {
+      "naam": "Gaarkeuken",
+      "tekst": "Als je rust, herstelt elke held op jouw plek 1 extra Lichaam."
+    },
+    "eigenaardigheid": "Kan niemand met honger weglaten gaan.",
+    "uitrusting": [
+      "Gietijzeren pollepel",
+      "Gezegend brood"
+    ],
+    "bondgenoot": null,
+    "prompt": "big kind-faced man in his late forties, 1888, sleeves rolled up, stained white apron over a dark waistcoat, wooden cross on a cord, ladling soup from a huge steaming kettle, a crowded East End soup kitchen lit by lanterns, some figures in the queue unnervingly still"
+  },
+  {
+    "id": "paddy-flynn",
+    "naam": "Constable Patrick \"Paddy\" Flynn",
+    "leeftijd": 24,
+    "beroep": "Agent van de rivierpolitie in Wapping",
+    "rol": "Agent met hond",
+    "start": "Wapping",
+    "achtergrond": "Hij roeit 's nachts patrouille op de Theems en vist meer uit het water dan hem lief is. Zijn hond haalde vorige maand een drenkeling boven die nog leefde, maar geen hartslag had. Sindsdien gromt de hond naar het water.",
+    "kenmerken": {
+      "kennis": 1,
+      "scherpte": 3,
+      "kracht": 3,
+      "overtuiging": 3
+    },
+    "lichaam": 7,
+    "geest": 5,
+    "vermogen": {
+      "naam": "Rivierpatrouille",
+      "tekst": "Je mag reizen over de Theems: alle plekken aan de rivier liggen voor jou naast elkaar."
+    },
+    "eigenaardigheid": "Kan niet zwemmen. Vertelt dat aan niemand.",
+    "uitrusting": [
+      "Wapenstok",
+      "Stormlantaarn"
+    ],
+    "bondgenoot": {
+      "naam": "Admiraal",
+      "soort": "Newfoundlander",
+      "tekst": "Eén keer per ronde mag Admiraal 1 Lichaamsschade overnemen van een held op jouw plek."
+    },
+    "prompt": "young Irish river police constable in his mid-twenties, 1888, dark caped uniform and helmet, holding a storm lantern, standing in a rowing boat on the night-black Thames, a huge black Newfoundland dog at his side, fog and distant dock lights"
+  },
+  {
+    "id": "aggie-pruitt",
+    "naam": "Agnes \"Aggie\" Pruitt",
+    "leeftijd": 27,
+    "beroep": "Kogelstootster en krachtvrouw op de kermis bij King's Cross",
+    "rol": "Kogelstootster",
+    "start": "King's Cross",
+    "achtergrond": "Aggie is groter dan de meeste mannen en breder dan de deur van haar woonwagen. Op de kermis aan de Caledonian Road stoot ze een kogel van zestien pond verder dan wie ook, en tilt ze twee smidsknechten tegelijk op. Na de voorstelling breit ze sjaals voor de kinderen van de kermis. Sinds de kleine Tommy van de schiettent 's nachts wegliep in de richting van het spoor, gaat ze elke avond zelf de rails langs, met een lantaarn en haar kogel in een netje over haar schouder.",
+    "kenmerken": {
+      "kennis": 2,
+      "scherpte": 1,
+      "kracht": 4,
+      "overtuiging": 3
+    },
+    "lichaam": 8,
+    "geest": 4,
+    "vermogen": {
+      "naam": "Brede schouders",
+      "tekst": "Verliest een andere held op jouw plek Lichaam in een gevecht, dan mag jij de klap opvangen: jij verliest het Lichaam in zijn plaats."
+    },
+    "eigenaardigheid": "Breit sjaals voor iedereen die ze tegenkomt, ook voor de agenten die haar wegsturen.",
+    "uitrusting": [
+      "IJzeren kogel",
+      "Breiwerk"
+    ],
+    "bondgenoot": null,
+    "prompt": "very tall, broad-shouldered and powerfully built woman in her late twenties, 1888 travelling fair near King's Cross, round friendly freckled face with a shy warm smile, thick auburn hair pinned up, sleeves rolled over muscular forearms, striped strongwoman's leotard under a patched wool skirt and knitted shawl, holding a heavy iron shot ball in one hand and a half-finished scarf on knitting needles in the other, fairground lanterns and a railway viaduct in the fog behind her"
+  },
+  {
+    "id": "lottie-finch",
+    "naam": "Lottie \"Muis\" Finch",
+    "leeftijd": 15,
+    "beroep": "Zakkenroller en informant van Silas Rook",
+    "rol": "Dievegge",
+    "start": "The City",
+    "achtergrond": "Lottie rolt zakken in de drukte rond de Bank of England, zo snel dat de heren het pas thuis merken. Voor een shilling per week vertelt ze Silas Rook wat ze hoort: wie met wie praat, wie er 's nachts pakketjes brengt, wie er niet meer terugkomt. Ze kent elke achterdeur, elk dak en elke kelder van The City. De laatste tijd verdwijnen er kinderen van de straat, en Lottie houdt een lijstje bij van hun namen.",
+    "kenmerken": {
+      "kennis": 1,
+      "scherpte": 4,
+      "kracht": 2,
+      "overtuiging": 3
+    },
+    "lichaam": 6,
+    "geest": 6,
+    "vermogen": {
+      "naam": "Verstoppen",
+      "tekst": "Eén keer per ronde: staat er een monster op je plek, dan mag je je verstoppen. Je vecht niet, maar je hebt wel je ontmoeting."
+    },
+    "eigenaardigheid": "Neemt altijd iets mee, ook als ze het niet nodig heeft. Geeft het meestal later terug.",
+    "uitrusting": [
+      "Lopers en haarspelden",
+      "Gestolen zakhorloge"
+    ],
+    "bondgenoot": null,
+    "prompt": "wiry street girl of about fifteen, 1888 City of London, sharp clever eyes and a crooked grin, smudged cheeks, short dark hair under a too-large flat cap, oversized boy's jacket with many pockets over a patched dress, fingerless gloves, a gold pocket watch dangling from her fingers as if by magic, crouched on a rooftop ledge above a foggy street with the dome of St Paul's faint behind her"
+  },
+  {
+    "id": "julian-hartwell",
+    "naam": "Julian Hartwell",
+    "leeftijd": 31,
+    "beroep": "Voormalig adept van de Orde van de Bleke Lantaarn",
+    "rol": "Occultist",
+    "start": "Soho",
+    "achtergrond": "Julian geloofde dat magie de mensheid kon verheffen. Zeven jaar lang klom hij op in de Orde van de Bleke Lantaarn, tot de nacht in Marylebone waarin hij zag wat Aurelian Croft met de nieuwe leerlingen deed. Hij vluchtte met het zwaard en het boek van zijn graad, en woont nu in een kamer achter een boekwinkel in Soho. Hij droomt nog steeds van een betere wereld. Hij slaapt alleen niet meer.",
+    "kenmerken": {
+      "kennis": 4,
+      "scherpte": 2,
+      "kracht": 2,
+      "overtuiging": 2
+    },
+    "lichaam": 6,
+    "geest": 6,
+    "vermogen": {
+      "naam": "Zwaard van licht",
+      "tekst": "Je vecht met Kennis in plaats van Kracht, en je wapens tellen mee. Maar wat je in de Orde zag, laat je niet los: mislukt een Gruwel-test, dan verlies je 1 Geest extra."
+    },
+    "eigenaardigheid": "Draagt zijn witte gewaad nog onder zijn jas, en schaamt zich ervoor.",
+    "uitrusting": [
+      "Zwaard van de Orde",
+      "Het Witte Boek",
+      "1 spreuk"
+    ],
+    "bondgenoot": null,
+    "prompt": "idealistic but haunted man in his early thirties, 1888 Soho, pale gentle face with dark shadows under dreamy grey eyes, light brown hair falling over his brow, a white ceremonial robe with faded silver embroidery worn under an open dark overcoat, holding a slender straight sword whose blade glows faintly white and a white leather-bound book against his chest, standing in the back room of an occult bookshop among candles and stacked grimoires"
+  },
+  {
+    "id": "pema-lhamo",
+    "naam": "Pema Lhamo",
+    "leeftijd": 29,
+    "beroep": "Medium uit Lhasa, te gast bij de Theosofische Vereniging",
+    "rol": "Droomziener",
+    "start": "Marylebone",
+    "achtergrond": "Ze kwam via Darjeeling naar Londen met de kring rond Madame Blavatsky, die haar 'het meisje uit het Land van Sneeuw' noemt en haar op soirees laat zien. Zelf heeft Pema weinig geduld met salons. Elke nacht droomt ze een ander leven: een veerman op de Tsangpo, een non in Gyantse, een kind in een grauwe stad aan een rivier die Londen heet. In dat laatste leven gaat het mis, en ze wil weten waarom.",
+    "kenmerken": {
+      "kennis": 3,
+      "scherpte": 3,
+      "kracht": 3,
+      "overtuiging": 3
+    },
+    "lichaam": 4,
+    "geest": 7,
+    "vermogen": {
+      "naam": "Vorige levens",
+      "tekst": "Groei je in een kenmerk, dan stijgt er meteen ook een ander kenmerk naar keuze met 1. Je blijft in balans: geen kenmerk mag meer dan 1 boven je laagste uitkomen."
+    },
+    "eigenaardigheid": "Mediteert elke ochtend voor zonsopgang, ook in een logement vol dronkaards.",
+    "uitrusting": [
+      "Mala van 108 kralen",
+      "Droomdagboek"
+    ],
+    "bondgenoot": {
+      "naam": "Ani Yeshe",
+      "soort": "de geest van een non uit een vorig leven",
+      "tekst": "Als je rust, herstel je 1 Geest extra. In de stilte spreekt ze door jou."
+    },
+    "prompt": "Tibetan woman around thirty, 1888 London, calm weathered face with eyes half closed in meditation, long black braids, dark maroon chuba robe with a turquoise and coral necklace, a string of wooden prayer beads between her fingers, seated in a dim Victorian parlour with heavy curtains, a faint translucent figure of a robed Tibetan nun hovering behind her shoulder, candle smoke curling upward"
+  },
+  {
+    "id": "khalil-nasr",
+    "naam": "Professor Khalil Nasr",
+    "bijnaam": "al-Mu'allim",
+    "leeftijd": 52,
+    "beroep": "Hoogleraar oude talen aan Dar al-Ulum in Cairo, te gast bij King's College",
+    "rol": "Leraar",
+    "start": "Bloomsbury",
+    "achtergrond": "Zijn familie telt haar voorouders terug tot een priestergeslacht uit Thebe, en zijn grootmoeder zei altijd dat het bloed van de farao's door hun aderen stroomt. Khalil lachte erom, tot de slangen in zijn dromen kwamen. Op zijn onderarm staat een cobra waarvan hij zich niet herinnert dat hij hem liet zetten. In zijn dromen leert de slang hem tekens die in geen enkel boek staan. Sinds hij in Londen is, ziet hij ze terug op de muren.",
+    "kenmerken": {
+      "kennis": 4,
+      "scherpte": 1,
+      "kracht": 2,
+      "overtuiging": 3
+    },
+    "lichaam": 5,
+    "geest": 7,
+    "vermogen": {
+      "naam": "Les geven",
+      "tekst": "Kost een actie, één keer per beurt: een andere held op jouw plek verhoogt één kenmerk met 1, als jouw waarde in dat kenmerk hoger is. Elke held kan twee keer per spel les van je krijgen."
+    },
+    "eigenaardigheid": "Verbetert ieders uitspraak, ook die van een agent die hem aanhoudt.",
+    "uitrusting": [
+      "Boek der Poorten",
+      "Lei en griffel"
+    ],
+    "bondgenoot": {
+      "naam": "De slang uit de droom",
+      "soort": "cobratatoeage",
+      "tekst": "Elk Boek dat je draagt, geeft +1 bij Kennis-tests (samen maximaal +2). Als je leest, beweegt de slang op je arm."
+    },
+    "prompt": "distinguished Egyptian professor in his early fifties, 1888, kind sharp eyes behind round spectacles, neatly trimmed grey beard, red tarboosh and dark frock coat, one sleeve rolled up to show a cobra tattoo winding around his forearm, holding an open ancient book of hieroglyphs, a faint golden serpent of smoke rising from its pages, a lecture hall with a chalkboard of hieroglyphs behind him, gaslight"
+  },
+  {
+    "id": "benedict-ashcombe",
+    "naam": "Benedict Ashcombe",
+    "leeftijd": 44,
+    "beroep": "Gebedsgenezer en mesmerist, voorheen exorcist van het bisdom",
+    "rol": "Genezer",
+    "start": "Leicester Square",
+    "achtergrond": "Twaalf jaar lang dreef hij in opdracht van de Kerk duivels uit, in boerderijen in Yorkshire en in kelders in Southwark. Na de laatste keer, in een huis in Wapping, gaf hij zijn boord terug. Over wat daar uit het meisje kwam, praat hij met niemand. Nu legt hij op zondagmiddag handen op in een zaaltje aan Leicester Square, voor een shilling per persoon. De meeste mensen geneest hij niet. Sommigen wel, en dat maakt hem banger dan alle duivels samen.",
+    "kenmerken": {
+      "kennis": 3,
+      "scherpte": 1,
+      "kracht": 2,
+      "overtuiging": 4
+    },
+    "lichaam": 6,
+    "geest": 6,
+    "vermogen": {
+      "naam": "Handoplegging",
+      "tekst": "Kost een actie, één keer per beurt: een held op jouw plek (ook jijzelf) herstelt 2 Lichaam of 2 Geest. Genees je een ander, dan herstel jij ook 1 Geest."
+    },
+    "eigenaardigheid": "Draagt nog altijd zijn brevier bij zich, maar slaat het nooit open.",
+    "uitrusting": [
+      "Stola van de exorcist",
+      "Mesmeristenpenning"
+    ],
+    "bondgenoot": null,
+    "prompt": "gaunt former priest in his mid-forties, 1888 London, tired kind eyes and hollow cheeks, close-cropped greying hair, black frock coat without a clerical collar, a faded purple stole around his neck, his right hand raised palm outward and glowing faintly, a brass mesmerist's pendulum hanging from his other hand, a shabby gaslit hall with rows of empty wooden chairs behind him"
+  },
+  {
+    "id": "arjan-singh",
+    "naam": "Daffadar Arjan Singh",
+    "leeftijd": 38,
+    "beroep": "Lijfwacht en particulier speurder, Pall Mall",
+    "rol": "Grensverkenner",
+    "start": "Pall Mall",
+    "achtergrond": "Twaalf jaar reed hij voor het Corps of Guides langs de noordwestgrens: nachtelijke verkenningen in de bergen, hinderlagen in ravijnen, terugkeren als niemand anders terugkwam. Hij kwam naar Londen met de Indiase escorte voor het jubileum van de koningin, en bleef. Nu bewaakt hij heren van de Army and Navy Club, en speurt hij voor wie hem betaalt. In de mist van Londen herkent hij iets wat hij in de bergen ook zag, en waar hij toen al niet voor wegliep.",
+    "kenmerken": {
+      "kennis": 1,
+      "scherpte": 4,
+      "kracht": 4,
+      "overtuiging": 1
+    },
+    "lichaam": 7,
+    "geest": 5,
+    "vermogen": {
+      "naam": "Stalen zenuwen",
+      "tekst": "Jij en elke held op jouw plek gooien bij Gruwel-tests één dobbelsteen extra. Wie bij de Khyberpas heeft gestaan, deinst niet meer terug."
+    },
+    "eigenaardigheid": "Zegt nooit hoeveel hij weet, en weet altijd meer dan hij zegt.",
+    "uitrusting": [
+      "Tulwar van de Guides",
+      "Khaki-tuniek"
+    ],
+    "bondgenoot": null,
+    "prompt": "tall broad-shouldered Sikh man in his late thirties, 1888 London, dark brown skin, full dark beard neatly tied, deep blue turban, calm watchful eyes and a faint scar on one cheek, a faded khaki cavalry tunic of the Corps of Guides with a red sash under a dark civilian greatcoat, a curved tulwar sword at his hip, standing on the steps of a Pall Mall gentlemen's club under a gas lamp, fog behind him"
+  }
+]

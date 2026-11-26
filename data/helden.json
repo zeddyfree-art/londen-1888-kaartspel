@@ -1,0 +1,775 @@
+[
+ {
+  "id": "ambrose-pell",
+  "naam": "Professor Ambrose Pell",
+  "klasse": "kennis",
+  "vrij": true,
+  "speelbaar": false,
+  "rol": "Sterrenkundige",
+  "beroep": "Beheerder van een sterrenwacht op Hampstead Heath",
+  "achtergrond": "Veertig jaar lang tekende hij elke ster boven Londen in zijn kaartenboeken. Op een heldere novembernacht stond er één te veel. Elke nacht staat hij een fractie dichter bij de maan, en niemand bij de Royal Society wil zijn platen zien.",
+  "kenmerken": {
+   "kennis": 4,
+   "waarneming": 3,
+   "kracht": 1,
+   "charisma": 2
+  },
+  "lichaam": 21,
+  "geest": 14,
+  "vermogen": {
+   "naam": "Sterrenkaart",
+   "tekst": "Je ziet altijd welke vijanden in de volgende golf zitten. Eén keer per gevecht: zet een vijandelijke teller 1 hoger."
+  },
+  "persoonlijk": [
+   "zakkijker",
+   "kaartenboek"
+  ],
+  "art": "helden/ambrose-pell.jpg"
+ },
+ {
+  "id": "hester-quayle",
+  "naam": "Hester Quayle",
+  "klasse": "kennis",
+  "vrij": false,
+  "speelbaar": false,
+  "rol": "Bibliothecaris",
+  "beroep": "Catalogusbeambte in de leeszaal van het British Museum",
+  "achtergrond": "De enige vrouw achter de balie van de ronde leeszaal, en de enige die weet waar alles staat. Een boek dat niet in de catalogus voorkomt, keert elke ochtend terug op een andere plank. Zij is van plan uit te zoeken wie het daar neerlegt.",
+  "kenmerken": {
+   "kennis": 4,
+   "waarneming": 4,
+   "kracht": 1,
+   "charisma": 1
+  },
+  "lichaam": 21,
+  "geest": 14,
+  "vermogen": {
+   "naam": "Catalogus",
+   "tekst": "Bij elke kaartbeloning één extra keuze.",
+   "extraKeuze": 1
+  },
+  "persoonlijk": [
+   "leesbril",
+   "indexkaartjes"
+  ],
+  "art": "helden/hester-quayle.jpg"
+ },
+ {
+  "id": "bridie-kavanagh",
+  "naam": "Bridie Kavanagh",
+  "klasse": "kennis",
+  "vrij": false,
+  "speelbaar": false,
+  "rol": "Volksheks",
+  "beroep": "Wasvrouw in Southwark",
+  "achtergrond": "Haar grootmoeder uit County Clare liet haar een keukenboek na met recepten die niets met eten te maken hebben. Bridie leest theebladeren voor de buren, voor een penny per kopje. De laatste tijd vormen de bladeren in elk kopje dezelfde figuur.",
+  "kenmerken": {
+   "kennis": 3,
+   "waarneming": 2,
+   "kracht": 2,
+   "charisma": 3
+  },
+  "lichaam": 24,
+  "geest": 12,
+  "vermogen": {
+   "naam": "Theebladeren",
+   "tekst": "De eerste spreuk die je in een gevecht speelt, komt terug in je hand."
+  },
+  "persoonlijk": [
+   "keukenboek"
+  ],
+  "art": "helden/bridie-kavanagh.jpg"
+ },
+ {
+  "id": "septimus-crane",
+  "naam": "Dr. Septimus Crane",
+  "klasse": "kennis",
+  "vrij": true,
+  "speelbaar": false,
+  "rol": "Hoogleraar",
+  "beroep": "Emeritus hoogleraar vergelijkende taalkunde, King's College",
+  "achtergrond": "Hij ontcijferde drie dode talen en schreef er zeven boeken over die niemand las. Nu brengt een koerier hem elke week een kleitablet zonder afzender. Het schrift lijkt nergens op, maar hij kan het toch lezen. Dat baart hem zorgen.",
+  "kenmerken": {
+   "kennis": 4,
+   "waarneming": 2,
+   "kracht": 1,
+   "charisma": 3
+  },
+  "lichaam": 18,
+  "geest": 16,
+  "vermogen": {
+   "naam": "Ontcijferen",
+   "tekst": "De eerste spreuk in elk gevecht kost geen Geest."
+  },
+  "persoonlijk": [
+   "vergrootglas",
+   "kleitablet"
+  ],
+  "art": "helden/septimus-crane.jpg"
+ },
+ {
+  "id": "julian-hartwell",
+  "naam": "Julian Hartwell",
+  "klasse": "kennis",
+  "vrij": true,
+  "speelbaar": false,
+  "rol": "Occultist",
+  "beroep": "Voormalig adept van de Orde van de Bleke Lantaarn",
+  "achtergrond": "Julian geloofde dat magie de mensheid kon verheffen. Zeven jaar lang klom hij op in de Orde van de Bleke Lantaarn, tot de nacht in Marylebone waarin hij zag wat Aurelian Croft met de nieuwe leerlingen deed. Hij vluchtte met het zwaard en het boek van zijn graad, en woont nu in een kamer achter een boekwinkel in Soho. Hij droomt nog steeds van een betere wereld. Hij slaapt alleen niet meer.",
+  "kenmerken": {
+   "kennis": 4,
+   "waarneming": 2,
+   "kracht": 2,
+   "charisma": 2
+  },
+  "lichaam": 24,
+  "geest": 12,
+  "vermogen": {
+   "naam": "Zwaard van licht",
+   "tekst": "+1 aanval voor elke spreuk die je dit gevecht speelde. Hij raakt al verlicht bij 60% Geest.",
+   "verlichtDrempel": 0.6
+  },
+  "persoonlijk": [
+   "zwaard-orde",
+   "witte-boek"
+  ],
+  "art": "helden/julian-hartwell.jpg"
+ },
+ {
+  "id": "pema-lhamo",
+  "naam": "Pema Lhamo",
+  "klasse": "kennis",
+  "vrij": false,
+  "speelbaar": false,
+  "rol": "Droomziener",
+  "beroep": "Medium uit Lhasa, te gast bij de Theosofische Vereniging",
+  "achtergrond": "Ze kwam via Darjeeling naar Londen met de kring rond Madame Blavatsky, die haar 'het meisje uit het Land van Sneeuw' noemt en haar op soirees laat zien. Zelf heeft Pema weinig geduld met salons. Elke nacht droomt ze een ander leven: een veerman op de Tsangpo, een non in Gyantse, een kind in een grauwe stad aan een rivier die Londen heet. In dat laatste leven gaat het mis, en ze wil weten waarom.",
+  "kenmerken": {
+   "kennis": 3,
+   "waarneming": 3,
+   "kracht": 3,
+   "charisma": 3
+  },
+  "lichaam": 18,
+  "geest": 14,
+  "vermogen": {
+   "naam": "Vorige levens",
+   "tekst": "Kaartbeloningen komen uit alle vier de klassen."
+  },
+  "persoonlijk": [
+   "mala",
+   "droomdagboek"
+  ],
+  "art": "helden/pema-lhamo.jpg"
+ },
+ {
+  "id": "khalil-nasr",
+  "naam": "Professor Khalil Nasr",
+  "klasse": "kennis",
+  "vrij": false,
+  "speelbaar": false,
+  "rol": "Leraar",
+  "beroep": "Hoogleraar oude talen aan Dar al-Ulum in Cairo, te gast bij King's College",
+  "achtergrond": "Zijn familie telt haar voorouders terug tot een priestergeslacht uit Thebe, en zijn grootmoeder zei altijd dat het bloed van de farao's door hun aderen stroomt. Khalil lachte erom, tot de slangen in zijn dromen kwamen. Op zijn onderarm staat een cobra waarvan hij zich niet herinnert dat hij hem liet zetten. In zijn dromen leert de slang hem tekens die in geen enkel boek staan. Sinds hij in Londen is, ziet hij ze terug op de muren.",
+  "kenmerken": {
+   "kennis": 4,
+   "waarneming": 1,
+   "kracht": 2,
+   "charisma": 3
+  },
+  "lichaam": 21,
+  "geest": 14,
+  "vermogen": {
+   "naam": "Les geven",
+   "tekst": "Eén keer per gevecht: een bondgenoot krijgt voorgoed +1 aanval."
+  },
+  "persoonlijk": [
+   "boek-der-poorten",
+   "lei-en-griffel"
+  ],
+  "art": "helden/khalil-nasr.jpg"
+ },
+ {
+  "id": "odile-fairweather",
+  "naam": "Madame Odile Fairweather",
+  "klasse": "waarneming",
+  "vrij": false,
+  "speelbaar": false,
+  "rol": "Medium",
+  "beroep": "Spiritistisch medium uit New Orleans, nu in Marylebone",
+  "achtergrond": "Ze groeide op in het Franse Kwartier van New Orleans, bij een grootmoeder die de doden bij naam aansprak. In Londen zijn haar seances voor de helft toneel: verborgen draden, een tafel die kraakt op commando. Over de andere helft praat ze liever niet. Een stem die ze nooit heeft uitgenodigd, komt nu elke seance terug en noemt de namen van mensen die nog leven.",
+  "kenmerken": {
+   "kennis": 3,
+   "waarneming": 3,
+   "kracht": 1,
+   "charisma": 3
+  },
+  "lichaam": 21,
+  "geest": 14,
+  "vermogen": {
+   "naam": "Voorgevoel",
+   "tekst": "Eén keer per gevecht: annuleer de volgende vijandelijke aanval."
+  },
+  "persoonlijk": [
+   "kristallen-bol",
+   "seancetafeltje"
+  ],
+  "art": "helden/odile-fairweather.jpg"
+ },
+ {
+  "id": "silas-rook",
+  "naam": "Silas Rook",
+  "klasse": "waarneming",
+  "vrij": true,
+  "speelbaar": false,
+  "rol": "Detective",
+  "beroep": "Privédetective, voorheen Scotland Yard",
+  "achtergrond": "Hij werd van de Yard gestuurd omdat hij te veel vragen stelde over de verkeerde zaken. Nu huurt hij een kamer boven een slagerij in Whitechapel en neemt hij elke zaak aan die anderen laten liggen. Zijn notitieboek staat vol tekeningen van een symbool dat hij op zeven muren heeft gevonden.",
+  "kenmerken": {
+   "kennis": 2,
+   "waarneming": 4,
+   "kracht": 3,
+   "charisma": 1
+  },
+  "lichaam": 27,
+  "geest": 10,
+  "vermogen": {
+   "naam": "Dossier",
+   "tekst": "Begint elk gevecht met 1 Aanwijzing. Een Deductie kost 1 Aanwijzing minder."
+  },
+  "persoonlijk": [
+   "revolver-silas",
+   "notitieboek"
+  ],
+  "art": "helden/silas-rook.jpg"
+ },
+ {
+  "id": "winnie-lusk",
+  "naam": "Winifred \"Winnie\" Lusk",
+  "klasse": "waarneming",
+  "vrij": true,
+  "speelbaar": false,
+  "rol": "Onderzoeker",
+  "beroep": "Secretaresse van een genootschap voor paranormaal onderzoek",
+  "achtergrond": "Ze typt elk verslag van spookverschijningen uit dat het genootschap binnenkrijgt, en ze houdt een eigen kaartsysteem bij. Haar kaartjes laten een patroon zien dat de heren in het bestuur weglachen: alle meldingen liggen op een kaart van Londen in een spiraal.",
+  "kenmerken": {
+   "kennis": 3,
+   "waarneming": 4,
+   "kracht": 1,
+   "charisma": 2
+  },
+  "lichaam": 21,
+  "geest": 14,
+  "vermogen": {
+   "naam": "Kruisverwijzing",
+   "tekst": "Als je een vijand ontmaskert, krijgt een bondgenoot teller −1."
+  },
+  "persoonlijk": [
+   "typemachine",
+   "kaartsysteem"
+  ],
+  "art": "helden/winnie-lusk.jpg"
+ },
+ {
+  "id": "owen-marsh",
+  "naam": "Detective Sergeant Owen Marsh",
+  "klasse": "waarneming",
+  "vrij": false,
+  "speelbaar": false,
+  "rol": "Rechercheur",
+  "beroep": "Rechercheur bij de CID, Scotland Yard",
+  "achtergrond": "Een keurige man die gelooft in procedure, bewijs en het reglement. Hij kreeg een stapel dossiers toegeschoven die niemand anders wilde: verdwijningen zonder lichaam, zonder motief, zonder sporen. Hij gelooft nog steeds in het reglement, maar hij leest het nu anders.",
+  "kenmerken": {
+   "kennis": 2,
+   "waarneming": 3,
+   "kracht": 3,
+   "charisma": 2
+  },
+  "lichaam": 24,
+  "geest": 12,
+  "vermogen": {
+   "naam": "Bevoegdheid",
+   "tekst": "Eén keer per akte: wissel op de kaart naar het andere pad."
+  },
+  "persoonlijk": [
+   "revolver-owen",
+   "politiefluitje"
+  ],
+  "art": "helden/owen-marsh.jpg"
+ },
+ {
+  "id": "violet-thorne",
+  "naam": "Miss Violet Thorne",
+  "klasse": "waarneming",
+  "vrij": true,
+  "speelbaar": false,
+  "rol": "Spionne",
+  "beroep": "Koerierster voor het Foreign Office",
+  "achtergrond": "Officieel brengt ze diplomatieke post rond. In werkelijkheid leest ze elke brief voordat ze hem bezorgt, en ze onthoudt alles. De laatste maanden gaan er brieven tussen ambassades die in geen enkele taal geschreven zijn, maar wel allemaal zijn ondertekend met hetzelfde zegel.",
+  "kenmerken": {
+   "kennis": 2,
+   "waarneming": 4,
+   "kracht": 2,
+   "charisma": 2
+  },
+  "lichaam": 24,
+  "geest": 12,
+  "vermogen": {
+   "naam": "Onderschepping",
+   "tekst": "Eén keer per gevecht: verplaats een vijand naar een ander vak."
+  },
+  "persoonlijk": [
+   "derringer",
+   "briefopener"
+  ],
+  "art": "helden/violet-thorne.jpg"
+ },
+ {
+  "id": "lottie-finch",
+  "naam": "Lottie \"Muis\" Finch",
+  "klasse": "waarneming",
+  "vrij": false,
+  "speelbaar": false,
+  "rol": "Dievegge",
+  "beroep": "Zakkenroller en informant van Silas Rook",
+  "achtergrond": "Lottie rolt zakken in de drukte rond de Bank of England, zo snel dat de heren het pas thuis merken. Voor een shilling per week vertelt ze Silas Rook wat ze hoort: wie met wie praat, wie er 's nachts pakketjes brengt, wie er niet meer terugkomt. Ze kent elke achterdeur, elk dak en elke kelder van The City. De laatste tijd verdwijnen er kinderen van de straat, en Lottie houdt een lijstje bij van hun namen.",
+  "kenmerken": {
+   "kennis": 1,
+   "waarneming": 4,
+   "kracht": 2,
+   "charisma": 3
+  },
+  "lichaam": 24,
+  "geest": 12,
+  "vermogen": {
+   "naam": "Verstoppen",
+   "tekst": "Kan niet worden aangevallen zolang er een bondgenoot voor haar staat. +5 Ponden na elk gewonnen gevecht."
+  },
+  "persoonlijk": [
+   "lopers",
+   "zakhorloge"
+  ],
+  "art": "helden/lottie-finch.jpg"
+ },
+ {
+  "id": "teresa-canul",
+  "naam": "Teresa Canul",
+  "klasse": "waarneming",
+  "vrij": false,
+  "speelbaar": false,
+  "rol": "Fotografe",
+  "beroep": "Fotografe, Mérida",
+  "achtergrond": "Teresa Canul leerde fotograferen in het atelier van haar oom in Mérida, en sprak Maya met haar moeder en Spaans met haar vader. Een Engelse expeditie huurde haar om de tempels vast te leggen, plaat voor plaat. Op de laatste plaat staat iets wat er niet stond toen ze de sluiter opende. Ze bracht de plaat naar Londen, naar de enige mensen die haar misschien zouden geloven.",
+  "kenmerken": {
+   "kennis": 3,
+   "waarneming": 4,
+   "kracht": 1,
+   "charisma": 2
+  },
+  "lichaam": 21,
+  "geest": 14,
+  "vermogen": {
+   "naam": "Glasplaat",
+   "tekst": "De eerste Ontmaskering in elk gevecht kost geen beurt."
+  },
+  "persoonlijk": [
+   "camera-glasplaten",
+   "machete"
+  ],
+  "art": "helden/teresa-canul.jpg"
+ },
+ {
+  "id": "hu-yiping",
+  "naam": "Hu Yiping",
+  "klasse": "kracht",
+  "vrij": true,
+  "speelbaar": true,
+  "rol": "Vechtsporter",
+  "beroep": "Houdt een vechtschool in Limehouse",
+  "achtergrond": "Haar vader stookte de ketels van theeklippers. Zelf leert ze havenkinderen stokvechten in een kelder onder een wasserij. Sinds drie van haar leerlingen 's nachts naar de rivier zijn gelopen en niet terugkwamen, houdt ze haar stok binnen handbereik.",
+  "kenmerken": {
+   "kennis": 1,
+   "waarneming": 3,
+   "kracht": 4,
+   "charisma": 2
+  },
+  "lichaam": 27,
+  "geest": 10,
+  "vermogen": {
+   "naam": "Ademdiscipline",
+   "tekst": "Je held en je bondgenoten doen +2 schade tegen menselijke vijanden.",
+   "extraMens": 2,
+   "extraMensIedereen": true
+  },
+  "persoonlijk": [
+   "bamboestok",
+   "gember"
+  ],
+  "art": "helden/hu-yiping.jpg"
+ },
+ {
+  "id": "tobias-hale",
+  "naam": "Sergeant Tobias Hale",
+  "klasse": "kracht",
+  "vrij": true,
+  "speelbaar": true,
+  "rol": "Soldaat",
+  "beroep": "Oud-soldaat, portier in Chelsea",
+  "achtergrond": "Hij overleefde de woestijn bij Maiwand en kwam terug met een kogel in zijn schouder en dromen die hij niemand vertelt. Nu bewaakt hij de poort van een tehuis voor oud-militairen. Daar is hij de enige die ziet dat sommige bewoners 's nachts in looppas het terrein af gaan, met hun ogen dicht.",
+  "kenmerken": {
+   "kennis": 1,
+   "waarneming": 2,
+   "kracht": 4,
+   "charisma": 3
+  },
+  "lichaam": 30,
+  "geest": 8,
+  "vermogen": {
+   "naam": "Doorvechter",
+   "tekst": "Doodt hij een vijand, dan slaat hij meteen nog een keer toe (één keer per beurt).",
+   "doorvechter": true
+  },
+  "persoonlijk": [
+   "dienstgeweer",
+   "medaille"
+  ],
+  "art": "helden/tobias-hale.jpg"
+ },
+ {
+  "id": "cornelius-bray",
+  "naam": "Dr. Cornelius Bray",
+  "klasse": "kracht",
+  "vrij": false,
+  "speelbaar": true,
+  "rol": "Archeoloog",
+  "beroep": "Egyptoloog en avonturier",
+  "achtergrond": "Hij is net terug uit Thebe, met kisten die het museum niet heeft besteld. Een ervan is leeg op de verzegeling na, en die is van binnenuit verbroken. Hij heeft liever een schop dan een pen in zijn hand, maar nu moet hij voor het eerst echt gaan lezen.",
+  "kenmerken": {
+   "kennis": 3,
+   "waarneming": 3,
+   "kracht": 3,
+   "charisma": 1
+  },
+  "lichaam": 27,
+  "geest": 10,
+  "vermogen": {
+   "naam": "Opgraving",
+   "tekst": "Bij elk artefact kies je uit één extra.",
+   "artefactExtra": 1
+  },
+  "persoonlijk": [
+   "bijl-opgraving",
+   "lantaarn-bray"
+  ],
+  "art": "helden/cornelius-bray.jpg"
+ },
+ {
+  "id": "aggie-pruitt",
+  "naam": "Agnes \"Aggie\" Pruitt",
+  "klasse": "kracht",
+  "vrij": true,
+  "speelbaar": true,
+  "rol": "Kogelstootster",
+  "beroep": "Kogelstootster en krachtvrouw op de kermis bij King's Cross",
+  "achtergrond": "Aggie is groter dan de meeste mannen en breder dan de deur van haar woonwagen. Op de kermis aan de Caledonian Road stoot ze een kogel van zestien pond verder dan wie ook, en tilt ze twee smidsknechten tegelijk op. Na de voorstelling breit ze sjaals voor de kinderen van de kermis. Sinds de kleine Tommy van de schiettent 's nachts wegliep in de richting van het spoor, gaat ze elke avond zelf de rails langs, met een lantaarn en haar kogel in een netje over haar schouder.",
+  "kenmerken": {
+   "kennis": 2,
+   "waarneming": 1,
+   "kracht": 4,
+   "charisma": 3
+  },
+  "lichaam": 30,
+  "geest": 8,
+  "vermogen": {
+   "naam": "Brede schouders",
+   "tekst": "Aanvallen op bondgenoten in haar rij gaan naar haar. Ze heeft Doorns 2 en begint elk gevecht met 3 Bescherming.",
+   "bredeSchouders": true,
+   "beginStatus": {
+    "bescherming": 3
+   }
+  },
+  "statussen": {
+   "doorns": 2
+  },
+  "persoonlijk": [
+   "ijzeren-kogel",
+   "breiwerk"
+  ],
+  "art": "helden/aggie-pruitt.jpg"
+ },
+ {
+  "id": "arjan-singh",
+  "naam": "Daffadar Arjan Singh",
+  "klasse": "kracht",
+  "vrij": false,
+  "speelbaar": true,
+  "rol": "Grensverkenner",
+  "beroep": "Lijfwacht en particulier speurder, Pall Mall",
+  "achtergrond": "Twaalf jaar reed hij voor het Corps of Guides langs de noordwestgrens: nachtelijke verkenningen in de bergen, hinderlagen in ravijnen, terugkeren als niemand anders terugkwam. Hij kwam naar Londen met de Indiase escorte voor het jubileum van de koningin, en bleef. Nu bewaakt hij heren van de Army and Navy Club, en speurt hij voor wie hem betaalt. In de mist van Londen herkent hij iets wat hij in de bergen ook zag, en waar hij toen al niet voor wegliep.",
+  "kenmerken": {
+   "kennis": 1,
+   "waarneming": 4,
+   "kracht": 4,
+   "charisma": 1
+  },
+  "lichaam": 27,
+  "geest": 10,
+  "vermogen": {
+   "naam": "Stalen zenuwen",
+   "tekst": "Je held en je bondgenoten nemen 1 Gruwel minder van elke treffer.",
+   "stalenZenuwen": true
+  },
+  "persoonlijk": [
+   "tulwar",
+   "khaki-tuniek"
+  ],
+  "art": "helden/arjan-singh.jpg"
+ },
+ {
+  "id": "mahmoud-fathy",
+  "naam": "Ra'is Mahmoud Fathy",
+  "klasse": "kracht",
+  "vrij": false,
+  "speelbaar": true,
+  "rol": "Opzichter",
+  "beroep": "Opzichter van opgravingen, Luxor",
+  "achtergrond": "Dertig jaar lang leidde Mahmoud Fathy de ploegen van de westerse expedities in Luxor: honderd man met manden, één man die wist waar je moest graven. In 1881 stond hij in de schacht van Deir el-Bahari toen de koninklijke mummies naar boven kwamen. Hij kwam naar Londen met een zending kisten, om erop te letten, en omdat één ervan bij elke haven zwaarder werd.",
+  "kenmerken": {
+   "kennis": 2,
+   "waarneming": 3,
+   "kracht": 3,
+   "charisma": 2
+  },
+  "lichaam": 27,
+  "geest": 10,
+  "vermogen": {
+   "naam": "Honderd dragers",
+   "tekst": "Begint elk gevecht met de barricade Dragers in de hand. Kisten geven één extra keuze.",
+   "extraKaart": "dragers",
+   "kistExtra": 1
+  },
+  "persoonlijk": [
+   "opzichtersstok",
+   "kaart-vallei"
+  ],
+  "art": "helden/mahmoud-fathy.jpg"
+ },
+ {
+  "id": "ang-nima",
+  "naam": "Ang Nima Sherpa",
+  "klasse": "kracht",
+  "vrij": false,
+  "speelbaar": true,
+  "rol": "Bergdrager",
+  "beroep": "Drager en gids, Darjeeling",
+  "achtergrond": "Ang Nima droeg kisten voor de landmeters van de Great Trigonometrical Survey, over passen waar de Engelsen zelf niet overheen kwamen. Een geleerde van de Survey nam hem mee naar Londen om zijn kaarten te verklaren. Nu woont hij in een kamer op Hampstead en kijkt hij 's avonds naar de sterren boven de heide, die hier verkeerd staan.",
+  "kenmerken": {
+   "kennis": 1,
+   "waarneming": 3,
+   "kracht": 4,
+   "charisma": 2
+  },
+  "lichaam": 30,
+  "geest": 10,
+  "vermogen": {
+   "naam": "Gids van de pas",
+   "tekst": "Begint elk gevecht met 2 Gezegend.",
+   "beginStatus": {
+    "gezegend": 2
+   }
+  },
+  "persoonlijk": [
+   "kukri",
+   "bergtouw"
+  ],
+  "art": "helden/ang-nima.jpg"
+ },
+ {
+  "id": "albert-gosling",
+  "naam": "Albert Gosling",
+  "klasse": "charisma",
+  "vrij": true,
+  "speelbaar": false,
+  "rol": "Toneelmagiër",
+  "beroep": "Goochelaar in het Alhambra-theater, Leicester Square",
+  "achtergrond": "Achter het Italiaanse toneelpak zit een jongen uit Bermondsey die als kind al kaarten kon laten verdwijnen. Op een avond verdween zijn assistente midden in een truc echt. Sinds die avond oefent hij met trucs die hij nooit op het toneel zou durven tonen.",
+  "kenmerken": {
+   "kennis": 1,
+   "waarneming": 3,
+   "kracht": 2,
+   "charisma": 4
+  },
+  "lichaam": 24,
+  "geest": 12,
+  "vermogen": {
+   "naam": "Verdwijntruc",
+   "tekst": "Eén keer per gevecht: laat een vijand (geen baas) verdwijnen. Hij komt terug in de volgende golf."
+  },
+  "persoonlijk": [
+   "wandelstok-lemmet"
+  ],
+  "art": "helden/albert-gosling.jpg"
+ },
+ {
+  "id": "cordelia-vane",
+  "naam": "Lady Cordelia Vane",
+  "klasse": "charisma",
+  "vrij": true,
+  "speelbaar": false,
+  "rol": "Rijke dame",
+  "beroep": "Weduwe en erfgename van een rederij",
+  "achtergrond": "Ze erfde van haar man een vloot van negen schepen en een kantoor vol vragen. Elk schip dat terugkeert uit de zuidelijke zeeën, meert aan met één bemanningslid minder dan bij vertrek. In het logboek staat steeds dezelfde aantekening: hij ging naar beneden om te luisteren.",
+  "kenmerken": {
+   "kennis": 2,
+   "waarneming": 2,
+   "kracht": 2,
+   "charisma": 4
+  },
+  "lichaam": 24,
+  "geest": 12,
+  "vermogen": {
+   "naam": "Salonkringen",
+   "tekst": "Alles in winkels kost 25% minder.",
+   "korting": 0.25
+  },
+  "persoonlijk": [
+   "damespistool"
+  ],
+  "art": "helden/cordelia-vane.jpg"
+ },
+ {
+  "id": "esme-valentine",
+  "naam": "Esme Valentine",
+  "klasse": "charisma",
+  "vrij": true,
+  "speelbaar": false,
+  "rol": "Zangeres",
+  "beroep": "Zangeres in een Covent Garden music hall",
+  "achtergrond": "Haar diepe alt vult elke zaal, en sinds kort laat hij ook de gaslampen flakkeren. Ze heeft een lied in haar hoofd waarvan ze de woorden niet kent en de melodie niet kwijtraakt. Wie het hoort, kijkt een ogenblik naar iets wat er niet is.",
+  "kenmerken": {
+   "kennis": 3,
+   "waarneming": 2,
+   "kracht": 1,
+   "charisma": 4
+  },
+  "lichaam": 21,
+  "geest": 14,
+  "vermogen": {
+   "naam": "Lied dat bindt",
+   "tekst": "Een spreuk die een bondgenoot helpt, helpt ook de bondgenoot ernaast."
+  },
+  "persoonlijk": [
+   "bladmuziek"
+  ],
+  "art": "helden/esme-valentine.jpg"
+ },
+ {
+  "id": "clementine-ashby",
+  "naam": "Clementine Ashby",
+  "klasse": "charisma",
+  "vrij": false,
+  "speelbaar": false,
+  "rol": "Violiste",
+  "beroep": "Violiste in een strijkkwartet in Soho",
+  "achtergrond": "Sinds de zomer droomt ze elke nacht van een kust die niet bestaat, en ze wordt wakker met een melodie die ze moet opschrijven. Het kwartet speelt haar stukken graag. De mensen die ernaar luisteren, slapen daarna onrustig en dromen allemaal over dezelfde kust.",
+  "kenmerken": {
+   "kennis": 2,
+   "waarneming": 3,
+   "kracht": 1,
+   "charisma": 4
+  },
+  "lichaam": 21,
+  "geest": 14,
+  "vermogen": {
+   "naam": "Droommelodie",
+   "tekst": "Elke 3 beurten: je held herstelt 1 Geest en elke bondgenoot 1 Leven."
+  },
+  "persoonlijk": [
+   "viool",
+   "partituur"
+  ],
+  "art": "helden/clementine-ashby.jpg"
+ },
+ {
+  "id": "ezra-whitlock",
+  "naam": "Broeder Ezra Whitlock",
+  "klasse": "charisma",
+  "vrij": false,
+  "speelbaar": false,
+  "rol": "Gelovige kok",
+  "beroep": "Kok van een gaarkeuken in Spitalfields",
+  "achtergrond": "Hij was ooit kok in een herenclub. Nu schept hij soep voor wie geen geld heeft, en hij bidt bij elke ketel. De rij wordt elke week langer, en steeds vaker staan er mensen in die niet eten en hem alleen maar aankijken.",
+  "kenmerken": {
+   "kennis": 1,
+   "waarneming": 2,
+   "kracht": 3,
+   "charisma": 4
+  },
+  "lichaam": 27,
+  "geest": 10,
+  "vermogen": {
+   "naam": "Gaarkeuken",
+   "tekst": "Na elk gevecht herstelt je held 3 Lichaam. Rusten herstelt extra.",
+   "naGevechtLichaam": 3
+  },
+  "persoonlijk": [
+   "pollepel",
+   "gezegend-brood"
+  ],
+  "art": "helden/ezra-whitlock.jpg"
+ },
+ {
+  "id": "paddy-flynn",
+  "naam": "Constable Patrick \"Paddy\" Flynn",
+  "klasse": "charisma",
+  "vrij": false,
+  "speelbaar": false,
+  "rol": "Agent met hond",
+  "beroep": "Agent van de rivierpolitie in Wapping",
+  "achtergrond": "Hij roeit 's nachts patrouille op de Theems en vist meer uit het water dan hem lief is. Zijn hond haalde vorige maand een drenkeling boven die nog leefde, maar geen hartslag had. Sindsdien gromt de hond naar het water.",
+  "kenmerken": {
+   "kennis": 1,
+   "waarneming": 3,
+   "kracht": 3,
+   "charisma": 3
+  },
+  "lichaam": 27,
+  "geest": 10,
+  "vermogen": {
+   "naam": "Rivierpatrouille",
+   "tekst": "Begint met een vaste hond als bondgenoot."
+  },
+  "persoonlijk": [
+   "wapenstok",
+   "stormlantaarn-paddy"
+  ],
+  "art": "helden/paddy-flynn.jpg"
+ },
+ {
+  "id": "benedict-ashcombe",
+  "naam": "Benedict Ashcombe",
+  "klasse": "charisma",
+  "vrij": false,
+  "speelbaar": false,
+  "rol": "Genezer",
+  "beroep": "Gebedsgenezer en mesmerist, voorheen exorcist van het bisdom",
+  "achtergrond": "Twaalf jaar lang dreef hij in opdracht van de Kerk duivels uit, in boerderijen in Yorkshire en in kelders in Southwark. Na de laatste keer, in een huis in Wapping, gaf hij zijn boord terug. Over wat daar uit het meisje kwam, praat hij met niemand. Nu legt hij op zondagmiddag handen op in een zaaltje aan Leicester Square, voor een shilling per persoon. De meeste mensen geneest hij niet. Sommigen wel, en dat maakt hem banger dan alle duivels samen.",
+  "kenmerken": {
+   "kennis": 3,
+   "waarneming": 1,
+   "kracht": 2,
+   "charisma": 4
+  },
+  "lichaam": 24,
+  "geest": 12,
+  "vermogen": {
+   "naam": "Handoplegging",
+   "tekst": "De aanval van je held geneest een gewonde bondgenoot in plaats van een vijand te raken."
+  },
+  "persoonlijk": [
+   "stola",
+   "mesmeristenpenning"
+  ],
+  "art": "helden/benedict-ashcombe.jpg"
+ }
+]

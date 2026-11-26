@@ -1,0 +1,382 @@
+[
+  {
+    "id": "thaddeus-voss",
+    "naam": "Hoofdinspecteur Thaddeus Voss",
+    "rol": "Scotland Yard",
+    "factie": "Geen",
+    "god": null,
+    "kort": "Een vermoeide, eerlijke politieman die een dossier bijhoudt met de titel 'Onverklaard'.",
+    "beschrijving": "Voss is vijftig, weduwnaar en al dertig jaar bij de politie. Hij gelooft niet in geesten, maar hij gelooft wel in patronen, en de patronen van dit najaar bevallen hem niet. Hij houdt een eigen dossier bij met zaken die hij niet kan verklaren en deelt dat alleen met mensen die hij vertrouwt. Hij helpt de helden zolang ze de wet niet al te grof breken.",
+    "prompt": "weary Victorian police chief inspector around fifty, grey moustache, heavy dark overcoat and bowler hat, holding a thick bundled case file, standing in a gaslit stone corridor of a police headquarters"
+  },
+  {
+    "id": "nell-farrow",
+    "naam": "Nell Farrow",
+    "rol": "Journaliste van The Evening Courier",
+    "factie": "Geen",
+    "god": null,
+    "kort": "Een snelle, nieuwsgierige verslaggeefster die altijd net te veel weet.",
+    "beschrijving": "Nell is achtentwintig en schrijft onder een mannelijk pseudoniem voor de avondkrant. Ze volgt dezelfde sporen als de helden, soms een stap voor, soms een stap achter. Ze ruilt informatie tegen informatie en heeft een neus voor wie er liegt. Ze wil het grote verhaal schrijven, maar ze is niet roekeloos.",
+    "prompt": "sharp-eyed young Victorian woman journalist in her late twenties, straw boater hat, dark jacket, notebook and pencil in hand, standing in a busy newspaper office with printing presses and hanging proofs, lamplight"
+  },
+  {
+    "id": "josiah-penhallow",
+    "naam": "Josiah Penhallow",
+    "rol": "Ingenieur van de nieuwe riolen, vermist",
+    "factie": "Geen",
+    "god": "vathrun",
+    "kort": "De ingenieur die onder de Theems iets vond wat hij niet had mogen vinden.",
+    "beschrijving": "Penhallow leidde in 1887 het graafwerk aan een nieuwe overstortleiding onder Wapping. Zijn ploeg stuitte op een gemetselde kamer die ouder was dan de stad, met zeven zegels in de deur. Hij liet de kamer dichtmetselen en verdween drie weken later. Sindsdien vinden mensen zijn handschrift op plekken waar hij niet geweest kan zijn.",
+    "prompt": "earnest Victorian civil engineer in his forties, muddy waistcoat and rolled shirtsleeves, oil lamp and rolled blueprints, standing in a brick sewer tunnel with dark water, an ancient sealed stone door behind him"
+  },
+  {
+    "id": "martha-penhallow",
+    "naam": "Martha Penhallow",
+    "rol": "Dochter van Josiah, roeister op de Theems",
+    "factie": "Geen",
+    "god": "vathrun",
+    "kort": "Een koppige jonge vrouw die haar vader terug wil, levend of niet.",
+    "beschrijving": "Martha is twintig en roeit al sinds haar twaalfde over de rivier. Ze kent elke trap, elk getij en elke smokkelaar tussen Chelsea en Limehouse. Sinds haar vader verdween, zoekt ze hem op de plekken waar het water vreemd doet. Ze vertrouwt de politie niet, maar ze vertrouwt mensen die haar helpen zoeken.",
+    "prompt": "determined young Victorian waterwoman of about twenty, practical dark dress with rolled sleeves, oilskin coat, holding oars in a small rowing boat on the foggy Thames at dawn, river stairs behind her"
+  },
+  {
+    "id": "moeder-brine",
+    "naam": "Moeder Brine",
+    "rol": "Hoofd van het Genootschap van het Zevende Zegel",
+    "factie": "Genootschap van het Zevende Zegel",
+    "god": "vathrun",
+    "kort": "Een oude wasvrouw uit Southwark die de rivier als een god aanbidt.",
+    "beschrijving": "Iedereen aan de zuidoever kent Moeder Brine: ze verzorgt zieken, bemiddelt bij ruzies en helpt bij bevallingen. Weinigen weten dat ze ook het Genootschap leidt, een kring van rivierwerkers die gelooft dat de vloed hen zal belonen als de oude deur weer opengaat. Ze is niet wreed. Ze is overtuigd, en dat is gevaarlijker.",
+    "prompt": "elderly Victorian washerwoman with a kindly but unsettling face, shawl and apron, sleeves rolled, standing in a steam-filled riverside laundry, a string of seven wax seals hanging from her belt, green lamplight"
+  },
+  {
+    "id": "aurelian-croft",
+    "naam": "Magister Aurelian Croft",
+    "rol": "Leider van de Orde van de Bleke Lantaarn",
+    "factie": "Orde van de Bleke Lantaarn",
+    "god": "azh-ilareth",
+    "kort": "Een charmante, geleerde occultist die denkt dat de nieuwe ster een openbaring is.",
+    "beschrijving": "Croft is arts, verzamelaar van oude handschriften en een begenadigd spreker. Hij richtte de Orde op als studiekring, maar sinds de nieuwe ster verscheen, is de kring een beweging geworden. Hij gelooft oprecht dat de ster de mensheid wil verlichten. Hij luistert alleen niet meer naar wie het daar niet mee eens is.",
+    "prompt": "charismatic Victorian occultist in his fifties, silver hair swept back, white ceremonial robe over an evening suit, holding a pale violet lantern, in an ornate lodge temple with painted pillars and star charts"
+  },
+  {
+    "id": "ivy-lisle",
+    "naam": "Ivy Lisle",
+    "rol": "Leerling van de Orde, twijfelt",
+    "factie": "Orde van de Bleke Lantaarn",
+    "god": "azh-ilareth",
+    "kort": "Een jonge illustratrice die de Orde van binnenuit ziet veranderen.",
+    "beschrijving": "Ivy is tweeëntwintig en tekent sterrenkaarten voor de Orde. Ze trad toe uit nieuwsgierigheid en bleef uit vriendschap. Nu ziet ze dat haar vrienden niet meer slapen en dat Croft rituelen houdt achter spiegels. Ze zoekt iemand buiten de Orde aan wie ze kan vertellen wat ze weet, zonder dat het haar leven kost.",
+    "prompt": "anxious young Victorian woman artist of twenty-two, ink-stained fingers, plain grey dress with a small pale lantern brooch, holding a rolled star chart, in a dim attic studio with a skylight showing a strange violet star"
+  },
+  {
+    "id": "lucan-vey",
+    "naam": "Lucan Vey",
+    "rol": "Dichter",
+    "factie": "Orde van de Bleke Lantaarn",
+    "god": "azh-ilareth",
+    "kort": "Een gevierde jonge dichter die verzen schrijft die hij zich niet herinnert.",
+    "beschrijving": "Vey was de lieveling van de literaire salons van Mayfair. Sinds de ster verscheen, schrijft hij elke nacht een gedicht in een taal die niemand kent, en elke ochtend is hij een beetje minder zichzelf. Wie zijn verzen voorleest, ziet de ster ook overdag. Als de Orde haar zin krijgt, wordt hij de stem van de ster: de Dichter zonder Ogen.",
+    "prompt": "pale handsome young Victorian poet with dark curls, loosened cravat and velvet smoking jacket, shadows under his eyes, writing feverishly by candlelight, sheets of paper covered in strange glowing violet script"
+  },
+  {
+    "id": "lucius-harrowgate",
+    "naam": "Sir Lucius Harrowgate",
+    "rol": "Verzamelaar en financier van expedities",
+    "factie": "De expeditie-Harrowgate",
+    "god": "nebet-ankhu",
+    "kort": "Een rijke, kille verzamelaar die alles koopt wat oud en zeldzaam is.",
+    "beschrijving": "Harrowgate financierde de opgraving in de vallei bij Thebe en liet de vondsten naar zijn pakhuis in St Katharine Docks verschepen. Hij is een man die gewend is zijn zin te krijgen. Sinds de kisten zijn aangekomen, hebben zijn bedienden het over hoe anders hij is geworden: hij kijkt niet meer in spiegels en zijn gezicht lijkt elke dag een tikje vreemder.",
+    "prompt": "cold aristocratic Victorian collector in his sixties, impeccable black frock coat, silver-topped cane, standing among opened Egyptian crates in a gaslit warehouse, his face partly in shadow and subtly wrong"
+  },
+  {
+    "id": "philippa-moss",
+    "naam": "Dr. Philippa Moss",
+    "rol": "Archeologe van de expeditie-Harrowgate",
+    "factie": "De expeditie-Harrowgate",
+    "god": "nebet-ankhu",
+    "kort": "Een kundige archeologe die spijt heeft van wat ze heeft opgegraven.",
+    "beschrijving": "Moss leidde het graafwerk bij Thebe en las als eerste de inscripties in het lege graf. Ze begreep te laat dat het geen graf was, maar een gevangenis. Nu probeert ze de zegels van de expeditie in veiligheid te brengen voordat Harrowgate ze verkoopt. Ze heeft hulp nodig, en ze kan niet openlijk vragen.",
+    "prompt": "capable Victorian woman archaeologist in her late thirties, sun-browned face, khaki field jacket over a blouse, magnifying glass and notebook, examining a broken clay seal in a lamplit museum storeroom"
+  },
+  {
+    "id": "youssef-hamdi",
+    "naam": "Raïs Youssef Hamdi",
+    "rol": "Voorman van de opgraving bij Thebe",
+    "factie": "Geen",
+    "god": "nebet-ankhu",
+    "kort": "De ervaren voorman die de expeditie waarschuwde en niet werd gehoord.",
+    "beschrijving": "Hamdi leidt al twintig jaar opgravingen in de vallei en kent elke rots. Hij weigerde het lege graf te openen en vertrok met zijn mannen toen Harrowgate toch doorzette. Toen de kisten naar Londen werden verscheept, reisde hij ze achterna om Harrowgate nog één keer te waarschuwen. Nu woont hij in een logement in Whitechapel. Wie hem met respect benadert, hoort het verhaal dat de dorpelingen al eeuwen vertellen over de koning zonder gezicht.",
+    "prompt": "dignified Egyptian excavation foreman in his fifties, white turban and dark galabiya, weathered wise face, standing at the entrance of a rock-cut tomb in the Theban hills at sunset, lantern in hand"
+  },
+  {
+    "id": "lavinia-greaves",
+    "naam": "Mrs. Lavinia Greaves",
+    "rol": "Weldoenster van het Greaves-weeshuis",
+    "factie": "Het Meidoornhof",
+    "god": "ysmara",
+    "kort": "Een vriendelijke weduwe die arme kinderen een thuis geeft, en ze aan de Doornkoningin belooft.",
+    "beschrijving": "Mrs. Greaves verloor haar eigen zoontje aan de difterie, en kreeg hem terug, zegt ze, in een droom onder een meidoorn. Sindsdien bestuurt ze een weeshuis in Chelsea, met een tuin waar in november de bloesem bloeit. Ze is warm, attent en volkomen overtuigd: wat de Koningin neemt, krijgt een beter leven. Ze noteert de namen van haar kinderen in een boek met een groene kaft.",
+    "prompt": "a gentle-looking Victorian widow in her late forties in dark green mourning silk, kind smile, holding a green leather ledger, standing in an orphanage garden where a hawthorn tree blooms white in November fog"
+  },
+  {
+    "id": "nan-mossop",
+    "naam": "Oude Nan Mossop",
+    "rol": "Bloemenverkoopster in Covent Garden",
+    "factie": "Geen",
+    "god": "ysmara",
+    "kort": "Een oude bloemenvrouw die alle aftelrijmpjes van Londen kent, en weet wat ze betekenen.",
+    "beschrijving": "Nan verkoopt al zestig jaar viooltjes onder de zuilen van Covent Garden. Ze kent de oude rijmpjes die kinderen op straat zingen, en weet dat ze ouder zijn dan de stad. Ze heeft zelf een zus verloren aan 'de Groene Dame', toen ze negen was. Ze helpt de helden, maar ze wil iets terug: dat iemand haar zus zoekt.",
+    "prompt": "a wrinkled old Covent Garden flower seller in her seventies, shawl and battered straw bonnet, basket of violets on her arm, sharp knowing blue eyes, sitting under the market colonnade at dawn"
+  },
+  {
+    "id": "kleine-robin",
+    "naam": "Kleine Robin",
+    "rol": "Een kind dat terugkwam",
+    "factie": "Het Meidoornhof",
+    "god": "ysmara",
+    "kort": "Een jongen die drie dagen weg was, en terugkwam met groene ogen en een lied dat hij niet kan stoppen.",
+    "beschrijving": "Robin is acht. Hij liep op een nacht weg uit het weeshuis van Mrs. Greaves, en werd drie dagen later gevonden op Hampstead Heath, droog, warm en glimlachend. Zijn ogen zijn sindsdien groen. Hij weet dingen die hij niet kan weten, en soms helpt hij de helden. Niemand weet of het nog Robin is.",
+    "prompt": "an eight-year-old Victorian orphan boy in a grey smock, unsettlingly calm face, bright green eyes, a crown of hawthorn twigs in his messy hair, standing barefoot on wet heathland at dusk"
+  },
+  {
+    "id": "lionel-grieve",
+    "naam": "Dr. Lionel Grieve",
+    "rol": "Chirurg aan Guy's Hospital",
+    "factie": "Het Hunteriaans Genootschap",
+    "god": "morghast",
+    "kort": "Een briljante chirurg die gelooft dat de dood een ziekte is, en dat hij de genezing heeft gevonden.",
+    "beschrijving": "Grieve is de beste anatoom van Londen, en hij weet het. Na de dood van zijn vrouw aan de cholera richtte hij het Hunteriaans Genootschap op: chirurgen en studenten die 's nachts lichamen kopen van lijkenrovers. Wat ze in de knekelputten onder de City vonden, praat tegen hem. Het belooft hem zijn vrouw terug.",
+    "prompt": "a tall gaunt Victorian surgeon in his fifties, immaculate black frock coat with a blood-spotted apron over it, silver hair swept back, cold brilliant grey eyes, holding a scalpel, in an anatomy theatre lit by a skylight"
+  },
+  {
+    "id": "jebediah-sallow",
+    "naam": "Jebediah Sallow",
+    "rol": "Lijkenrover",
+    "factie": "Geen",
+    "god": "morghast",
+    "kort": "Een lijkenrover die voor het Genootschap graaft, en nu bang is voor wat hij heeft opgegraven.",
+    "beschrijving": "Sallow graaft al twintig jaar lichamen op voor de anatomielessen. Het is smerig werk, maar eerlijk betaald. Sinds het Genootschap hem naar de oude pestputten stuurde, slaapt hij met een spade naast zijn bed. Wat hij daar zag, bewoog. Hij wil eruit, maar Grieve laat niemand gaan die weet waar de putten liggen.",
+    "prompt": "a wiry, frightened Victorian gravedigger in his forties, battered top hat, muddy greatcoat, clutching a spade, unshaven face lit by a shuttered lantern in a churchyard in Spitalfields"
+  },
+  {
+    "id": "prudence-ashdown",
+    "naam": "Zuster Prudence Ashdown",
+    "rol": "Verpleegster in Barts",
+    "factie": "Geen",
+    "god": "morghast",
+    "kort": "Een nuchtere nachtzuster die zag hoe een overleden patiënt opstond, en het niet kan vergeten.",
+    "beschrijving": "Prudence werkt al tien jaar op de nachtdienst in St Bartholomew's. Ze is niet bijgelovig en ze is niet snel bang. Maar vorige week stond een man op die ze zelf had afgelegd, en liep hij de zaal uit naar de kelders. Niemand gelooft haar. Ze houdt sindsdien een lijst bij van de doden die 's nachts verdwijnen.",
+    "prompt": "a sensible Victorian hospital nurse in her thirties in a grey uniform with white cap and apron, tired determined face, holding a lamp in a long dark hospital ward at night"
+  },
+  {
+    "id": "absalom-crewe",
+    "naam": "Broeder Absalom Crewe",
+    "rol": "Prediker van de kudde",
+    "factie": "De Kudde van de Herder",
+    "kort": "Een straatprediker wiens processie elke nacht langer wordt.",
+    "beschrijving": "Absalom Crewe was ooit een gewone zendeling van een kleine kapel aan de Commercial Road. Na de winter van '79, toen hij drie nachten zoek was in de bevroren dokken, kwam hij terug met een nieuwe psalm. Hij praat zacht en vriendelijk, en hij is nooit moe. Wie naast hem loopt, voelt een rust die hij nergens anders vindt.",
+    "prompt": "a gaunt Victorian street preacher in his fifties with burning pale eyes, threadbare black coat, battered top hat, holding a worn hymnal, standing under a gaslamp in Whitechapel fog",
+    "god": "ommeth"
+  },
+  {
+    "id": "martha-coyle",
+    "naam": "Martha Coyle",
+    "rol": "Wasvrouw uit Limehouse",
+    "factie": "Geen",
+    "kort": "Een moeder die haar zoon terug wil uit de processie.",
+    "beschrijving": "Martha wast voor de zeemanslogementen van Limehouse. Haar zoon Tommy, zestien, liep drie weken geleden achter de processie aan en kwam niet meer thuis. Ze ziet hem elke avond voorbijlopen, zingend, en hij kijkt dwars door haar heen. Ze is hard, praktisch en niet bang meer.",
+    "prompt": "a tough Victorian washerwoman in her forties with red chapped hands and rolled sleeves, shawl over her head, standing in a Limehouse doorway with steam rising behind her",
+    "god": "ommeth"
+  },
+  {
+    "id": "agatha-pike",
+    "naam": "Zuster Agatha Pike",
+    "rol": "Leidster van de gaarkeuken in Spitalfields",
+    "factie": "Geen",
+    "kort": "Een non die weet welke psalmen er wel en niet in het boek staan.",
+    "beschrijving": "Zuster Agatha deelt soep uit in Spitalfields sinds de jaren zestig. Ze heeft honderden mannen zien verdwijnen in de drank, de dokken en de werkhuizen. De kudde is anders, zegt ze: die mannen komen niet terug, en hun gezichten worden steeds gelukkiger. Ze heeft het oude kerkboek van haar orde, met de psalmen die eruit gescheurd zijn.",
+    "prompt": "a stern elderly Victorian nun in a plain grey habit and white wimple, sleeves rolled up, ladling soup in a crowded Spitalfields soup kitchen lit by oil lamps",
+    "god": "ommeth"
+  },
+  {
+    "id": "horace-quill",
+    "naam": "Mr. Horace Quill",
+    "rol": "Conservator van de middeleeuwse collectie",
+    "factie": "Het Genootschap van de Zeven Zegels",
+    "kort": "Een conservator die al maanden in zijn museum slaapt.",
+    "beschrijving": "Horace Quill heeft veertig jaar lang de middeleeuwse collectie van het British Museum beheerd, met een liefde die zijn collega's ontroerend vonden. Sinds de vierde splinter binnenkwam, gaat hij niet meer naar huis. Hij slaapt op een veldbed tussen de vitrines en praat tegen de stukken. Ze praten terug, zegt hij, en ze hebben het koud.",
+    "prompt": "a thin elderly Victorian museum curator with wispy white hair and half-moon spectacles, dusty frock coat, white cotton gloves, standing among glass cases in a dim gallery, holding a glowing black shard with reverence",
+    "god": "karathos"
+  },
+  {
+    "id": "amelia-fenwick",
+    "naam": "Dr. Amelia Fenwick",
+    "rol": "Assistent-conservator, mediëvist",
+    "factie": "Geen",
+    "kort": "Quills assistente, die als eerste begreep wat de splinters zijn.",
+    "beschrijving": "Amelia Fenwick promoveerde in Zürich, omdat Oxford geen vrouwen toeliet, en kreeg in het museum een bureau in de kelder. Ze las de inventarislijsten na en vond dat vier stukken uit vier landen dezelfde breuklijn hebben. Ze is nuchter, snel en woedend dat niemand naar haar luistert.",
+    "prompt": "a sharp-eyed Victorian woman scholar in her thirties with ink-stained fingers and her hair pinned up, plain dark dress with a magnifying glass on a chain, sitting at a cluttered desk in a museum basement full of crates",
+    "god": "karathos"
+  },
+  {
+    "id": "anselm-drury",
+    "naam": "Pater Anselm Drury",
+    "rol": "Jezuïet en archivaris",
+    "factie": "Geen",
+    "kort": "Een oude priester die de laatste brieven van de Tempeliers heeft gelezen.",
+    "beschrijving": "Pater Drury beheert een kleine bibliotheek achter de abdij in Westminster. Hij weet wat de Tempeliers braken, en waarom: ze hoopten dat zeven stukken nooit meer bij elkaar zouden komen. Hij is oud en ziek, en hij heeft maar één wens: dat het lukt voordat hij sterft.",
+    "prompt": "an old frail Victorian Jesuit priest in a black cassock with a worn breviary, deep-set kind eyes, standing in a candlelit cloister library behind Westminster Abbey",
+    "god": "karathos"
+  },
+  {
+    "id": "ephraim-gale",
+    "naam": "Mr. Ephraim Gale",
+    "rol": "Barometermaker aan de Strand",
+    "factie": "De Bond van de Windroos",
+    "kort": "Een instrumentmaker wiens barometers het weer niet meer meten, maar maken.",
+    "beschrijving": "Ephraim Gale maakt al dertig jaar de beste barometers van Londen. Vorig jaar vond hij in een kist van zijn grootvader een glazen buis met een vloeistof die nooit stilstaat. Sinds hij die in een barometer zette, wijst die niet aan welk weer het wordt. Het weer wordt wat hij aanwijst. Gale is bang, trots en weet niet meer hoe hij moet stoppen.",
+    "prompt": "a nervous Victorian instrument maker in his sixties with mutton-chop whiskers and a leather apron, holding an ornate brass barometer whose glass tube glows faintly, in a cluttered Strand workshop full of clocks and dials",
+    "god": "ulvereth"
+  },
+  {
+    "id": "nell-bligh",
+    "naam": "Kapitein Nell Bligh",
+    "rol": "Rivierloods van Wapping",
+    "factie": "Geen",
+    "kort": "Een loods die de Theems kent als haar eigen hand, en weet dat hij anders bevriest dan vroeger.",
+    "beschrijving": "Nell Bligh nam de loodsboot over van haar vader, en geen man op de rivier durft daar iets van te zeggen. Ze leest de Theems aan zijn kleur en zijn geur. Sinds de herfst klopt niets meer: het ijs vormt zich van onderen, en onder het ijs bewegen lichten.",
+    "prompt": "a weathered Victorian river pilot woman in her forties in a heavy pea coat and knitted cap, pipe in her mouth, standing at the tiller of a small boat on the misty Thames at Wapping",
+    "god": "ulvereth"
+  },
+  {
+    "id": "tom-pennock",
+    "naam": "Old Tom Pennock",
+    "rol": "Laatste koopman van de vorstmarkt van 1814",
+    "factie": "Geen",
+    "kort": "Een oude man die als jongen op het ijs stond, en weet wie er toen de koning was.",
+    "beschrijving": "Tom Pennock was negen toen hij op de bevroren Theems peperkoek verkocht, in de winter van 1814. Hij is nu tachtig en woont in een kamertje in Southwark. Hij vertelt graag over de vorstmarkt, behalve over de laatste avond, toen de kermiskoning niet van het ijs wilde gaan en het ijs onder hem brak.",
+    "prompt": "a very old Victorian man with a white beard and a moth-eaten coat, sitting by a small coal fire in a Southwark attic, holding a faded printed souvenir from the 1814 frost fair",
+    "god": "ulvereth"
+  },
+  {
+    "id": "edmund-haversham",
+    "naam": "Sir Edmund Haversham",
+    "rol": "Parlementslid voor een kiesdistrict dat hij is vergeten",
+    "factie": "De Salon van de Waaier",
+    "kort": "Een politicus die al drie weken de salon niet uit is gekomen.",
+    "beschrijving": "Sir Edmund was een saaie, betrouwbare man, getrouwd met de onstuimige Lady Constance, die al jaren doet wat ze wil. Hij ging één keer naar de salon, om zijn vrouw op te halen. Zijn vrouw kwam terug. Hij niet. Hij schrijft wetsvoorstellen in een handschrift dat niet het zijne is.",
+    "prompt": "a portly middle-aged Victorian parliamentarian in an evening tailcoat with an undone white tie, sitting dazed on a gilded chair in a candlelit salon, holding a quill and papers, eyes fixed adoringly on something out of frame",
+    "god": "sirrhae"
+  },
+  {
+    "id": "lucien-marchetti",
+    "naam": "Lucien Marchetti",
+    "rol": "Portretschilder in Chelsea",
+    "factie": "Geen",
+    "kort": "Een schilder die haar portret begon en het niet kan afmaken.",
+    "beschrijving": "Lucien Marchetti kwam uit Turijn naar Londen en schildert de dames van Mayfair. Een jaar geleden zat Sirrhae voor hem. Hij schilderde haar ogen en haar handen, en toen kon hij niet verder. Elke nacht wordt hij wakker met het penseel in zijn hand. Het portret staat met een laken erover in een hoek van zijn atelier, en het laken beweegt.",
+    "prompt": "a haggard handsome Italian painter in his thirties in a paint-spattered smock, standing in a Chelsea studio full of canvases, one large canvas covered with a sheet that seems to ripple on its own",
+    "god": "sirrhae"
+  },
+  {
+    "id": "rosalind-ashe",
+    "naam": "Rosalind Ashe",
+    "rol": "Voormalige muze, nu kostschoollerares",
+    "factie": "Geen",
+    "kort": "De enige die ooit uit de salon wegliep, en dat wil bewijzen.",
+    "beschrijving": "Tien jaar geleden was Rosalind de muze van een beroemde schilder, en ging ze elke week naar een salon in Mayfair. Op een avond keek ze in een spiegel en zag ze niemand. Ze liep weg, zonder jas, door de sneeuw. Nu geeft ze Frans op een meisjesschool in Marylebone, en ze heeft sindsdien nooit meer in een spiegel gekeken.",
+    "prompt": "a composed Victorian schoolmistress in her early thirties in a plain grey dress with a high collar, sharp intelligent face, standing in a Marylebone schoolroom with all the mirrors turned to face the wall",
+    "god": "sirrhae"
+  },
+  {
+    "id": "obadiah-penrose",
+    "naam": "Obadiah Penrose",
+    "rol": "Klokkenmaker in Spitalfields",
+    "factie": "Het Gilde van de Onrust",
+    "kort": "Een oude klokkenmaker die een uurwerk bouwde met dertien uren.",
+    "beschrijving": "Obadiah Penrose leerde het vak van zijn vader, een Hugenoot, en die van de zijne. Toen Londen de tijd van Greenwich aan de wereld oplegde, bouwde hij uit protest een klok met dertien uren. Hij is nooit klaar gekomen. Of wel, en toen begon het. Hij is verdwenen. Zijn werkplaats staat open, en alle klokken lopen achteruit.",
+    "prompt": "an elderly Victorian Huguenot clockmaker with a loupe in one eye and a long white beard, leather apron, bent over an intricate clock face with thirteen numerals in a cluttered Spitalfields workshop",
+    "god": "ouroch"
+  },
+  {
+    "id": "dora-whitby",
+    "naam": "Dora Whitby",
+    "rol": "Telegrafiste in Westminster",
+    "factie": "Geen",
+    "kort": "Een telegrafiste die berichten ontvangt van morgen.",
+    "beschrijving": "Dora Whitby werkt nachtdiensten op het telegraafkantoor bij Westminster. Sinds een maand komen er berichten binnen met een datum die nog moet komen. Ze schrijft ze over in een schrift, en tot nu toe is elk bericht uitgekomen. Ze is negentien, snel en niet bang, maar ze slaapt niet meer.",
+    "prompt": "a young Victorian woman telegraph operator with rolled sleeves and ink on her fingers, sitting at a brass telegraph key late at night, a notebook full of dates open beside her",
+    "god": "ouroch"
+  },
+  {
+    "id": "ignatius-fell",
+    "naam": "Ignatius Fell",
+    "rol": "Opwinder van de klokkentoren",
+    "factie": "Het Gilde van de Onrust",
+    "kort": "De man die elke week de grote klok opwindt, en die steeds minder mens is.",
+    "beschrijving": "Ignatius Fell windt al dertig jaar het uurwerk van de toren op, drie keer per week, honderden treden omhoog. Op een nacht hoorde hij de dertiende slag als eerste. Sindsdien tikt er iets in zijn borst. Hij weet het, en hij is er blij mee. 'Eindelijk loop ik gelijk,' zegt hij.",
+    "prompt": "a gaunt elderly Victorian clock winder in a long grey coat climbing the spiral stairs inside a great clock tower, holding a huge brass winding key, a faint ticking glow visible through his shirt",
+    "god": "ouroch"
+  },
+  {
+    "id": "horatio-vance",
+    "naam": "Mr. Horatio Vance",
+    "rol": "Hoofdredacteur van de Avondlantaarn",
+    "factie": "De Avondlantaarn",
+    "kort": "Een redacteur die elke nacht de waarheid herschrijft, en wiens krant altijd gelijk krijgt.",
+    "beschrijving": "Horatio Vance maakte van een vergeten avondblad de best verkochte krant van Londen. Hij schrijft de koppen zelf, 's nachts, alleen. Zijn verslaggevers weten dat ze moeten schrijven wat hij wil, want wat hij drukt, gebeurt. Hij gelooft dat hij de wereld verbetert. Hij heeft nooit gemerkt dat de woorden niet meer van hem zijn.",
+    "prompt": "a sharp-dressed Victorian newspaper editor in his fifties with slicked hair and a waxed moustache, green eyeshade pushed up, sleeves rolled, writing furiously at a desk in a lamp-lit office above Fleet Street",
+    "god": "yth-nemora"
+  },
+  {
+    "id": "kitty-lark",
+    "naam": "Kitty Lark",
+    "rol": "Krantenmeisje aan Fleet Street",
+    "factie": "Geen",
+    "kort": "Een krantenmeisje dat de kranten leest voordat ze ze verkoopt, en ziet dat ze veranderen.",
+    "beschrijving": "Kitty is twaalf en verkoopt de Avondlantaarn op de hoek van Fleet Street. Ze kan lezen, wat haar baas niet weet. Ze leest elke krant twee keer: als ze hem ophaalt, en als ze hem verkoopt. Steeds vaker staat er iets anders. Ze bewaart de oude versies onder haar matras.",
+    "prompt": "a sharp-eyed twelve-year-old Victorian newsgirl in a too-large coat and cap, a bundle of evening papers under her arm, reading one of them intently under a gas lamp on Fleet Street",
+    "god": "yth-nemora"
+  },
+  {
+    "id": "fennimore-blight",
+    "naam": "Fennimore Blight",
+    "rol": "Zetter en beroepsgetuige",
+    "factie": "De Avondlantaarn",
+    "kort": "Een zetter die zich alles herinnert, ook wat nooit gebeurde.",
+    "beschrijving": "Fennimore Blight zet al twintig jaar letters voor de Avondlantaarn. Vorig jaar begon hij te getuigen: bij de politie, bij de rechter, bij elke ramp. Hij weet alles. Hij zweert op alles. En het klopt allemaal, de volgende dag. Diep vanbinnen weet hij dat hij liegt, en hij is doodsbang voor wat er gebeurt als hij ophoudt.",
+    "prompt": "a thin nervous Victorian typesetter in a printer's apron with ink-black fingers and spectacles, swearing on a bible in a magistrate's court, sweat on his brow",
+    "god": "yth-nemora"
+  },
+  {
+    "id": "reginald-kettering",
+    "naam": "Sir Reginald Kettering",
+    "rol": "Directeur van de Kettering Bank",
+    "factie": "Het Syndicaat van de Ongeziene Hand",
+    "kort": "Een bankier die zijn ziel verpandde, en de rente nog moet betalen.",
+    "beschrijving": "Sir Reginald was in 1866 bijna failliet, toen de bank van Overend en Gurney viel en half Londen meetrok. Op de avond dat hij zich wilde ophangen, vond hij een contract op zijn bureau. Hij tekende het. Sindsdien kan hij niet meer verliezen. Hij is de rijkste man van de City, en hij heeft al tien jaar niets meer geproefd.",
+    "prompt": "a heavy elderly Victorian banker with grey mutton-chop whiskers, impeccable black frock coat and gold watch chain, sitting behind a vast mahogany desk in a dim City office, his hands resting on a ledger, his eyes tired and hollow",
+    "god": "gul-marrach"
+  },
+  {
+    "id": "edwin-pratt",
+    "naam": "Edwin Pratt",
+    "rol": "Klerk bij de Kettering Bank",
+    "factie": "Geen",
+    "kort": "Een klerk die de cijfers optelde en zag dat ze niet kloppen.",
+    "beschrijving": "Edwin Pratt werkt al twaalf jaar aan de hoge lessenaar van de Kettering Bank. Hij telt. Vorige maand telde hij de boeken van het Syndicaat op, voor de grap, uit verveling, en de uitkomst was een getal dat groter is dan al het geld in de wereld. Sindsdien wordt hij gevolgd. Hij verstopt zich in een club in Pall Mall, waar hij lid van werd met zijn laatste spaargeld.",
+    "prompt": "a thin nervous young Victorian bank clerk with ink-stained cuffs and round spectacles, clutching a ledger to his chest, hiding in the deep leather armchair of a gentlemen's club in Pall Mall",
+    "god": "gul-marrach"
+  },
+  {
+    "id": "bessie-doyle",
+    "naam": "Mrs. Bessie Doyle",
+    "rol": "Werkhuisbewoonster in Spitalfields",
+    "factie": "Geen",
+    "kort": "Een vrouw die alles kwijt is, behalve haar trots en haar geheugen.",
+    "beschrijving": "Bessie Doyle had een kruidenierswinkel in Bethnal Green, tot de huur drie keer in een jaar steeg. Nu woont ze in het werkhuis van Spitalfields en plukt ze touw. Ze weet precies wie haar huisbaas was, en wie zijn huisbaas, en wie daarboven zat. Ze heeft het allemaal opgeschreven op het behang naast haar bed.",
+    "prompt": "a proud weathered Victorian woman in her fifties in a coarse workhouse uniform, sitting on a narrow iron bed in a crowded dormitory, the wall beside her covered with tiny handwritten names and sums",
+    "god": "gul-marrach"
+  }
+]

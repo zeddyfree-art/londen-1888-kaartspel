@@ -1,0 +1,165 @@
+[
+  {
+    "id": "bisschop-van-het-slib",
+    "naam": "De Bisschop van het Slib",
+    "oudegod": "vathrun",
+    "gruwel": 2,
+    "taaiheid": 9,
+    "schade": 2,
+    "leven": 3,
+    "eigenschap": "Met 4 helden heeft hij 2 leven extra. Elk gevecht dat je wint, haalt er 1 af.",
+    "prompt": "a bloated drowned medieval bishop in rotting vestments crusted with river mud and shells, mitre dripping, rising from the Thames at Southwark"
+  },
+  {
+    "id": "de-dichter-zonder-ogen",
+    "naam": "De Dichter zonder Ogen",
+    "oudegod": "azh-ilareth",
+    "gruwel": 3,
+    "taaiheid": 9,
+    "schade": 1,
+    "leven": 3,
+    "eigenschap": "Elke held op dezelfde plek verliest elke ronde 1 Geest. Bestrijd hem met Kennis in plaats van Kracht.",
+    "prompt": "a gaunt Victorian poet in a velvet smoking jacket with smooth skin where his eyes should be, writing glowing violet verses in the air with a quill",
+    "vechtMet": "kennis",
+    "aura": {
+      "geest": -1
+    }
+  },
+  {
+    "id": "gemaskerde-hogepriester",
+    "naam": "De Gemaskerde Hogepriester",
+    "oudegod": "nebet-ankhu",
+    "gruwel": 2,
+    "taaiheid": 9,
+    "schade": 2,
+    "leven": 3,
+    "eigenschap": "Na elke Onheilsfase draagt hij een ander gezicht: verplaats hem naar de plek van een willekeurige held.",
+    "prompt": "an ancient Egyptian high priest in gold and lapis regalia wearing a mask that shows a different stolen human face, standing in a torchlit tomb",
+    "beweging": {
+      "type": "springNaarHeld"
+    }
+  },
+  {
+    "id": "groene-jager",
+    "naam": "De Groene Jager",
+    "oudegod": "ysmara",
+    "gruwel": 2,
+    "taaiheid": 9,
+    "schade": 2,
+    "leven": 3,
+    "eigenschap": "De jager van de Doornkoningin. Na elke Onheilsfase loopt hij 1 plek naar de dichtstbijzijnde held. Met 4 helden heeft hij 2 leven extra.",
+    "prompt": "a towering antlered hunter wrapped in moss and hawthorn, face hidden by a mask of bark, carrying a bow of black wood, stalking across foggy Hampstead Heath under a pale moon",
+    "beweging": {
+      "type": "naarHeld",
+      "stappen": 1
+    }
+  },
+  {
+    "id": "de-anatoom",
+    "naam": "De Anatoom",
+    "oudegod": "morghast",
+    "gruwel": 3,
+    "taaiheid": 10,
+    "schade": 2,
+    "leven": 3,
+    "eigenschap": "Wat ooit Dr. Lionel Grieve was. Elke keer dat hij een gevecht wint, naait hij zichzelf dicht: hij krijgt 1 leven terug. Met 4 helden heeft hij 2 leven extra.",
+    "prompt": "a towering surgeon in a blood-stiffened frock coat, his body stitched together from many corpses, a dozen surgical instruments in too many hands, standing in the old operating theatre of Guy's Hospital lit by skylight",
+    "herstelt": 1
+  },
+  {
+    "id": "broeder-absalom",
+    "naam": "Broeder Absalom",
+    "gruwel": 2,
+    "taaiheid": 9,
+    "schade": 2,
+    "leven": 3,
+    "eigenschap": "De prediker van de kudde. Zolang hij leeft, komt er elke Onheilsfase een Cultist bij op zijn plek. Elk gevecht dat je tegen hem wint, jaagt de cultisten op zijn plek weg. Met 4 helden heeft hij 2 leven extra.",
+    "prompt": "a gaunt Victorian street preacher in a long threadbare black coat and battered top hat, standing on an upturned crate with arms spread wide, his open mouth glowing faintly, dozens of followers kneeling around him in a foggy Spitalfields market at night",
+    "mens": true,
+    "roeptCultisten": true,
+    "verjaagtBijRaak": true,
+    "oudegod": "ommeth"
+  },
+  {
+    "id": "de-conservator",
+    "naam": "De Conservator",
+    "gruwel": 2,
+    "taaiheid": 10,
+    "schade": 2,
+    "leven": 3,
+    "eigenschap": "Mr. Horace Quill, die te lang tussen de splinters sliep. Hij loopt naar de held met de meeste Artefacten. Wint hij een gevecht, dan neemt hij een Artefact van je af. Met 4 helden heeft hij 2 leven extra.",
+    "prompt": "a thin elderly Victorian museum curator in a dusty frock coat and white cotton gloves, his eyes replaced by two glowing shards of black glass, holding a ring of keys, standing among glass display cases in a dark museum gallery",
+    "mens": true,
+    "steeltArtefact": true,
+    "beweging": {
+      "type": "naarArtefact"
+    },
+    "oudegod": "karathos"
+  },
+  {
+    "id": "koning-van-de-vorstmarkt",
+    "naam": "De Koning van de Vorstmarkt",
+    "gruwel": 2,
+    "taaiheid": 10,
+    "schade": 2,
+    "leven": 3,
+    "eigenschap": "Een reus van ijs in de kleren van een kermiskoning uit 1814. Elke held op zijn plek verliest elke ronde 1 Lichaam van de kou. Met 4 helden heeft hij 2 leven extra.",
+    "prompt": "a towering figure made of blue river ice dressed in the tattered finery of a Regency frost fair king, paper crown, icicle beard, holding a frozen gin bottle, standing on the frozen Thames among abandoned stalls and tents",
+    "aura": {
+      "lichaam": -1
+    },
+    "oudegod": "ulvereth"
+  },
+  {
+    "id": "de-muze",
+    "naam": "De Muze",
+    "gruwel": 2,
+    "taaiheid": 9,
+    "schade": 1,
+    "leven": 3,
+    "eigenschap": "Sirrhae's stem op aarde, in de gedaante van een diva. Bekoring: je weerstaat haar met Charisma, en je bevecht haar met Charisma. Met 4 helden heeft ze 2 leven extra.",
+    "prompt": "a radiant opera diva in a gown of midnight silk and pearls singing on the stage of the Royal Opera House, her voice visible as golden threads that wind around the necks of the entranced audience in the dark stalls",
+    "bekoring": true,
+    "vechtMet": "overtuiging",
+    "oudegod": "sirrhae"
+  },
+  {
+    "id": "de-uurwerkman",
+    "naam": "De Uurwerkman",
+    "gruwel": 2,
+    "taaiheid": 10,
+    "schade": 2,
+    "leven": 3,
+    "eigenschap": "Wat ooit Ignatius Fell was, de opwinder van de klokkentoren. Om de ronde windt hij zichzelf op: hij krijgt 1 leven terug, behalve in een ronde waarin de klok slaat. Met 4 helden heeft hij 2 leven extra.",
+    "prompt": "a tall gaunt man in a Victorian clock-winder's coat whose chest is an open brass clockwork mechanism, a large winding key turning slowly in his back, pocket watches hanging from chains all over his body, standing in a gaslit street on the Strand",
+    "herstelRonde": 1,
+    "oudegod": "ouroch"
+  },
+  {
+    "id": "de-redacteur",
+    "naam": "De Redacteur",
+    "gruwel": 2,
+    "taaiheid": 10,
+    "schade": 1,
+    "leven": 3,
+    "eigenschap": "Wat ooit Mr. Horatio Vance was, de hoofdredacteur van de Avondlantaarn. Verlies je van hem, dan raak je 1 Aanwijzing kwijt, en wat je zeker wist, is weer onzeker. Met 4 helden heeft hij 2 leven extra.",
+    "prompt": "a tall Victorian newspaper editor in shirtsleeves and an ink-stained waistcoat, green eyeshade, his face covered with moving printed words, holding a dripping red pen like a dagger, standing among roaring printing presses",
+    "mens": true,
+    "maaktOnzeker": true,
+    "verliesAanw": 1,
+    "oudegod": "yth-nemora"
+  },
+  {
+    "id": "de-makelaar",
+    "naam": "De Makelaar",
+    "gruwel": 1,
+    "taaiheid": 10,
+    "schade": 1,
+    "leven": 3,
+    "eigenschap": "Sir Reginald Kettering, die een contract tekende dat hij niet had gelezen. Wint hij een gevecht, dan neemt hij tot 5 Pond van je af. Met 4 helden heeft hij 2 leven extra.",
+    "prompt": "a corpulent Victorian financier in an immaculate frock coat and silk hat, his face a smooth blank mask of gold, ledger in one hand and a quill dripping black ink in the other, standing in a marble banking hall full of empty desks",
+    "mens": true,
+    "verliesPond": 5,
+    "oudegod": "gul-marrach"
+  }
+]

@@ -1,0 +1,1 @@
+{"name":"londen-1888-kaartspel","private":true,"type":"module","scripts":{"bouw":"node tools/bouw.js","test":"node tools/controleer-kaarten.js && node tools/testbot.js --gevechten 200"}}

@@ -1,0 +1,17 @@
+{
+  "name": "Londen 1888: Het Kaartspel",
+  "short_name": "Kaartspel 1888",
+  "description": "Een roguelike kaartspel in het Londen van 1888.",
+  "lang": "nl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#0b1113",
+  "theme_color": "#0b1113",
+  "icons": [
+    { "src": "icoon/icoon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icoon/icoon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icoon/icoon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

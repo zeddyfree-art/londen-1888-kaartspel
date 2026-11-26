@@ -1,0 +1,20 @@
+[
+ { "id": "laudanum", "naam": "Flesje laudanum", "soort": "middeltje", "klasse": "londen", "zeldzaamheid": "gewoon", "doel": "geen", "prijs": 18,
+   "effect": [{ "doe": "geest", "aantal": 4 }, { "doe": "status", "status": "mist", "aantal": 1, "op": "held" }],
+   "art": "spullen/laudanum.jpg", "sfeer": "Een paar druppels, en de stemmen worden zachter." },
+ { "id": "vlugzout", "naam": "Vlugzout", "soort": "middeltje", "klasse": "londen", "zeldzaamheid": "gewoon", "doel": "geen", "prijs": 15,
+   "effect": [{ "doe": "verwijder", "status": ["mist", "angst"], "op": "alle-eigen" }, { "doe": "geest", "aantal": 1 }],
+   "art": "spullen/vlugzout.jpg", "sfeer": "Eén snuif en je staat weer recht." },
+ { "id": "brandewijn", "naam": "Flacon brandewijn", "soort": "middeltje", "klasse": "londen", "zeldzaamheid": "gewoon", "doel": "geen", "prijs": 15,
+   "effect": [{ "doe": "lichaam", "aantal": 5 }, { "doe": "geest", "aantal": 1 }],
+   "art": "spullen/brandewijn.jpg", "sfeer": "Tegen de kou, zeggen ze. En tegen wat je zag." },
+ { "id": "cocawijn", "naam": "Cocawijn van Mariani", "soort": "middeltje", "klasse": "londen", "zeldzaamheid": "ongewoon", "doel": "eigen", "prijs": 22,
+   "effect": [{ "doe": "teller", "aantal": -2 }],
+   "art": "spullen/cocawijn.jpg", "sfeer": "Aanbevolen door de paus, zegt het etiket." },
+ { "id": "carbol", "naam": "Carbolzuur en verband", "soort": "middeltje", "klasse": "londen", "zeldzaamheid": "gewoon", "doel": "eigen", "prijs": 15,
+   "effect": [{ "doe": "genees", "aantal": 5 }, { "doe": "verwijder", "status": ["pest", "angst"] }],
+   "art": "spullen/carbol.jpg", "sfeer": "Het prikt. Dat is hoe je weet dat het werkt." },
+ { "id": "morfine", "naam": "Morfine-injectie", "soort": "middeltje", "klasse": "londen", "zeldzaamheid": "ongewoon", "doel": "geen", "prijs": 20,
+   "effect": [{ "doe": "lichaam", "aantal": 9 }, { "doe": "geest", "aantal": -2 }],
+   "art": "spullen/morfine.jpg", "sfeer": "De pijn verdwijnt. Iets anders ook." }
+]
