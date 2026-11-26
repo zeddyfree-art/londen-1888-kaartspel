@@ -29,7 +29,7 @@ const H = {
   // Kracht
   "hu-yiping": ["kracht", true, "Je held en je bondgenoten doen +2 schade tegen menselijke vijanden.", { extraMens: 2, extraMensIedereen: true }],
   "tobias-hale": ["kracht", true, "Doodt hij een vijand, dan slaat hij meteen nog een keer toe (één keer per beurt).", { doorvechter: true }],
-  "aggie-pruitt": ["kracht", true, "Aanvallen op bondgenoten in haar rij gaan naar haar. Elke treffer op haar doet 1 schade minder. Ze heeft Doorns 1.", { bredeSchouders: true, taai: 1 }, { doorns: 1 }],
+  "aggie-pruitt": ["kracht", true, "Elke treffer op haar of op een kaart in haar rij doet 1 schade minder. Ze heeft Doorns 1.", { bredeSchouders: true }, { doorns: 1 }],
   "arjan-singh": ["kracht", false, "Je held en je bondgenoten nemen 1 Gruwel minder van elke treffer.", { stalenZenuwen: true }],
   "ang-nima": ["kracht", false, "Begint elk gevecht met 2 Gezegend.", { beginStatus: { gezegend: 2 } }],
   "mahmoud-fathy": ["kracht", false, "Begint elk gevecht met de barricade Dragers in de hand. Kisten geven één extra keuze.", { extraKaart: "dragers", kistExtra: 1 }],

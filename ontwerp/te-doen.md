@@ -29,3 +29,16 @@ Per fase uit de brief een regel; bovenaan wat er nu speelbaar is. De laatste met
 - Gevechten duren gemiddeld zo'n 18 beurten. Als dat te lang voelt: vijanden iets minder Leven, of golven sneller.
 
 ## Laatste meting
+
+26 november 2026, 105 runs per stand, alle 7 Kracht-helden, Vathrûn:
+
+| Stand | Winkans testbot | Doel |
+|---|---|---|
+| Ontspannen | 96% | 85–90% |
+| Normaal | 70% | 55–65% |
+| Genadeloos | 27% | 25–35% |
+
+- De meeste runs sneuvelen tegen Vathrûn zelf (akte 3). Op Genadeloos ook bij de Bisschop en in de Scheuren.
+- Per held (Normaal, 15 runs elk, dus nog ruis): Hale en Singh 87%, Ang Nima 80%, Pruitt 73%, Hu Yiping 60%, Fathy 53%, Bray 47%. Bray en Fathy krijgen hun voordeel buiten het gevecht; meer runs nodig voor een oordeel.
+- Normaal en Ontspannen zijn iets te makkelijk. Volgende stap: vijanden in akte 2 en 3 iets sterker, of minder herstel tussen de akten.
+- Gemiddeld 18 beurten per gevecht, 10 gevechten per gewonnen run.

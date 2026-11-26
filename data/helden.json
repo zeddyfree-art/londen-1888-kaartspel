@@ -482,9 +482,8 @@
   "geest": 8,
   "vermogen": {
    "naam": "Brede schouders",
-   "tekst": "Aanvallen op bondgenoten in haar rij gaan naar haar. Elke treffer op haar doet 1 schade minder. Ze heeft Doorns 1.",
-   "bredeSchouders": true,
-   "taai": 1
+   "tekst": "Elke treffer op haar of op een kaart in haar rij doet 1 schade minder. Ze heeft Doorns 1.",
+   "bredeSchouders": true
   },
   "statussen": {
    "doorns": 1

@@ -301,11 +301,7 @@ export function aanvalsDoelen(g, u, tegenKant) {
   return [];
 }
 
-/** Brede schouders (Aggie Pruitt): aanvallen op bondgenoten in haar rij gaan naar haar. */
 function omleiden(g, doel) {
-  const h = g.eenheden[g.held];
-  if (doel.kant === "speler" && doel.uid !== g.held && levend(h) && B().helden[g.ctx.held]?.vermogen?.bredeSchouders
-    && rijVan(g, h) === rijVan(g, doel)) return h;
   return doel;
 }
 
@@ -361,7 +357,10 @@ export function treffer(g, bron, doel, schade, gruwel = 0, opt = {}) {
     return;
   }
   if (doel.statussen.vervloekt > 0) { schade *= 2; doel.statussen.vervloekt = 0; }
-  if (doel.uid === g.held && schade > 0) schade = Math.max(0, schade - (B().helden[g.ctx.held]?.vermogen?.taai || 0));
+  if (doel.kant === "speler" && schade > 0 && B().helden[g.ctx.held]?.vermogen?.bredeSchouders) {
+    const h = g.eenheden[g.held];
+    if (levend(h) && rijVan(g, h) === rijVan(g, doel)) schade = Math.max(0, schade - 1);
+  }
   let echt = 0;
   if (doel.schroot != null) { doel.schroot -= 1; echt = 1; }
   else {
