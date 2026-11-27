@@ -1,15 +1,15 @@
 [
  { "id": "bokser", "naam": "Bokser uit Bethnal Green", "soort": "bondgenoot", "klasse": "kracht", "zeldzaamheid": "start",
    "aanval": 3, "leven": 7, "teller": 3, "verbeterd": { "aanval": 4, "leven": 9 },
-   "art": "spullen/bondgenoot-bokser.jpg", "sfeer": "Hij vecht voor een shilling, en voor jou voor niks." },
+   "art": "bondgenoten/bokser.jpg", "sfeer": "Hij vecht voor een shilling, en voor jou voor niks." },
  { "id": "sjouwer", "naam": "Sjouwer uit de dokken", "soort": "bondgenoot", "klasse": "kracht", "zeldzaamheid": "start",
    "aanval": 2, "leven": 10, "teller": 4, "statussen": { "doorns": 1 }, "verbeterd": { "leven": 13, "statussen": { "doorns": 2 } },
-   "art": "spullen/bondgenoot-sjouwer.jpg", "sfeer": "Wie hem slaat, voelt het zelf het hardst." },
+   "art": "bondgenoten/sjouwer.jpg", "sfeer": "Wie hem slaat, voelt het zelf het hardst." },
  { "id": "agent", "naam": "Agent op ronde", "soort": "bondgenoot", "klasse": "kracht", "zeldzaamheid": "gewoon",
    "aanval": 2, "leven": 8, "teller": 3,
    "reactie": { "bij": "bondgenoot-geraakt", "alleenRij": true, "effect": [{ "doe": "status", "status": "woede", "aantal": 1, "op": "zelf" }] },
    "verbeterd": { "aanval": 3, "reactie": { "bij": "bondgenoot-geraakt", "alleenRij": true, "effect": [{ "doe": "status", "status": "woede", "aantal": 2, "op": "zelf" }] } },
-   "art": "spullen/bondgenoot-agent.jpg", "sfeer": "Wie een collega slaat, slaat de hele Metropolitan Police." },
+   "art": "bondgenoten/agent.jpg", "sfeer": "Wie een collega slaat, slaat de hele Metropolitan Police." },
  { "id": "thaddeus-voss", "naam": "Hoofdinspecteur Voss", "soort": "bondgenoot", "klasse": "kracht", "zeldzaamheid": "zeldzaam",
    "aanval": 3, "leven": 10, "teller": 3,
    "bijBinnenkomst": [{ "doe": "status", "status": "gezegend", "aantal": 1, "op": "alle-eigen" }],
@@ -43,11 +43,11 @@
    "leven": 6, "teller": 3,
    "bijToeslaan": [{ "doe": "genees", "aantal": 2, "op": "alle-eigen" }],
    "verbeterd": { "bijToeslaan": [{ "doe": "genees", "aantal": 3, "op": "alle-eigen" }] },
-   "art": "spullen/bondgenoot-kruidenvrouw.jpg", "sfeer": "Ze verbindt je wonden en vraagt niet hoe je eraan kwam." },
+   "art": "bondgenoten/kruidenvrouw.jpg", "sfeer": "Ze verbindt je wonden en vraagt niet hoe je eraan kwam." },
  { "id": "medium", "naam": "Medium uit Marylebone", "soort": "bondgenoot", "klasse": "londen", "zeldzaamheid": "zeldzaam", "occult": true,
    "aanval": 1, "leven": 5, "teller": 3,
    "bijToeslaan": [{ "doe": "status", "status": "vervloekt", "aantal": 1 }],
    "bijToeslaanVerlicht": [{ "doe": "status", "status": "vervloekt", "aantal": 1, "op": "alle-vijanden" }, { "doe": "geest", "aantal": -1 }],
    "verbeterd": { "aanval": 2, "leven": 6 },
-   "art": "spullen/bondgenoot-medium.jpg", "sfeer": "Ze roept de doden aan. Soms antwoorden ze." }
+   "art": "bondgenoten/medium.jpg", "sfeer": "Ze roept de doden aan. Soms antwoorden ze." }
 ]

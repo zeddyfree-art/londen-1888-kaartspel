@@ -364,3 +364,169 @@ body.verlicht .gevecht::after { content: ""; position: absolute; inset: 0; point
 .vak.groot-vak .kaart { height: 100%; aspect-ratio: auto; }
 .vak.groot-vak .kaart .beeld { background-position: center; }
 .hand { padding-bottom: 16px; }
+
+/* De speelkamer: een drieluik van speelkaarten in het gaslicht. */
+.speelkamer { overflow-y: auto; background: #101616; color: #eee5cd; --koper: #d5aa67; }
+.kamerkop, .kamerdeuren, .nachtinhoud { padding-inline: max(5.4vw, calc((100vw - 1480px) / 2)); }
+.kamerkop { min-height: 74px; flex: none; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #716043; background: #101616; }
+.kamermerk, .kamergereedschap, .kamergereedschap button, .nachtacties, .kamerdeur { display: flex; align-items: center; }
+.kamermerk { gap: 13px; font: 600 1.1rem Georgia, serif; text-transform: uppercase; letter-spacing: .12em; }
+.kamer-icoon { width: 20px; height: 20px; display: inline-flex; flex: none; }
+.kamer-icoon svg { width: 100%; height: 100%; }
+.kamermerk .kamer-icoon { color: var(--koper); width: 36px; height: 36px; }
+.kamergereedschap { gap: 16px; }
+.kamergereedschap button { background: transparent; border: 0; color: #d0c7b1; padding: 10px 3px; gap: 8px; cursor: pointer; }
+.kamergereedschap button:hover { color: #fff0c4; }
+.nacht { position: relative; flex: 1 0 auto; min-height: min(540px,68vh); display: grid; isolation: isolate; overflow: hidden; }
+.nachtprent { position: absolute; inset: 0; z-index: -1; background-position: center 60%; background-size: cover; }
+.nachtprent::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg,#0b1313f5 0%,#0c1414a8 36%,#0b141425 70%),linear-gradient(0deg,#0b1111c9,transparent 30%); }
+.nachtinhoud { display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding-block: 36px; gap: 4vw; }
+.rubriek, .kaartonderschrift small { font: 600 .8rem var(--body); text-transform: uppercase; color: #ecce94; letter-spacing: .23em; }
+.rubriek { display: flex; align-items: center; gap: 13px; }
+.rubriek::before { content: ""; width: 40px; height: 1px; background: var(--koper); }
+.nacht h1 { font-family: var(--letter); font-size: clamp(5.5rem, 9.2vw, 10rem); line-height: .84; letter-spacing: -.045em; margin: .23em 0 .21em; color: #f7ecd5; }
+.nacht h1 em { display: block; font-family: Georgia, serif; font-style: normal; font-weight: 400; font-variant-numeric: lining-nums; letter-spacing: -.07em; line-height: 1.03; color: #dbb478; }
+.nachttekst p { max-width: 37ch; font-family: var(--letter); font-size: clamp(1.1rem,1.55vw,1.5rem); color: #e3ddcb; margin: 0 0 1.5em; line-height: 1.45; }
+.nachtacties { gap: 12px; flex-wrap: wrap; }
+.knop.koper,.knop.glas { font: 600 1rem var(--body); letter-spacing: .01em; gap: 10px; min-height: 48px; border-radius: 3px; }
+.knop.koper { background: linear-gradient(110deg,#e0c592,#c69b5e); color: #251e15; border-color: #e9c991; }
+.knop.glas { color: #f1e5ce; border-color: #928164; background: #17201edb; }
+.vitrine { position: relative; height: clamp(250px,32vw,500px); width: 100%; perspective: 1200px; align-self: center; }
+.vitrinekaart { position: absolute; left: 50%; top: 50%; width: 46%; aspect-ratio: 0.647; border-radius: 9px; border: 3px solid #ad915f; background-color: #19201e; background-size: cover; background-position: center; overflow: hidden; box-shadow: 0 2px 0 2px #211d16,0 22px 29px #000a; }
+.vitrinekaart:nth-child(1) { transform: translate(-89%,-44%) rotate(-16deg); }
+.vitrinekaart:nth-child(2) { transform: translate(-8%,-44%) rotate(15deg); }
+.vitrinekaart:nth-child(3) { transform: translate(-50%,-52%) rotate(-3deg); }
+.vitrinekaart::before { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg,#090e0d 1%,#0b100fe8 9%,transparent 49%); }
+.kaartgravure { position: absolute; inset: 5px; border: 1px solid #d0b57fbb; border-radius: 4px; }
+.kaartgravure::before,.kaartgravure::after { content: "✦"; position: absolute; color: #f6d192; font: 16px Georgia,serif; top: 4px; text-shadow: 0 1px 3px #000; }
+.kaartgravure::before { left: 5px; } .kaartgravure::after { right: 5px; }
+.kaartonderschrift { display: grid; justify-items: center; gap: .18em; position: absolute; bottom: 5%; width: 100%; text-align: center; padding: 6px; }
+.kaartonderschrift strong { font: normal clamp(1.1rem,2.3vw,2.6rem) var(--letter); color: #fff2d7; line-height: 1.12; text-shadow: 0 1px 4px #000; }
+.kaartonderschrift small { font-size: clamp(.62rem,.85vw,.88rem); }
+.kaartstreep { display: flex; align-items: center; gap: 5px; color: #e9c892; font-size: .75rem; }
+.kaartstreep::before,.kaartstreep::after { content: ""; width: 25px; border-top: 1px solid #c2a46c; }
+.kamerdeuren { z-index: 1; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: clamp(12px,2vw,32px); padding-block: clamp(18px,3.2vh,40px); border-top: 1px solid #73603c; }
+.kamerdeur { width: 100%; padding: 0; text-align: left; background: #18201f; border: 1px solid #534d3e; cursor: pointer; min-height: 86px; overflow: hidden; }
+.kamerdeur:hover { background: #222927; border-color: #bc9a65; }
+.deurprent { align-self: stretch; width: 26%; flex: none; background-size: cover; background-position: center; box-shadow: inset -8px 0 18px #0005; }
+.deurtekst { padding: 10px clamp(10px,1.5vw,26px); display: grid; gap: 3px; }
+.deurtekst strong { font: normal clamp(1.1rem,1.65vw,1.8rem) var(--letter); color: #f1e5c9; }
+.deurtekst small { color: #bdbbab; font-size: .93rem; }
+@media (max-width: 740px) {
+  .kamerkop { min-height: 58px; }
+  .kamergereedschap button > span:last-child:not(.kamer-icoon) { display: none; }
+  .nachtinhoud { gap: 0; grid-template-columns: 1.12fr 1fr; padding-block: 30px; }
+  .nacht h1 { font-size: clamp(4rem,11vw,6rem); }
+  .nachttekst p { font-size: 1.07rem; }
+  .vitrinekaart { width: 52%; }
+  .kamerdeuren { gap: 8px; }
+  .deurprent { display: none; }
+  .kamerdeur { min-height: 62px; }
+  .deurtekst small { font-size: .82rem; }
+}
+@media (max-width: 540px) and (orientation: portrait) {
+  .nachtinhoud { display: flex; flex-direction: column-reverse; align-items: stretch; padding-block: 24px; }
+  .vitrine { width: min(78%,310px); height: 218px; }
+  .vitrinekaart { width: 45%; }
+  .nachttekst { text-align: center; }
+  .rubriek,.nachtacties { justify-content: center; }
+  .rubriek::after { content: ""; width: 40px; border-top: 1px solid var(--koper); }
+  .nacht h1 { font-size: clamp(3.5rem,13vw,5rem); margin-block: .22em; }
+  .nacht h1 em { display: inline; }
+  .nachttekst p { margin: 0 auto 16px; }
+  .nachtacties { gap: 7px; }
+  .nachtacties .knop { padding-inline: 12px; }
+  .kamerdeuren { grid-template-columns: 1fr; }
+  .deurprent { display: block; width: 20%; }
+  .deurtekst { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+}
+
+/* Slagveld en hand liggen op twee afzonderlijke delen van de speeltafel. */
+.gevecht {
+  --kb: min(12.6vw,16.8vh,166px); --hb: min(10.8vw,19vh,172px);
+  background: #101a19;
+}
+.gevecht .plekbeeld { opacity: .58; filter: saturate(.74); }
+.gevecht .plekbeeld::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg,#101716,transparent 55%,#0d14146e); }
+.gevecht .balk { background: #0d1515ed; border-bottom: 1px solid #78633f; min-height: 60px; padding: 6px max(2vw,env(safe-area-inset-right)); }
+.balk .gnaam { color: #f2dfb7; }
+.balk .icoonknop { border-radius: 3px; width: 40px; height: 40px; }
+.bigben { cursor: pointer; }
+.slagveld { gap: 0; padding: 24px 7px 5px; }
+.kant { gap: calc(var(--kb) * .095); }
+.kantnaam { position: absolute; bottom: 100%; left: 0; width: 100%; display: flex; gap: 10px; align-items: center; margin: 0 0 7px; color: #c7dfce; font: 700 .81rem var(--body); letter-spacing: .16em; text-transform: uppercase; }
+.kant.vijand .kantnaam { color: #f5c0a7; flex-direction: row-reverse; }
+.kantnaam::after { content: ""; flex: 1; border-top: 1px solid currentColor; opacity: .5; }
+.vak { border: 1px solid #b0c2ac67; background: linear-gradient(145deg,#263a3466,#101b1c9e); border-radius: 5px; box-shadow: inset 0 0 0 3px #0d141540; }
+.vijand .vak { border-color: #cba18b66; background: linear-gradient(145deg,#45342b55,#19181699); }
+.vak:empty::before { content: "◇"; font: 1rem Georgia,serif; color: #e5d9b873; pointer-events: none; }
+.vak.doelwit:empty::before { content: "+"; font-size: 1.5rem; color: #fff3ca; }
+.vak.doelwit,.terugroep.doelwit { box-shadow: inset 0 0 0 2px #e3bf7c; border-color: #ffe2a0; color: #fff0c7; background-color: #b69e6547; }
+.vak.doelwit.erboven,.terugroep.doelwit.erboven,.slagveld.veld-doel.erboven { background-color: #d8c08355; }
+.slagveld.veld-doel { box-shadow: inset 0 0 0 2px #efca82; background: #c8b27520; cursor: pointer; }
+.middenlijn { width: clamp(34px,5.8vw,80px); height: calc(var(--kb) * 2.895); align-self: center; margin: 0; display: grid; grid-template-rows: 1fr 1fr; place-items: center; background: linear-gradient(#ac926a78,#ac926a78) center/1px 100% no-repeat; }
+.middenlijn span { writing-mode: vertical-rl; transform: rotate(180deg); text-transform: uppercase; font: 600 .72rem var(--body); letter-spacing: .16em; color: #e2cfaa; padding: 8px 3px; background: #18201e; border: 1px solid #88734c; }
+.kaart.veld { border-width: 2px; border-radius: 5px; }
+.kaart.veld .naam { top: auto; bottom: 19%; transform: none; background: linear-gradient(90deg,#0d1514c9,#111714f2 45%,#0d1514c9); border-block: 1px solid #b2a07770; color: #f5e5bf; font-family: var(--letter); font-size: 1.2em; padding: .28em .14em; }
+.kaart.veld .beeld::after { background: linear-gradient(0deg,#0b1011ee,transparent 42%,transparent 80%,#0003); }
+.kaart.veld.weg,.middel.weg { opacity: .3; }
+.kaart.doelwit { outline: 2px solid #ffe1a0; outline-offset: 1px; }
+.kaart.doelwit.erboven { outline-width: 4px; filter: brightness(1.18); }
+.volgnr { pointer-events: none; }
+.handregel { z-index: 3; display: flex; align-items: center; gap: 18px; padding: 7px max(2vw,12px); border-block: 1px solid #776546; background: #17201ff5; }
+.handregel h2 { display: flex; align-items: center; gap: 8px; white-space: nowrap; font: 1.2rem var(--letter); color: #ead4aa; }
+.handregel small { font: 700 .83rem var(--body); border: 1px solid #857557; color: #e2d3b7; border-radius: 3px; padding: 1px 5px; }
+.speeltip { font-size: .95rem; color: #d2d2bf; line-height: 1.2; }
+.speeltip b { color: #f0dfb9; }
+.gevecht .onder { flex: none; height: calc(var(--hb) * 1.4 + 28px); align-items: center; gap: clamp(4px,1vw,14px); background: linear-gradient(175deg,#202b26,#101715 80%); }
+.hand { container-type: inline-size; align-items: center; padding-block: 4px; }
+.hand .kaart { --w: min(var(--hb), calc(104cqi / var(--aantal))); }
+.hand .kaart.gekozen,.hand .kaart:focus-visible { z-index: 10; }
+.hand .kaart .naam { font-family: var(--letter); font-size: 1.18em; }
+.hand .kaart .soortlabel { color: #ffe8bb; font-size: .85em; }
+.acties { width: clamp(105px,12vw,165px); gap: 5px; }
+.terugroep { min-height: 32px; }
+.zak .middel { width: clamp(25px,3.5vh,40px); height: clamp(25px,3.5vh,40px); touch-action: none; }
+.sleep { top: 0; left: 0; }
+.sleep .middel { border-radius: 50%; background-size: cover; border: 2px solid var(--goud); }
+.sleep .kaart { pointer-events: none; box-shadow: 0 16px 22px #000a,0 0 0 1px #eed4a3; }
+@media (max-height: 680px) and (orientation: landscape) {
+  .gevecht { --kb: min(12vw,15.2vh); --hb: min(10vw,18.5vh); }
+  .gevecht .balk { min-height: 44px; padding-block: 2px; }
+  .bigben .bb { height: 30px; width: 30px; }
+  .slagveld { padding-top: 22px; }
+  .handregel { padding-block: 3px; }
+  .gevecht .onder { height: calc(var(--hb) * 1.4 + 18px); }
+  .fluitje,.terugroep { min-height: 28px; }
+  .fluitje .fi { width: 24px; height: 24px; }
+  .zak .middel { height: 24px; width: 24px; }
+}
+@media (max-width: 780px) {
+  .gevecht .balk { flex-wrap: wrap; gap: 5px; }
+  .meter { padding: 3px 6px; }
+  .meter .balkje { display: none; }
+  .fluitje { padding: 4px; }
+}
+@media (max-width: 650px) and (orientation: portrait) {
+  .gevecht { overflow-y: auto; --kb: 14vw; --hb: min(25vw,16.2vh); }
+  .gevecht .balk { padding: 6px 8px; }
+  .balk .ruimte { display: none; }
+  .balk .bigben { margin-left: auto; }
+  .balk .gnaam { max-width: 48vw; }
+  .slagveld { min-height: calc(2.9 * var(--kb) + 40px); }
+  .middenlijn { width: 6.3vw; }
+  .kantnaam { font-size: .7rem; letter-spacing: .09em; }
+  .middenlijn span { font-size: .63rem; }
+  .handregel { align-items: baseline; gap: 9px; }
+  .speeltip { font-size: .83rem; }
+  .gevecht .onder { display: grid; height: auto; grid-template-columns: 42px 1fr 42px; padding: 8px; }
+  .hand { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); justify-items: center; gap: 4px; }
+  .hand .kaart { --w: min(var(--hb),30cqi); transform: none !important; margin: 0; }
+  .stapelvak { width: 100%; }
+  .stapelvak small { font-size: .65rem; }
+  .acties { grid-column: 1/-1; flex-direction: row; width: 100%; align-items: center; justify-content: space-between; }
+  .terugroep { max-width: 100px; }
+  .hand .kaart .tekstvak { font-size: 1em; }
+  .kaart.veld .naam { font-size: max(.51rem,1.15em); }
+}
+@media (hover:none) { .hand .kaart:hover:not(.gekozen) { transform: none !important; } }

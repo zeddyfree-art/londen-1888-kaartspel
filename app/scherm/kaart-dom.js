@@ -66,7 +66,7 @@ export function eenheidEl(u, opties = {}) {
     class: `kaart veld ${u.soort === "held" ? "held" : randKlasse(def)} ${isOccult(def) ? "occult" : ""} ${u.groot ? "groot" : ""} ${u.gewond ? "gewond" : ""} ${u.statussen.mist > 0 ? "mistig" : ""}`,
     data: { uid: u.uid },
   });
-  k.append(el("div", { class: "beeld", style: { backgroundImage: bg(u.art || def.art) } }));
+  k.append(el("div", { class: "beeld", style: { backgroundImage: bg(def.art || u.art) } }));
   k.append(el("div", { class: "naam" }, u.naam.replace(/\+$/, "")));
   if (u.aanval != null) k.append(stat("aanval", Math.max(0, u.aanval + (u.statussen.woede || 0) - (u.statussen.angst || 0)), u.statussen.woede ? "plus" : ""));
   if (u.schroot != null) k.append(stat("schroot", Math.max(0, u.schroot)));

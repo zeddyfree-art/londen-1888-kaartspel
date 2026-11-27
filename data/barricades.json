@@ -26,5 +26,5 @@
  { "id": "dragers", "naam": "Dragers", "soort": "barricade", "klasse": "persoonlijk", "held": "mahmoud-fathy", "zeldzaamheid": "speciaal",
    "schroot": 3, "teller": 3,
    "bijToeslaan": [{ "doe": "trek", "aantal": 1 }],
-   "art": "personen/youssef-hamdi.jpg", "sfeer": "Honderd man met manden. Er is er altijd één die iets meebrengt." }
+   "art": "bondgenoten/dragers.jpg", "sfeer": "Honderd man met manden. Er is er altijd één die iets meebrengt." }
 ]
