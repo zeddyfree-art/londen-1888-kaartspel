@@ -13,7 +13,7 @@ function portret(id) {
   const h = B().helden[id];
   return el("div", { class: "vitrinekaart", style: { backgroundImage: bg(h.art) } },
     el("div", { class: "kaartgravure" }),
-    el("div", { class: "kaartonderschrift" }, el("small", {}, h.rol), el("strong", {}, h.naam.replace("Sergeant ", "")),
+    el("div", { class: "kaartonderschrift" }, el("small", {}, h.rol), el("strong", {}, h.naam.replace(/^(Sergeant|Lady|Miss|Professor|Dr\.) /, "")),
       el("span", { class: "kaartstreep" }, "✦")));
 }
 
@@ -37,8 +37,8 @@ export function speelkamer(app, acties, laatsteNieuws, bewaard) {
           el("div", { class: "nachtacties" },
             el("button", { class: "knop koper", onclick: bewaard ? acties.hervat : acties.nieuw }, icoon(kaarten), bewaard ? "Hervat de nacht" : "Begin de nacht"),
             el("button", { class: "knop glas", onclick: bewaard ? acties.nieuw : acties.oefen }, icoon(bewaard ? kaarten : boek), bewaard ? "Nieuwe run" : "Oefengevecht"))),
-        el("div", { class: "vitrine", "aria-label": "De drie starthelden" },
-          portret("aggie-pruitt"), portret("hu-yiping"), portret("tobias-hale")))),
+        el("div", { class: "vitrine", "aria-label": "Helden van vier klassen" },
+          portret("violet-thorne"), portret("tobias-hale"), portret("cordelia-vane")))),
     el("nav", { class: "kamerdeuren", "aria-label": "Meer aan de speeltafel" },
       deur("Hoofdkwartier", "Helden en voortgang", "plekken/bloomsbury.jpg", acties.hoofdkwartier),
       deur("Spelregels", "Leer de kaarten spelen", "spreuken/tarot.jpg", acties.regels),

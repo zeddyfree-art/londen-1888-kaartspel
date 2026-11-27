@@ -1,5 +1,5 @@
 [
   { "id": "ontspannen", "naam": "Ontspannen", "tekst": "Je held heeft 40% meer Lichaam en Geest. Vijanden doen 1 schade minder.", "heldPlus": 0.4, "vijandAanval": -1, "vijandLeven": 1, "ponden": 1, "doel": "85–90%" },
   { "id": "normaal", "naam": "Normaal", "tekst": "Zoals het bedoeld is.", "heldPlus": 0, "vijandAanval": 0, "vijandLeven": 1, "ponden": 1, "doel": "55–65%" },
-  { "id": "genadeloos", "naam": "Genadeloos", "tekst": "Vijanden doen 1 schade meer en hebben 20% meer Leven. Je verdient minder Ponden.", "heldPlus": 0, "vijandAanval": 1, "vijandLeven": 1.2, "ponden": 0.75, "doel": "25–35%" }
+  { "id": "genadeloos", "naam": "Genadeloos", "tekst": "Vijanden doen 1 schade meer en hebben 10% meer Leven. Je verdient minder Ponden.", "heldPlus": 0, "vijandAanval": 1, "vijandLeven": 1.1, "ponden": 0.8, "doel": "25–35%" }
 ]

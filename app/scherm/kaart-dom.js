@@ -3,7 +3,7 @@ import { el, bg, ICOON, STATUSICOON, art } from "./gemeen.js";
 import { kaartDef, B } from "../motor/bibliotheek.js";
 import { kaartTekst, STATUSNAAM, kenmerkNaam } from "../motor/tekst.js";
 
-const SOORTNAAM = { bondgenoot: "bondgenoot", barricade: "barricade", spul: "spul", spreuk: "spreuk", middeltje: "middeltje", waanzin: "waanzin", vijand: "vijand", held: "held" };
+const SOORTNAAM = { bondgenoot: "bondgenoot", barricade: "barricade", ritueel: "ritueel", spul: "spul", spreuk: "spreuk", middeltje: "middeltje", waanzin: "waanzin", vijand: "vijand", held: "held" };
 
 export function randKlasse(def) {
   if (def.soort === "held") return "held";
@@ -82,10 +82,16 @@ export function kaartEl(id, opties = {}) {
   k.append(el("div", { class: "soortlabel" }, SOORTNAAM[def.soort] || def.soort));
   if (isOccult(def)) k.append(onweer());
   geestWerking(k, def);
-  if (def.soort === "spreuk") {
+  if (def.soort === "spreuk" || (def.soort === "ritueel" && def.geest)) {
     const kost = opties.geestKost ?? def.geest ?? 0;
     k.append(geestFiche("spreukkost", kost, `Kost ${kost} Geest`));
   }
+  if (def.deductie) {
+    const kost = opties.aanwijzingKost ?? def.deductie;
+    k.append(el("span", { class: "aanwijzingfiche", title: `Deductie: kost ${kost} Aanwijzingen`, "aria-label": `Deductie: kost ${kost} Aanwijzingen` },
+      el("i", { style: { backgroundImage: bg("fiches/aanwijzing.jpg") } }), el("b", {}, String(kost))));
+  }
+  if (def.overgelopen) k.append(el("div", { class: "gewondlabel overloper" }, "overgelopen"));
   if (def.statussen) k.append(chips(def.statussen));
   if (inst.zegel) k.append(el("div", { class: "zegelteken", title: "Zegel: zit in je beginhand en kost geen beurt" }, "Z"));
   if (inst.gewond) k.append(el("div", { class: "gewondlabel" }, "gewond"));
@@ -119,6 +125,8 @@ export function eenheidEl(u, opties = {}) {
     k.append(geestFiche("heldgeest", `${geest}/${maxGeest}`, `Geest ${geest} van ${maxGeest}`));
   }
   k.append(el("div", { class: "naam" }, u.naam.replace(/\+$/, "")));
+  if (u.ontmaskerd) k.append(el("div", { class: "ontmaskerd-label", title: "Ontmaskerd: neemt extra schade van elke treffer" }, "ontmaskerd"));
+  if (u.overgelopen) k.append(el("div", { class: "ontmaskerd-label overloper", title: "Overgelopen naar jouw kant" }, "overgelopen"));
   if (u.aanval != null) k.append(stat("aanval", Math.max(0, u.aanval + (u.statussen.woede || 0) - (u.statussen.angst || 0)), u.statussen.woede ? "plus" : ""));
   if (u.schroot != null) k.append(stat("schroot", Math.max(0, u.schroot)));
   else if (u.leven != null) k.append(stat("leven", Math.max(0, u.leven)));
@@ -165,6 +173,8 @@ export function uitlegEl(def, eenheid, opties = {}) {
   }
   if (eenheid?.teller != null) kinderen.push(el("p", { class: "muted" }, `Slaat toe over ${eenheid.teller} ${eenheid.teller === 1 ? "slag" : "slagen"}${eenheid.statussen.mist ? " (staat stil door Mist)" : ""}.`));
   if (eenheid?.gruwel) kinderen.push(el("p", { class: "muted" }, `Doet ${eenheid.gruwel} Gruwel per treffer.`));
+  if (eenheid?.ontmaskerd) kinderen.push(el("p", {}, el("b", {}, "Ontmaskerd: "), "neemt extra schade van elke treffer."));
+  if (def.deductie) kinderen.push(el("p", { class: "muted" }, `Deductie: kost ${opties.aanwijzingKost ?? def.deductie} Aanwijzingen. Waarneming krijgt Aanwijzingen van kaarten en telkens als de held toeslaat.`));
   if (eenheid?.mens || def.mens) kinderen.push(el("p", { class: "muted" }, "Een mens, geen monster."));
   if (def.baas) kinderen.push(el("p", { class: "muted" }, "Baas: versla hem en de rest slaat op de vlucht."));
   if (def.sfeer) kinderen.push(el("p", { class: "sfeer" }, def.sfeer));

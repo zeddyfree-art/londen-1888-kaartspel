@@ -4,7 +4,7 @@ import { el, bg, ICOON, banner, melding, wacht, reduceMotion, modaal } from "./g
 import { kaartEl, eenheidEl, werkBij, uitlegEl } from "./kaart-dom.js";
 import { B, kaartDef } from "../motor/bibliotheek.js";
 import {
-  geldigeDoelen, kanSpelen, geestKosten, eenhedenVan, volgordeNummers, aanvalsDoelen, fluitjeOpgeladen, verlichtDrempel, FLUITJE_OPLADEN,
+  geldigeDoelen, kanSpelen, geestKosten, aanwijzingKosten, heldActie, vermogenDoelen, eenhedenVan, volgordeNummers, aanvalsDoelen, fluitjeOpgeladen, verlichtDrempel, FLUITJE_OPLADEN,
 } from "../motor/gevecht.js";
 import { speel } from "./geluid.js";
 
@@ -48,7 +48,10 @@ export function gevechtScherm(app, opties) {
       el("button", { class: `bigben ${golvenOver && g.bigben <= 1 ? "dreig" : ""}`, title: "Big Ben: de volgende golf", onclick: () => toonVolgendeGolf(g) },
         el("div", { class: "bb", style: { backgroundImage: bg("scherm/big-ben.jpg") } }),
         golvenOver ? [el("b", {}, String(g.bigben)), el("span", {}, g.bigben === 1 ? "slag tot" : "slagen tot", el("br"), "de volgende golf")] : el("span", {}, "laatste", el("br"), "golf")),
+      vermogenKnop(g),
       el("div", { class: "ruimte" }),
+      g.ctx.klasse === "waarneming" || g.aanwijzingen ? el("div", { class: "meter aanwijzingen", title: "Aanwijzingen: nodig voor Deducties" },
+        el("i", { style: { backgroundImage: bg("fiches/aanwijzing.jpg") } }), String(g.aanwijzingen || 0)) : null,
       el("div", { class: "meter lichaam", title: "Lichaam van je held" }, el("span", { html: ICOON.hart, style: { width: "18px", height: "18px", display: "inline-flex" } }), `${Math.max(0, h?.leven ?? 0)}/${h?.maxLeven ?? 0}`),
       el("div", { class: `meter geest ${g.verlicht ? "verlicht" : ""}`, title: `Geest. Verlicht bij ${grens} of minder.` },
         el("span", { html: ICOON.geest, style: { width: "18px", height: "18px", display: "inline-flex" } }), `${g.geest}/${g.maxGeest}`,
@@ -111,13 +114,29 @@ export function gevechtScherm(app, opties) {
     return k;
   }
 
+  function vermogenKnop(g) {
+    const vm = B().helden[g.ctx.held]?.vermogen;
+    if (!vm?.actie) return null;
+    const a = heldActie(g);
+    return el("button", {
+      class: `vermogenknop ${S.keuze?.soort === "vermogen" ? "gekozen" : ""}`, disabled: !a || !vermogenDoelen(g).length,
+      title: `${vm.naam}: ${vm.tekst}`,
+      onclick: () => {
+        if (S.bezig || !heldActie(g)) return;
+        if (vm.actie.doel === "geen") { voerUit({ soort: "vermogen" }); return; }
+        S.keuze = S.keuze?.soort === "vermogen" ? null : { soort: "vermogen" };
+        render();
+      },
+    }, a ? vm.actie.knop || vm.naam : `${vm.actie.knop || vm.naam} (gebruikt)`);
+  }
+
   function onder(g) {
     const hand = el("div", { class: "hand", "aria-label": "Je hand" });
     hand.style.setProperty("--aantal", Math.max(g.hand.length, 6));
     const n = g.hand.length;
     g.hand.forEach((i, idx) => {
       const d = kaartDef(i.id, i.verbeterd);
-      const k = kaartEl(i.id, { inst: i, geestKost: geestKosten(g, d) });
+      const k = kaartEl(i.id, { inst: i, geestKost: geestKosten(g, d), aanwijzingKost: aanwijzingKosten(g, d) });
       k.dataset.inst = i.uid;
       const hoek = (idx - (n - 1) / 2) * Math.min(3, 17 / Math.max(1, n));
       const zak = Math.abs(idx - (n - 1) / 2) ** 2 * .65;
@@ -173,6 +192,8 @@ export function gevechtScherm(app, opties) {
         uit.add(ander ? `u:${ander}` : `vak:${r}:${p}`);
       }
       if (u.soort === "bondgenoot") uit.add("terug");
+    } else if (keuze.soort === "vermogen") {
+      for (const u of vermogenDoelen(g)) if (u) uit.add(`u:${u}`);
     } else if (keuze.soort === "middel") {
       const d = kaartDef(g.zak[keuze.index]);
       if (d.doel === "eigen") for (const u of eenhedenVan(g, "speler")) uit.add(`u:${u.uid}`);
@@ -214,6 +235,10 @@ export function gevechtScherm(app, opties) {
       if (doel === "terug") return { soort: "terugroepen", eenheid: keuze.uid };
       if (doel.startsWith("vak:")) { const [, rij, plek] = doel.split(":"); return { soort: "verplaats", eenheid: keuze.uid, vak: { rij, plek: +plek } }; }
       if (doel.startsWith("u:")) { const ander = g.eenheden[doel.slice(2)]; return { soort: "verplaats", eenheid: keuze.uid, vak: { ...ander.vak } }; }
+    }
+    if (keuze.soort === "vermogen") {
+      if (doel.startsWith("u:")) return { soort: "vermogen", doel: doel.slice(2) };
+      return null;
     }
     if (keuze.soort === "middel") {
       if (doel.startsWith("u:")) return { soort: "middeltje", index: keuze.index, doel: doel.slice(2) };
@@ -594,6 +619,17 @@ export function gevechtScherm(app, opties) {
         case "gewonnen": speel("winst"); banner(e.baas ? "De baas is verslagen" : "Gewonnen", e.baas ? "De rest slaat op de vlucht." : ""); await t(1400); break;
         case "verloren": speel("verlies"); banner("Je held valt", "", "rood"); await t(1600); break;
         case "slagen": await t(120); break;
+        case "aanwijzing": {
+          const m = root.querySelector(".meter.aanwijzingen");
+          if (m) m.lastChild.textContent = String(Math.max(0, Number(m.lastChild.textContent) + e.aantal));
+          if (e.aantal > 0) zweef(vind(opties.g().held), `+${e.aantal} Aanwijzing`, "info");
+          await t(80);
+          break;
+        }
+        case "ontmaskerd": { const k = vind(e.uid); werkBij(k, e.e); animeer(k, "flits"); zweef(k, "Ontmaskerd", "info"); await t(320); break; }
+        case "overtuigd": { const k = vind(e.uid); speel("overtuigd"); zweef(k, e.voorgoed ? "Loopt over, voorgoed" : "Loopt over", "goud"); if (k) { k.classList.add("valt"); await t(380); k.remove(); } break; }
+        case "verdwijnt": { const k = vind(e.uid); zweef(k, "Verdwijnt", "info"); if (k) { k.classList.add("valt"); await t(380); k.remove(); } break; }
+        case "ritueel": { const k = vind(e.uid); zweef(k, "Het ritueel is voltrokken", "goud"); if (k) { k.classList.add("valt"); await t(380); k.remove(); } break; }
       }
     }
   }

@@ -2,7 +2,7 @@
 import { el, bg, art, ICOON, melding, modaal, banner, reduceMotion, wacht } from "./gemeen.js";
 import { kaartEl, artefactEl, uitlegEl } from "./kaart-dom.js";
 import { B, kaartDef } from "../motor/bibliotheek.js";
-import { KNOOPSOORTEN, huidigGedeelte, MAX_BONDGENOTEN, aantalBondgenoten } from "../motor/run.js";
+import { KNOOPSOORTEN, huidigGedeelte, maxBondgenoten, aantalBondgenoten } from "../motor/run.js";
 import { speel } from "./geluid.js";
 
 const NS = "http://www.w3.org/2000/svg";
@@ -185,6 +185,8 @@ export function kaartScherm(app, opties, overzicht = false) {
     run.middeltjes.length ? el("div", { class: "muted", style: { fontSize: "14px" } }, "Middeltjes: " + run.middeltjes.map(id => kaartDef(id).naam).join(", ")) : null,
     info,
     knop,
+    held.vermogen?.wisselPad && run.pos.pad != null && !(run.padGewisseld || [])[run.pos.akte] && gd.paden[1 - run.pos.pad] && run.pos.stap < gd.paden[1 - run.pos.pad].length
+      ? el("button", { class: "knop stil klein", title: `${held.vermogen.naam}: ${held.vermogen.tekst}`, onclick: () => reis({ soort: "wisselPad" }) }, `Bevoegdheid: naar pad ${2 - run.pos.pad}`) : null,
     el("div", { style: { display: "flex", gap: "8px", flexWrap: "wrap" } },
       el("button", { class: "knop stil klein", onclick: () => stapel() }, `Stapel (${run.stapel.length})`),
       run.reserve.length ? el("button", { class: "knop stil klein", onclick: () => reserveScherm(run, actie) }, `Reserve (${run.reserve.length})`) : null,
@@ -215,14 +217,14 @@ function toonArtefact(id) {
 }
 
 async function reserveScherm(run, actie) {
-  const inhoud = el("div", { style: { display: "grid", gap: "12px" } }, el("p", { class: "muted" }, `Je hebt maximaal ${MAX_BONDGENOTEN} bondgenoten in je stapel. Tik op een bondgenoot in de reserve om hem te wisselen.`));
+  const inhoud = el("div", { style: { display: "grid", gap: "12px" } }, el("p", { class: "muted" }, `Je hebt maximaal ${maxBondgenoten(run)} bondgenoten in je stapel. Tik op een bondgenoot in de reserve om hem te wisselen.`));
   const rij = el("div", { class: "kaartrij" });
   for (const i of run.reserve) {
     const k = kaartEl(i.id, { inst: i });
     k.style.setProperty("--w", "140px");
     k.onclick = async () => {
       document.querySelector(".modaal")?.remove();
-      if (aantalBondgenoten(run) < MAX_BONDGENOTEN) { actie({ soort: "wissel", in: i.uid }); return; }
+      if (aantalBondgenoten(run) < maxBondgenoten(run)) { actie({ soort: "wissel", in: i.uid }); return; }
       const keuze = await kiesUitStapel(run, "Wie gaat naar de reserve?", x => kaartDef(x.id).soort === "bondgenoot");
       if (keuze) actie({ soort: "wissel", uit: keuze, in: i.uid });
     };
@@ -359,7 +361,7 @@ export function knoopScherm(app, { run, actie }) {
     case "logement":
     case "kist": {
       inhoud.push(el("p", { class: "uitleg" }, st.soort === "logement"
-        ? `In het logement zitten mensen die niets te verliezen hebben. Kies er één.${st.genezen ? ` Je ${st.genezen} gewonde bondgenoten knappen hier op.` : ""}${aantalBondgenoten(run) >= MAX_BONDGENOTEN ? " Je hebt al vier bondgenoten: een nieuwe gaat naar de reserve." : ""}`
+        ? `In het logement zitten mensen die niets te verliezen hebben. Kies er één.${st.genezen ? ` Je ${st.genezen} gewonde bondgenoten knappen hier op.` : ""}${aantalBondgenoten(run) >= maxBondgenoten(run) ? ` Je hebt al ${maxBondgenoten(run)} bondgenoten: een nieuwe gaat naar de reserve.` : ""}`
         : "Een ijzeren kist, het slot is al geforceerd. Kies er één."));
       const rij = el("div", { class: "kaartrij" });
       st.opties.forEach((id, i) => {

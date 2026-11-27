@@ -1,14 +1,70 @@
 [
-  { "id": "kennis", "naam": "Kennis", "rol": "Occultist", "kleur": "#7b4fa8", "kleur2": "#c9a54a", "speelbaar": false,
-    "kort": "Spreuken en rituelen. Manipuleert tellers en speelt het meest met Verlichting.",
-    "held": { "aanval": 2, "teller": 4 }, "kenmerken": [] },
-  { "id": "waarneming", "naam": "Waarneming", "rol": "Speurder", "kleur": "#2b8a86", "speelbaar": false,
-    "kort": "Aanwijzingen en Deducties. Ontmaskert vijanden en mikt op elk doel.",
-    "held": { "aanval": 2, "teller": 3 }, "kenmerken": [] },
-  { "id": "kracht", "naam": "Kracht", "rol": "Vechter", "kleur": "#8e2a22", "speelbaar": true,
-    "kort": "Trofeeën, barricades, Doorns, Gezegend en Bescherming. Wie doodt, wordt sterker.",
-    "held": { "aanval": 3, "teller": 3 }, "kenmerken": ["trofee"] },
-  { "id": "charisma", "naam": "Charisma", "rol": "Aanvoerder", "kleur": "#c07a1e", "speelbaar": false,
-    "kort": "Veel bondgenoten en Ponden. Overtuigt menselijke vijanden om over te lopen.",
-    "held": { "aanval": 1, "teller": 3 }, "kenmerken": [] }
+ {
+  "id": "kennis",
+  "naam": "Kennis",
+  "rol": "Occultist",
+  "kleur": "#7b4fa8",
+  "kleur2": "#c9a54a",
+  "speelbaar": true,
+  "kort": "Spreuken en rituelen. Rituelen hebben een lange teller en een groot effect. Speelt het meest met Verlichting.",
+  "held": {
+   "aanval": 3,
+   "teller": 3
+  },
+  "kenmerken": [],
+  "spreukVersnelt": 1,
+  "regel": "Elke spreuk die je speelt, zet de teller van je held 1 lager. Je held begint elk gevecht met 4 Bescherming.",
+  "beginStatus": {
+   "bescherming": 4
+  }
+ },
+ {
+  "id": "waarneming",
+  "naam": "Waarneming",
+  "rol": "Speurder",
+  "kleur": "#2b8a86",
+  "speelbaar": true,
+  "kort": "Verzamelt Aanwijzingen voor krachtige Deducties. Ontmaskert vijanden en mikt op de zwakste.",
+  "held": {
+   "aanval": 3,
+   "teller": 3
+  },
+  "kenmerken": [
+   "scherpschutter"
+  ],
+  "heldAanwijzing": 1,
+  "ontmaskerdExtra": 2,
+  "regel": "Elke keer dat je held toeslaat, krijg je 1 Aanwijzing. Ontmaskerde vijanden nemen 2 schade extra van elke treffer."
+ },
+ {
+  "id": "kracht",
+  "naam": "Kracht",
+  "rol": "Vechter",
+  "kleur": "#8e2a22",
+  "speelbaar": true,
+  "kort": "Trofeeën, barricades, Doorns, Gezegend en Bescherming. Wie doodt, wordt sterker.",
+  "held": {
+   "aanval": 3,
+   "teller": 3
+  },
+  "kenmerken": [
+   "trofee"
+  ],
+  "regel": "Trofee: een kaart van Kracht die een vijand doodt, krijgt +1 aanval voor de rest van het gevecht."
+ },
+ {
+  "id": "charisma",
+  "naam": "Charisma",
+  "rol": "Aanvoerder",
+  "kleur": "#c07a1e",
+  "speelbaar": true,
+  "kort": "Veel bondgenoten (tot zes) en Ponden. Overtuigt menselijke vijanden om over te lopen.",
+  "held": {
+   "aanval": 1,
+   "teller": 3
+  },
+  "kenmerken": [],
+  "maxBondgenoten": 6,
+  "regel": "Je mag zes bondgenoten in je stapel hebben in plaats van vier."
+ }
 ]
