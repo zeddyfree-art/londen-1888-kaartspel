@@ -1,4 +1,11 @@
 [
+ { "id": 4, "datum": "27 november 2026", "titel": "Eerlijke paden",
+   "punten": [
+     "De twee paden in een gedeelte zijn nu even lang: allebei 2 of allebei 3 haltes. Eerst kon het ene pad 1 halte hebben en het andere 3.",
+     "Elk pad heeft hooguit één plek om te herstellen (ziekenhuis, gaarkeuken, logementen), één om je stapel te verbeteren (markt, kist, universiteit, kerk) en één gok (ontmoeting, seance, Scheur, club).",
+     "Bij twee haltes mist elk pad iets anders, zodat je echt kiest: herstel of een betere stapel, zekerheid of een gok.",
+     "De paden zijn ook ongeveer even veel waard: een Scheur staat niet meer tegenover een leeg pad."
+   ] },
  { "id": 3, "datum": "27 november 2026", "titel": "Routes door de mist",
    "punten": [
      "Bekijk de haltes van je wijk met hun namen en symbolen. Met Hele akte zie je hoe de routes door Londen lopen.",

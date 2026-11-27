@@ -1,118 +1,115 @@
 {
- "datum": "2026-11-26",
+ "datum": "2026-11-27",
  "runsPerStand": 105,
  "standen": {
   "ontspannen": {
-   "winkans": 96.2,
+   "winkans": 94.3,
    "perHeld": {
-    "hu-yiping": 93.3,
+    "hu-yiping": 86.7,
     "tobias-hale": 93.3,
-    "cornelius-bray": 100,
-    "aggie-pruitt": 100,
-    "arjan-singh": 86.7,
+    "cornelius-bray": 86.7,
+    "aggie-pruitt": 93.3,
+    "arjan-singh": 100,
     "mahmoud-fathy": 100,
     "ang-nima": 100
    },
    "verlorenPerAkte": [
     0,
-    0,
-    3.8
+    1,
+    4.8
    ],
    "verlorenIn": {
-    "Vathrûn ontwaakt": 4
+    "Vathrûn ontwaakt": 5,
+    "Een Scheur onder het museum": 1
    },
    "beurtenPerGevecht": 17.8,
-   "gevechtenPerRun": 10.9,
+   "gevechtenPerRun": 10.5,
    "vaakstInWinst": {
-    "olifantengeweer": 133,
-    "kruisbeeld-deur": 127,
-    "boksbeugel": 125,
-    "kerkbank": 124,
-    "sjouwer": 101,
-    "omgevallen-kar": 101,
-    "bokser": 91,
-    "hagelgeweer": 90,
-    "breekijzer": 88,
-    "wijwater": 84
+    "boksbeugel": 138,
+    "kerkbank": 132,
+    "olifantengeweer": 121,
+    "kruisbeeld-deur": 120,
+    "sjouwer": 99,
+    "omgevallen-kar": 99,
+    "breekijzer": 90,
+    "wijwater": 86,
+    "hagelgeweer": 85,
+    "bokser": 84
    }
   },
   "normaal": {
-   "winkans": 69.5,
+   "winkans": 70.5,
    "perHeld": {
-    "hu-yiping": 60,
-    "tobias-hale": 86.7,
+    "hu-yiping": 66.7,
+    "tobias-hale": 60,
     "cornelius-bray": 46.7,
-    "aggie-pruitt": 73.3,
+    "aggie-pruitt": 66.7,
     "arjan-singh": 86.7,
-    "mahmoud-fathy": 53.3,
-    "ang-nima": 80
+    "mahmoud-fathy": 80,
+    "ang-nima": 86.7
    },
    "verlorenPerAkte": [
     0,
     1.9,
-    28.6
+    27.6
    ],
    "verlorenIn": {
-    "Vathrûn ontwaakt": 26,
-    "De deur met zeven zegels": 2,
+    "Vathrûn ontwaakt": 24,
+    "De deur met zeven zegels": 4,
     "De Bisschop van het Slib": 2,
-    "De riolen van Bazalgette": 1,
-    "De pestput onder Aldgate": 1
+    "De riolen van Bazalgette": 1
    },
-   "beurtenPerGevecht": 18.2,
-   "gevechtenPerRun": 10.7,
+   "beurtenPerGevecht": 18.8,
+   "gevechtenPerRun": 10.3,
    "vaakstInWinst": {
-    "olifantengeweer": 115,
-    "kruisbeeld-deur": 100,
-    "kerkbank": 91,
-    "boksbeugel": 88,
-    "sjouwer": 73,
-    "omgevallen-kar": 73,
-    "bokser": 69,
-    "hagelgeweer": 65,
-    "breekijzer": 63,
-    "wijwater": 62
+    "boksbeugel": 107,
+    "kerkbank": 103,
+    "olifantengeweer": 90,
+    "kruisbeeld-deur": 89,
+    "sjouwer": 74,
+    "omgevallen-kar": 74,
+    "breekijzer": 69,
+    "wijwater": 65,
+    "bokser": 60,
+    "hagelgeweer": 57
    }
   },
   "genadeloos": {
-   "winkans": 26.7,
+   "winkans": 29.5,
    "perHeld": {
-    "hu-yiping": 33.3,
+    "hu-yiping": 26.7,
     "tobias-hale": 20,
-    "cornelius-bray": 13.3,
-    "aggie-pruitt": 20,
-    "arjan-singh": 40,
-    "mahmoud-fathy": 13.3,
+    "cornelius-bray": 20,
+    "aggie-pruitt": 33.3,
+    "arjan-singh": 33.3,
+    "mahmoud-fathy": 26.7,
     "ang-nima": 46.7
    },
    "verlorenPerAkte": [
-    4.8,
-    25.7,
-    42.9
+    6.7,
+    21.9,
+    41.9
    ],
    "verlorenIn": {
-    "Vathrûn ontwaakt": 28,
-    "De deur met zeven zegels": 16,
-    "De Bisschop van het Slib": 13,
-    "Een Scheur onder het museum": 12,
-    "Een Scheur aan de Theems": 5,
-    "Onder de markt van Covent Garden": 1,
-    "De riolen van Bazalgette": 1,
-    "Een loge in Pall Mall": 1
+    "Vathrûn ontwaakt": 31,
+    "Een Scheur onder het museum": 14,
+    "De deur met zeven zegels": 13,
+    "De Bisschop van het Slib": 9,
+    "Een Scheur aan de Theems": 7
    },
-   "beurtenPerGevecht": 20.4,
-   "gevechtenPerRun": 8.7,
+   "beurtenPerGevecht": 20.2,
+   "gevechtenPerRun": 8.6,
    "vaakstInWinst": {
-    "kruisbeeld-deur": 45,
-    "kerkbank": 43,
-    "olifantengeweer": 40,
-    "sjouwer": 28,
-    "omgevallen-kar": 28,
-    "boksbeugel": 28,
-    "bokser": 27,
-    "zandzakken": 27,
-    "wijwater": 23,
-    "breekijzer": 23
+    "kruisbeeld-deur": 50,
+    "kerkbank": 49,
+    "boksbeugel": 48,
+    "olifantengeweer": 46,
+    "sjouwer": 31,
+    "omgevallen-kar": 31,
+    "breekijzer": 30,
+    "glasscherven": 30,
+    "wijwater": 29,
+    "bokser": 27
    }
   }
  }
