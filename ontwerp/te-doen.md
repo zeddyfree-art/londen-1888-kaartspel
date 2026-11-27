@@ -26,6 +26,8 @@ Per fase uit de brief een regel; bovenaan wat er nu speelbaar is. De laatste met
 
 ## Open punten en ideeën
 
+- **Paden gebalanceerd (27 november):** beide paden van een gedeelte even lang (2 of 3), elk hooguit één herstel-, één stapel- en één gok-knooppunt, en ongeveer even veel waard (`WAARDE` in `app/motor/run.js`). Gemiddeld waardeverschil van 2,5 naar 0,35; scheve keuzes van 31% naar 0%. Winkans testbot: Ontspannen 94%, Normaal 71%, Genadeloos 30%.
+
 - Klokken: `zware-benen`, `dikke-mist`, `scheurende-stad`, `gesloten-lijnen`, `lege-zakken`, `slapeloze-nachten`, `geen-tweede-worp` en `geen-genade` werken al in de motor, maar zijn nog niet te kiezen.
 - Vermogens van helden buiten Kracht staan als tekst klaar in `tools/maak-helden.js`; de motor kent ze nog niet.
 - *Na een verloren run* werkt: een gevallen bondgenoot kan terugkomen in de Logementen, gewond. Hij neemt nog geen talisman mee (die bestaan nog niet).

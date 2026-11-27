@@ -82,6 +82,42 @@ export function aantalBondgenoten(run) {
 
 /* ───────── de kaart van Londen ───────── */
 
+// Elk pad krijgt van elke soort knooppunt er hooguit één: herstel, je stapel verbeteren, en een gok.
+// Beide paden van een gedeelte zijn even lang en ongeveer even veel waard, maar voelen anders.
+const CATEGORIE = {
+  herstel: ["ziekenhuis", "gaarkeuken", "logement"],
+  stapel: ["markt", "kist", "universiteit", "kerk"],
+  gok: ["ontmoeting", "seance", "scheur", "club"],
+};
+export const WAARDE = { markt: 3, kist: 3, universiteit: 3, logement: 3, ziekenhuis: 3, gaarkeuken: 2.5, kerk: 2.5, ontmoeting: 2.5, seance: 2, club: 1.5, scheur: 3.5 };
+const padWaarde = pad => pad.reduce((x, k) => x + WAARDE[k.soort], 0);
+
+function maakPadenPaar(run, a, g, akte) {
+  // eerste gedeelte van de nacht: korte paden en nog geen Scheur
+  const lengte = a === 0 && g === 0 ? 2 : willekeurig(run) < 0.45 ? 2 : 3;
+  const extraScheur = run.klokken.includes("scheurende-stad") ? 1.6 : 1;
+  let beste = null, besteVerschil = Infinity;
+  for (let poging = 0; poging < 40 && besteVerschil > 0.5; poging++) {
+    // bij twee knooppunten mist elk pad een andere categorie, zodat de keuze echt iets zegt
+    const cats = schud(run, Object.keys(CATEGORIE));
+    const catsPerPad = lengte === 3 ? [cats, cats] : [[cats[0], cats[1]], [cats[0], cats[2]]];
+    const gebruikt = new Set();
+    const paden = catsPerPad.map((lijst, p) => schud(run, lijst).map((cat, st) => {
+      let opties = CATEGORIE[cat].filter(k => !gebruikt.has(k));
+      if (a === 0 && g === 0) opties = opties.filter(k => k !== "scheur");
+      if (!opties.length) opties = CATEGORIE[cat].filter(k => k !== "scheur" || !(a === 0 && g === 0));
+      const [soort] = kiesMeerdere(run, opties, 1, k => GEWICHT[k] * (k === "scheur" ? extraScheur : 1));
+      gebruikt.add(soort);
+      const knoop = { soort, id: `${a}-${g}-${p}-${st}` };
+      if (soort === "scheur") knoop.gevecht = kies(run, akte.elite);
+      return knoop;
+    }));
+    const verschil = Math.abs(padWaarde(paden[0]) - padWaarde(paden[1]));
+    if (verschil < besteVerschil) { beste = paden; besteVerschil = verschil; }
+  }
+  return beste;
+}
+
 function maakKaart(run) {
   const def = B().gevechten[run.god];
   if (!def) throw new Error(`Geen gevechten voor ${run.god}`);
@@ -90,26 +126,7 @@ function maakKaart(run) {
     const gedeelten = [];
     for (let g = 0; g < 3; g++) {
       const doel = g === 2 ? akte.baas : gewoon[g % gewoon.length];
-      const paden = [0, 1].map(p => {
-        const lengte = 1 + geheel(run, 3) + (willekeurig(run) < 0.35 ? 1 : 0);
-        const pad = [];
-        const gebruikt = new Set();
-        for (let s = 0; s < Math.min(3, lengte); s++) {
-          const mag = Object.keys(GEWICHT).filter(k => !gebruikt.has(k)
-            && !(k === "scheur" && ((a === 0 && g === 0) || [...gebruikt].includes("scheur")))
-            && !(k === "markt" && s === 0 && a === 0 && g === 0));
-          let extraScheur = run.klokken.includes("scheurende-stad") ? 1.5 : 1;
-          const [soort] = kiesMeerdere(run, mag, 1, k => GEWICHT[k] * (k === "scheur" ? extraScheur : 1));
-          gebruikt.add(soort);
-          const knoop = { soort, id: `${a}-${g}-${p}-${s}` };
-          if (soort === "scheur") knoop.gevecht = kies(run, akte.elite);
-          pad.push(knoop);
-        }
-        return pad;
-      });
-      // elk gedeelte heeft op minstens één pad iets om te herstellen of te kopen
-      const heeft = soorten => paden.some(pd => pd.some(k => soorten.includes(k.soort)));
-      if (!heeft(["ziekenhuis", "gaarkeuken", "logement", "markt"])) paden[1][paden[1].length - 1] = { soort: g % 2 ? "markt" : "ziekenhuis", id: `${a}-${g}-1-x` };
+      const paden = maakPadenPaar(run, a, g, akte);
       if (run.klokken.includes("gesloten-lijnen") && willekeurig(run) < 0.5) paden[1] = null;
       gedeelten.push({ gevecht: doel, paden });
     }
