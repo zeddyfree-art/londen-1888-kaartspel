@@ -1,10 +1,10 @@
 // Het gevechtsscherm: tekent de toestand en vertaalt aanrakingen naar acties.
 // De motor geeft gebeurtenissen terug; die spelen we hier af als animaties en geluiden.
 import { el, bg, ICOON, banner, melding, wacht, reduceMotion, modaal } from "./gemeen.js";
-import { kaartEl, eenheidEl, werkBij, uitlegEl, chips } from "./kaart-dom.js";
+import { kaartEl, eenheidEl, werkBij, uitlegEl } from "./kaart-dom.js";
 import { B, kaartDef } from "../motor/bibliotheek.js";
 import {
-  geldigeDoelen, kanSpelen, geestKosten, eenhedenVan, volgordeNummers, aanvalsDoelen, fluitjeOpgeladen, verlichtDrempel, FLUITJE_OPLADEN, levend,
+  geldigeDoelen, kanSpelen, geestKosten, eenhedenVan, volgordeNummers, aanvalsDoelen, fluitjeOpgeladen, verlichtDrempel, FLUITJE_OPLADEN,
 } from "../motor/gevecht.js";
 import { speel } from "./geluid.js";
 
@@ -28,14 +28,14 @@ export function gevechtScherm(app, opties) {
   /* ───────── tekenen ───────── */
 
   function render() {
+    verbergHover();
     const g = opties.g();
     document.body.classList.toggle("verlicht", !!g.verlicht);
     root.replaceChildren(
       el("div", { class: "plekbeeld", style: { backgroundImage: bg(opties.plekArt) } }),
-      balk(g), slagveld(g), onder(g), el("div", { class: "draai" }, "Draai je scherm voor het beste overzicht"),
+      balk(g), slagveld(g), aanwijzing(g), onder(g),
     );
     markeerDoelen();
-    toonHulp(g);
   }
 
   function balk(g) {
@@ -43,9 +43,9 @@ export function gevechtScherm(app, opties) {
     const golvenOver = g.golven.length - g.golfNr;
     const grens = Math.floor(g.maxGeest * verlichtDrempel(g));
     return el("div", { class: "balk" },
-      el("button", { class: "icoonknop", "aria-label": "Menu", html: ICOON.menu, onclick: () => opties.menu() }),
+      el("button", { class: "icoonknop", "aria-label": "Menu", html: ICOON.menu, onclick: () => { if (!S.bezig && !S.sleep) opties.menu(); } }),
       el("div", {}, el("div", { class: "gnaam" }, g.naam), el("div", { class: "golfinfo" }, `Golf ${g.golfNr} van ${g.golven.length} · beurt ${g.beurt}`)),
-      el("div", { class: `bigben ${golvenOver && g.bigben <= 1 ? "dreig" : ""}`, title: "Big Ben: de volgende golf", onclick: () => toonVolgendeGolf(g) },
+      el("button", { class: `bigben ${golvenOver && g.bigben <= 1 ? "dreig" : ""}`, title: "Big Ben: de volgende golf", onclick: () => toonVolgendeGolf(g) },
         el("div", { class: "bb", style: { backgroundImage: bg("scherm/big-ben.jpg") } }),
         golvenOver ? [el("b", {}, String(g.bigben)), el("span", {}, g.bigben === 1 ? "slag tot" : "slagen tot", el("br"), "de volgende golf")] : el("span", {}, "laatste", el("br"), "golf")),
       el("div", { class: "ruimte" }),
@@ -57,20 +57,25 @@ export function gevechtScherm(app, opties) {
     );
   }
 
-  function kolom(kant, plek) { return kant === "vijand" ? 3 - plek : plek + 1; }
+  function kolom(kant, plek) { return kant === "speler" ? 3 - plek : plek + 1; }
 
   function slagveld(g) {
     const nrs = inst.volgorde !== false ? volgordeNummers(g) : {};
     const mik = new Set();
     for (const v of eenhedenVan(g, "vijand")) if (v.teller === 1 && !v.statussen.mist && v.aanval != null) for (const d of aanvalsDoelen(g, v)) mik.add(d.uid);
     const veld = el("div", { class: "slagveld", data: { doel: "veld" } });
-    for (const kant of ["vijand", "speler"]) {
+    for (const kant of ["speler", "vijand"]) {
       const k = el("div", { class: `kant ${kant}` });
+      k.append(el("h2", { class: "kantnaam" }, kant === "speler" ? "Jouw zijde" : "Vijanden"));
       for (const rij of RIJEN) for (let p = 0; p < 3; p++) {
         const vak = el("div", { class: `vak ${rij}`, style: { gridRow: rij === "straat" ? 1 : 2, gridColumn: kolom(kant, p) }, data: { kant, rij, plek: p, ...(kant === "speler" ? { doel: `vak:${rij}:${p}` } : {}) } });
         const uid = g.veld[kant][rij][p];
         const u = uid && g.eenheden[uid];
         if (u && !u.groot) { vak.append(eenheidMetHandlers(u, nrs[u.uid], mik.has(u.uid))); if (nrs[u.uid]) vak.append(el("div", { class: "volgnr", title: "Volgorde van toeslaan" }, String(nrs[u.uid]))); }
+        if (!u && kant === "speler") {
+          vak.setAttribute("aria-label", `${rij}, ${["voor", "midden", "achter"][p]}`);
+          vak.setAttribute("role", "button");
+        }
         k.append(vak);
       }
       // grote kaart over twee vakken
@@ -82,7 +87,8 @@ export function gevechtScherm(app, opties) {
         k.append(gv);
       }
       veld.append(k);
-      if (kant === "vijand") veld.append(el("div", { class: "middenlijn" }));
+      if (kant === "speler") veld.append(el("div", { class: "middenlijn" },
+        el("span", {}, "Straat"), el("span", {}, "Riool")));
     }
     return veld;
   }
@@ -92,19 +98,23 @@ export function gevechtScherm(app, opties) {
     k.dataset.doel = `u:${u.uid}`;
     bindDetail(k, () => (u.soort === "held" ? { ...B().helden[u.id], soort: "held" } : kaartDef(u.id, u.verbeterd)), () => opties.g().eenheden[u.uid]);
     if (u.kant === "speler" && !u.groot) bindSleep(k, { soort: "eenheid", uid: u.uid });
-    else bindLang(k, () => tikDoel(`u:${u.uid}`));
+    else {
+      toetsActie(k, u.naam, () => tikDoel(`u:${u.uid}`));
+      bindLang(k, () => tikDoel(`u:${u.uid}`));
+    }
     return k;
   }
 
   function onder(g) {
-    const hand = el("div", { class: "hand" });
+    const hand = el("div", { class: "hand", "aria-label": "Je hand" });
+    hand.style.setProperty("--aantal", Math.max(g.hand.length, 6));
     const n = g.hand.length;
     g.hand.forEach((i, idx) => {
       const d = kaartDef(i.id, i.verbeterd);
       const k = kaartEl(i.id, { inst: i, geestKost: geestKosten(g, d) });
       k.dataset.inst = i.uid;
-      const hoek = (idx - (n - 1) / 2) * Math.min(5, 26 / Math.max(1, n));
-      const zak = Math.abs(idx - (n - 1) / 2) ** 2 * 1.2;
+      const hoek = (idx - (n - 1) / 2) * Math.min(3, 17 / Math.max(1, n));
+      const zak = Math.abs(idx - (n - 1) / 2) ** 2 * .65;
       k.style.transform = `rotate(${hoek}deg) translateY(${zak}px)`;
       if (!kanSpelen(g, i)) k.classList.add("kan-niet");
       if (S.keuze?.soort === "hand" && S.keuze.inst === i.uid) k.classList.add("gekozen");
@@ -125,14 +135,14 @@ export function gevechtScherm(app, opties) {
       zak.append(m);
     }
     return el("div", { class: "onder" },
-      el("div", { class: "stapelvak", style: { backgroundImage: bg("achterkanten/stad.jpg") }, title: "Trekstapel", onclick: () => toonStapel("Trekstapel", g.trek) }, el("small", {}, "trekstapel"), el("b", {}, String(g.trek.length))),
+      el("button", { class: "stapelvak", style: { backgroundImage: bg("achterkanten/stad.jpg") }, title: "Trekstapel", onclick: () => toonStapel("Trekstapel", g.trek) }, el("small", {}, "trekstapel"), el("b", {}, String(g.trek.length))),
       hand,
-      el("div", { class: "stapelvak", style: { backgroundImage: bg("achterkanten/toestanden.jpg") }, title: "Aflegstapel", onclick: () => toonStapel("Aflegstapel", g.afleg) }, el("small", {}, "aflegstapel"), el("b", {}, String(g.afleg.length))),
+      el("button", { class: "stapelvak", style: { backgroundImage: bg("achterkanten/toestanden.jpg") }, title: "Aflegstapel", onclick: () => toonStapel("Aflegstapel", g.afleg) }, el("small", {}, "aflegstapel"), el("b", {}, String(g.afleg.length))),
       el("div", { class: "acties" },
         el("button", { class: `fluitje ${opgeladen ? "opgeladen" : ""}`, onclick: () => fluit(), title: "Leg je hand af en trek 6 nieuwe kaarten" },
           el("div", { class: "fi", style: { backgroundImage: bg("persoonlijk/politiefluitje.jpg") } }),
           el("div", {}, el("b", {}, "Politiefluitje"), el("span", {}, opgeladen ? "Opgeladen: kost geen beurt" : `Kost je beurt · ${Math.min(g.fluitjeRust, nodig)}/${nodig}`))),
-        el("div", { class: "terugroep", data: { doel: "terug" } }, "Sleep een bondgenoot hierheen om hem terug te roepen"),
+        el("div", { class: "terugroep", role: "button", data: { doel: "terug" }, "aria-label": "Bondgenoot terugroepen" }, "Bondgenoot terugroepen"),
         zak),
     );
   }
@@ -168,18 +178,27 @@ export function gevechtScherm(app, opties) {
   function markeerDoelen() {
     const doelen = doelenVan(S.keuze);
     root.querySelectorAll("[data-doel]").forEach(e => {
-      const d = e.dataset.doel;
-      const ja = doelen.has(d) && !(d === "veld");
-      e.classList.toggle("doelwit", ja);
+      const ja = doelen.has(e.dataset.doel);
+      e.classList.toggle("doelwit", ja && e.dataset.doel !== "veld");
+      if (e.matches(".vak,.terugroep,.slagveld")) e.tabIndex = ja ? 0 : -1;
     });
-    const veld = root.querySelector(".slagveld");
-    veld?.classList.toggle("veld-doel", doelen.has("veld"));
+    root.querySelector(".slagveld").classList.toggle("veld-doel", doelen.has("veld"));
+    const raad = root.querySelector(".speeltip");
+    if (S.keuze && raad) {
+      const eerste = [...doelen][0] || "";
+      raad.textContent = S.keuze.soort === "eenheid" ? "Kies een vak om te verplaatsen of een bondgenoot om te wisselen." :
+        eerste.startsWith("vak:") ? "Kies een verlicht vak aan jouw zijde." :
+        eerste.startsWith("u:") ? "Kies een verlichte kaart als doel." :
+        eerste === "veld" ? "Kies het slagveld of tik nogmaals op de kaart." : "Deze kaart heeft nu geen geldig doel.";
+    }
   }
 
   function actieVoor(keuze, doel) {
     const g = opties.g();
     if (!keuze || !doel) return null;
-    if (!doelenVan(keuze).has(doel) && !(doel !== "terug" && doelenVan(keuze).has("veld"))) return null;
+    const geldig = doelenVan(keuze);
+    if (geldig.has("veld") && doel !== "terug") doel = "veld";
+    if (!geldig.has(doel)) return null;
     if (keuze.soort === "hand") {
       if (doel.startsWith("vak:")) { const [, rij, plek] = doel.split(":"); return { soort: "speel", kaart: keuze.inst, vak: { rij, plek: +plek } }; }
       if (doel.startsWith("u:") && doelenVan(keuze).has(doel)) return { soort: "speel", kaart: keuze.inst, doel: doel.slice(2) };
@@ -201,15 +220,16 @@ export function gevechtScherm(app, opties) {
     if (!actie || S.bezig) return;
     S.keuze = null;
     S.bezig = true;
+    const voor = opties.g();
+    const posities = meetKaarten();
     try {
-      const voor = opties.g();
       const { ev } = await opties.stuur(actie);
       await speelAf(voor, ev);
     } catch (e) {
       melding(e.message || String(e));
     }
     S.bezig = false;
-    if (!opties.g()?.uitslag) render();
+    if (!opties.g()?.uitslag) { render(); animeerVerschil(posities); }
     else opties.klaar?.();
   }
 
@@ -240,80 +260,128 @@ export function gevechtScherm(app, opties) {
 
   /* ───────── slepen, tikken, lang drukken ───────── */
 
+  function toetsActie(k, naam, tik) {
+    k.tabIndex = 0;
+    k.setAttribute("role", "button");
+    k.setAttribute("aria-label", naam);
+    k.addEventListener("keydown", e => {
+      if (S.bezig || S.sleep) return;
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); e.stopPropagation(); tik(); }
+      if (e.key === "?" || e.key.toLowerCase() === "i") toonDetail(k);
+    });
+  }
+
+  root.addEventListener("keydown", e => {
+    if (S.bezig || S.sleep) return;
+    if (e.key === "Escape") { S.keuze = null; render(); return; }
+    if (S.keuze && (e.key === "Enter" || e.key === " ") && e.target.dataset.doel) {
+      e.preventDefault(); tikDoel(e.target.dataset.doel);
+    }
+  });
+
+  function kies(wat, k) {
+    if (wat.soort === "eenheid" && S.keuze && (S.keuze.soort !== "eenheid" || S.keuze.uid !== wat.uid)) {
+      tikDoel(`u:${wat.uid}`); return;
+    }
+    if (JSON.stringify(S.keuze) === JSON.stringify(wat)) {
+      const a = actieVoor(wat, "veld");
+      if (a) { voerUit(a); return; }
+      S.keuze = null;
+    } else S.keuze = wat;
+    speel("klik");
+    const toetsen = document.activeElement === k;
+    render();
+    if (toetsen) {
+      const id = k.dataset.inst || k.dataset.uid;
+      const bron = id ? root.querySelector(`[data-${k.dataset.inst ? "inst" : "uid"}="${id}"]`) : root.querySelectorAll(".middel")[wat.index];
+      (root.querySelector(".doelwit, .veld-doel") || bron)?.focus();
+    }
+  }
+
+  function vindSleepdoel(x, y, doelen) {
+    let onder = document.elementFromPoint(x, y)?.closest("[data-doel]");
+    while (onder && root.contains(onder)) {
+      if (doelen.has(onder.dataset.doel)) return onder;
+      onder = onder.parentElement?.closest("[data-doel]");
+    }
+    // De smalle naden tussen twee vakken horen bij het dichtstbijzijnde geldige doel.
+    let beste = null, afstand = 12;
+    for (const vak of root.querySelectorAll(".doelwit")) {
+      const r = vak.getBoundingClientRect();
+      const d = Math.hypot(Math.max(r.left - x, 0, x - r.right), Math.max(r.top - y, 0, y - r.bottom));
+      if (d < afstand) { beste = vak; afstand = d; }
+    }
+    return beste;
+  }
+
   function bindSleep(k, wat) {
+    toetsActie(k, k._def().naam, () => kies(wat, k));
+    k.addEventListener("contextmenu", e => e.preventDefault());
     k.addEventListener("pointerdown", e => {
-      if (S.bezig || e.button > 0) return;
+      if (S.bezig || S.sleep || !e.isPrimary || e.button !== 0) return;
       e.preventDefault();
       verbergHover();
-      const start = { x: e.clientX, y: e.clientY, t: performance.now() };
-      let sleept = false, ghost = null, vx = 0, rot = 0, lx = e.clientX, lt = performance.now(), boven = null;
       const rect = k.getBoundingClientRect();
-      const dx = e.clientX - rect.left, dy = e.clientY - rect.top;
-      try { k.setPointerCapture(e.pointerId); } catch {}
-      clearTimeout(S.langTimer);
-      S.langTimer = setTimeout(() => { if (!sleept) { opruimen(); toonDetail(k); } }, 480);
-
-      const beweeg = ev => {
-        const afstand = Math.hypot(ev.clientX - start.x, ev.clientY - start.y);
-        if (!sleept && afstand > 9) {
-          clearTimeout(S.langTimer);
-          sleept = true;
-          S.sleep = wat;
-          S.keuze = wat;
-          markeerDoelen();
-          ghost = el("div", { class: "sleep" });
-          const kloon = k.cloneNode(true);
-          kloon.style.transform = "";
-          kloon.style.width = rect.width + "px";
-          kloon.style.setProperty("--w", rect.width + "px");
-          ghost.append(kloon);
-          document.body.append(ghost);
-          k.classList.add("weg");
-          speel("klik");
-        }
-        if (!sleept) return;
-        const nu = performance.now(), dt = Math.max(1, nu - lt);
-        vx = vx * 0.75 + ((ev.clientX - lx) / dt) * 0.25 * 16;
-        lx = ev.clientX; lt = nu;
-        const doelRot = reduceMotion() ? 0 : Math.max(-20, Math.min(20, vx * 1.6));
-        rot += (doelRot - rot) * 0.35;
-        const wiebel = reduceMotion() ? 0 : Math.sin(nu / 90) * 1.2;
-        ghost.style.transform = `translate(${ev.clientX - dx}px, ${ev.clientY - dy - 10}px) rotate(${rot + wiebel}deg) scale(1.06)`;
-        const onder = document.elementFromPoint(ev.clientX, ev.clientY)?.closest("[data-doel]");
-        if (boven && boven !== onder) boven.classList.remove("erboven");
-        boven = onder;
-        if (onder?.classList.contains("doelwit")) onder.classList.add("erboven");
-      };
-      const los = ev => {
+      const doelen = doelenVan(wat);
+      const dx = (e.clientX - rect.left) / rect.width * k.offsetWidth;
+      const dy = (e.clientY - rect.top) / rect.height * k.offsetHeight;
+      const aanraking = e.pointerType !== "mouse";
+      let ghost, boven, laatsteX = e.clientX, hoek = 0;
+      const opruimen = () => {
+        clearTimeout(S.langTimer);
         k.removeEventListener("pointermove", beweeg);
         k.removeEventListener("pointerup", los);
-        k.removeEventListener("pointercancel", los);
-        clearTimeout(S.langTimer);
-        if (!sleept) {
-          if (ev.type === "pointercancel") return;
-          if (performance.now() - start.t > 470) return; // lang drukken
-          // tikken
-          if (wat.soort === "eenheid" && S.keuze && S.keuze.soort !== "eenheid") { tikDoel(`u:${wat.uid}`); return; }
-          if (wat.soort === "eenheid" && S.keuze?.soort === "eenheid" && S.keuze.uid !== wat.uid) { tikDoel(`u:${wat.uid}`); return; }
-          if (S.keuze && JSON.stringify(S.keuze) === JSON.stringify(wat)) {
-            // nog eens tikken op een kaart zonder doel speelt hem
-            const a = actieVoor(wat, "veld");
-            if (a) { voerUit(a); return; }
-            S.keuze = null;
-          } else S.keuze = wat;
-          speel("klik");
-          render();
-          return;
-        }
-        const onder = document.elementFromPoint(ev.clientX, ev.clientY)?.closest("[data-doel]");
-        const a = onder ? actieVoor(wat, onder.dataset.doel) : null;
-        opruimen();
-        if (a) voerUit(a); else { S.keuze = null; render(); }
+        k.removeEventListener("pointercancel", afbreken);
+        k.removeEventListener("lostpointercapture", afbreken);
+        if (k.hasPointerCapture(e.pointerId)) k.releasePointerCapture(e.pointerId);
+        k.classList.remove("weg");
+        boven?.classList.remove("erboven");
+        ghost?.remove();
+        S.sleep = null;
       };
-      const opruimen = () => { ghost?.remove(); ghost = null; S.sleep = null; k.classList.remove("weg"); boven?.classList.remove("erboven"); };
+      const afbreken = ev => {
+        if (ev.pointerId !== e.pointerId) return;
+        opruimen(); S.keuze = null; render();
+      };
+      const beweeg = ev => {
+        if (ev.pointerId !== e.pointerId) return;
+        if (!ghost) {
+          if (Math.hypot(ev.clientX - e.clientX, ev.clientY - e.clientY) < (aanraking ? 8 : 5)) return;
+          clearTimeout(S.langTimer);
+          S.sleep = wat; S.keuze = wat;
+          markeerDoelen();
+          ghost = el("div", { class: "sleep", "aria-hidden": "true" });
+          const kloon = k.cloneNode(true);
+          kloon.removeAttribute("tabindex");
+          kloon.style.transform = "none";
+          kloon.style.width = k.offsetWidth + "px";
+          kloon.style.height = k.offsetHeight + "px";
+          kloon.style.setProperty("--w", k.offsetWidth + "px");
+          ghost.append(kloon); document.body.append(ghost);
+          k.classList.add("weg"); speel("klik");
+        }
+        hoek = reduceMotion() ? 0 : hoek * .6 + Math.max(-9, Math.min(9, (ev.clientX - laatsteX) * .3)) * .4;
+        laatsteX = ev.clientX;
+        const y = ev.clientY - (aanraking ? 30 : 8);
+        ghost.style.transform = `translate3d(${ev.clientX - dx}px,${y - dy}px,0) rotate(${hoek}deg) scale(1.04)`;
+        const vak = vindSleepdoel(ev.clientX, ev.clientY, doelen);
+        if (boven !== vak) { boven?.classList.remove("erboven"); vak?.classList.add("erboven"); boven = vak; }
+      };
+      const los = ev => {
+        if (ev.pointerId !== e.pointerId) return;
+        const doel = ghost && vindSleepdoel(ev.clientX, ev.clientY, doelen);
+        opruimen();
+        if (!ghost) { kies(wat, k); return; }
+        const a = doel && actieVoor(wat, doel.dataset.doel);
+        if (a) voerUit(a);
+        else { S.keuze = null; render(); }
+      };
+      k.setPointerCapture(e.pointerId);
+      S.langTimer = setTimeout(() => { opruimen(); toonDetail(k); }, 480);
       k.addEventListener("pointermove", beweeg);
       k.addEventListener("pointerup", los);
-      k.addEventListener("pointercancel", los);
+      k.addEventListener("pointercancel", afbreken);
+      k.addEventListener("lostpointercapture", afbreken);
     });
   }
 
@@ -337,7 +405,7 @@ export function gevechtScherm(app, opties) {
   function bindDetail(k, def, eenheid) {
     k._def = def; k._eenheid = eenheid;
     k.addEventListener("pointerenter", e => {
-      if (e.pointerType !== "mouse" || S.sleep) return;
+      if (e.pointerType !== "mouse" || S.sleep || S.bezig) return;
       clearTimeout(S.hoverTimer);
       S.hoverTimer = setTimeout(() => {
         verbergHover();
@@ -359,8 +427,14 @@ export function gevechtScherm(app, opties) {
     const groot = u ? eenheidEl(u) : kaartEl(def.id, { def });
     groot.classList.remove("veld");
     if (u) { groot.classList.add("groot"); }
-    const d = el("div", { class: "detail", onclick: () => d.remove() }, el("div", { class: "dk paneel" }, groot, el("div", { class: "duitleg" }, uitlegEl(def, u))));
+    const sluit = () => { d.remove(); if (k.isConnected) k.focus({ preventScroll: true }); };
+    const knop = el("button", { class: "knop klein", onclick: sluit }, "Sluiten");
+    const d = el("div", { class: "detail", role: "dialog", "aria-modal": "true", "aria-label": def.naam,
+      onclick: e => { if (e.target === d) sluit(); },
+      onkeydown: e => { if (e.key === "Escape") sluit(); if (e.key === "Tab") e.preventDefault(); },
+    }, el("div", { class: "dk paneel" }, groot, el("div", { class: "duitleg" }, uitlegEl(def, u), knop)));
     document.body.append(d);
+    knop.focus();
   }
 
   async function toonStapel(titel, lijst) {
@@ -380,13 +454,33 @@ export function gevechtScherm(app, opties) {
   }
 
   /* ───────── hulp bij het oefengevecht ───────── */
-  let hulpEl = null;
-  function toonHulp(g) {
-    hulpEl?.remove(); hulpEl = null;
-    const t = opties.hulp?.(g);
-    if (!t) return;
-    hulpEl = el("div", { class: "hulp paneel", html: t, style: { right: "16px", top: "70px" } });
-    root.append(hulpEl);
+  function aanwijzing(g) {
+    const oefen = opties.hulp?.(g);
+    return el("div", { class: "handregel" },
+      el("h2", {}, "Je hand", el("small", {}, String(g.hand.length))),
+      el("div", { class: "speeltip", role: "status", html: oefen || "Sleep een kaart naar het veld of tik op een kaart en daarna op het doel." }));
+  }
+
+  function meetKaarten() {
+    return new Map([...root.querySelectorAll(".kaart[data-uid], .hand .kaart")].map(k =>
+      [k.dataset.uid || k.dataset.inst, k.getBoundingClientRect()]));
+  }
+
+  function animeerVerschil(oud) {
+    if (reduceMotion()) return;
+    const trek = root.querySelector(".stapelvak").getBoundingClientRect();
+    let getrokken = 0;
+    for (const k of root.querySelectorAll(".kaart[data-uid], .hand .kaart")) {
+      const van = oud.get(k.dataset.uid || k.dataset.inst);
+      if (!van && !k.dataset.inst) continue;
+      const naar = k.getBoundingClientRect(), bron = van || trek;
+      const dx = bron.left - naar.left, dy = bron.top - naar.top;
+      if (Math.abs(dx) + Math.abs(dy) < 3) continue;
+      k.animate([{translate: `${dx}px ${dy}px`, scale: van ? 1 : .52, opacity: van ? 1 : .2},
+        {translate: "0 0", scale: 1, opacity: 1}], {
+        duration: (van ? 250 : 370) * snel(), delay: van ? 0 : getrokken++ * 40 * snel(),
+        fill: "backwards", easing: "cubic-bezier(.2,.8,.25,1)" });
+    }
   }
 
   /* ───────── gebeurtenissen afspelen ───────── */
@@ -430,7 +524,7 @@ export function gevechtScherm(app, opties) {
         case "verplaats": break;
         case "toeslaan": {
           const k = vind(e.uid);
-          animeer(k, k?.closest(".kant.vijand") ? "slaat-r" : "slaat-l");
+          animeer(k, k?.closest(".kant.vijand") ? "slaat-l" : "slaat-r");
           speel("slag");
           await t(260);
           break;

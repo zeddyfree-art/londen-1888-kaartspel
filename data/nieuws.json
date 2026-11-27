@@ -1,4 +1,10 @@
 [
+ { "id": 2, "datum": "27 november 2026", "titel": "Aan de speeltafel",
+   "punten": [
+     "Je speelt links, de vijanden staan rechts. De voorste kaarten staan bij de middenlijn tussen Straat en Riool.",
+     "Sleep naar een verlicht doel of kies je kaart en tik daarna op het doel. Kaarten glijden naar hun nieuwe vak en je trekt vanuit de trekstapel.",
+     "De bokser, sjouwer, agent, kruidenvrouw, het medium en de Dragers hebben nieuwe portretten. Vanuit de speelkamer kun je meteen oefenen."
+   ] },
  { "id": 1, "datum": "26 november 2026", "titel": "De eerste nacht",
    "punten": [
      "Londen 1888 heeft een kaartspel. Je trekt met een held en een stapel kaarten door één nacht in Londen, en aan het eind ontwaakt een oude god.",

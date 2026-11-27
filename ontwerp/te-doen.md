@@ -12,7 +12,9 @@ Per fase uit de brief een regel; bovenaan wat er nu speelbaar is. De laatste met
 - [ ] **Fase 5. Hoofdkwartier en moeilijkheid.** Ontgrendelingen via uitdagingen, de dertien klokken (de motor kent er al een paar), geschatte winkans per stand en klok, balans per klasse en god.
 - [ ] **Fase 6. Afwerking.** Nieuwe art (`ontwerp/beeldopdracht.md`) en geluiden (`ontwerp/geluidsopdracht.md`), meer animaties, toegankelijkheid.
 
-## Wat nu speelbaar is (versie 1)
+## Wat nu speelbaar is (versie 2)
+
+- Vernieuwde speelkamer, omgekeerd slagveld, verlichte sleepdoelen, kaartanimaties en zes nieuwe personage-illustraties.
 
 - Klasse **Kracht** met 7 helden: Hale, Pruitt en Hu Yiping vrij, de rest ontgrendel je door te winnen (of met *Alles vrijgeven*).
 - God **Vathrûn** met 7 monsters, 15 gevechten verdeeld over 3 akten, 3 bazen en 6 eigen ontmoetingen (plus 4 algemene).

@@ -3,6 +3,7 @@ import { el, bg, ICOON, opslag, melding, modaal, banner } from "./gemeen.js";
 import { zetBibliotheek, DATABESTANDEN, B, kaartDef } from "../motor/bibliotheek.js";
 import { nieuweRun, runActie, VERSIE } from "../motor/run.js";
 import { maakGevecht, doe as gevechtDoe } from "../motor/gevecht.js";
+import { speelkamer } from "./speelkamer.js";
 import { kaartEl } from "./kaart-dom.js";
 import { gevechtScherm } from "./gevecht-scherm.js";
 import { kaartScherm, knoopScherm, beloningScherm, eindScherm, stapelScherm, plekArt } from "./run-scherm.js";
@@ -38,21 +39,10 @@ const bewaarInst = () => { const i = opslag.lees("instellingen", {}); opslag.sch
 function startScherm() {
   document.body.classList.remove("verlicht");
   sfeer("sfeer-start");
-  const nieuwNieuws = nieuws.length && nieuws[0].id > (meta.nieuwsGezien || 0);
-  app.replaceChildren(el("div", { class: "scherm start" },
-    el("div", { class: "achtergrond", style: { backgroundImage: bg("scherm/titel.jpg") } }),
-    el("div", { class: "inhoud" },
-      el("div", { class: "titel" }, el("h1", {}, "Londen 1888"), el("div", { class: "onder" }, "Het Kaartspel")),
-      el("div", { class: "startknoppen" },
-        run ? el("button", { class: "knop", onclick: hervat }, "Hervatten") : null,
-        el("button", { class: run ? "knop stil" : "knop", onclick: nieuweRunKiezen }, "Nieuwe run"),
-        el("div", { class: "rij" },
-          el("button", { class: "knop stil", onclick: hoofdkwartier }, "Hoofdkwartier"),
-          el("button", { class: "knop stil", onclick: spelregels }, "Spelregels")),
-        el("div", { class: "rij" },
-          el("button", { class: "knop stil", onclick: nieuwsScherm }, nieuwNieuws ? "Wat is er nieuw •" : "Wat is er nieuw"),
-          el("button", { class: "knop stil", onclick: muziekMenu }, "Muziek")))),
-    el("div", { class: "versie" }, nieuws[0] ? `versie ${nieuws[0].id} · ${nieuws[0].datum}` : "")));
+  speelkamer(app, {
+    nieuw: nieuweRunKiezen, hervat, oefen: oefengevecht, hoofdkwartier,
+    regels: spelregels, nieuws: nieuwsScherm, muziek: muziekMenu, instellingen: instellingenModaal,
+  }, nieuws[0], !!run);
 }
 
 function hervat() { toonRun(); }
@@ -273,7 +263,7 @@ function spelregels() {
   pagina("Spelregels", [
     el("p", { class: "sfeertekst" }, "Eén nacht in Londen, drie akten, en aan het eind een oude god die wakker wordt. Je trekt met een held en een stapel kaarten door de stad."),
     el("div", { style: { textAlign: "center" } }, el("button", { class: "knop", onclick: oefengevecht }, "Speel het oefengevecht")),
-    ...S("Het slagveld", "Elke kant heeft twee rijen van drie vakken: de Straat boven en het Riool onder. Het vak het dichtst bij het midden is het voorste. Een kaart valt de voorste vijand in haar eigen rij aan; is die rij leeg, dan de voorste in de andere rij."),
+    ...S("Het slagveld", "Je speelt links, de vijanden staan rechts. Elke kant heeft twee rijen van drie vakken: de Straat boven en het Riool onder. Het vak het dichtst bij het midden is het voorste. Een kaart valt de voorste vijand in haar eigen rij aan; is die rij leeg, dan de voorste in de andere rij."),
     ...S("Tellers", "Kaarten zijn gratis, maar elke kaart op het veld heeft een teller (het klokje). Aan het eind van elke beurt gaat elke teller 1 omlaag. Op 0 slaat de kaart toe en begint de teller opnieuw. Eerst slaan de vijanden toe, dan jouw kant, in de volgorde van de nummertjes. Een rood vizier toont wie deze beurt wordt aangevallen."),
     ...S("Je beurt", "Je hebt 6 kaarten in je hand en doet één ding: een kaart spelen, het politiefluitje blazen (nieuwe hand), of een bondgenoot terugroepen naar je hand (hij geneest helemaal). Je eigen kaarten verplaatsen is gratis. Middeltjes uit je zak kosten ook geen beurt. Er is geen knop om een beurt over te slaan."),
     ...S("Golven", "Big Ben telt af naar de volgende golf vijanden. Is het veld leeg, dan komt de volgende golf meteen. Versla alle golven, of de baas, om te winnen."),
@@ -286,7 +276,7 @@ function spelregels() {
 }
 
 const OEFENHULP = [
-  "<b>Welkom.</b> Sleep een <b>bondgenoot</b> of <b>barricade</b> uit je hand naar een leeg vak aan jouw kant (rechts). Kaarten zijn gratis, maar je doet <b>één ding per beurt</b>.",
+  "<b>Welkom.</b> Sleep een <b>bondgenoot</b> of <b>barricade</b> uit je hand naar een leeg vak aan jouw kant (links). Kaarten zijn gratis, maar je doet <b>één ding per beurt</b>.",
   "Elke kaart op het veld heeft een <b>teller</b> (het klokje rechtsboven). Na je beurt gaat hij 1 omlaag; op 0 slaat de kaart toe. De nummertjes tonen de <b>volgorde</b>.",
   "Een <b>rood vizier</b> toont wie deze beurt wordt aangevallen. Sleep een <b>spul</b> naar een vijand om hem te raken, of zet iemand voor je held.",
   "<b>Big Ben</b> (bovenaan) telt af naar de volgende <b>golf</b>. Versla alle golven om te winnen.",
@@ -310,9 +300,9 @@ function oefengevecht() {
     klaar: async () => {
       const won = ctx.run.gevecht.uitslag === "gewonnen";
       await modaal(won ? "Goed gedaan" : "Helaas", won ? "Je kent nu de basis. Een echte run begint met een makkelijk gevecht, en wordt daarna snel zwaarder." : "Probeer het nog eens: zet bondgenoten en barricades vóór je held.", [{ tekst: "Terug" }]);
-      run = oud; spelregels();
+      run = oud; startScherm();
     },
-    menu: async () => { const w = await modaal("Oefengevecht", "Wil je stoppen met oefenen?", [{ tekst: "Stoppen", waarde: true, soort: "stil" }, { tekst: "Verder", waarde: false }]); if (w) { run = oud; spelregels(); } },
+    menu: async () => { const w = await modaal("Oefengevecht", "Wil je stoppen met oefenen?", [{ tekst: "Stoppen", waarde: true, soort: "stil" }, { tekst: "Verder", waarde: false }]); if (w) { run = oud; startScherm(); } },
     hulp: oefenHulp,
   });
 }
