@@ -1,4 +1,10 @@
 [
+ { "id": 3, "datum": "27 november 2026", "titel": "Routes door de mist",
+   "punten": [
+     "Bekijk de haltes van je wijk met hun namen en symbolen. Met Hele akte zie je hoe de routes door Londen lopen.",
+     "Het paarse oog toont de Geest van je held, de prijs van spreuken en het Geesteffect van kaarten. Bij Verlichting trekt bliksem over je held en de betrokken kaarten.",
+     "Elke status heeft een eigen zegel en teller. Open de kaart om alle actieve effecten en hun betekenis te lezen."
+   ] },
  { "id": 2, "datum": "27 november 2026", "titel": "Aan de speeltafel",
    "punten": [
      "Je speelt links, de vijanden staan rechts. De voorste kaarten staan bij de middenlijn tussen Straat en Riool.",

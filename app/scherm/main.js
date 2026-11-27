@@ -1,10 +1,11 @@
 // Het begin: data laden, schermen kiezen, de run bewaren.
-import { el, bg, ICOON, opslag, melding, modaal, banner } from "./gemeen.js";
+import { el, bg, ICOON, STATUSICOON, opslag, melding, modaal, banner } from "./gemeen.js";
 import { zetBibliotheek, DATABESTANDEN, B, kaartDef } from "../motor/bibliotheek.js";
 import { nieuweRun, runActie, VERSIE } from "../motor/run.js";
-import { maakGevecht, doe as gevechtDoe } from "../motor/gevecht.js";
+import { maakGevecht, veranderGeest, verlichtDrempel, doe as gevechtDoe } from "../motor/gevecht.js";
 import { speelkamer } from "./speelkamer.js";
-import { kaartEl } from "./kaart-dom.js";
+import { STATUSNAAM, kaartTekst } from "../motor/tekst.js";
+import { kaartEl, eenheidEl, STATUS_UITLEG } from "./kaart-dom.js";
 import { gevechtScherm } from "./gevecht-scherm.js";
 import { kaartScherm, knoopScherm, beloningScherm, eindScherm, stapelScherm, plekArt } from "./run-scherm.js";
 import { laadGeluiden, speel, sfeer, zetMuziek, zetGeluid, geluidAan, muziekIsAan, huidigNummer, volgendNummer } from "./geluid.js";
@@ -258,17 +259,46 @@ function nieuwsScherm() {
   pagina("Wat is er nieuw", nieuws.map(n => el("div", { class: "nieuwsitem" }, el("div", { class: "datum" }, n.datum), el("h3", { style: { marginTop: "2px" } }, n.titel), el("ul", {}, n.punten.map(p => el("li", {}, p))))));
 }
 
+function verlichtingProef() {
+  const proef = nieuweRun({ klasse: "kracht", held: "tobias-hale", god: "vathrun", seed: 1888 });
+  const g = maakGevecht(proef, proef.kaart[0].gedeelten[0].gevecht);
+  const grens = Math.floor(g.maxGeest * verlichtDrempel(g));
+  veranderGeest(g, grens + 1 - g.geest);
+  const d = kaartDef("bloedoffer"), regels = kaartTekst(d);
+  const platen = el("div", { class: "proefkaarten" });
+  const uitleg = el("p", { class: "proeftekst", role: "status" });
+  const wissel = el("button", { class: "knop klein", onclick: () => {
+    veranderGeest(g, g.verlicht ? 1 : -1);
+    if (g.verlicht) speel("donder");
+    teken();
+  } });
+  const inhoud = el("div", { class: "verlichtingsproef" }, platen, uitleg, wissel);
+  function teken() {
+    inhoud.classList.toggle("verlicht", g.verlicht);
+    inhoud.classList.toggle("ontlading", g.verlicht);
+    platen.replaceChildren(eenheidEl(g.eenheden[g.held], { g }), kaartEl(d.id));
+    uitleg.replaceChildren(el("strong", {}, g.verlicht ? "Bloedoffer bij Verlichting" : "Bloedoffer bij normale Geest"),
+      document.createTextNode((g.verlicht ? regels.verlicht : regels.tekst).join(" ")));
+    wissel.textContent = g.verlicht ? `Herstel Geest naar ${grens + 1}` : `Verlaag Geest naar ${grens}`;
+  }
+  teken();
+  modaal("Probeer Verlichting", inhoud, [{ tekst: "Sluiten" }]);
+}
+
 function spelregels() {
   const S = (t, ...p) => [el("h3", {}, t), ...p.map(x => el("p", {}, x))];
   pagina("Spelregels", [
     el("p", { class: "sfeertekst" }, "Eén nacht in Londen, drie akten, en aan het eind een oude god die wakker wordt. Je trekt met een held en een stapel kaarten door de stad."),
-    el("div", { style: { textAlign: "center" } }, el("button", { class: "knop", onclick: oefengevecht }, "Speel het oefengevecht")),
+    el("div", { class: "oefenknoppen" }, el("button", { class: "knop", onclick: oefengevecht }, "Speel het oefengevecht"),
+      el("button", { class: "knop stil", onclick: verlichtingProef }, "Probeer Verlichting")),
     ...S("Het slagveld", "Je speelt links, de vijanden staan rechts. Elke kant heeft twee rijen van drie vakken: de Straat boven en het Riool onder. Het vak het dichtst bij het midden is het voorste. Een kaart valt de voorste vijand in haar eigen rij aan; is die rij leeg, dan de voorste in de andere rij."),
     ...S("Tellers", "Kaarten zijn gratis, maar elke kaart op het veld heeft een teller (het klokje). Aan het eind van elke beurt gaat elke teller 1 omlaag. Op 0 slaat de kaart toe en begint de teller opnieuw. Eerst slaan de vijanden toe, dan jouw kant, in de volgorde van de nummertjes. Een rood vizier toont wie deze beurt wordt aangevallen."),
     ...S("Je beurt", "Je hebt 6 kaarten in je hand en doet één ding: een kaart spelen, het politiefluitje blazen (nieuwe hand), of een bondgenoot terugroepen naar je hand (hij geneest helemaal). Je eigen kaarten verplaatsen is gratis. Middeltjes uit je zak kosten ook geen beurt. Er is geen knop om een beurt over te slaan."),
     ...S("Golven", "Big Ben telt af naar de volgende golf vijanden. Is het veld leeg, dan komt de volgende golf meteen. Versla alle golven, of de baas, om te winnen."),
-    ...S("Lichaam, Geest en Verlichting", "Je held heeft Lichaam en Geest. Valt het Lichaam op 0, dan is de run voorbij. Monsters doen ook Gruwel: dat gaat van je Geest af, of geeft een bondgenoot Angst.", "Zakt je Geest tot de helft of lager, dan raak je verlicht: occulte kaarten (met een violette gloed) gebruiken dan hun verlichte tekst, die sterker is en vaak iets kost. Valt je Geest op 0, dan krijg je een Waanzin-kaart in je stapel en herstelt je Geest tot de helft. De Kerk neemt Waanzin weer weg."),
-    ...S("Statussen", "Mist (teller staat stil), Pest (schade aan het eind van de beurt), Doorns (wie raakt, krijgt schade terug), Gezegend (blokkeert de volgende treffer), Bescherming (vangt schade op), Vervloekt (volgende treffer dubbel), Inkt (vermogens doen niets), Bekoring (volgende aanval raakt de eigen kant), Angst (minder aanval), Woede (meer schade bij de volgende aanval)."),
+    ...S("Lichaam, Geest en Verlichting", "Je held heeft Lichaam en Geest. Valt het Lichaam op 0, dan is de run voorbij. Monsters doen ook Gruwel: dat gaat van je Geest af, of geeft een bondgenoot Angst.", "Bij de helft van je Geest of lager raak je normaal verlicht. Sommige helden en artefacten verhogen die grens. Open je heldenkaart om je eigen drempel te zien. De paarse bliksem markeert de kaarten die hun verlichte tekst gebruiken. Valt je Geest op 0, dan krijg je een Waanzin-kaart in je stapel en herstelt je Geest tot de helft. De Kerk neemt Waanzin weer weg."),
+    el("h3", {}, "Statussen"),
+    el("dl", { class: "statusboek" }, Object.entries(STATUS_UITLEG).map(([id, uitleg]) =>
+      el("div", {}, el("dt", {}, el("i", { class: `uitlegicoon ${id}`, html: STATUSICOON[id] }), STATUSNAAM[id]), el("dd", {}, uitleg)))),
     ...S("Kracht", "Kaarten van de klasse Kracht verdienen trofeeën: wie een vijand doodt, krijgt +1 aanval voor de rest van het gevecht. Barricades hebben schroot in plaats van Leven: elke treffer kost precies 1 schroot, hoe hard hij ook is."),
     ...S("De kaart van Londen", "Elke akte heeft drie gedeelten. Je kiest steeds een van twee paden, met winkels, rust, ontmoetingen en Scheuren, en elk gedeelte eindigt met een gevecht waarvan je de naam en de vijanden vooraf ziet. Je hebt hooguit vier bondgenoten in je stapel; de rest wacht in de reserve. Een gevallen bondgenoot is gewond tot je hem laat verzorgen."),
     ...S("Bediening", "Sleep een kaart naar een vak of een doel, of tik op een kaart en daarna op het doel. Kaarten zonder doel speel je door er twee keer op te tikken. Houd een kaart lang ingedrukt (of houd de muis erboven) voor de volledige tekst."),
@@ -281,7 +311,7 @@ const OEFENHULP = [
   "Een <b>rood vizier</b> toont wie deze beurt wordt aangevallen. Sleep een <b>spul</b> naar een vijand om hem te raken, of zet iemand voor je held.",
   "<b>Big Ben</b> (bovenaan) telt af naar de volgende <b>golf</b>. Versla alle golven om te winnen.",
   "Slechte hand? Blaas op het <b>politiefluitje</b> voor een nieuwe hand. Na 4 beurten zonder fluiten kost het geen beurt.",
-  "<b>Gruwel</b> kost je held Geest. Onder de helft raak je <b>verlicht</b>: occulte kaarten worden sterker. Houd een kaart lang ingedrukt voor alle tekst.",
+  "<b>Gruwel</b> kost je held Geest. Bij de helft of lager raak je <b>verlicht</b>. Paarse bliksem markeert je held en de betrokken kaarten. Houd een kaart lang ingedrukt voor alle tekst.",
 ];
 function oefenHulp(g) { return OEFENHULP[g.beurt - 1] || null; }
 

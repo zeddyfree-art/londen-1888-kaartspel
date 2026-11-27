@@ -149,6 +149,7 @@ function kaartActie(run, actie) {
     if (run.pos.pad != null) throw new Error("Je hebt al een pad gekozen.");
     const gd = huidigGedeelte(run);
     if (!gd.paden[actie.pad]) throw new Error("Dat pad is er niet.");
+    gd.gekozenPad = actie.pad;
     run.pos.pad = actie.pad; run.pos.stap = 0;
     ev(run, { t: "pad", pad: actie.pad });
     return;
@@ -331,6 +332,7 @@ export function neemArtefact(run, id) {
 }
 
 function volgendGedeelte(run) {
+  if (run.pos.pad != null) huidigGedeelte(run).gekozenPad = run.pos.pad;
   const wasBaas = run.pos.gedeelte === 2;
   run.pos.gedeelte += 1; run.pos.pad = null; run.pos.stap = 0;
   if (run.pos.gedeelte > 2) {

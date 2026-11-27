@@ -52,6 +52,7 @@ export function gevechtScherm(app, opties) {
       el("div", { class: "meter lichaam", title: "Lichaam van je held" }, el("span", { html: ICOON.hart, style: { width: "18px", height: "18px", display: "inline-flex" } }), `${Math.max(0, h?.leven ?? 0)}/${h?.maxLeven ?? 0}`),
       el("div", { class: `meter geest ${g.verlicht ? "verlicht" : ""}`, title: `Geest. Verlicht bij ${grens} of minder.` },
         el("span", { html: ICOON.geest, style: { width: "18px", height: "18px", display: "inline-flex" } }), `${g.geest}/${g.maxGeest}`,
+        el("span", { class: "verlichtwoord" }, "Verlicht"),
         el("span", { class: "balkje" }, el("b", { style: { width: `${(100 * g.geest) / g.maxGeest}%` } }), el("i", { class: "grens", style: { left: `${(100 * grens) / g.maxGeest}%` } }))),
       el("div", { class: "meter ponden", title: "Ponden" }, el("span", { html: ICOON.pond, style: { width: "18px", height: "18px", display: "inline-flex" } }), String(opties.ponden() + g.buit)),
     );
@@ -93,8 +94,13 @@ export function gevechtScherm(app, opties) {
     return veld;
   }
 
+  function kaartContext(def) {
+    const g = opties.g();
+    return { g, grens: Math.floor(g.maxGeest * verlichtDrempel(g) + 1e-9), geestKost: geestKosten(g, def) };
+  }
+
   function eenheidMetHandlers(u, nr, mik) {
-    const k = eenheidEl(u, { volgnr: nr, mikpunt: mik });
+    const k = eenheidEl(u, { g: opties.g(), volgnr: nr, mikpunt: mik });
     k.dataset.doel = `u:${u.uid}`;
     bindDetail(k, () => (u.soort === "held" ? { ...B().helden[u.id], soort: "held" } : kaartDef(u.id, u.verbeterd)), () => opties.g().eenheden[u.uid]);
     if (u.kant === "speler" && !u.groot) bindSleep(k, { soort: "eenheid", uid: u.uid });
@@ -410,7 +416,7 @@ export function gevechtScherm(app, opties) {
       S.hoverTimer = setTimeout(() => {
         verbergHover();
         const r = k.getBoundingClientRect();
-        hoverEl = el("div", { class: "hover-detail paneel" }, uitlegEl(def(), eenheid?.()));
+        hoverEl = el("div", { class: "hover-detail paneel" }, uitlegEl(def(), eenheid?.(), kaartContext(def())));
         document.body.append(hoverEl);
         const w = 300, links = r.right + 12 + w < innerWidth ? r.right + 12 : r.left - w - 12;
         hoverEl.style.left = Math.max(8, links) + "px";
@@ -424,7 +430,8 @@ export function gevechtScherm(app, opties) {
     verbergHover();
     const def = k._def?.(); if (!def) return;
     const u = k._eenheid?.();
-    const groot = u ? eenheidEl(u) : kaartEl(def.id, { def });
+    const ctx = kaartContext(def);
+    const groot = u ? eenheidEl(u, ctx) : kaartEl(def.id, { def, ...ctx });
     groot.classList.remove("veld");
     if (u) { groot.classList.add("groot"); }
     const sluit = () => { d.remove(); if (k.isConnected) k.focus({ preventScroll: true }); };
@@ -432,7 +439,7 @@ export function gevechtScherm(app, opties) {
     const d = el("div", { class: "detail", role: "dialog", "aria-modal": "true", "aria-label": def.naam,
       onclick: e => { if (e.target === d) sluit(); },
       onkeydown: e => { if (e.key === "Escape") sluit(); if (e.key === "Tab") e.preventDefault(); },
-    }, el("div", { class: "dk paneel" }, groot, el("div", { class: "duitleg" }, uitlegEl(def, u), knop)));
+    }, el("div", { class: "dk paneel" }, groot, el("div", { class: "duitleg" }, uitlegEl(def, u, ctx), knop)));
     document.body.append(d);
     knop.focus();
   }
@@ -440,7 +447,7 @@ export function gevechtScherm(app, opties) {
   async function toonStapel(titel, lijst) {
     const inhoud = el("div", { class: "stapelgrid" });
     const gesorteerd = [...lijst].sort((a, b) => kaartDef(a.id).naam.localeCompare(kaartDef(b.id).naam));
-    for (const i of gesorteerd) inhoud.append(kaartEl(i.id, { inst: i }));
+    for (const i of gesorteerd) inhoud.append(kaartEl(i.id, { inst: i, geestKost: geestKosten(opties.g(), kaartDef(i.id, i.verbeterd)) }));
     if (!lijst.length) inhoud.append(el("p", { class: "muted" }, "Leeg."));
     await modaal(`${titel} (${lijst.length})`, inhoud, [{ tekst: "Sluiten" }]);
   }
@@ -564,12 +571,23 @@ export function gevechtScherm(app, opties) {
         case "bigben": { const b = root.querySelector(".bigben b"); if (b) b.textContent = String(e.waarde); break; }
         case "fase": { const k = vind(e.uid); werkBij(k, e.e); speel("baas"); banner(e.naam, e.tekst, "rood"); await t(1700); break; }
         case "geest": { zetMeterGeest(e.waarde); if (e.verschil < 0) zweef(vind(opties.g().held), `−${-e.verschil} Geest`, "gruwel"); break; }
-        case "verlicht":
+        case "verlicht": {
           document.body.classList.toggle("verlicht", e.aan);
-          if (e.aan) { speel("verlicht"); banner("Je raakt verlicht", "Occulte kaarten gebruiken nu hun verlichte tekst.", "violet"); await t(1300); }
-          else { banner("De sluier sluit zich", "", "violet"); await t(700); }
+          root.querySelector(".meter.geest")?.classList.toggle("verlicht", e.aan);
+          const sein = el("div", { class: "verlichtsein", role: "status" }, e.aan
+            ? "Verlichting · Je occulte kaarten gebruiken hun verlichte tekst."
+            : "Je Geest herstelt. Je kaarten gebruiken hun gewone tekst.");
+          root.append(sein);
+          if (e.aan) {
+            root.classList.add("ontlading");
+            speel("donder");
+          }
+          await t(e.aan ? 1300 : 700);
+          root.classList.remove("ontlading");
+          sein.remove();
           break;
-        case "waanzin": speel("waanzin"); banner("Waanzin", `${kaartDef(e.kaart).naam} gaat in je stapel. Je Geest herstelt tot ${e.waarde}.`, "violet"); await t(1700); break;
+        }
+        case "waanzin": zetMeterGeest(e.waarde); speel("waanzin"); banner("Waanzin", `${kaartDef(e.kaart).naam} gaat in je stapel. Je Geest herstelt tot ${e.waarde}.`, "violet"); await t(1700); break;
         case "waanzinTrek": banner(kaartDef(e.kaart).naam, "Je trekt een Waanzin-kaart.", "violet"); await t(900); break;
         case "fluitje": speel("fluitje"); await t(400); break;
         case "vermogen": banner(e.naam, "", ""); await t(600); break;
@@ -583,7 +601,14 @@ export function gevechtScherm(app, opties) {
     const m = root.querySelector(".meter.geest");
     if (!m) return;
     const g = opties.g();
-    m.childNodes[1].textContent = `${w}/${g.maxGeest}`;
+    const tekst = `${w}/${g.maxGeest}`;
+    m.childNodes[1].textContent = tekst;
+    const fiche = vind(g.held)?.querySelector(".heldgeest");
+    if (fiche) {
+      fiche.querySelector("b").textContent = tekst;
+      fiche.title = `Geest ${w} van ${g.maxGeest}`;
+      fiche.setAttribute("aria-label", fiche.title);
+    }
     const b = m.querySelector(".balkje b"); if (b) b.style.width = `${(100 * w) / g.maxGeest}%`;
   }
 
