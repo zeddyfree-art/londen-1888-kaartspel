@@ -39,7 +39,7 @@ export function plekPunt(id, akte) {
   return p ? [p.x, p.y] : [500, 350];
 }
 export function plekArt(id) {
-  if (["riolen", "ondergrondse", "pestputten", "hart"].includes(id)) return "scheur/vathrun.jpg";
+  if (id !== "start" && Object.hasOwn(AKTE3, id)) return `akte3/${id}.jpg`;
   return `plekken/${id}.jpg`;
 }
 
@@ -54,6 +54,7 @@ export function kaartScherm(app, opties, overzicht = false) {
   const a = run.pos.akte;
   const akte = run.kaart[a];
   const start = a === 0 ? "bloomsbury" : a === 1 ? run.kaart[0].gedeelten[2].gevecht.plek : "start";
+  const bordArt = a === 2 ? plekArt(overzicht ? "hart" : huidigGedeelte(run).gevecht.plek) : "bord/londen.jpg";
   const punten = [plekPunt(start, a), ...akte.gedeelten.map(gd => plekPunt(gd.gevecht.plek, a))];
   // inzoomen op de wijken van deze akte
   const xs = punten.map(p => p[0]), ys = punten.map(p => p[1]);
@@ -61,7 +62,7 @@ export function kaartScherm(app, opties, overzicht = false) {
   if (bw / bh < 1.25) { const n = bh * 1.25; bx -= (n - bw) / 2; bw = n; } else { const n = bw / 1.25; by -= (n - bh) / 2; bh = n; }
   const s = svg("svg", { class: `paden ${overzicht ? "overzicht" : "wijkroute"}`, role: "group", "aria-label": overzicht ? "Alle routes van deze akte" : "De routes door deze wijk", viewBox: overzicht ? `${bx} ${by} ${bw} ${bh}` : "0 0 800 420", preserveAspectRatio: "xMidYMid meet" });
   const schaal = overzicht ? Math.max(0.6, Math.min(1, bw / 1000)) : 1;
-  if (overzicht) s.append(svg("image", { href: art(a === 2 ? "scheur/vathrun.jpg" : "bord/londen.jpg"), x: 0, y: 0, width: 1000, height: 700, preserveAspectRatio: "xMidYMid slice", class: "bordbeeld", style: a === 2 ? "filter:brightness(.5)" : "filter:brightness(.62) saturate(.8) sepia(.2)" }));
+  if (overzicht) s.append(svg("image", { href: art(bordArt), x: 0, y: 0, width: 1000, height: 700, preserveAspectRatio: "xMidYMid slice", class: "bordbeeld", style: a === 2 ? "filter:brightness(.5)" : "filter:brightness(.62) saturate(.8) sepia(.2)" }));
   const vertrek = [80, 210], bestemming = [720, 210];
   let hier = overzicht ? punten[run.pos.gedeelte] : vertrek;
   let volgendPunt;
@@ -192,7 +193,6 @@ export function kaartScherm(app, opties, overzicht = false) {
       run.reserve.length ? el("button", { class: "knop stil klein", onclick: () => reserveScherm(run, actie) }, `Reserve (${run.reserve.length})`) : null,
       el("button", { class: "knop stil klein", onclick: () => menu() }, "Menu")),
   );
-  const bordArt = a === 2 ? "scheur/vathrun.jpg" : "bord/londen.jpg";
   const kop = el("header", { class: "atlaskop" },
     el("div", {}, el("small", {}, `Akte ${["I", "II", "III"][a]} · Londen 1888`), el("h2", {}, AKTE[a])),
     el("button", { class: "knop stil klein", onclick: () => kaartScherm(app, opties, !overzicht) }, overzicht ? "Huidige route" : "Hele akte"));
@@ -490,7 +490,7 @@ export function eindScherm(app, { run, ontgrendeld, opnieuw, naarStart }) {
   const gewonnen = run.uitslag === "gewonnen";
   const held = B().helden[run.held], god = B().goden[run.god];
   app.replaceChildren(el("div", { class: `scherm einde ${gewonnen ? "" : "verloren"}` },
-    el("div", { class: "achtergrond", style: { backgroundImage: bg(gewonnen ? "scherm/titel.jpg" : god.art) } }),
+    el("div", { class: "achtergrond", style: { backgroundImage: bg(gewonnen ? "scherm/titel-kaartspel.jpg" : god.art) } }),
     el("div", { class: "inhoud paneel", style: { padding: "28px" } },
       el("h1", {}, gewonnen ? "De nacht is voorbij" : "Je held valt"),
       el("p", { class: "sfeertekst" }, gewonnen

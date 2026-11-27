@@ -666,3 +666,16 @@ img { -webkit-user-drag: none; }
 .vermogenknop { min-height: 40px; padding: 4px 12px; border: 1px solid var(--goud); border-radius: 20px; background: linear-gradient(#2a2418, #1b170f); color: var(--goud-licht); font-family: var(--display); font-size: 15px; cursor: pointer; white-space: nowrap; }
 .vermogenknop.gekozen { box-shadow: 0 0 0 2px #9fe1c0, 0 0 14px rgba(159,225,192,.6); }
 .vermogenknop:disabled { opacity: .45; cursor: default; }
+
+/* Klasse-emblemen en de ontvangstkamer behouden hun eigen compositie. */
+.tegel.klassekeuze .tbeeld { background-position: center; }
+.hoofdkwartierprent {
+  display: flex; flex-direction: column; justify-content: end; gap: 15px;
+  min-height: clamp(235px, 36vw, 375px); padding: clamp(14px, 3vw, 27px); border: 1px solid #8c7553; border-radius: 5px;
+  background-size: cover; background-position: center; box-shadow: 0 8px 24px #0008;
+  isolation: isolate; position: relative;
+}
+.hoofdkwartierprent::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit;
+  background: linear-gradient(0deg,#0b1113 2%,#0b1113d9 25%,#0b111316 68%,transparent);
+}

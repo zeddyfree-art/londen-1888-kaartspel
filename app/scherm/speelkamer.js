@@ -28,7 +28,7 @@ export function speelkamer(app, acties, laatsteNieuws, bewaard) {
         el("button", { onclick: acties.muziek, title: "Muziek", "aria-label": "Muziek" }, icoon(ICOON.muziek), el("span", {}, "Muziek")),
         el("button", { onclick: acties.instellingen, title: "Instellingen", "aria-label": "Instellingen" }, icoon(rad), el("span", {}, "Instellingen")))),
     el("section", { class: "nacht" },
-      el("div", { class: "nachtprent", style: { backgroundImage: bg("scherm/titel.jpg") } }),
+      el("div", { class: "nachtprent", style: { backgroundImage: bg("scherm/titel-kaartspel.jpg") } }),
       el("div", { class: "nachtinhoud" },
         el("div", { class: "nachttekst" },
           el("div", { class: "rubriek" }, "Het kaartspel"),
@@ -40,7 +40,7 @@ export function speelkamer(app, acties, laatsteNieuws, bewaard) {
         el("div", { class: "vitrine", "aria-label": "Helden van vier klassen" },
           portret("violet-thorne"), portret("tobias-hale"), portret("cordelia-vane")))),
     el("nav", { class: "kamerdeuren", "aria-label": "Meer aan de speeltafel" },
-      deur("Hoofdkwartier", "Helden en voortgang", "plekken/bloomsbury.jpg", acties.hoofdkwartier),
+      deur("Hoofdkwartier", "Helden en voortgang", "scherm/hoofdkwartier.jpg", acties.hoofdkwartier),
       deur("Spelregels", "Leer de kaarten spelen", "spreuken/tarot.jpg", acties.regels),
       deur("Wat is er nieuw", laatsteNieuws?.titel || "Nieuws over het spel", "spullen/boek-reisverslag.jpg", acties.nieuws))));
 }

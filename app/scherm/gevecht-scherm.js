@@ -160,7 +160,7 @@ export function gevechtScherm(app, opties) {
       zak.append(m);
     }
     return el("div", { class: "onder" },
-      el("button", { class: "stapelvak", style: { backgroundImage: bg("achterkanten/stad.jpg") }, title: "Trekstapel", onclick: () => toonStapel("Trekstapel", g.trek) }, el("small", {}, "trekstapel"), el("b", {}, String(g.trek.length))),
+      el("button", { class: "stapelvak", style: { backgroundImage: bg("achterkanten/kaartspel.jpg") }, title: "Trekstapel", onclick: () => toonStapel("Trekstapel", g.trek) }, el("small", {}, "trekstapel"), el("b", {}, String(g.trek.length))),
       hand,
       el("button", { class: "stapelvak", style: { backgroundImage: bg("achterkanten/toestanden.jpg") }, title: "Aflegstapel", onclick: () => toonStapel("Aflegstapel", g.afleg) }, el("small", {}, "aflegstapel"), el("b", {}, String(g.afleg.length))),
       el("div", { class: "acties" },

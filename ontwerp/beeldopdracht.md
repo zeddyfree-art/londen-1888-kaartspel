@@ -4,8 +4,8 @@ Het kaartspel hergebruikt illustraties uit Londen 1888 (`tools/kopieer-uit-londe
 
 ## Stand op 27 november 2026
 
-- **Tijdelijke illustraties in het huidige prototype.** Het titelscherm, het hoofdkwartier, vier klassenemblemen, vier locaties onder Londen, zes barricades, acht Waanzin-kaarten, vijf nieuwe kaarten van fase 3 (§9) en de achterkant van de trekstapel wachten op hun eigen beeld.
-- **Afgerond.** Dragers gebruikt het groepsportret in `art/bondgenoten/dragers.jpg`. De bokser, sjouwer, agent, kruidenvrouw en het medium hebben eigen portretten in dezelfde map. Het oog van de speelkamer is beschikbaar als favicon en als geschilderd app-icoon in `app/icoon/`.
+- **In het spel.** Het titelscherm, het hoofdkwartier, de vier klassenemblemen, de vier locaties onder Londen, zes barricades, acht Waanzin-kaarten, vijf kaarten uit fase 3 en de achterkant van de trekstapel hebben eigen illustraties. De tabellen behouden de oorspronkelijke prompts en bronformaten. De webversies staan als JPG in `art/`.
+- **Personages en iconen.** Dragers gebruikt het groepsportret in `art/bondgenoten/dragers.jpg`. De bokser, sjouwer, agent, kruidenvrouw en het medium hebben eigen portretten in dezelfde map. Het oog van de speelkamer is beschikbaar als favicon en als geschilderd app-icoon in `app/icoon/`.
 - **Knooppunten.** De routekaart gebruikt getekende SVG-symbolen voor alle speelbare haltes en voor de baas. De geschilderde medaillons uit §8 blijven een beeldoptie. De Occulte boekwinkel hoort bij fase 3.
 - **Later.** Drie extra barricades, acht talismannen en de monsters voor de andere elf goden horen bij de uitbreiding van het spel. De Zegelbreker is reserve voor Vathrûn.
 
@@ -29,14 +29,14 @@ Het importscript leest een lijst met Drive-bestands-ID’s en schrijft de afbeel
 
 ## 1. Titelscherm en hoofdkwartier
 
-| Bestand | Formaat | Prompt | Nu tijdelijk |
+| Bestand | Formaat | Prompt | In het spel |
 |---|---|---|---|
-| `scherm/titel-kaartspel.png` | 16:9, 2560 × 1440 | a deck of worn Victorian playing cards fanned out on a dark wooden table beside a guttering candle, a revolver, a brass pocket watch and a sprig of dried herbs, behind them a rain-streaked window with the fog-bound Thames and the silhouette of Big Ben, one card face down glowing faintly violet | `scherm/titel.jpg` |
-| `scherm/hoofdkwartier.png` | 16:9, 2560 × 1440 | the cluttered back room of an occult bookshop in Bloomsbury at night, shelves of crumbling grimoires, a cabinet of curiosities with jars and skulls, a large map of London pinned with red thread, a guest book open on a lectern, a tall grandfather clock, a single green-shaded lamp | `plekken/bloomsbury.jpg` |
+| `scherm/titel-kaartspel.png` | 16:9, 2560 × 1440 | a deck of worn Victorian playing cards fanned out on a dark wooden table beside a guttering candle, a revolver, a brass pocket watch and a sprig of dried herbs, behind them a rain-streaked window with the fog-bound Thames and the silhouette of Big Ben, one card face down glowing faintly violet | `art/scherm/titel-kaartspel.jpg` |
+| `scherm/hoofdkwartier.png` | 16:9, 2560 × 1440 | the cluttered back room of an occult bookshop in Bloomsbury at night, shelves of crumbling grimoires, a cabinet of curiosities with jars and skulls, a large map of London pinned with red thread, a guest book open on a lectern, a tall grandfather clock, a single green-shaded lamp | `art/scherm/hoofdkwartier.jpg` |
 
 ## 2. Emblemen van de klassen
 
-Een voorwerp, geen persoon, geen tekst. 1:1, 1024 × 1024. Nu tijdelijk: een heldenportret.
+Een voorwerp, geen persoon, geen tekst. 1:1, 1024 × 1024.
 
 | Bestand | Prompt |
 |---|---|
@@ -47,7 +47,7 @@ Een voorwerp, geen persoon, geen tekst. 1:1, 1024 × 1024. Nu tijdelijk: een hel
 
 ## 3. Akte 3: onder Londen
 
-3:2, 2048 × 1365. Achtergrond van de kaart in akte 3 en van de gevechten daar. Nu tijdelijk: `scheur/vathrun.jpg`.
+3:2, 2048 × 1365. Achtergrond van de kaart in akte 3 en van de gevechten daar.
 
 | Bestand | Prompt |
 |---|---|
@@ -60,18 +60,18 @@ Een voorwerp, geen persoon, geen tekst. 1:1, 1024 × 1024. Nu tijdelijk: een hel
 
 1:1, 1024 × 1024. Een voorwerp dat je in een steeg of deuropening zet.
 
-| Bestand | Prompt | Nu tijdelijk |
+| Bestand | Prompt | In het spel |
 |---|---|---|
-| `barricades/omgevallen-kar.png` | an overturned wooden costermonger's cart lying on its side across a narrow cobbled alley, a wheel still turning, spilled cabbages, fog beyond | `spullen/rijtuig.jpg` |
-| `barricades/zandzakken.png` | a low wall of wet hessian sandbags stacked across a riverside warehouse door at night, a lantern on top | `plekken/st-katharine-docks.jpg` |
-| `barricades/glasscherven.png` | the top of an old brick wall set with jagged broken bottle glass catching gaslight, ivy and rain | `plekken/whitechapel.jpg` |
-| `barricades/kruisbeeld-deur.png` | a tarnished silver crucifix nailed to a narrow doorway in a dark tenement, candle stubs on the step | `spullen/kruisbeeld.jpg` |
-| `barricades/kerkbank.png` | a heavy carved oak church pew dragged across a cobbled street as a barricade, hymn books scattered | `plekken/westminster.jpg` |
-| `barricades/stormlantaarn-kist.png` | a brass storm lantern burning on top of a wooden shipping crate in a foggy alley, the light pushing the mist back | `spullen/stormlantaarn.jpg` |
+| `barricades/omgevallen-kar.png` | an overturned wooden costermonger's cart lying on its side across a narrow cobbled alley, a wheel still turning, spilled cabbages, fog beyond | `art/barricades/omgevallen-kar.jpg` |
+| `barricades/zandzakken.png` | a low wall of wet hessian sandbags stacked across a riverside warehouse door at night, a lantern on top | `art/barricades/zandzakken.jpg` |
+| `barricades/glasscherven.png` | the top of an old brick wall set with jagged broken bottle glass catching gaslight, ivy and rain | `art/barricades/glasscherven.jpg` |
+| `barricades/kruisbeeld-deur.png` | a tarnished silver crucifix nailed to a narrow doorway in a dark tenement, candle stubs on the step | `art/barricades/kruisbeeld-deur.jpg` |
+| `barricades/kerkbank.png` | a heavy carved oak church pew dragged across a cobbled street as a barricade, hymn books scattered | `art/barricades/kerkbank.jpg` |
+| `barricades/stormlantaarn-kist.png` | a brass storm lantern burning on top of a wooden shipping crate in a foggy alley, the light pushing the mist back | `art/barricades/stormlantaarn-kist.jpg` |
 | `barricades/dragers.png` | a line of Egyptian porters in white galabeyas carrying baskets and crates through a foggy London dock at night | Afgerond met `art/bondgenoten/dragers.jpg` |
-| `barricades/zoutkring.png` | a thick ring of coarse salt and iron filings poured on a stone floor, candles at four points, faint violet light inside | — |
-| `barricades/omgevallen-vaten.png` | a pile of rolled beer barrels blocking a narrow alley behind a public house, one leaking dark ale | — |
-| `barricades/ijzeren-hek.png` | a wrought-iron railing torn from a churchyard and propped across an alley, rusted spikes, fog | — |
+| `barricades/zoutkring.png` | a thick ring of coarse salt and iron filings poured on a stone floor, candles at four points, faint violet light inside | Later |
+| `barricades/omgevallen-vaten.png` | a pile of rolled beer barrels blocking a narrow alley behind a public house, one leaking dark ale | Later |
+| `barricades/ijzeren-hek.png` | a wrought-iron railing torn from a churchyard and propped across an alley, rusted spikes, fog | Later |
 
 ## 5. Talismannen
 
@@ -90,7 +90,7 @@ Een voorwerp, geen persoon, geen tekst. 1:1, 1024 × 1024. Nu tijdelijk: een hel
 
 ## 6. Waanzin
 
-1:1, 1024 × 1024. Beelden van verwarring en angst. Geen bloed, geen gore. Nu tijdelijk: `achterkanten/toestanden.jpg`.
+1:1, 1024 × 1024. Beelden van verwarring en angst. Geen bloed, geen gore.
 
 | Bestand | Prompt |
 |---|---|
@@ -131,12 +131,12 @@ Een voorwerp, geen persoon, geen tekst. 1:1, 1024 × 1024. Nu tijdelijk: een hel
 
 ## 9. Nieuwe kaarten van fase 3
 
-1:1, 1024 × 1024. Nu tijdelijk een plekbeeld of een achterkant.
+1:1, 1024 × 1024.
 
-| Bestand | Prompt | Nu tijdelijk |
+| Bestand | Prompt | In het spel |
 |---|---|---|
-| `kaarten/bevel.png` | a gloved hand pointing forward sharply in a foggy street, a group of rough men turning to follow the gesture, gaslight | `plekken/strand.jpg` |
-| `kaarten/visitekaartje.png` | an engraved calling card with a family crest on a silver salver, a gloved hand reaching for it, candlelight | `plekken/pall-mall.jpg` |
-| `kaarten/rijtuig-bestellen.png` | a black hansom cab pulling up at a foggy kerb at night, the driver tipping his hat, lamps glowing | `plekken/kings-cross.jpg` |
-| `kaarten/tralies-yard.png` | a heavy iron cell door with bars, unbolted and propped across an alley as a barricade, a police lantern hanging from it | `plekken/whitehall.jpg` |
-| `kaarten/zeven-kaarsen.png` | seven tall black candles in a circle on a stone floor, one already guttering out, faint violet smoke rising | `achterkanten/spreuken.jpg` |
+| `kaarten/bevel.png` | a gloved hand pointing forward sharply in a foggy street, a group of rough men turning to follow the gesture, gaslight | `art/kaarten/bevel.jpg` |
+| `kaarten/visitekaartje.png` | an engraved calling card with a family crest on a silver salver, a gloved hand reaching for it, candlelight | `art/kaarten/visitekaartje.jpg` |
+| `kaarten/rijtuig-bestellen.png` | a black hansom cab pulling up at a foggy kerb at night, the driver tipping his hat, lamps glowing | `art/kaarten/rijtuig-bestellen.jpg` |
+| `kaarten/tralies-yard.png` | a heavy iron cell door with bars, unbolted and propped across an alley as a barricade, a police lantern hanging from it | `art/kaarten/tralies-yard.jpg` |
+| `kaarten/zeven-kaarsen.png` | seven tall black candles in a circle on a stone floor, one already guttering out, faint violet smoke rising | `art/kaarten/zeven-kaarsen.jpg` |

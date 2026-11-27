@@ -1,4 +1,10 @@
 [
+ { "id": 7, "datum": "27 november 2026", "titel": "Londen in olieverf",
+   "punten": [
+     "Op de speeltafel liggen nu kaarten in het gaslicht. In het hoofdkwartier kijk je de achterkamer van de occulte boekwinkel in.",
+     "Elke klasse heeft een eigen embleem. Ook de riolen, de Ondergrondse, de pestputten en het hart van de Scheur kregen elk een eigen schildering.",
+     "Je herkent zes barricades, alle acht Waanzin-kaarten en vijf kaarten uit de nieuwe klassen aan hun eigen illustratie. De trekstapel heeft een achterkant met een gouden klok."
+   ] },
  { "id": 6, "datum": "27 november 2026", "titel": "Het oog van Londen",
    "punten": ["Het gouden oog uit de speelkamer staat nu op je browsertab. Op je beginscherm verschijnt een geschilderd oog van amethist."] },
  { "id": 5, "datum": "27 november 2026", "titel": "Vier klassen",

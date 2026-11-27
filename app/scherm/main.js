@@ -60,12 +60,11 @@ function nieuweRunKiezen() {
     el("div", { class: "achtergrond", style: { backgroundImage: bg("plekken/bloomsbury.jpg") } }),
     kop(titel, terug), el("div", { class: "midden" }, uitleg ? el("p", { class: "uitleg" }, uitleg) : null, inhoud), voet ? el("div", { class: "voet" }, voet) : null));
 
-  const VOORBEELD = { kennis: "ambrose-pell", waarneming: "silas-rook", kracht: "tobias-hale", charisma: "cordelia-vane" };
   function stapKlasse() {
     const tegels = el("div", { class: "tegels" });
     for (const k of bib.data.klassen) {
-      const t = el("button", { class: `tegel ${k.speelbaar ? "" : "dicht"}`, style: { "--rand": k.kleur }, disabled: !k.speelbaar, onclick: () => { keuze.klasse = k.id; stapHeld(); } },
-        el("div", { class: "tbeeld", style: { backgroundImage: bg(bib.helden[VOORBEELD[k.id]].art) } }),
+      const t = el("button", { class: `tegel klassekeuze ${k.speelbaar ? "" : "dicht"}`, style: { "--rand": k.kleur }, disabled: !k.speelbaar, onclick: () => { keuze.klasse = k.id; stapHeld(); } },
+        el("div", { class: "tbeeld", style: { backgroundImage: bg(`klassen/${k.id}.jpg`) } }),
         el("div", { class: "ttekst" }, el("div", { class: "tnaam", style: { color: k.kleur === "#8e2a22" ? "#e88a7a" : undefined } }, k.naam), el("div", { class: "tsub" }, k.rol), el("div", {}, k.kort), k.regel ? el("div", { class: "tsub", style: { color: "var(--goud-licht)" } }, k.regel) : null),
         k.speelbaar ? null : el("span", { class: "slot" }, "komt later"));
       tegels.append(t);
@@ -241,8 +240,11 @@ function hoofdkwartier() {
   const bib = B();
   const kracht = bib.data.helden;
   pagina("Het hoofdkwartier", [
-    el("p", { class: "sfeertekst" }, "De achterkamer van een occulte boekwinkel in Bloomsbury. Kaarten van de riolen aan de muur, een pot thee die nooit warm blijft, en een gastenboek met namen die je beter niet hardop zegt."),
-    el("div", { class: "cijfers" }, el("div", {}, el("b", {}, String(meta.runs || 0)), "runs begonnen"), el("div", {}, el("b", {}, String(meta.gewonnen || 0)), "runs gewonnen")),
+    el("div", { class: "hoofdkwartierprent", style: { backgroundImage: bg("scherm/hoofdkwartier.jpg") } },
+      el("p", { class: "sfeertekst" }, "De achterkamer van een occulte boekwinkel in Bloomsbury. Kaarten van de riolen aan de muur, een pot thee die nooit warm blijft, en een gastenboek met namen die je beter niet hardop zegt."),
+      el("div", { class: "cijfers" },
+        el("div", {}, el("b", {}, String(meta.runs || 0)), "runs begonnen"),
+        el("div", {}, el("b", {}, String(meta.gewonnen || 0)), "runs gewonnen"))),
     el("h3", {}, "De wachtkamer: helden"),
     el("p", {}, "Elke gewonnen run ontgrendelt een nieuwe held van die klasse."),
     el("div", { class: "tegels" }, kracht.map(h => el("div", { class: `tegel ${heldVrij(h) ? "" : "dicht"}`, style: { width: "150px", minHeight: "0", cursor: "default" } },
@@ -251,7 +253,7 @@ function hoofdkwartier() {
     el("h3", {}, "Nog dicht"),
     el("p", { class: "muted" }, "Het rariteitenkabinet, de leeszaal, het gastenboek, de kaartentafel en de torenklok gaan open in een volgende versie, met uitdagingen zoals 'Win met elke klasse' en 'Win een gevecht met 1 Lichaam'."),
     el("button", { class: "knop stil", onclick: async () => { await instellingenModaal(); hoofdkwartier(); } }, "Instellingen"),
-  ]);
+  ], "scherm/hoofdkwartier.jpg");
 }
 
 function nieuwsScherm() {
