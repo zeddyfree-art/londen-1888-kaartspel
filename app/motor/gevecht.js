@@ -2,7 +2,7 @@
 // doe(g, actie) geeft een NIEUWE toestand terug plus een lijst gebeurtenissen die het scherm kan afspelen.
 import { schud, kies, geheel } from "./toeval.js";
 import { B, kaartDef } from "./bibliotheek.js";
-import { voerUit } from "./effecten.js";
+import { voerUit, kiesDoelen } from "./effecten.js";
 
 export const RIJEN = ["straat", "riool"];
 export const HANDGROOTTE = 6;
@@ -22,6 +22,8 @@ export const STATUSSEN = {
   woede: { naam: "Woede", tekst: "+1 schade per punt bij de volgende aanval." },
 };
 
+export const VELDSOORTEN = ["bondgenoot", "barricade", "ritueel"];
+export const isVeldkaart = d => VELDSOORTEN.includes(d.soort);
 export const andereKant = k => (k === "speler" ? "vijand" : "speler");
 export const levend = u => u && !u.dood;
 export const ev = (g, e) => { g.ev.push(e); };
@@ -167,7 +169,7 @@ export function maakGevecht(run, def) {
   const extra = g.ctx.artefacten.includes("ring-gyges") ? 1 : 0;
   trekStil(g, Math.max(0, HANDGROOTTE + extra - g.hand.length));
   // toeval mag spannend zijn, nooit uitzichtloos: minstens één kaart voor het veld in de beginhand
-  const isVeld = i => ["bondgenoot", "barricade"].includes(kaartDef(i.id).soort);
+  const isVeld = i => isVeldkaart(kaartDef(i.id));
   if (!g.hand.some(isVeld)) {
     const j = g.trek.findIndex(isVeld);
     const weg = g.hand.findIndex(i => !i.zegel && !i.tijdelijk);
@@ -180,6 +182,8 @@ export function maakGevecht(run, def) {
 
   // vermogens en artefacten bij het begin
   const vm = held.vermogen || {};
+  if (vm.beginAanwijzingen) g.aanwijzingen += vm.beginAanwijzingen;
+  for (const [st, n] of Object.entries(k.beginStatus || {})) geefStatus(g, hu, st, n);
   if (vm.beginStatus) for (const [s, n] of Object.entries(vm.beginStatus)) geefStatus(g, hu, s, n);
   for (const a of g.ctx.artefacten) {
     const ad = bib.artefacten[a];
@@ -284,7 +288,7 @@ export function aanvalsDoelen(g, u, tegenKant) {
   const rijen = [rij, rij === "straat" ? "riool" : "straat"];
   const k = u.kenmerken || [];
   if (k.includes("scherpschutter")) {
-    const l = eenhedenVan(g, ander);
+    const l = eenhedenVan(g, ander).filter(x => !verstopt(g, x));
     if (!l.length) return [];
     return [l.reduce((a, b) => ((b.leven ?? b.schroot) < (a.leven ?? a.schroot) ? b : a))];
   }
@@ -292,7 +296,7 @@ export function aanvalsDoelen(g, u, tegenKant) {
     const plekken = k.includes("achterhoede") ? [2, 1, 0] : [0, 1, 2];
     for (const p of plekken) {
       const doel = eenheidOp(g, ander, r, p);
-      if (levend(doel) && doel.uid !== u.uid) {
+      if (levend(doel) && doel.uid !== u.uid && !verstopt(g, doel)) {
         if (k.includes("salvo")) return eenhedenVan(g, ander).filter(x => rijVan(g, x) === r || x.groot);
         return [omleiden(g, doel)];
       }
@@ -303,6 +307,13 @@ export function aanvalsDoelen(g, u, tegenKant) {
 
 function omleiden(g, doel) {
   return doel;
+}
+
+/** Verstoppen (Lottie Finch): de held is geen doel zolang er een kaart voor haar in haar rij staat. */
+function verstopt(g, x) {
+  if (x.uid !== g.held || !B().helden[g.ctx.held]?.vermogen?.verstoppen) return false;
+  for (let p = 0; p < x.vak.plek; p++) if (eenheidOp(g, "speler", x.vak.rij, p)) return true;
+  return false;
 }
 
 export function toeslaan(g, u) {
@@ -316,7 +327,10 @@ export function toeslaan(g, u) {
       doelen = aanvalsDoelen(g, u, u.kant).filter(x => x.uid !== u.uid).slice(0, 1);
       u.statussen.bekoring = 0;
     } else doelen = aanvalsDoelen(g, u);
-    if (u.uid === g.held && B().helden[g.ctx.held]?.vermogen?.handoplegging) { /* komt met Charisma */ }
+    if (u.kant === "vijand" && g.voorgevoel && doelen.length) {
+      g.voorgevoel = false; doelen = [];
+      ev(g, { t: "vermogen", naam: "Voorgevoel: de aanval gaat mis" });
+    }
     const basis = Math.max(0, u.aanval + (u.statussen.woede || 0) - (u.statussen.angst || 0));
     const hvm = B().helden[g.ctx.held]?.vermogen || {};
     for (const doel of doelen) {
@@ -331,6 +345,8 @@ export function toeslaan(g, u) {
     }
   }
   if (u.statussen.inkt > 0 || g.uitslag) return;
+  if (u.uid === g.held && B().klassen[g.ctx.klasse]?.heldAanwijzing) { g.aanwijzingen = (g.aanwijzingen || 0) + B().klassen[g.ctx.klasse].heldAanwijzing; ev(g, { t: "aanwijzing", aantal: 1 }); }
+  if (u.uid === g.held && B().helden[g.ctx.held]?.vermogen?.bijToeslaan) voerUit(g, B().helden[g.ctx.held].vermogen.bijToeslaan, { kant: "speler", bron: u, doel: doelen[0] || null });
   const vermogen = (g.verlicht && u.kant === "speler" && d.bijToeslaanVerlicht) || d.bijToeslaan;
   if (vermogen && levend(u)) voerUit(g, vermogen, { kant: u.kant, bron: u, doel: doelen[0] || null });
 }
@@ -356,6 +372,7 @@ export function treffer(g, bron, doel, schade, gruwel = 0, opt = {}) {
     ev(g, { t: "blok", uid: doel.uid, e: snap(doel) });
     return;
   }
+  if (doel.ontmaskerd) schade += B().klassen[g.ctx.klasse]?.ontmaskerdExtra || 1;
   if (doel.statussen.vervloekt > 0) { schade *= 2; doel.statussen.vervloekt = 0; }
   if (doel.kant === "speler" && schade > 0 && B().helden[g.ctx.held]?.vermogen?.bredeSchouders) {
     const h = g.eenheden[g.held];
@@ -528,18 +545,24 @@ function vulWachtrij(g) {
 /* ───────── wat mag er ───────── */
 
 export function geestKosten(g, def) {
-  if (def.soort !== "spreuk") return 0;
+  if (def.soort !== "spreuk" && def.soort !== "ritueel") return 0;
   let k = def.geest || 0;
   if (eenhedenVan(g, "vijand").some(u => defVan(g, u).spreukDuurder)) k += 1;
-  if (g.ctx.held === "septimus-crane" && !g.stats.spreuken) k = 0;
+  if (g.ctx.held === "septimus-crane" && !g.stats.spreuken && def.soort === "spreuk") k = 0;
   return k;
+}
+
+/** Hoeveel Aanwijzingen een Deductie kost. */
+export function aanwijzingKosten(g, def) {
+  if (!def.deductie) return 0;
+  return Math.max(0, def.deductie - (B().helden[g.ctx.held]?.vermogen?.deductieKorting || 0));
 }
 
 /** Welke doelen een kaart uit de hand kan hebben: vakken (voor kaarten op het veld) of eenheden. */
 export function geldigeDoelen(g, inst) {
   const d = kaartDef(inst.id, inst.verbeterd);
   if (d.onspeelbaar) return { soort: "geen-spel", lijst: [] };
-  if (d.soort === "bondgenoot" || d.soort === "barricade") {
+  if (isVeldkaart(d)) {
     return { soort: "vak", lijst: legeVakken(g, "speler", "straat") };
   }
   const doel = d.doel || "geen";
@@ -553,6 +576,7 @@ export function geldigeDoelen(g, inst) {
 export function kanSpelen(g, inst) {
   const d = kaartDef(inst.id, inst.verbeterd);
   if (d.onspeelbaar) return false;
+  if (aanwijzingKosten(g, d) > (g.aanwijzingen || 0)) return false;
   const gd = geldigeDoelen(g, inst);
   if (gd.soort === "veld") return true;
   return gd.lijst.length > 0;
@@ -569,9 +593,26 @@ export function alleActies(g) {
     else if (gd.soort === "eenheid") for (const u of gd.lijst) uit.push({ soort: "speel", kaart: inst.uid, doel: u });
     else uit.push({ soort: "speel", kaart: inst.uid });
   }
+  for (const a of vermogenActies(g)) uit.push(a);
   uit.push({ soort: "fluitje" });
-  for (const u of eenhedenVan(g, "speler")) if (u.soort === "bondgenoot") uit.push({ soort: "terugroepen", eenheid: u.uid });
+  for (const u of eenhedenVan(g, "speler")) if (u.soort === "bondgenoot" && !u.overgelopen) uit.push({ soort: "terugroepen", eenheid: u.uid });
   return uit;
+}
+
+/** Het vermogen van de held dat je één keer per gevecht inzet (Pell, Nasr, Thorne, Odile, Gosling). */
+export function heldActie(g) {
+  const a = B().helden[g.ctx.held]?.vermogen?.actie;
+  if (!a || g.vermogenGebruikt) return null;
+  return a;
+}
+export function vermogenDoelen(g) {
+  const a = heldActie(g); if (!a) return [];
+  if (a.doel === "vijand") return eenhedenVan(g, "vijand").filter(u => !(a.geenBaas && u.baas)).map(u => u.uid);
+  if (a.doel === "bondgenoot") return eenhedenVan(g, "speler").filter(u => u.uid !== g.held && u.aanval != null).map(u => u.uid);
+  return [null];
+}
+function vermogenActies(g) {
+  return vermogenDoelen(g).map(doel => ({ soort: "vermogen", ...(doel ? { doel } : {}) }));
 }
 
 export function fluitjeOpgeladen(g) {
@@ -593,11 +634,14 @@ export function doe(oud, actie) {
       const inst = g.hand[idx];
       const d = kaartDef(inst.id, inst.verbeterd);
       if (d.onspeelbaar) throw new Error("Deze kaart kun je niet spelen.");
+      const prijsAanw = aanwijzingKosten(g, d);
+      if (prijsAanw > (g.aanwijzingen || 0)) throw new Error("Je hebt niet genoeg Aanwijzingen voor deze Deductie.");
       g.hand.splice(idx, 1);
       g.stats.gespeeld += 1;
+      if (prijsAanw) { g.aanwijzingen -= prijsAanw; ev(g, { t: "aanwijzing", aantal: -prijsAanw }); }
       ev(g, { t: "speel", kaart: inst.id, inst: inst.uid });
       const held = g.eenheden[g.held];
-      if (d.soort === "bondgenoot" || d.soort === "barricade") {
+      if (isVeldkaart(d)) {
         const { rij, plek } = actie.vak || {};
         if (!RIJEN.includes(rij) || plek < 0 || plek > 2 || g.veld.speler[rij][plek]) throw new Error("Dat vak is niet vrij.");
         const u = maakEenheid(g, { ...d, soort: d.soort, klasse: d.klasse }, "speler", { verbeterd: !!inst.verbeterd, gewond: !!inst.gewond });
@@ -606,6 +650,7 @@ export function doe(oud, actie) {
           if (u.aanval) u.aanval = Math.floor(u.aanval / 2);
         }
         if (g.ctx.klasse === "kracht" && d.klasse === "kracht" && u.aanval != null && !u.kenmerken.includes("trofee")) u.kenmerken.push("trofee");
+        if (inst.bonusAanval && u.aanval != null) u.aanval += inst.bonusAanval;
         g.eenheden[u.uid] = u;
         legNeer(g, u, "speler", rij, plek);
         (g.opVeld ??= {})[u.uid] = inst;
@@ -619,16 +664,43 @@ export function doe(oud, actie) {
           if (!levend(doel) || (gd.soort === "eenheid" && !gd.lijst.includes(doel.uid))) throw new Error("Dat is geen geldig doel.");
         }
         const kost = geestKosten(g, d);
+        const hvm = B().helden[g.ctx.held]?.vermogen || {};
+        const eersteSpreuk = d.soort === "spreuk" && !g.stats.spreuken;
         if (d.soort === "spreuk") g.stats.spreuken += 1;
         const effect = g.verlicht && d.effectVerlicht ? d.effectVerlicht : d.effect;
         if (kost) veranderGeest(g, -kost);
+        if ((effect || []).some(e => e.doe === "ontmasker") && hvm.eersteOntmaskeringGratis && !g.canulGebruikt) { g.canulGebruikt = true; kostBeurt = false; }
         voerUit(g, effect, { kant: "speler", bron: held, doel, kaart: inst.id });
+        // Lied dat bindt (Valentine): een spreuk op een bondgenoot helpt ook de kaarten ernaast
+        if (hvm.liedDatBindt && d.soort === "spreuk" && doel && doel.kant === "speler" && doel.uid !== g.held) {
+          const naast = kiesDoelen(g, "buren", { kant: "speler", doel }).filter(u => u.kant === "speler" && u.uid !== g.held && levend(u));
+          for (const n of naast) voerUit(g, effect.filter(e => (e.op || "doel") === "doel"), { kant: "speler", bron: held, doel: n, kaart: inst.id });
+        }
+        // klasseregel Kennis: elke spreuk zet de teller van je held lager
+        const kr = B().klassen[g.ctx.klasse] || {};
+        if (kr.spreukVersnelt && d.soort === "spreuk" && levend(held)) veranderTeller(g, held, -kr.spreukVersnelt);
+        // Zwaard van licht (Hartwell): elke spreuk geeft de held +1 aanval
+        if (hvm.zwaardVanLicht && d.soort === "spreuk" && levend(held)) { held.aanval += 1; ev(g, { t: "aanval", uid: held.uid, e: snap(held) }); }
         if (!inst.tijdelijk) {
-          if (d.eenmalig) g.verbannen.push(inst); else g.afleg.push(inst);
+          // Theebladeren (Bridie): de eerste spreuk komt terug in je hand
+          if (hvm.theebladeren && eersteSpreuk) { g.hand.push(inst); ev(g, { t: "vermogen", naam: "Theebladeren" }); }
+          else if (d.eenmalig) g.verbannen.push(inst); else g.afleg.push(inst);
         }
       }
       if (inst.zegel || d.gratis) kostBeurt = false;
       break;
+    }
+    case "vermogen": {
+      const a = heldActie(g);
+      if (!a) throw new Error("Dat vermogen heb je dit gevecht al gebruikt.");
+      const doelen = vermogenDoelen(g);
+      const doel = actie.doel ? g.eenheden[actie.doel] : null;
+      if (a.doel && a.doel !== "geen" && (!doel || !doelen.includes(doel.uid))) throw new Error("Dat is geen geldig doel voor dit vermogen.");
+      g.vermogenGebruikt = true;
+      ev(g, { t: "vermogen", naam: B().helden[g.ctx.held].vermogen.naam });
+      voerUit(g, a.effect, { kant: "speler", bron: g.eenheden[g.held], doel });
+      controleerEinde(g);
+      return { g, ev: g.ev };
     }
     case "verplaats": {
       const u = g.eenheden[actie.eenheid];
@@ -666,7 +738,7 @@ export function doe(oud, actie) {
     }
     case "terugroepen": {
       const u = g.eenheden[actie.eenheid];
-      if (!levend(u) || u.kant !== "speler" || u.soort !== "bondgenoot") throw new Error("Alleen bondgenoten kun je terugroepen.");
+      if (!levend(u) || u.kant !== "speler" || u.soort !== "bondgenoot" || u.overgelopen) throw new Error("Alleen je eigen bondgenoten kun je terugroepen.");
       haalWeg(g, u);
       u.dood = true; u.teruggeroepen = true;
       const inst = g.opVeld?.[u.uid];
@@ -679,6 +751,53 @@ export function doe(oud, actie) {
   if (!g.uitslag && kostBeurt) eindeBeurt(g);
   else controleerEinde(g);
   return { g, ev: g.ev };
+}
+
+/** Een ritueel heeft toegeslagen: het verlaat het veld en gaat naar de aflegstapel. */
+function ritueelKlaar(g, u) {
+  haalWeg(g, u);
+  u.dood = true; u.klaar = true;
+  const inst = g.opVeld?.[u.uid];
+  if (inst) g.afleg.push(inst);
+  ev(g, { t: "ritueel", uid: u.uid });
+}
+
+/** Overtuigen: een menselijke vijand loopt over naar jouw kant. */
+export function overtuig(g, u, voorgoed) {
+  if (!levend(u) || u.kant !== "vijand") return false;
+  const vrij = legeVakken(g, "speler", rijVan(g, u));
+  if (!vrij.length) { ev(g, { t: "vermogen", naam: "Geen plek: hij blijft waar hij is" }); return false; }
+  haalWeg(g, u);
+  for (const s of ["mist", "pest", "vervloekt", "inkt", "bekoring", "angst"]) u.statussen[s] = 0;
+  u.soort = "bondgenoot"; u.overgelopen = true;
+  u.teller = u.maxTeller;
+  legNeer(g, u, "speler", vrij[0].rij, vrij[0].plek);
+  g.stats.overtuigd = (g.stats.overtuigd || 0) + 1;
+  if (voorgoed) (g.nieuweKaarten ??= []).push(`overgelopen-${u.id}`);
+  ev(g, { t: "overtuigd", uid: u.uid, voorgoed: !!voorgoed, e: snap(u) });
+  return true;
+}
+
+/** Laat een vijand verdwijnen; hij komt terug met de volgende golf (Gosling). */
+export function laatVerdwijnen(g, u) {
+  if (!levend(u) || u.kant !== "vijand" || u.baas) return;
+  haalWeg(g, u);
+  u.dood = true;
+  if (g.golfNr < g.golven.length) g.golven[g.golfNr].push({ id: u.id, rij: rijVan(g, u) });
+  else g.wachtrij.push({ id: u.id });
+  ev(g, { t: "verdwijnt", uid: u.uid });
+}
+
+/** Zet een vijand achteraan in zijn rij (Thorne). */
+export function naarAchter(g, u) {
+  if (!levend(u) || u.groot || !u.vak) return;
+  const rij = u.vak.rij, achter = eenheidOp(g, u.kant, rij, 2);
+  if (achter?.uid === u.uid) return;
+  const oud = { ...u.vak };
+  haalWeg(g, u);
+  if (achter) { haalWeg(g, achter); legNeer(g, achter, u.kant, oud.rij, oud.plek); }
+  legNeer(g, u, u.kant, rij, 2);
+  ev(g, { t: "verplaats", uid: u.uid });
 }
 
 function controleerEinde(g) {
@@ -700,7 +819,11 @@ export function eindeBeurt(g) {
     if (u.statussen.mist > 0) { ev(g, { t: "stil", uid: u.uid }); continue; }
     u.teller -= 1;
     ev(g, { t: "tik", uid: u.uid, waarde: Math.max(0, u.teller) });
-    if (u.teller <= 0) { toeslaan(g, u); if (levend(u)) u.teller = u.maxTeller; }
+    if (u.teller <= 0) {
+      toeslaan(g, u);
+      if (levend(u) && defVan(g, u).verdwijntNaToeslaan) ritueelKlaar(g, u);
+      else if (levend(u)) u.teller = u.maxTeller;
+    }
   }
   if (g.uitslag) return;
   // Pest en afbouw
@@ -712,7 +835,12 @@ export function eindeBeurt(g) {
     for (const s of ["mist", "inkt"]) if (u.statussen[s] > 0) { u.statussen[s] -= 1; veranderd = true; }
     if (veranderd) ev(g, { t: "status", uid: u.uid, e: snap(u) });
   }
-  // vermogen van Ashby: elke 3 beurten
+  // Droommelodie (Ashby): elke 3 beurten
+  if (B().helden[g.ctx.held]?.vermogen?.droommelodie && g.beurt % 3 === 0) {
+    ev(g, { t: "vermogen", naam: "Droommelodie" });
+    veranderGeest(g, 1);
+    for (const u of eenhedenVan(g, "speler")) if (u.uid !== g.held) genees(g, u, 1);
+  }
   // Big Ben
   vulWachtrij(g);
   if (g.golfNr < g.golven.length) {

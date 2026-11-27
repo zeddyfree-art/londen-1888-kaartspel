@@ -7,7 +7,7 @@ Per fase uit de brief een regel; bovenaan wat er nu speelbaar is. De laatste met
 - [x] **Fase 0. Opzet.** Repo, `CLAUDE.md`, PWA (manifest, service worker, offline), `tools/bouw.js`, Pages-workflow, `tools/kopieer-uit-londen.js`, woordenlijst.
 - [x] **Fase 1. Gevecht.** Motor met tellers, rijen, golven, de beurt, het politiefluitje, terugroepen, alle 10 statussen, Gruwel, Geest, Verlichting en Waanzin. Kracht, Vathrûn. Testbot speelt 1000 gevechten in een paar seconden.
 - [x] **Fase 2. Run.** Kaart van Londen met paden, alle knooppunten behalve de Occulte boekwinkel, kaartbeloningen, winkel, rust met een keuze, ontmoetingen, opslaan en hervatten, de drie bazen van Vathrûn (Moeder Brine, de Bisschop van het Slib, Vathrûn in drie fasen).
-- [ ] **Fase 3. Klassen.** Kennis, Waarneming en Charisma met hun pools (±25 kaarten per klasse), Aanwijzingen en Deducties, Overtuigen. Alle 28 helden met vermogen in het spel (de 7 van Kracht werken al). Kracht en Londen aanvullen tot 25 en 30 kaarten. Talismannen (±15). Meer artefacten (25). Occulte boekwinkel.
+- [~] **Fase 3. Klassen.** Klaar (27 november): Kennis, Waarneming en Charisma met hun pools (Kennis 27, Waarneming 27, Charisma 30 kaarten inclusief start), rituelen, Aanwijzingen en Deducties, Ontmaskeren, Overtuigen (ook voorgoed), klasseregels, alle 28 helden met vermogen en persoonlijke voorwerpen, vermogens die je inzet met een knop. Nog te doen: Kracht en Londen aanvullen tot 25 en 30 kaarten, talismannen (±15), meer artefacten (25), Occulte boekwinkel.
 - [ ] **Fase 4. Goden.** De andere 11 goden met monsters (elk 1 nieuw monster erbij), gevechten, godsregels, luitenants, epische monsters, eindbazen met fasen en minstens 4 ontmoetingen per god.
 - [ ] **Fase 5. Hoofdkwartier en moeilijkheid.** Ontgrendelingen via uitdagingen, de dertien klokken (de motor kent er al een paar), geschatte winkans per stand en klok, balans per klasse en god.
 - [ ] **Fase 6. Afwerking.** Nieuwe art (`ontwerp/beeldopdracht.md`) en geluiden (`ontwerp/geluidsopdracht.md`), meer animaties, toegankelijkheid.
@@ -29,22 +29,24 @@ Per fase uit de brief een regel; bovenaan wat er nu speelbaar is. De laatste met
 - **Paden gebalanceerd (27 november):** beide paden van een gedeelte even lang (2 of 3), elk hooguit één herstel-, één stapel- en één gok-knooppunt, en ongeveer even veel waard (`WAARDE` in `app/motor/run.js`). Gemiddeld waardeverschil van 2,5 naar 0,35; scheve keuzes van 31% naar 0%. Winkans testbot: Ontspannen 94%, Normaal 71%, Genadeloos 30%.
 
 - Klokken: `zware-benen`, `dikke-mist`, `scheurende-stad`, `gesloten-lijnen`, `lege-zakken`, `slapeloze-nachten`, `geen-tweede-worp` en `geen-genade` werken al in de motor, maar zijn nog niet te kiezen.
-- Vermogens van helden buiten Kracht staan als tekst klaar in `tools/maak-helden.js`; de motor kent ze nog niet.
+- Klasseregels (in `data/klassen.json`): Kennis: elke spreuk zet de teller van je held 1 lager. Waarneming: held krijgt 1 Aanwijzing per toeslag, ontmaskerde vijanden nemen 2 schade extra. Kracht: Trofee. Charisma: zes bondgenoten. Zonder deze regels wonnen Kennis en Waarneming maar 5–7% op Normaal.
+- Vermogens die in de brief niet goed in een kaartspel pasten, zijn iets aangepast: Thorne zet een vijand achteraan in zijn rij (in plaats van een vrij vak), Ashcombe geneest bij elke toeslag zijn zwakste gewonde bondgenoot 3 Leven (in plaats van te kiezen), Flynn begint met Bob, een politiehond met een Zegel.
+- Kaarten met tijdelijke art (een plekbeeld): Een kort bevel, Visitekaartje, Een rijtuig bestellen, Tralies van de Yard, Bezwering van de zeven kaarsen. Ze staan nog niet in de beeldopdracht.
 - *Na een verloren run* werkt: een gevallen bondgenoot kan terugkomen in de Logementen, gewond. Hij neemt nog geen talisman mee (die bestaan nog niet).
 - De testbot speelt redelijk. Hij verplaatst zijn held naar achteren en gebruikt middeltjes eenvoudig; slimmer verplaatsen zou de winkans iets verhogen.
 - Gevechten duren gemiddeld zo'n 18 beurten. Als dat te lang voelt: vijanden iets minder Leven, of golven sneller.
 
 ## Laatste meting
 
-26 november 2026, 105 runs per stand, alle 7 Kracht-helden, Vathrûn:
+27 november 2026, alle vier klassen en alle 28 helden (8 runs per held, 56 per klasse), Vathrûn:
 
-| Stand | Winkans testbot | Doel |
-|---|---|---|
-| Ontspannen | 96% | 85–90% |
-| Normaal | 70% | 55–65% |
-| Genadeloos | 27% | 25–35% |
+| Stand | Winkans | Kennis | Waarneming | Kracht | Charisma | Doel |
+|---|---|---|---|---|---|---|
+| Ontspannen | 87% | 91% | 93% | 86% | 77% | 85–90% |
+| Normaal | 59% | 55% | 54% | 71% | 54% | 55–65% |
+| Genadeloos | 27% | 18% | 29% | 39% | 23% | 25–35% |
 
-- De meeste runs sneuvelen tegen Vathrûn zelf (akte 3). Op Genadeloos ook bij de Bisschop en in de Scheuren.
-- Per held (Normaal, 15 runs elk, dus nog ruis): Hale en Singh 87%, Ang Nima 80%, Pruitt 73%, Hu Yiping 60%, Fathy 53%, Bray 47%. Bray en Fathy krijgen hun voordeel buiten het gevecht; meer runs nodig voor een oordeel.
-- Normaal en Ontspannen zijn iets te makkelijk. Volgende stap: vijanden in akte 2 en 3 iets sterker, of minder herstel tussen de akten.
-- Gemiddeld 18 beurten per gevecht, 10 gevechten per gewonnen run.
+- Kracht ligt op Normaal 13 punten boven het gemiddelde (doel: hooguit 10). De startbondgenoten van Kracht zijn al iets zwakker gemaakt; volgende stap is de Trofee alleen voor bondgenoten, niet voor de held.
+- Genadeloos geeft vijanden nu +10% Leven (was +20%) en 80% van de Ponden.
+- 56 runs per klasse geeft nog ongeveer ±6 punten ruis. Meer runs per held nodig om helden onderling te vergelijken.
+- De meeste runs sneuvelen tegen Vathrûn zelf, daarna in de Scheuren (elite) en bij de Bisschop.

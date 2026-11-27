@@ -6,6 +6,10 @@ import { maakGevecht, doe as gevechtDoe } from "./gevecht.js";
 
 export const VERSIE = 1;
 export const MAX_BONDGENOTEN = 4;
+/** Hoeveel bondgenoten er in je stapel passen (Charisma: meer). */
+export function maxBondgenoten(run) {
+  return B().klassen[run.klasse]?.maxBondgenoten || MAX_BONDGENOTEN;
+}
 export const MAX_MIDDELTJES = 3;
 
 export const KNOOPSOORTEN = {
@@ -45,11 +49,14 @@ export function nieuweRun({ klasse, held, god, stand = "normaal", klokken = [], 
   };
   run.lichaam = run.maxLichaam; run.geest = run.maxGeest;
   // startstapel: 2 persoonlijke voorwerpen, de startkaarten van de klasse (met 2 bondgenoten), 1 neutrale kaart
-  for (const id of h.persoonlijk) if (bib.kaarten[id]) voegToe(run, id);
+  const persoonlijk = h.persoonlijk.filter(id => bib.kaarten[id]);
+  for (const id of persoonlijk) voegToe(run, id);
   const start = alleKaarten().filter(k => k.klasse === klasse && k.zeldzaamheid === "start");
-  for (const k of start) for (let n = 0; n < (k.soort === "spul" && k.id === "boksbeugel" ? 2 : 1); n++) voegToe(run, k.id);
+  for (const k of start) for (let n = 0; n < (k.aantal || 1); n++) voegToe(run, k.id);
   const neutraal = alleKaarten().filter(k => k.klasse === "londen" && k.soort === "spul" && k.zeldzaamheid === "gewoon");
-  voegToe(run, kies(run, neutraal).id);
+  // wie maar één persoonlijk voorwerp heeft, krijgt een tweede neutrale kaart
+  for (const k of kiesMeerdere(run, neutraal, Math.max(1, 3 - persoonlijk.length))) voegToe(run, k.id);
+  if (h.vermogen?.startKaart) voegToe(run, h.vermogen.startKaart, { zegel: true });
   run.kaart = maakKaart(run);
   return run;
 }
@@ -71,7 +78,7 @@ export function voegToe(run, id, extra = {}) {
     return null;
   }
   const inst = nieuweInst(run, id, extra);
-  if (d.soort === "bondgenoot" && aantalBondgenoten(run) >= MAX_BONDGENOTEN) { run.reserve.push(inst); inst.inReserve = true; }
+  if (d.soort === "bondgenoot" && aantalBondgenoten(run) >= maxBondgenoten(run)) { run.reserve.push(inst); inst.inReserve = true; }
   else run.stapel.push(inst);
   return inst;
 }
@@ -171,6 +178,18 @@ function kaartActie(run, actie) {
     ev(run, { t: "pad", pad: actie.pad });
     return;
   }
+  if (actie.soort === "wisselPad") {
+    // Bevoegdheid (Marsh): één keer per akte naar het andere pad
+    if (!B().helden[run.held].vermogen?.wisselPad) throw new Error("Dat kan alleen Owen Marsh.");
+    if (run.pos.pad == null) throw new Error("Kies eerst een pad.");
+    if ((run.padGewisseld ??= [])[run.pos.akte]) throw new Error("Je hebt deze akte al van pad gewisseld.");
+    const gd = huidigGedeelte(run), ander = 1 - run.pos.pad;
+    if (!gd.paden[ander] || run.pos.stap >= gd.paden[ander].length) throw new Error("Daar kun je nu niet meer heen.");
+    run.padGewisseld[run.pos.akte] = true;
+    run.pos.pad = ander; gd.gekozenPad = ander;
+    ev(run, { t: "pad", pad: ander });
+    return;
+  }
   if (actie.soort === "verder") {
     if (run.pos.pad == null) throw new Error("Kies eerst een pad.");
     const pad = huidigPad(run);
@@ -191,7 +210,7 @@ function wisselReserve(run, uitUid, inUid) {
     const uit = run.stapel[j];
     run.stapel.splice(j, 1, binnen); run.reserve.splice(i, 1, uit);
   } else {
-    if (aantalBondgenoten(run) >= MAX_BONDGENOTEN) throw new Error("Je hebt al vier bondgenoten.");
+    if (aantalBondgenoten(run) >= maxBondgenoten(run)) throw new Error(`Je hebt al ${maxBondgenoten(run)} bondgenoten.`);
     run.reserve.splice(i, 1); run.stapel.push(binnen);
   }
 }
@@ -227,6 +246,9 @@ export function verwerkGevecht(run) {
   run.middeltjes = [...g.zak];
   if (g.scarabeeGebruikt) run.scarabeeGebruikt = true;
   for (const w of g.nieuweWaanzin) voegToe(run, w.id);
+  // overgelopen vijanden die voorgoed blijven, en blijvende aanval (Les geven)
+  for (const id of g.nieuweKaarten || []) { voegToe(run, id); ev(run, { t: "nieuweKaart", kaart: id }); }
+  for (const [uid, n] of Object.entries(g.voorgoed || {})) { const i = run.stapel.find(x => x.uid === uid); if (i) i.bonusAanval = (i.bonusAanval || 0) + n; }
   if (g.uitslag === "verloren") {
     run.lichaam = 0;
     run.fase = "einde"; run.uitslag = "verloren";
@@ -254,6 +276,7 @@ export function verwerkGevecht(run) {
     if (ad.geest) run.geest = Math.max(1, run.geest + ad.geest);
   }
   if (hv.naGevechtLichaam) run.lichaam = Math.min(run.maxLichaam, run.lichaam + hv.naGevechtLichaam);
+  if (hv.naGevechtPonden) extraPonden += hv.naGevechtPonden;
   const st = bib.standen[run.stand];
   const soort = g.soortGevecht;
   const basis = soort === "baas" ? 30 : soort === "elite" ? 22 : 12 + 3 * run.pos.akte + geheel(run, 6);

@@ -33,13 +33,15 @@ function waarde(g) {
   s += (h?.leven || 0) * 6 + g.geest * 1.2 + (h?.statussen.bescherming || 0) * 2 + (h?.statussen.gezegend || 0) * 4;
   for (const u of eenhedenVan(g, "speler")) {
     if (u.uid === g.held) continue;
-    if (u.schroot != null) s += u.schroot * 3;
+    if (u.soort === "ritueel") s += 6 + u.schroot * 3 + 8 / Math.max(1, u.teller || 1);
+    else if (u.schroot != null) s += u.schroot * 3;
     else s += 6 + u.leven * 1.2 + (u.aanval || 0) * 3 + (u.statussen.gezegend || 0) * 2;
   }
   for (const u of eenhedenVan(g, "vijand")) {
     s -= 8 + u.leven * 1.5 + (u.aanval || 0) * 4 + (u.gruwel || 0) * 2;
-    s += (u.statussen.mist || 0) * 2 + (u.teller || 0) * 1.5;
+    s += (u.statussen.mist || 0) * 2 + (u.teller || 0) * 1.5 + (u.statussen.vervloekt || 0) * 3 + (u.ontmaskerd ? 3 : 0) + (u.statussen.pest || 0) * 1.2 + (u.statussen.inkt || 0) * 1.5;
   }
+  s += Math.min(g.aanwijzingen || 0, 6) * 4;
   s -= (g.golven.length - g.golfNr) * 25 + g.wachtrij.length * 15;
   return s;
 }
@@ -105,7 +107,7 @@ function kaartScore(run, id) {
   if (d.soort === "waanzin") return -20;
   let s = SCORE[d.zeldzaamheid] ?? 2;
   if (d.soort === "bondgenoot") s += aantalBondgenoten(run) < 4 ? 4 : -3;
-  if (d.soort === "barricade") s += 1;
+  if (d.soort === "barricade" || d.soort === "ritueel") s += 1;
   if (d.soort === "spreuk" && run.geest <= 3) s -= 2;
   return s;
 }
@@ -225,7 +227,8 @@ function main() {
   const vlag = n => arg.includes("--" + n);
   const seed0 = Number(opt("seed") || 1);
   const bib = B();
-  const kracht = bib.data.helden.filter(h => h.speelbaar).map(h => h.id);
+  const klasseVan = id => bib.helden[id].klasse;
+  const kracht = bib.data.helden.filter(h => h.speelbaar && (!opt("klasse") || h.klasse === opt("klasse"))).map(h => h.id);
 
   if (opt("gevechten")) {
     const n = Number(opt("gevechten"));
@@ -233,7 +236,7 @@ function main() {
     const t0 = Date.now();
     for (let i = 0; i < n; i++) {
       const held = kracht[i % kracht.length];
-      const run = nieuweRun({ klasse: "kracht", held, god: "vathrun", stand: opt("stand") || "normaal", seed: seed0 + i });
+      const run = nieuweRun({ klasse: klasseVan(held), held, god: "vathrun", stand: opt("stand") || "normaal", seed: seed0 + i });
       const def = huidigGedeelte(run).gevecht;
       const g = speelGevecht(maakGevecht(run, def));
       if (g.uitslag === "gewonnen") { win++; lichaam += g.eenheden[g.held].leven / g.eenheden[g.held].maxLeven; }
@@ -252,7 +255,7 @@ function main() {
     const t0 = Date.now();
     for (let i = 0; i < n; i++) {
       const held = helden[i % helden.length];
-      const run = speelRun({ klasse: "kracht", held, god: "vathrun", stand, seed: seed0 + i * 7919 });
+      const run = speelRun({ klasse: klasseVan(held), held, god: "vathrun", stand, seed: seed0 + i * 7919 });
       const ph = (r.perHeld[held] ??= { win: 0, n: 0 });
       r.n++; ph.n++;
       r.beurten += run.stats.beurten; r.gevechten += run.stats.gevechten;
@@ -268,6 +271,11 @@ function main() {
     const uit = {
       winkans: procent(r.win, r.n),
       perHeld: Object.fromEntries(Object.entries(r.perHeld).map(([h, x]) => [h, procent(x.win, x.n)])),
+      perKlasse: Object.fromEntries(["kennis", "waarneming", "kracht", "charisma"].map(k => {
+        const l = Object.entries(r.perHeld).filter(([h]) => klasseVan(h) === k);
+        const w = l.reduce((a, [, x]) => a + x.win, 0), t = l.reduce((a, [, x]) => a + x.n, 0);
+        return [k, t ? procent(w, t) : null];
+      }).filter(([, v]) => v != null)),
       verlorenPerAkte: r.perAkte.map(x => procent(x, r.n)),
       verlorenIn: Object.fromEntries(Object.entries(r.verlorenIn).sort((a, b) => b[1] - a[1]).slice(0, 8)),
       beurtenPerGevecht: +(r.beurten / Math.max(1, r.gevechten)).toFixed(1),
@@ -276,6 +284,7 @@ function main() {
     };
     resultaat.standen[stand] = uit;
     console.log(`${stand}: ${uit.winkans}% gewonnen (${r.n} runs, ${((Date.now() - t0) / 1000).toFixed(0)} s)`);
+    console.log(`  per klasse: ${Object.entries(uit.perKlasse).map(([k, w]) => `${k} ${w}%`).join(", ")}`);
     console.log(`  per held: ${Object.entries(uit.perHeld).map(([h, w]) => `${h} ${w}%`).join(", ")}`);
     console.log(`  verloren in akte 1/2/3: ${uit.verlorenPerAkte.join("% / ")}%   beurten per gevecht ${uit.beurtenPerGevecht}`);
     console.log(`  vaakst verloren in: ${Object.entries(uit.verlorenIn).map(([k, v]) => `${k} (${v})`).join(", ")}`);
