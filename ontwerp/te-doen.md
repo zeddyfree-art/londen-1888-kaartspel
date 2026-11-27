@@ -12,7 +12,9 @@ Per fase uit de brief een regel; bovenaan wat er nu speelbaar is. De laatste met
 - [ ] **Fase 5. Hoofdkwartier en moeilijkheid.** Ontgrendelingen via uitdagingen, de dertien klokken (de motor kent er al een paar), geschatte winkans per stand en klok, balans per klasse en god.
 - [ ] **Fase 6. Afwerking.** Nieuwe art (`ontwerp/beeldopdracht.md`) en geluiden (`ontwerp/geluidsopdracht.md`), meer animaties, toegankelijkheid.
 
-## Wat nu speelbaar is (versie 3)
+## Wat nu speelbaar is (versie 6)
+
+- Het oog uit de speelkamer als favicon en een vierkant amethistoog als app-icoon.
 
 - Wijkroutes met benoemde haltes, een akteoverzicht en bewegende reispion. Geestfiches, stapelbare statuszegels en zichtbare Verlichting op de kaarten.
 
@@ -31,7 +33,7 @@ Per fase uit de brief een regel; bovenaan wat er nu speelbaar is. De laatste met
 - Klokken: `zware-benen`, `dikke-mist`, `scheurende-stad`, `gesloten-lijnen`, `lege-zakken`, `slapeloze-nachten`, `geen-tweede-worp` en `geen-genade` werken al in de motor, maar zijn nog niet te kiezen.
 - Klasseregels (in `data/klassen.json`): Kennis: elke spreuk zet de teller van je held 1 lager. Waarneming: held krijgt 1 Aanwijzing per toeslag, ontmaskerde vijanden nemen 2 schade extra. Kracht: Trofee. Charisma: zes bondgenoten. Zonder deze regels wonnen Kennis en Waarneming maar 5–7% op Normaal.
 - Vermogens die in de brief niet goed in een kaartspel pasten, zijn iets aangepast: Thorne zet een vijand achteraan in zijn rij (in plaats van een vrij vak), Ashcombe geneest bij elke toeslag zijn zwakste gewonde bondgenoot 3 Leven (in plaats van te kiezen), Flynn begint met Bob, een politiehond met een Zegel.
-- Kaarten met tijdelijke art (een plekbeeld): Een kort bevel, Visitekaartje, Een rijtuig bestellen, Tralies van de Yard, Bezwering van de zeven kaarsen. Ze staan nog niet in de beeldopdracht.
+- Kaarten met tijdelijke art (een plekbeeld): Een kort bevel, Visitekaartje, Een rijtuig bestellen, Tralies van de Yard, Bezwering van de zeven kaarsen. De prompts staan in §9 van de beeldopdracht.
 - *Na een verloren run* werkt: een gevallen bondgenoot kan terugkomen in de Logementen, gewond. Hij neemt nog geen talisman mee (die bestaan nog niet).
 - De testbot speelt redelijk. Hij verplaatst zijn held naar achteren en gebruikt middeltjes eenvoudig; slimmer verplaatsen zou de winkans iets verhogen.
 - Gevechten duren gemiddeld zo'n 18 beurten. Als dat te lang voelt: vijanden iets minder Leven, of golven sneller.
