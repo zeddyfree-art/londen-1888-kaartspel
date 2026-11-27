@@ -1,5 +1,5 @@
 // De kaart van Londen met de paden, de knooppunten, beloningen, de stapel en het einde van een run.
-import { el, bg, art, ICOON, melding, modaal, banner } from "./gemeen.js";
+import { el, bg, art, ICOON, melding, modaal, banner, reduceMotion, wacht } from "./gemeen.js";
 import { kaartEl, artefactEl, uitlegEl } from "./kaart-dom.js";
 import { B, kaartDef } from "../motor/bibliotheek.js";
 import { KNOOPSOORTEN, huidigGedeelte, MAX_BONDGENOTEN, aantalBondgenoten } from "../motor/run.js";
@@ -49,7 +49,8 @@ function vijandenVan(def) {
 
 /* ───────── de kaart ───────── */
 
-export function kaartScherm(app, { run, actie, menu, stapel }) {
+export function kaartScherm(app, opties, overzicht = false) {
+  const { run, actie, menu, stapel } = opties;
   const a = run.pos.akte;
   const akte = run.kaart[a];
   const start = a === 0 ? "bloomsbury" : a === 1 ? run.kaart[0].gedeelten[2].gevecht.plek : "start";
@@ -58,88 +59,122 @@ export function kaartScherm(app, { run, actie, menu, stapel }) {
   const xs = punten.map(p => p[0]), ys = punten.map(p => p[1]);
   let bx = Math.min(...xs) - 130, by = Math.min(...ys) - 110, bw = Math.max(...xs) - Math.min(...xs) + 260, bh = Math.max(...ys) - Math.min(...ys) + 220;
   if (bw / bh < 1.25) { const n = bh * 1.25; bx -= (n - bw) / 2; bw = n; } else { const n = bw / 1.25; by -= (n - bh) / 2; bh = n; }
-  const s = svg("svg", { class: "paden", viewBox: `${bx} ${by} ${bw} ${bh}`, preserveAspectRatio: "xMidYMid meet" });
-  const schaal = Math.max(0.6, Math.min(1, bw / 1000));
-  s.append(svg("image", { href: art(a === 2 ? "scheur/vathrun.jpg" : "bord/londen.jpg"), x: 0, y: 0, width: 1000, height: 700, preserveAspectRatio: "xMidYMid slice", class: "bordbeeld", style: a === 2 ? "filter:brightness(.5)" : "filter:brightness(.62) saturate(.8) sepia(.2)" }));
+  const s = svg("svg", { class: `paden ${overzicht ? "overzicht" : "wijkroute"}`, role: "group", "aria-label": overzicht ? "Alle routes van deze akte" : "De routes door deze wijk", viewBox: overzicht ? `${bx} ${by} ${bw} ${bh}` : "0 0 800 420", preserveAspectRatio: "xMidYMid meet" });
+  const schaal = overzicht ? Math.max(0.6, Math.min(1, bw / 1000)) : 1;
+  if (overzicht) s.append(svg("image", { href: art(a === 2 ? "scheur/vathrun.jpg" : "bord/londen.jpg"), x: 0, y: 0, width: 1000, height: 700, preserveAspectRatio: "xMidYMid slice", class: "bordbeeld", style: a === 2 ? "filter:brightness(.5)" : "filter:brightness(.62) saturate(.8) sepia(.2)" }));
+  const vertrek = [80, 210], bestemming = [720, 210];
+  let hier = overzicht ? punten[run.pos.gedeelte] : vertrek;
+  let volgendPunt;
+  let onderweg = false;
+  const locatie = id => B().data.bord.plekken.find(p => p.id === id)?.naam || ({
+    start: "De afdaling", riolen: "De riolen", ondergrondse: "Ondergrondse", pestputten: "Pestputten", hart: "Hart van de Scheur",
+  })[id] || id;
+  function bedien(g, label, klik) {
+    g.setAttribute("role", "button"); g.setAttribute("tabindex", "0"); g.setAttribute("aria-label", label);
+    g.addEventListener("click", klik);
+    g.addEventListener("keydown", e => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); klik(); }
+    });
+  }
+  async function reis(handeling) {
+    if (onderweg) return;
+    onderweg = true;
+    scherm.inert = true;
+    try {
+      if (handeling.soort === "kiesPad") {
+        speel("klik");
+        s.querySelector(`.padkeuze[data-pad="${handeling.pad}"]`)?.classList.add("lichtspoor");
+      } else if (volgendPunt) {
+        const [x, y] = volgendPunt;
+        if (!reduceMotion() && stip.animate) {
+          stip.animate([{ transform: `translate(${hier[0]}px,${hier[1]}px)` },
+            { transform: `translate(${x}px,${y}px)` }], { duration: 360, easing: "ease-in-out", fill: "forwards" });
+        }
+      }
+      if (!reduceMotion()) await wacht(handeling.soort === "kiesPad" ? 220 : 360);
+      if (scherm.isConnected) await actie(handeling);
+    } finally { onderweg = false; scherm.inert = false; }
+  }
+  function medaillon(soort, x, y, r, toestand, label, onderschrift) {
+    const g = svg("g", { class: `knoop ${soort} ${toestand}`, transform: `translate(${x},${y}) scale(${schaal})` },
+      svg("title", {}, label), svg("circle", { class: "krans", r: r + 5 }),
+      svg("circle", { class: "bol", r }), svg("path", { class: "glyph", d: GLYPH[soort], transform: `scale(${r / 14})` }));
+    if (onderschrift) g.append(svg("text", { y: r + 26, "text-anchor": "middle" }, onderschrift));
+    if (toestand.includes("bezocht")) g.append(svg("path", { class: "afgevinkt", d: `M${r-8} ${r-2}l4 4 8-9` }));
+    return g;
+  }
   let volgendeKnoop = null;
   akte.gedeelten.forEach((gd, gi) => {
-    const [x1, y1] = punten[gi], [x2, y2] = punten[gi + 1];
+    if (!overzicht && gi !== run.pos.gedeelte) return;
+    const [x1, y1] = overzicht ? punten[gi] : vertrek, [x2, y2] = overzicht ? punten[gi + 1] : bestemming;
     const dx = x2 - x1, dy = y2 - y1, len = Math.hypot(dx, dy) || 1;
-    const nx = -dy / len, ny = dx / len, d = Math.max(60, len * 0.3);
+    const nx = -dy / len, ny = dx / len, d = overzicht ? Math.max(60, len * 0.3) : 226;
     const voorbij = gi < run.pos.gedeelte, huidig = gi === run.pos.gedeelte;
     gd.paden.forEach((pad, pi) => {
       if (!pad) return;
       const cx = (x1 + x2) / 2 + nx * d * (pi ? 1 : -1), cy = (y1 + y2) / 2 + ny * d * (pi ? 1 : -1);
-      const gekozen = (voorbij && run.pos.pad == null) ? false : (huidig && run.pos.pad === pi);
-      const groep = svg("g", { class: huidig && run.pos.pad == null ? "padkeuze" : "" });
+      const gekozen = (huidig && run.pos.pad === pi) || (voorbij && gd.gekozenPad === pi);
+      const groep = svg("g", { class: `routegroep ${huidig && run.pos.pad == null ? "padkeuze" : ""} ${(huidig && run.pos.pad != null || voorbij && gd.gekozenPad != null) && !gekozen ? "verlaten" : ""}`, "data-pad": pi });
       const lijn = svg("path", { d: `M${x1},${y1} Q${cx},${cy} ${x2},${y2}`, class: `pad ${gekozen ? "gekozen" : ""} ${voorbij ? "voorbij" : ""} ${huidig && run.pos.pad != null && !gekozen ? "dicht" : ""}` });
       groep.append(svg("path", { d: `M${x1},${y1} Q${cx},${cy} ${x2},${y2}`, stroke: "transparent", "stroke-width": 40, fill: "none" }), lijn);
+      if (!overzicht) groep.append(svg("text", { class: "padnummer", x: 400, y: pi ? 385 : 42 }, `PAD ${pi + 1}`));
       pad.forEach((k, si) => {
         const t = (si + 1) / (pad.length + 1);
         const px = (1 - t) ** 2 * x1 + 2 * (1 - t) * t * cx + t * t * x2, py = (1 - t) ** 2 * y1 + 2 * (1 - t) * t * cy + t * t * y2;
-        const bezocht = voorbij || (gekozen && si < run.pos.stap);
-        const isVolgende = gekozen && si === run.pos.stap && run.fase === "kaart";
+        const bezocht = gekozen && (voorbij || si < run.pos.stap);
+        if (huidig && gekozen && si + 1 === run.pos.stap) hier = [px, py];
+        const isVolgende = huidig && gekozen && si === run.pos.stap && run.fase === "kaart";
         if (isVolgende) volgendeKnoop = { soort: k.soort, knoop: k };
-        const g = svg("g", { class: `knoop ${k.soort} ${bezocht ? "bezocht" : ""} ${isVolgende ? "volgende" : ""}`, transform: `translate(${px.toFixed(1)},${py.toFixed(1)}) scale(${schaal})` },
-          svg("circle", { class: "bol", r: 19 }), svg("path", { class: "glyph", d: GLYPH[k.soort] || GLYPH.ontmoeting }),
-          svg("title", {}, `${KNOOPSOORTEN[k.soort].naam}: ${KNOOPSOORTEN[k.soort].tekst}`));
-        if (isVolgende) g.addEventListener("click", () => actie({ soort: "verder" }));
+        const soort = KNOOPSOORTEN[k.soort];
+        const g = medaillon(k.soort, px, py, overzicht ? 16 : 24,
+          bezocht ? "bezocht" : isVolgende ? "volgende" : "", soort.naam + " · " + soort.tekst, overzicht ? "" : soort.naam);
+        if (isVolgende) { volgendPunt = [px, py]; bedien(g, "Bezoek " + soort.naam, () => reis({ soort: "verder" })); }
         groep.append(g);
       });
-      if (huidig && run.pos.pad == null) groep.addEventListener("click", () => { speel("klik"); actie({ soort: "kiesPad", pad: pi }); });
+      if (huidig && run.pos.pad == null) bedien(groep, `Kies pad ${pi + 1}: ${pad.map(k => KNOOPSOORTEN[k.soort].naam).join(", ")}`, () => reis({ soort: "kiesPad", pad: pi }));
       s.append(groep);
     });
   });
   // gevechten op de plekken
   akte.gedeelten.forEach((gd, gi) => {
-    const [x, y] = punten[gi + 1];
+    if (!overzicht && gi !== run.pos.gedeelte) return;
+    const [x, y] = overzicht ? punten[gi + 1] : bestemming;
     const baas = gi === 2;
     const isVolgende = gi === run.pos.gedeelte && run.pos.pad != null && run.pos.stap >= akte.gedeelten[gi].paden[run.pos.pad].length && run.fase === "kaart";
     if (isVolgende) volgendeKnoop = { soort: baas ? "baas" : "gevecht", gevecht: gd.gevecht };
-    const g = svg("g", { class: `knoop ${baas ? "baas" : "gevecht"} ${gi < run.pos.gedeelte ? "bezocht" : ""} ${isVolgende ? "volgende" : ""}`, transform: `translate(${x},${y}) scale(${schaal})` },
-      svg("circle", { class: "bol", r: baas ? 26 : 22 }), svg("path", { class: "glyph", d: baas ? GLYPH.baas : GLYPH.gevecht, transform: baas ? "scale(1.3)" : "" }),
-      svg("text", { x: 0, y: baas ? 46 : 40, "text-anchor": "middle" }, gd.gevecht.naam));
-    if (isVolgende) g.addEventListener("click", () => actie({ soort: "verder" }));
+    const g = medaillon(baas ? "baas" : "gevecht", x, y, baas ? 28 : 25, gi < run.pos.gedeelte ? "bezocht" : isVolgende ? "volgende" : "",
+      gd.gevecht.naam, overzicht ? locatie(gd.gevecht.plek) : baas ? "Baas" : "Gevecht");
+    if (isVolgende) { volgendPunt = [x, y]; bedien(g, gd.gevecht.naam, () => reis({ soort: "verder" })); }
     s.append(g);
   });
-  // waar je bent
-  let jij = punten[run.pos.gedeelte];
-  if (run.pos.pad != null && run.pos.stap > 0) {
-    const gd = akte.gedeelten[run.pos.gedeelte];
-    const [x1, y1] = punten[run.pos.gedeelte], [x2, y2] = punten[run.pos.gedeelte + 1];
-    const dx = x2 - x1, dy = y2 - y1, len = Math.hypot(dx, dy) || 1, d = Math.max(60, len * 0.3);
-    const cx = (x1 + x2) / 2 + (-dy / len) * d * (run.pos.pad ? 1 : -1), cy = (y1 + y2) / 2 + (dx / len) * d * (run.pos.pad ? 1 : -1);
-    const t = Math.min(run.pos.stap, gd.paden[run.pos.pad].length) / (gd.paden[run.pos.pad].length + 1);
-    jij = [(1 - t) ** 2 * x1 + 2 * (1 - t) * t * cx + t * t * x2, (1 - t) ** 2 * y1 + 2 * (1 - t) * t * cy + t * t * y2];
-  }
-  s.append(svg("circle", { class: "jij", cx: jij[0], cy: jij[1] - 30, r: 7 }), svg("path", { d: `M${jij[0] - 6},${jij[1] - 26} L${jij[0]},${jij[1] - 16} L${jij[0] + 6},${jij[1] - 26}`, class: "jij" }));
-
+  if (!overzicht) s.append(medaillon("logement", ...vertrek, 22, "", "Vertrekpunt", "Vertrek"));
+  const stip = svg("g", { class: "reispion", transform: `translate(${hier[0]},${hier[1]})`, "aria-label": "Je bevindt je hier" },
+    svg("title", {}, "Je bevindt je hier"), svg("path", { d: "M0 -24 -8 -36 0 -48 8 -36Z" }), svg("circle", { cy: -36, r: 2.6 }));
+  s.append(stip);
   const held = B().helden[run.held];
   const gd = huidigGedeelte(run);
   const info = el("div", { class: "volgendinfo" });
   let knop;
   if (run.pos.pad == null) {
-    info.append(el("h3", {}, "Kies een pad"), el("p", { class: "muted" }, "Tik op een pad op de kaart of hieronder. Beide paden eindigen bij hetzelfde gevecht."));
+    info.append(el("h3", {}, "Kies een pad"), el("p", { class: "muted" }, "Kies je route via de symbolen op de kaart of de lijst hieronder."));
     gd.paden.forEach((pad, pi) => {
       if (!pad) return;
-      info.append(el("button", { class: "keuze padknop", style: { width: "100%" }, onclick: () => { speel("klik"); actie({ soort: "kiesPad", pad: pi }); } },
+      info.append(el("button", { class: "keuze padknop", style: { width: "100%" }, onclick: () => reis({ soort: "kiesPad", pad: pi }), onpointerenter: () => s.querySelector(`.padkeuze[data-pad="${pi}"]`)?.classList.add("aangewezen"), onpointerleave: () => s.querySelector(`.padkeuze[data-pad="${pi}"]`)?.classList.remove("aangewezen") },
         el("b", { style: { fontSize: "17px" } }, `Pad ${pi + 1}`), el("span", {}, pad.map(k => KNOOPSOORTEN[k.soort].naam).join(" · "))));
     });
     info.append(el("p", { style: { margin: "6px 0 0" } }, "Daarna: ", el("b", {}, gd.gevecht.naam)));
     info.append(vijandRij(gd.gevecht));
-    knop = el("button", { class: "knop", disabled: true }, "Kies eerst een pad");
   } else if (volgendeKnoop?.gevecht || volgendeKnoop?.soort === "gevecht" || volgendeKnoop?.soort === "baas") {
     const def = volgendeKnoop.gevecht;
     info.append(el("h3", {}, def.naam), el("p", { class: "muted" }, volgendeKnoop.soort === "baas" ? "Het laatste gevecht van deze akte." : `${def.golven.length} golven.`), vijandRij(def));
-    knop = el("button", { class: "knop", onclick: () => actie({ soort: "verder" }) }, volgendeKnoop.soort === "baas" ? "Naar de baas" : "Naar het gevecht");
+    knop = el("button", { class: "knop", onclick: () => reis({ soort: "verder" }) }, volgendeKnoop.soort === "baas" ? "Naar de baas" : "Naar het gevecht");
   } else if (volgendeKnoop) {
     const ks = KNOOPSOORTEN[volgendeKnoop.soort];
     info.append(el("h3", {}, ks.naam), el("p", { class: "muted" }, ks.tekst));
     if (volgendeKnoop.knoop?.gevecht) info.append(el("p", {}, el("b", {}, volgendeKnoop.knoop.gevecht.naam)), vijandRij(volgendeKnoop.knoop.gevecht));
-    knop = el("button", { class: "knop", onclick: () => actie({ soort: "verder" }) }, `Verder: ${ks.naam}`);
+    knop = el("button", { class: "knop", onclick: () => reis({ soort: "verder" }) }, `Verder: ${ks.naam}`);
   }
   const zij = el("div", { class: "zijpaneel" },
-    el("div", { class: "aktekop" }, `Akte ${a + 1} · ${AKTE[a]}`),
     el("div", { class: "heldkop" }, el("div", { class: "portret", style: { backgroundImage: bg(held.art) } }),
       el("div", {}, el("h3", {}, held.naam), el("div", { class: "muted", style: { fontSize: "14px" } }, `${held.vermogen.naam}: ${held.vermogen.tekst}`))),
     el("div", { class: "meters" },
@@ -155,7 +190,17 @@ export function kaartScherm(app, { run, actie, menu, stapel }) {
       run.reserve.length ? el("button", { class: "knop stil klein", onclick: () => reserveScherm(run, actie) }, `Reserve (${run.reserve.length})`) : null,
       el("button", { class: "knop stil klein", onclick: () => menu() }, "Menu")),
   );
-  const scherm = el("div", { class: "scherm kaartscherm" }, el("div", { class: `bordvlak ${a === 2 ? "akte3" : ""}` }, s), zij, el("div", { class: "draai" }, "Draai je scherm voor het beste overzicht"));
+  const bordArt = a === 2 ? "scheur/vathrun.jpg" : "bord/londen.jpg";
+  const kop = el("header", { class: "atlaskop" },
+    el("div", {}, el("small", {}, `Akte ${["I", "II", "III"][a]} · Londen 1888`), el("h2", {}, AKTE[a])),
+    el("button", { class: "knop stil klein", onclick: () => kaartScherm(app, opties, !overzicht) }, overzicht ? "Huidige route" : "Hele akte"));
+  const reisboek = el("div", { class: "reisboek" }, akte.gedeelten.map((deel, i) =>
+    el("div", { class: `halte ${i === run.pos.gedeelte ? "nu" : i < run.pos.gedeelte ? "klaar" : ""}`,
+      "aria-current": i === run.pos.gedeelte ? "step" : null },
+      el("small", {}, i < run.pos.gedeelte ? "Voltooid" : i === run.pos.gedeelte ? "Onderweg naar" : i === 2 ? "Eindbestemming" : "Daarna"),
+      el("b", {}, locatie(deel.gevecht.plek)))));
+  const scherm = el("div", { class: "scherm kaartscherm" },
+    el("section", { class: "atlas" }, kop, el("div", { class: "bordvlak", style: { backgroundImage: bg(bordArt) } }, s), reisboek), zij);
   app.replaceChildren(scherm);
 }
 
