@@ -13,7 +13,7 @@ const bib = laadData();
 const fouten = [], waarschuwingen = [];
 const fout = (waar, t) => fouten.push(`${waar}: ${t}`);
 
-const SOORTEN = ["bondgenoot", "barricade", "spul", "spreuk", "middeltje", "waanzin"];
+const SOORTEN = ["bondgenoot", "barricade", "ritueel", "spul", "spreuk", "middeltje", "waanzin"];
 const ZELDZAAM = ["start", "gewoon", "ongewoon", "zeldzaam", "speciaal"];
 const KLASSEN = ["kennis", "waarneming", "kracht", "charisma", "londen", "persoonlijk"];
 const DOELEN = ["vijand", "eigen", "bondgenoot", "iedereen", "geen"];
@@ -56,7 +56,8 @@ for (const [id, k] of Object.entries(bib.kaarten)) {
   if (k.soort !== "waanzin" && !ZELDZAAM.includes(k.zeldzaamheid)) fout(w, `onbekende zeldzaamheid '${k.zeldzaamheid}'`);
   if (k.soort !== "waanzin" && !KLASSEN.includes(k.klasse)) fout(w, `onbekende klasse '${k.klasse}'`);
   artBestaat(w, k.art);
-  if (["bondgenoot", "barricade"].includes(k.soort)) {
+  if (["bondgenoot", "barricade", "ritueel"].includes(k.soort)) {
+    if (k.soort === "ritueel" && !(k.schroot > 0 && k.teller > 0 && k.bijToeslaan)) fout(w, "een ritueel heeft schroot, een teller en een effect bij toeslaan nodig");
     if (k.soort === "bondgenoot" && !(k.leven > 0)) fout(w, "een bondgenoot heeft Leven nodig");
     if (k.soort === "barricade" && !(k.schroot > 0)) fout(w, "een barricade heeft schroot nodig");
     eenheid(w, k);
@@ -70,6 +71,7 @@ for (const [id, k] of Object.entries(bib.kaarten)) {
   else if (!["waanzin", "middeltje"].includes(k.soort) && k.zeldzaamheid !== "speciaal") waarschuwingen.push(`${w}: geen verbeterde versie`);
   if (k.soort === "spreuk" && k.geest == null) fout(w, "een spreuk moet een Geest-prijs hebben (mag 0 zijn)");
   if (k.held && !bib.helden[k.held]) fout(w, `onbekende held '${k.held}'`);
+  if (k.deductie != null && !(k.deductie > 0)) fout(w, "een Deductie kost minstens 1 Aanwijzing");
   if (!kaartTekst(k).tekst.length && !k.sfeer) waarschuwingen.push(`${w}: geen tekst en geen sfeer`);
 }
 
@@ -87,6 +89,9 @@ for (const h of bib.data.helden) {
   artBestaat(`held ${h.id}`, h.art);
   if (h.speelbaar) for (const p of h.persoonlijk) if (!bib.kaarten[p]) fout(`held ${h.id}`, `persoonlijke kaart '${p}' ontbreekt`);
   if (h.vermogen.extraKaart && !bib.kaarten[h.vermogen.extraKaart]) fout(`held ${h.id}`, `extra kaart '${h.vermogen.extraKaart}' ontbreekt`);
+  if (h.vermogen.startKaart && !bib.kaarten[h.vermogen.startKaart]) fout(`held ${h.id}`, `startkaart '${h.vermogen.startKaart}' ontbreekt`);
+  if (h.vermogen.actie) effecten(`held ${h.id} vermogen`, h.vermogen.actie.effect);
+  if (h.vermogen.bijToeslaan) effecten(`held ${h.id} vermogen`, h.vermogen.bijToeslaan);
 }
 
 for (const [god, gd] of Object.entries(bib.gevechten)) {

@@ -2,7 +2,7 @@
 // Het scherm laadt de JSON met fetch, de testbot met fs; daarna roepen ze allebei zetBibliotheek aan.
 
 export const DATABESTANDEN = [
-  "klassen", "helden", "persoonlijk", "bondgenoten", "barricades", "spullen", "spreuken", "middeltjes", "waanzin",
+  "klassen", "helden", "persoonlijk", "bondgenoten", "barricades", "rituelen", "spullen", "spreuken", "middeltjes", "waanzin",
   "vijanden", "bazen", "goden", "gevechten", "artefacten", "ontmoetingen", "standen", "bord",
 ];
 
@@ -10,8 +10,15 @@ let bib = null;
 
 export function zetBibliotheek(data) {
   const kaarten = {};
-  for (const soort of ["persoonlijk", "bondgenoten", "barricades", "spullen", "spreuken", "middeltjes", "waanzin"]) {
+  for (const soort of ["persoonlijk", "bondgenoten", "barricades", "rituelen", "spullen", "spreuken", "middeltjes", "waanzin"]) {
     for (const k of data[soort] || []) kaarten[k.id] = k;
+  }
+  // wie voorgoed overloopt, wordt een bondgenoot-kaart
+  for (const v of data.vijanden || []) {
+    if (!v.mens) continue;
+    const { id, naam, art, leven, aanval, teller, kenmerken, bijToeslaan, statussen } = v;
+    kaarten[`overgelopen-${id}`] = { id: `overgelopen-${id}`, naam, art, leven, aanval, teller, kenmerken, bijToeslaan, statussen,
+      soort: "bondgenoot", klasse: "charisma", zeldzaamheid: "speciaal", overgelopen: true, mens: true, sfeer: "Hij liep over, en bleef." };
   }
   const perId = lijst => Object.fromEntries((lijst || []).map(x => [x.id, x]));
   bib = {

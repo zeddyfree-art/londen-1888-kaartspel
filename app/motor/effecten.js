@@ -3,17 +3,19 @@
 import { kies } from "./toeval.js";
 import {
   treffer, geefStatus, veranderTeller, genees, veranderGeest, veranderLichaam, trek, roepOp,
-  eenhedenVan, rijVan, eenheidOp, levend, ev, snap, andereKant,
+  eenhedenVan, rijVan, eenheidOp, levend, ev, snap, andereKant, overtuig, laatVerdwijnen, naarAchter,
 } from "./gevecht.js";
+import { B } from "./bibliotheek.js";
 
 export const EFFECTSOORTEN = [
   "schade", "gruwel", "status", "teller", "genees", "geest", "lichaam", "trek", "ponden", "aanval",
   "oproepen", "verwijder", "bigben", "schroot", "aanwijzing", "overtuigen",
+  "ontmasker", "aanvalVoorgoed", "verdwijn", "naarAchter", "voorgevoel",
 ];
 
 export const DOELWOORDEN = [
   "doel", "held", "zelf", "eigen-rij", "alle-eigen", "alle-bondgenoten", "vijand-rij", "alle-vijanden",
-  "willekeurige-vijand", "voorste-vijand", "buren", "achter", "geen",
+  "willekeurige-vijand", "voorste-vijand", "buren", "achter", "geen", "zwakste-bondgenoot", "alle-ontmaskerd",
 ];
 
 /** Welke eenheden een effect raakt. `ctx.kant` is de kant van wie het effect veroorzaakt. */
@@ -38,6 +40,11 @@ export function kiesDoelen(g, op, ctx) {
     case "alle-bondgenoten": return eenhedenVan(g, eigen).filter(u => u.uid !== g.held);
     case "alle-vijanden": return eenhedenVan(g, ander);
     case "willekeurige-vijand": { const l = eenhedenVan(g, ander); return l.length ? [kies(g, l)] : []; }
+    case "zwakste-bondgenoot": {
+      const l = eenhedenVan(g, eigen).filter(u => u.uid !== g.held && u.leven != null && u.leven < u.maxLeven);
+      return l.length ? [l.reduce((a, b) => (b.leven < a.leven ? b : a))] : [];
+    }
+    case "alle-ontmaskerd": return eenhedenVan(g, ander).filter(u => u.ontmaskerd);
     case "voorste-vijand": { const l = eenhedenVan(g, ander); return l.length ? [l[0]] : []; }
     case "buren": {
       const d = ctx.doel; if (!d || !d.vak) return [];
@@ -67,6 +74,8 @@ export function voerUit(g, effecten, ctx) {
             let s = e.doe === "schade" ? n : 0;
             if (e.extraMens && d.mens) s += e.extraMens;
             if (e.extraMonster && !d.mens && d.kant === "vijand") s += e.extraMonster;
+            if (e.extraOntmaskerd && d.ontmaskerd) s += e.extraOntmaskerd;
+            if (e.perAanwijzing) s += e.perAanwijzing * (g.aanwijzingen || 0);
             treffer(g, ctx.bron, d, s, e.doe === "gruwel" ? n : (e.gruwel || 0), { kaart: ctx.kaart });
           }
         }
@@ -96,7 +105,39 @@ export function voerUit(g, effecten, ctx) {
         for (const d of doelen) if (d.schroot != null) { d.schroot = Math.min(d.maxSchroot, d.schroot + n); ev(g, { t: "genees", uid: d.uid, aantal: n, e: snap(d) }); }
         break;
       case "aanwijzing": g.aanwijzingen = (g.aanwijzingen || 0) + n; ev(g, { t: "aanwijzing", aantal: n }); break;
-      case "overtuigen": break; // komt met de klasse Charisma
+      case "overtuigen":
+        for (const d of doelen) {
+          if (!d.mens || d.baas || d.kant !== "vijand") { ev(g, { t: "vermogen", naam: `${d.naam} laat zich niet overtuigen` }); continue; }
+          if (d.leven > n) { ev(g, { t: "vermogen", naam: `${d.naam} twijfelt nog (Leven ${d.leven}, moet ${n} of minder zijn)` }); continue; }
+          overtuig(g, d, !!e.voorgoed);
+        }
+        break;
+      case "ontmasker":
+        for (const d of doelen) {
+          if (d.kant !== "vijand") continue;
+          const eerst = !d.ontmaskerd;
+          d.ontmaskerd = true;
+          geefStatus(g, d, "vervloekt", Math.max(1, n));
+          ev(g, { t: "ontmaskerd", uid: d.uid, e: snap(d) });
+          // Kruisverwijzing (Lusk): een bondgenoot krijgt teller −1
+          if (eerst && B().helden[g.ctx.held]?.vermogen?.kruisverwijzing) {
+            const l = eenhedenVan(g, "speler").filter(u => u.uid !== g.held && u.teller != null);
+            if (l.length) veranderTeller(g, l.reduce((a, b) => (b.teller < a.teller ? b : a)), -1);
+          }
+        }
+        break;
+      case "aanvalVoorgoed":
+        for (const d of doelen) {
+          if (d.aanval == null) continue;
+          d.aanval += n;
+          const inst = g.opVeld?.[d.uid];
+          if (inst) (g.voorgoed ??= {})[inst.uid] = (g.voorgoed[inst.uid] || 0) + n;
+          ev(g, { t: "aanval", uid: d.uid, e: snap(d) });
+        }
+        break;
+      case "verdwijn": for (const d of doelen) laatVerdwijnen(g, d); break;
+      case "naarAchter": for (const d of doelen) naarAchter(g, d); break;
+      case "voorgevoel": g.voorgevoel = true; ev(g, { t: "vermogen", naam: "Voorgevoel" }); break;
       default: throw new Error(`Onbekende effectsoort: ${e.doe}`);
     }
   }

@@ -4,7 +4,7 @@ Het kaartspel hergebruikt illustraties uit Londen 1888 (`tools/kopieer-uit-londe
 
 ## Stand op 27 november 2026
 
-- **Tijdelijke illustraties in het huidige prototype.** Het titelscherm, het hoofdkwartier, vier klassenemblemen, vier locaties onder Londen, zes barricades, acht Waanzin-kaarten en de achterkant van de trekstapel wachten op hun eigen beeld.
+- **Tijdelijke illustraties in het huidige prototype.** Het titelscherm, het hoofdkwartier, vier klassenemblemen, vier locaties onder Londen, zes barricades, acht Waanzin-kaarten, vijf nieuwe kaarten van fase 3 (§9) en de achterkant van de trekstapel wachten op hun eigen beeld.
 - **Afgerond.** Dragers gebruikt het groepsportret in `art/bondgenoten/dragers.jpg`. De bokser, sjouwer, agent, kruidenvrouw en het medium hebben eigen portretten in dezelfde map. Het oog van de speelkamer is beschikbaar als favicon en als geschilderd app-icoon in `app/icoon/`.
 - **Knooppunten.** De routekaart gebruikt getekende SVG-symbolen voor alle speelbare haltes en voor de baas. De geschilderde medaillons uit §8 blijven een beeldoptie. De Occulte boekwinkel hoort bij fase 3.
 - **Later.** Drie extra barricades, acht talismannen en de monsters voor de andere elf goden horen bij de uitbreiding van het spel. De Zegelbreker is reserve voor Vathrûn.
@@ -128,3 +128,15 @@ Een voorwerp, geen persoon, geen tekst. 1:1, 1024 × 1024. Nu tijdelijk: een hel
 |---|---|---|
 | `achterkanten/kaartspel.png` | 3:4, 1024 × 1365 | the ornate back of a Victorian playing card, dark teal and oxblood, a gold engraved clock face in the centre surrounded by fog and thorns, symmetrical, no letters |
 | `knooppunten/<soort>.png` | 1:1, 512 × 512 | Eén rond medaillon per knooppunt (gevecht, scheur, markt, boekwinkel, logement, ziekenhuis, gaarkeuken, kerk, universiteit, seance, ontmoeting, club, kist): **a small round brass medallion engraved with a [crossed sabres / tear in the air / market scales / open book / lodging house door / red cross / soup bowl / church spire / mortarboard / candle / question mark shaped like a hook / cocktail glass / iron chest], dark enamel background** |
+
+## 9. Nieuwe kaarten van fase 3
+
+1:1, 1024 × 1024. Nu tijdelijk een plekbeeld of een achterkant.
+
+| Bestand | Prompt | Nu tijdelijk |
+|---|---|---|
+| `kaarten/bevel.png` | a gloved hand pointing forward sharply in a foggy street, a group of rough men turning to follow the gesture, gaslight | `plekken/strand.jpg` |
+| `kaarten/visitekaartje.png` | an engraved calling card with a family crest on a silver salver, a gloved hand reaching for it, candlelight | `plekken/pall-mall.jpg` |
+| `kaarten/rijtuig-bestellen.png` | a black hansom cab pulling up at a foggy kerb at night, the driver tipping his hat, lamps glowing | `plekken/kings-cross.jpg` |
+| `kaarten/tralies-yard.png` | a heavy iron cell door with bars, unbolted and propped across an alley as a barricade, a police lantern hanging from it | `plekken/whitehall.jpg` |
+| `kaarten/zeven-kaarsen.png` | seven tall black candles in a circle on a stone floor, one already guttering out, faint violet smoke rising | `achterkanten/spreuken.jpg` |

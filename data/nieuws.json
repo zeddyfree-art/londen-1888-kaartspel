@@ -1,6 +1,22 @@
 [
- { "id": 4, "datum": "27 november 2026", "titel": "Het oog van Londen",
+ { "id": 6, "datum": "27 november 2026", "titel": "Het oog van Londen",
    "punten": ["Het gouden oog uit de speelkamer staat nu op je browsertab. Op je beginscherm verschijnt een geschilderd oog van amethist."] },
+ { "id": 5, "datum": "27 november 2026", "titel": "Vier klassen",
+   "punten": [
+     "Kennis, Waarneming en Charisma zijn speelbaar, elk met een eigen startstapel en ruim twintig eigen kaarten. Alle 28 helden doen mee, met hun vermogen en hun persoonlijke voorwerpen.",
+     "Kennis, de occultist: spreuken met een verlichte tekst, en rituelen die je op het veld zet. Een ritueel slaat één keer toe met een groot effect. Elke spreuk zet de teller van je held 1 lager.",
+     "Waarneming, de speurder: verzamel Aanwijzingen (ook telkens als je held toeslaat) en speel krachtige Deducties. Ontmasker een vijand: hij krijgt Vervloekt en neemt voortaan 2 schade extra van elke treffer.",
+     "Charisma, de aanvoerder: tot zes bondgenoten in je stapel. Overtuig een cultist of logebroeder met weinig Leven en hij vecht voor jou, met sommige kaarten zelfs voorgoed.",
+     "Helden met een vermogen dat je één keer per gevecht inzet (Pell, Nasr, Thorne, Odile, Gosling) hebben er een knop voor boven het slagveld.",
+     "Per klasse zijn drie helden vrij. Elke gewonnen run ontgrendelt een volgende held van die klasse."
+   ] },
+ { "id": 4, "datum": "27 november 2026", "titel": "Eerlijke paden",
+   "punten": [
+     "De twee paden in een gedeelte zijn nu even lang: allebei 2 of allebei 3 haltes. Eerst kon het ene pad 1 halte hebben en het andere 3.",
+     "Elk pad heeft hooguit één plek om te herstellen (ziekenhuis, gaarkeuken, logementen), één om je stapel te verbeteren (markt, kist, universiteit, kerk) en één gok (ontmoeting, seance, Scheur, club).",
+     "Bij twee haltes mist elk pad iets anders, zodat je echt kiest: herstel of een betere stapel, zekerheid of een gok.",
+     "De paden zijn ook ongeveer even veel waard: een Scheur staat niet meer tegenover een leeg pad."
+   ] },
  { "id": 3, "datum": "27 november 2026", "titel": "Routes door de mist",
    "punten": [
      "Bekijk de haltes van je wijk met hun namen en symbolen. Met Hele akte zie je hoe de routes door Londen lopen.",

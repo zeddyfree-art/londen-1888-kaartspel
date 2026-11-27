@@ -66,11 +66,11 @@ function nieuweRunKiezen() {
     for (const k of bib.data.klassen) {
       const t = el("button", { class: `tegel ${k.speelbaar ? "" : "dicht"}`, style: { "--rand": k.kleur }, disabled: !k.speelbaar, onclick: () => { keuze.klasse = k.id; stapHeld(); } },
         el("div", { class: "tbeeld", style: { backgroundImage: bg(bib.helden[VOORBEELD[k.id]].art) } }),
-        el("div", { class: "ttekst" }, el("div", { class: "tnaam", style: { color: k.kleur === "#8e2a22" ? "#e88a7a" : undefined } }, k.naam), el("div", { class: "tsub" }, k.rol), el("div", {}, k.kort)),
+        el("div", { class: "ttekst" }, el("div", { class: "tnaam", style: { color: k.kleur === "#8e2a22" ? "#e88a7a" : undefined } }, k.naam), el("div", { class: "tsub" }, k.rol), el("div", {}, k.kort), k.regel ? el("div", { class: "tsub", style: { color: "var(--goud-licht)" } }, k.regel) : null),
         k.speelbaar ? null : el("span", { class: "slot" }, "komt later"));
       tegels.append(t);
     }
-    scherm("Kies een klasse", startScherm, "Je klasse bepaalt je kaarten en je manier van vechten. Kracht is als eerste klaar; de andere drie volgen.", tegels);
+    scherm("Kies een klasse", startScherm, "Je klasse bepaalt je kaarten, je startstapel en je manier van vechten. Per klasse zijn drie helden vrij; elke gewonnen run ontgrendelt er een.", tegels);
   }
 
   function heldTegel(h, gekozen) {
@@ -239,7 +239,7 @@ function pagina(titel, inhoud, achtergrond = "plekken/bloomsbury.jpg") {
 
 function hoofdkwartier() {
   const bib = B();
-  const kracht = bib.data.helden.filter(h => h.klasse === "kracht");
+  const kracht = bib.data.helden;
   pagina("Het hoofdkwartier", [
     el("p", { class: "sfeertekst" }, "De achterkamer van een occulte boekwinkel in Bloomsbury. Kaarten van de riolen aan de muur, een pot thee die nooit warm blijft, en een gastenboek met namen die je beter niet hardop zegt."),
     el("div", { class: "cijfers" }, el("div", {}, el("b", {}, String(meta.runs || 0)), "runs begonnen"), el("div", {}, el("b", {}, String(meta.gewonnen || 0)), "runs gewonnen")),
@@ -299,6 +299,9 @@ function spelregels() {
     el("h3", {}, "Statussen"),
     el("dl", { class: "statusboek" }, Object.entries(STATUS_UITLEG).map(([id, uitleg]) =>
       el("div", {}, el("dt", {}, el("i", { class: `uitlegicoon ${id}`, html: STATUSICOON[id] }), STATUSNAAM[id]), el("dd", {}, uitleg)))),
+    ...S("Kennis", "De occultist. Spreuken kosten vaak Geest en hebben een verlichte tekst. Rituelen zet je als een kaart op het veld: ze hebben een lange teller, slaan één keer toe met een groot effect, en gaan dan naar de aflegstapel. Elke spreuk zet de teller van je held 1 lager."),
+    ...S("Waarneming", "De speurder. Kaarten en je held leveren Aanwijzingen (je held krijgt er één telkens als hij toeslaat). Deducties zijn krachtige kaarten die Aanwijzingen kosten. Ontmaskeren geeft een vijand Vervloekt, en een ontmaskerde vijand neemt voortaan 2 schade extra van elke treffer. Je held valt de zwakste vijand aan."),
+    ...S("Charisma", "De aanvoerder. Je mag zes bondgenoten in je stapel hebben. Overtuigen laat een menselijke vijand (cultisten, logebroeders, lantaarndragers) met weinig Leven overlopen naar jouw kant; met sommige kaarten blijft hij voorgoed in je stapel. Bekoring laat een vijand zijn eigen kant raken."),
     ...S("Kracht", "Kaarten van de klasse Kracht verdienen trofeeën: wie een vijand doodt, krijgt +1 aanval voor de rest van het gevecht. Barricades hebben schroot in plaats van Leven: elke treffer kost precies 1 schroot, hoe hard hij ook is."),
     ...S("De kaart van Londen", "Elke akte heeft drie gedeelten. Je kiest steeds een van twee paden, met winkels, rust, ontmoetingen en Scheuren, en elk gedeelte eindigt met een gevecht waarvan je de naam en de vijanden vooraf ziet. Je hebt hooguit vier bondgenoten in je stapel; de rest wacht in de reserve. Een gevallen bondgenoot is gewond tot je hem laat verzorgen."),
     ...S("Bediening", "Sleep een kaart naar een vak of een doel, of tik op een kaart en daarna op het doel. Kaarten zonder doel speel je door er twee keer op te tikken. Houd een kaart lang ingedrukt (of houd de muis erboven) voor de volledige tekst."),
