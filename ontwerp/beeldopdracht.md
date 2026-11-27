@@ -1,6 +1,15 @@
 # Beeldopdracht: nieuwe afbeeldingen voor Het Kaartspel
 
-Het kaartspel hergebruikt alle art van Londen 1888 (`tools/kopieer-uit-londen.js`). Deze lijst is wat er nog **nieuw** nodig is. Tot het er is, gebruikt het spel een tijdelijke afbeelding (zie de laatste kolom).
+Het kaartspel hergebruikt illustraties uit Londen 1888 (`tools/kopieer-uit-londen.js`). Dit bestand bewaart de prompts voor eigen illustraties.
+
+## Stand op 27 november 2026
+
+- **Tijdelijke illustraties in het huidige prototype.** Het titelscherm, het hoofdkwartier, vier klassenemblemen, vier locaties onder Londen, zes barricades, acht Waanzin-kaarten en de achterkant van de trekstapel wachten op hun eigen beeld.
+- **Afgerond.** Dragers gebruikt het groepsportret in `art/bondgenoten/dragers.jpg`. De bokser, sjouwer, agent, kruidenvrouw en het medium hebben eigen portretten in dezelfde map. Het oog van de speelkamer is beschikbaar als favicon en als geschilderd app-icoon in `app/icoon/`.
+- **Knooppunten.** De routekaart gebruikt getekende SVG-symbolen voor alle speelbare haltes en voor de baas. De geschilderde medaillons uit §8 blijven een beeldoptie. De Occulte boekwinkel hoort bij fase 3.
+- **Later.** Drie extra barricades, acht talismannen en de monsters voor de andere elf goden horen bij de uitbreiding van het spel. De Zegelbreker is reserve voor Vathrûn.
+
+Het importscript leest een lijst met Drive-bestands-ID’s en schrijft de afbeeldingen als JPG naar `art/`. Koppel het nieuwe pad vervolgens in het scherm of de kaartdata.
 
 ## Werkwijze
 
@@ -59,7 +68,7 @@ Een voorwerp, geen persoon, geen tekst. 1:1, 1024 × 1024. Nu tijdelijk: een hel
 | `barricades/kruisbeeld-deur.png` | a tarnished silver crucifix nailed to a narrow doorway in a dark tenement, candle stubs on the step | `spullen/kruisbeeld.jpg` |
 | `barricades/kerkbank.png` | a heavy carved oak church pew dragged across a cobbled street as a barricade, hymn books scattered | `plekken/westminster.jpg` |
 | `barricades/stormlantaarn-kist.png` | a brass storm lantern burning on top of a wooden shipping crate in a foggy alley, the light pushing the mist back | `spullen/stormlantaarn.jpg` |
-| `barricades/dragers.png` | a line of Egyptian porters in white galabeyas carrying baskets and crates through a foggy London dock at night | `personen/youssef-hamdi.jpg` |
+| `barricades/dragers.png` | a line of Egyptian porters in white galabeyas carrying baskets and crates through a foggy London dock at night | Afgerond met `art/bondgenoten/dragers.jpg` |
 | `barricades/zoutkring.png` | a thick ring of coarse salt and iron filings poured on a stone floor, candles at four points, faint violet light inside | — |
 | `barricades/omgevallen-vaten.png` | a pile of rolled beer barrels blocking a narrow alley behind a public house, one leaking dark ale | — |
 | `barricades/ijzeren-hek.png` | a wrought-iron railing torn from a churchyard and propped across an alley, rusted spikes, fog | — |

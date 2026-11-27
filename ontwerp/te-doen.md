@@ -12,7 +12,9 @@ Per fase uit de brief een regel; bovenaan wat er nu speelbaar is. De laatste met
 - [ ] **Fase 5. Hoofdkwartier en moeilijkheid.** Ontgrendelingen via uitdagingen, de dertien klokken (de motor kent er al een paar), geschatte winkans per stand en klok, balans per klasse en god.
 - [ ] **Fase 6. Afwerking.** Nieuwe art (`ontwerp/beeldopdracht.md`) en geluiden (`ontwerp/geluidsopdracht.md`), meer animaties, toegankelijkheid.
 
-## Wat nu speelbaar is (versie 3)
+## Wat nu speelbaar is (versie 4)
+
+- Het oog uit de speelkamer als favicon en een vierkant amethistoog als app-icoon.
 
 - Wijkroutes met benoemde haltes, een akteoverzicht en bewegende reispion. Geestfiches, stapelbare statuszegels en zichtbare Verlichting op de kaarten.
 
