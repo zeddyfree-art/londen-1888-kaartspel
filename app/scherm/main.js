@@ -239,6 +239,14 @@ function pagina(titel, inhoud, achtergrond = "plekken/bloomsbury.jpg") {
     el("div", { class: "midden" }, el("div", { class: "tekstpagina" }, inhoud))));
 }
 
+const HOEKEN = [
+  ["rariteitenkabinet", "Het rariteitenkabinet", "Spullen en barricades"],
+  ["leeszaal", "De leeszaal", "Spreuken en talismannen"],
+  ["gastenboek", "Het gastenboek", "Bondgenoten"],
+  ["kaartentafel", "De kaartentafel", "Knooppunten en ontmoetingen"],
+  ["torenklok", "De torenklok", "Klokken"],
+];
+
 function hoofdkwartier() {
   zetSpeelklasse(null);
   const bib = B();
@@ -249,13 +257,17 @@ function hoofdkwartier() {
       el("div", { class: "cijfers" },
         el("div", {}, el("b", {}, String(meta.runs || 0)), "runs begonnen"),
         el("div", {}, el("b", {}, String(meta.gewonnen || 0)), "runs gewonnen"))),
-    el("h3", {}, "De wachtkamer: helden"),
+    el("div", { class: "hoekprent", style: { backgroundImage: bg("hoofdkwartier/wachtkamer.jpg") } }, el("h3", {}, "De wachtkamer: helden")),
     el("p", {}, "Elke gewonnen run ontgrendelt een nieuwe held van die klasse."),
     el("div", { class: "tegels" }, kracht.map(h => el("div", { class: `tegel ${heldVrij(h) ? "" : "dicht"}`, style: { width: "150px", minHeight: "0", cursor: "default" } },
       el("div", { class: "tbeeld", style: { backgroundImage: bg(h.art), height: "150px" } }),
       el("div", { class: "ttekst" }, el("div", { class: "tnaam", style: { fontSize: "16px" } }, h.naam), el("div", { class: "tsub" }, meta.perHeld[h.id] ? `${meta.perHeld[h.id].gewonnen} van ${meta.perHeld[h.id].runs} gewonnen` : heldVrij(h) ? "vrij" : "op slot"))))),
     el("h3", {}, "Nog dicht"),
-    el("p", { class: "muted" }, "Het rariteitenkabinet, de leeszaal, het gastenboek, de kaartentafel en de torenklok gaan open in een volgende versie, met uitdagingen zoals 'Win met elke klasse' en 'Win een gevecht met 1 Lichaam'."),
+    el("p", { class: "muted" }, "Deze hoeken gaan open in een volgende versie, met uitdagingen zoals 'Win met elke klasse' en 'Win een gevecht met 1 Lichaam'."),
+    el("div", { class: "tegels" }, HOEKEN.map(([id, naam, wat]) => el("div", { class: "tegel breed dicht hoek", style: { cursor: "default", minHeight: "0" } },
+      el("div", { class: "tbeeld", style: { backgroundImage: bg(`hoofdkwartier/${id}.jpg`), height: "150px", backgroundPosition: "center" } }),
+      el("span", { class: "slot" }, "op slot"),
+      el("div", { class: "ttekst" }, el("div", { class: "tnaam", style: { fontSize: "18px" } }, naam), el("div", { class: "tsub" }, wat))))),
     el("button", { class: "knop stil", onclick: async () => { await instellingenModaal(); hoofdkwartier(); } }, "Instellingen"),
   ], "scherm/hoofdkwartier.jpg");
 }

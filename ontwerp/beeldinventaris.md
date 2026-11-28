@@ -6,20 +6,20 @@
 
 | Groep | Aantal | Prioriteit | Waarom |
 |---|---|---|---|
-| A1. Talismannen | 10 | **Nodig** | Nu tijdelijk de achterkant van de artefactkaarten. |
-| A2. Kaarten met een tijdelijk beeld | 9 | **Nodig** | Nu een plekbeeld, een achterkant of het gezicht van een latere baas. |
-| A3. Monsters voor de andere goden (fase 4) | 12 | **Nodig** | Elke god heeft minstens 6 gewone monsters nodig; elf hebben er 5. |
-| A4. Luitenants (fase 4) | 2 | **Nodig** | Ulvereth en Sirrhae hebben geen bruikbaar baasportret. |
-| A5. Hoofdkwartier: zes hoeken (fase 5) | 6 | Sterk aanbevolen | Elke hoek ontgrendelt iets; een eigen beeld maakt de voortgang zichtbaar. |
-| A6. Einde van de run | 2 | Sterk aanbevolen | Dageraad bij winst, verzwolgen door de mist bij verlies. |
-| A7. Occulte boekwinkel | 1 | Sterk aanbevolen | Nieuw knooppunt; nu het straatbeeld van Soho. |
-| **Totaal nodig en aanbevolen** | **42** | | |
-| B1. Knooppunt-medaillons | 14 | Mooi | De kaart gebruikt nu getekende symbolen. Die werken. |
+| A1. Talismannen | 0 | Klaar | In het spel (28 november), ingezoomd op het voorwerp. |
+| A2. Kaarten met een tijdelijk beeld | 0 | Klaar | In het spel (28 november). |
+| A3. Monsters voor de andere goden (fase 4) | 0 | Klaar | Staan in `art/monsters/`; worden gebruikt zodra fase 4 de monsters toevoegt. |
+| A4. Luitenants (fase 4) | 0 | Klaar | Staan in `art/personen/`; voor fase 4. |
+| A5. Hoofdkwartier: zes hoeken (fase 5) | 0 | Klaar | De wachtkamer boven de helden, de andere vijf als dichte tegels. |
+| A6. Einde van de run | 0 | Klaar | In het eindscherm. |
+| A7. Occulte boekwinkel | 0 | Klaar | Achtergrond van het knooppunt. |
+| **Totaal nodig en aanbevolen** | **0** | | |
+| B1. Knooppunt-medaillons | 0 | Klaar | Rond uitgesneden in `art/knooppunten/` (PNG met doorzichtige hoeken). |
 | B2. Statustexturen | 0 | Klaar | Alle tien statussen hebben een geschilderde laag (28 november). |
-| B3. Extra barricades | 3 | Mooi | Meer variatie voor Kracht. |
-| **Totaal mooi** | **17** | | |
+| B3. Extra barricades | 0 | Klaar | Staan in `art/barricades/`; nog geen kaarten die ze gebruiken. |
+| **Totaal mooi** | **0** | | |
 
-**Advies.** Maak eerst A1 tot en met A4 (33 beelden): daarmee zijn fase 3 en 4 inhoudelijk af. Daarna A5 tot en met A7 (9 beelden). B alleen als er tijd over is.
+**Stand (28 november).** Alles uit deze lijst is gemaakt en staat in `art/`. Nieuwe beelden komen er pas bij met fase 4 (eventueel extra monsters) en fase 6.
 
 ## Wat je níet hoeft te maken
 

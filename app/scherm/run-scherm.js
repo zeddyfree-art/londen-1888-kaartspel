@@ -26,10 +26,13 @@ const GLYPH = {
   boekwinkel: "M-9 -6 c4 -2 7 -2 9 0 c2 -2 5 -2 9 0 v13 c-4 -2 -7 -2 -9 0 c-2 -2 -5 -2 -9 0 z M0 -6 v13 M3 -9 l2 -2 l2 2",
 };
 
+// geschilderde medaillons (art/knooppunten/); de getekende GLYPH blijft de reserve
+const MEDAILLON = new Set(["gevecht", "baas", "scheur", "markt", "boekwinkel", "logement", "ziekenhuis", "gaarkeuken", "kerk", "universiteit", "seance", "ontmoeting", "club", "kist"]);
+
 const KNOOPART = {
   markt: "plekken/covent-garden.jpg", ziekenhuis: "plekken/city.jpg", gaarkeuken: "plekken/spitalfields.jpg", kerk: "plekken/westminster.jpg",
   universiteit: "plekken/bloomsbury.jpg", logement: "plekken/whitechapel.jpg", seance: "plekken/marylebone.jpg", club: "plekken/pall-mall.jpg",
-  kist: "plekken/st-katharine-docks.jpg", ontmoeting: "plekken/limehouse.jpg", boekwinkel: "plekken/soho.jpg",
+  kist: "plekken/st-katharine-docks.jpg", ontmoeting: "plekken/limehouse.jpg", boekwinkel: "plekken/occulte-boekwinkel.jpg",
 };
 const AKTE = ["De kades en de East End", "De West End en de salons", "Onder Londen, door de Scheur"];
 const AKTE3 = { start: [110, 330], riolen: [300, 470], ondergrondse: [460, 230], pestputten: [660, 470], hart: [860, 330] };
@@ -100,7 +103,10 @@ export function kaartScherm(app, opties, overzicht = false) {
   function medaillon(soort, x, y, r, toestand, label, onderschrift) {
     const g = svg("g", { class: `knoop ${soort} ${toestand}`, transform: `translate(${x},${y}) scale(${schaal})` },
       svg("title", {}, label), svg("circle", { class: "krans", r: r + 5 }),
-      svg("circle", { class: "bol", r }), svg("path", { class: "glyph", d: GLYPH[soort], transform: `scale(${r / 14})` }));
+      svg("circle", { class: "bol", r }),
+      MEDAILLON.has(soort)
+        ? [svg("image", { class: "medaillonbeeld", href: art(`knooppunten/${soort}.png`), x: -r, y: -r, width: 2 * r, height: 2 * r }), svg("circle", { class: "rand", r })]
+        : svg("path", { class: "glyph", d: GLYPH[soort], transform: `scale(${r / 14})` }));
     if (onderschrift) g.append(svg("text", { y: r + 26, "text-anchor": "middle" }, onderschrift));
     if (toestand.includes("bezocht")) g.append(svg("path", { class: "afgevinkt", d: `M${r-8} ${r-2}l4 4 8-9` }));
     return g;
@@ -545,7 +551,7 @@ export function eindScherm(app, { run, ontgrendeld, opnieuw, naarStart }) {
   const gewonnen = run.uitslag === "gewonnen";
   const held = B().helden[run.held], god = B().goden[run.god];
   app.replaceChildren(el("div", { class: `scherm einde ${gewonnen ? "" : "verloren"}` },
-    el("div", { class: "achtergrond", style: { backgroundImage: bg(gewonnen ? "scherm/titel-kaartspel.jpg" : god.art) } }),
+    el("div", { class: "achtergrond", style: { backgroundImage: bg(gewonnen ? "scherm/dageraad.jpg" : "scherm/verzwolgen.jpg") } }),
     el("div", { class: "inhoud paneel", style: { padding: "28px" } },
       el("h1", {}, gewonnen ? "De nacht is voorbij" : "Je held valt"),
       el("p", { class: "sfeertekst" }, gewonnen

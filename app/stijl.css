@@ -84,6 +84,10 @@ img { -webkit-user-drag: none; }
 .tegel.dicht { cursor: default; filter: grayscale(.85) brightness(.55); }
 .tegel .slot { position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,.7); padding: 2px 8px; font-size: 12px; border-radius: 10px; color: var(--muted); }
 .tegel.breed { width: 260px; }
+.tegel.dicht.hoek { filter: grayscale(.45) brightness(.72); }
+.hoekprent { position: relative; height: 150px; margin: 22px 0 10px; border-radius: 10px; background-size: cover; background-position: center 55%; overflow: hidden; display: flex; align-items: flex-end; }
+.hoekprent::before { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(10,8,6,.85), transparent 70%); }
+.hoekprent h3 { position: relative; margin: 0; padding: 10px 14px; }
 
 /* ───────── de kaart ───────── */
 .kaart {
@@ -333,7 +337,8 @@ img { -webkit-user-drag: none; }
 .gekregen .kaart { --w: 130px; }
 
 /* einde */
-.einde .inhoud { margin: auto; text-align: center; display: grid; gap: 16px; justify-items: center; padding: 20px; max-width: 760px; }
+.einde .achtergrond::after { background: linear-gradient(180deg, rgba(11,17,19,.05) 0%, rgba(11,17,19,.25) 45%, rgba(11,17,19,.85) 100%); }
+.einde .inhoud { margin: auto auto 5vh; text-align: center; display: grid; gap: 16px; justify-items: center; padding: 20px; max-width: 760px; }
 .einde h1 { font-size: clamp(40px, 6vw, 72px); color: var(--goud-licht); }
 .einde.verloren h1 { color: #ff8f7c; }
 .cijfers { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; width: 100%; }
@@ -598,6 +603,8 @@ img { -webkit-user-drag: none; }
 .paden .knoop circle.bol { fill: var(--nodevlak); stroke: var(--nodekleur); stroke-width: 1.8; }
 .paden .knoop .glyph { stroke: var(--nodekleur); stroke-width: 1.65; }
 .knoop .krans { fill: #111917; stroke: #a48e65; stroke-width: 1.2; }
+.knoop circle.rand { fill: none; stroke: var(--nodekleur, var(--goud)); stroke-width: 2; }
+.knoop.volgende circle.rand { stroke-width: 3.2; filter: drop-shadow(0 0 6px var(--goud-licht)); }
 .paden .knoop.volgende { animation: none; }
 .knoop.volgende .krans { stroke: #ffdaa0; stroke-width: 2.2; animation: haltekring 2.1s ease-out infinite; transform-box: fill-box; transform-origin: center; }
 @keyframes haltekring { 65%,100% { transform: scale(1.24); opacity: .18; } }
