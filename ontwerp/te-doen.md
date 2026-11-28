@@ -30,6 +30,8 @@ Per fase uit de brief een regel; bovenaan wat er nu speelbaar is. De laatste met
 
 ## Open punten en ideeën
 
+- [x] **Geluiden (28 november):** zeven nieuwe effecten uit ElevenLabs (zie `ontwerp/geluidsopdracht.md`). Spreuken klinken anders dan een kaart leggen, monsters anders dan jouw kant. Verlichting speelt `verlicht.mp3` in plaats van de ingebouwde donder. Nog open: een eigen geluid voor een kaart op het veld en eventueel specifiekere prompts.
+
 - [x] **Leesbaarheid (28 november):** gemeten was de handtekst 8 px op iPad liggend, 6 px staand, 9,5 px op een laptop. Nu: tekstvak 40% van de kaart, `--leesschaal` 1,22 (Instellingen: *Grotere kaarttekst* = 1,45), `pasTekstIn` maakt te lange tekst kleiner (tot 70%), een gekozen handkaart staat groot in de balk boven de hand, minder schuine waaier, en op een tablet staand de hand in 2 × 3 (handtekst 16 px). iPad liggend 9,8 px en laptop 11,6 px: daar leest de balk mee. Een telefoon liggend blijft te klein voor de kaarttekst zelf; daar is de balk het middel.
 
 - [x] **Tik voor meer (28 november):** op het slagveld opent tikken op een vijand zijn kaart (zonder gekozen kaart; met een gekozen kaart is hij het doel), twee keer tikken op een eigen eenheid ook. In winkel, beloning, kist, logement, reserve en stapelkeuze een ⓘ-knopje plus lang drukken (`metInfo` in `app/scherm/run-scherm.js`). De uitleg noemt aanval en Leven. Aanvalsicoon: een inslagster in plaats van een schildje (`ICOON.aanval`).

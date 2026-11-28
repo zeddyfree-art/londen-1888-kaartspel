@@ -293,7 +293,7 @@ function verlichtingProef() {
   const uitleg = el("p", { class: "proeftekst", role: "status" });
   const wissel = el("button", { class: "knop klein", onclick: () => {
     veranderGeest(g, g.verlicht ? 1 : -1);
-    if (g.verlicht) speel("donder");
+    if (g.verlicht) speel("verlicht");
     teken();
   } });
   const inhoud = el("div", { class: "verlichtingsproef" }, platen, uitleg, wissel);

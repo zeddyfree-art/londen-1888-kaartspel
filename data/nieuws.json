@@ -1,4 +1,9 @@
 [
+ { "id": 18, "datum": "28 november 2026", "titel": "Nieuwe geluiden in het gevecht",
+   "punten": [
+     "Een aanval klinkt nu als een echte stoot. Monsters klinken anders: een klauw die scheurt, met een grauw. Zo hoor je wie er toeslaat.",
+     "Een spreuk heeft een eigen geluid: een koude windstoot met gefluister. Ook de treffer, een tegengehouden klap, een kaart die valt en het moment waarop je verlicht raakt, zijn nieuw."
+   ] },
  { "id": 17, "datum": "28 november 2026", "titel": "Beter leesbare kaarten",
    "punten": [
      "De tekst op kaarten is groter en heeft meer ruimte. Past een lange tekst niet, dan wordt hij op die kaart iets kleiner, zodat er nooit iets wegvalt.",

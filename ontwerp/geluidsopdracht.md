@@ -30,6 +30,22 @@ Het kaartspel hergebruikt de muziek, de sfeerlussen en de effecten van Londen 18
 
 Zolang `kaart-spelen`, `baas`, `dood`, `waanzin` en `golf` ontbreken, leent het spel `kaart`, `monster`, `slecht`, `onheil` en `gevaar` uit Londen 1888.
 
+## Gekozen uit ElevenLabs (28 november)
+
+Gemaakt met *eleven_text_to_sound_v3* (flow "Londen 1888 kaartspel: actiegeluiden"), vier varianten per actie, gekozen op de luisterpagina. Ingekort, stilte vooraan weg, piek op −2 dB, mono 96 kbit/s.
+
+| Bestand | Wanneer | Prompt |
+|---|---|---|
+| `slag.mp3` | Jouw kant of een menselijke vijand slaat toe | `Heavy bare-knuckle punch landing on a body, punchy close-mic thud with a sharp crack, short` |
+| `klauw.mp3` | Een monster slaat toe | `Monster claw swipe tearing through cloth with a wet guttural snarl, fast and vicious, short` |
+| `treffer.mp3` | Een treffer met schade | `Deep body impact, heavy meaty thud with a low boom, close-mic, very short` |
+| `spreuk.mp3` | Je speelt een spreuk | `Occult spell cast, a rushing whoosh of air with a cold glassy shimmer and a low whispered chant, short` |
+| `blok.mp3` | Gezegend of Bescherming houdt een klap tegen | `Blow deflected by a magical ward, bright metallic clang with a ringing bell-like shimmer` |
+| `dood.mp3` | Een kaart valt | `Body collapsing onto wet cobblestones with a last gasping breath, dull thud` |
+| `verlicht.mp3` | Je raakt verlicht | `Rising chorus of eerie whispers swelling into a cold crystalline shimmer, unsettling, about two seconds` |
+
+Niet gekozen, nog open: een eigen geluid voor een kaart op het veld (`kaart-spelen.mp3`; nu leent het spel `kaart.mp3`) en een sabelgeluid voor wapens.
+
 ## Hergebruikt uit Londen 1888
 
 - De acht muziekstukken (`muziek.mp3`, `muziek-2.mp3` … `muziek-8.mp3`), met titels in `data/muziek.json`.
