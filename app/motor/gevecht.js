@@ -1,7 +1,7 @@
 // De spelregels van een gevecht. Pure functies, geen DOM.
 // doe(g, actie) geeft een NIEUWE toestand terug plus een lijst gebeurtenissen die het scherm kan afspelen.
 import { schud, kies, geheel } from "./toeval.js";
-import { B, kaartDef } from "./bibliotheek.js";
+import { B, kaartDef, instDef } from "./bibliotheek.js";
 import { voerUit, kiesDoelen } from "./effecten.js";
 
 export const RIJEN = ["straat", "riool"];
@@ -111,7 +111,7 @@ function maakEenheid(g, def, kant, extra = {}) {
 /** De gegevens van een eenheid die bij haar kaart horen (vermogens), eventueel van de huidige fase. */
 export function defVan(g, u) {
   if (u.soort === "held") return B().helden[u.id];
-  const d = kaartDef(u.id, u.verbeterd);
+  const d = instDef(u);
   if (d.fasen && u.fase != null) return { ...d, ...d.fasen[u.fase] };
   return d;
 }
@@ -137,7 +137,7 @@ export function maakGevecht(run, def) {
     bigben: def.bigben || 4, bigbenMax: def.bigben || 4, wachtrij: [],
     fluitjeRust: 0, eenmaligGebruikt: {}, buit: 0, aanwijzingen: 0, nieuweWaanzin: [],
     uitslag: null,
-    stats: { gespeeld: 0, spreuken: 0, doden: 0, schadeGedaan: 0, schadeOntvangen: 0 },
+    stats: { gespeeld: 0, spreuken: 0, doden: 0, schadeGedaan: 0, schadeOntvangen: 0, verlichtBeurten: 0, waanzin: 0, geestUitgegeven: 0 },
     ctx: {
       held: run.held, klasse: run.klasse, god: run.god, akte: run.akte || 1, artefacten: [...(run.artefacten || [])],
       stand: run.stand || "normaal", standDef: bib.standen[run.stand || "normaal"] || {}, klokken: run.klokken || [],
@@ -204,7 +204,7 @@ function trekStil(g, n) {
     }
     const i = g.trek.shift();
     g.hand.push(i);
-    const d = kaartDef(i.id, i.verbeterd);
+    const d = instDef(i);
     if (d.bijTrekken && !g.bezigMetTrekken) {
       g.bezigMetTrekken = true;
       ev(g, { t: "waanzinTrek", kaart: i.id });
@@ -243,6 +243,7 @@ export function veranderGeest(g, n) {
     const id = kies(g, pool);
     const inst = { uid: `w${g.beurt}-${g.nieuweWaanzin.length}-${id}`, id };
     g.nieuweWaanzin.push(inst);
+    g.stats.waanzin = (g.stats.waanzin || 0) + 1;
     g.afleg.push(inst);
     g.geest = Math.ceil(g.maxGeest / 2);
     ev(g, { t: "waanzin", kaart: id, waarde: g.geest });
@@ -390,6 +391,7 @@ export function treffer(g, bron, doel, schade, gruwel = 0, opt = {}) {
   // Gruwel: op de held van de Geest af, op een bondgenoot als Angst. Vijanden hebben geen Geest.
   let gr = gruwel;
   if (gr > 0 && doel.kant === "speler" && B().helden[g.ctx.held]?.vermogen?.stalenZenuwen) gr -= 1;
+  if (gr > 0 && doel.uid === g.held && g.ctx.artefacten.includes("jade-masker")) gr -= 1;
   ev(g, { t: "treffer", uid: doel.uid, bron: bron?.uid, schade: echt, gruwel: doel.kant === "speler" ? Math.max(0, gr) : 0, e: snap(doel) });
   if (gr > 0 && doel.kant === "speler") {
     if (doel.uid === g.held) veranderGeest(g, -gr);
@@ -548,6 +550,7 @@ export function geestKosten(g, def) {
   if (def.soort !== "spreuk" && def.soort !== "ritueel") return 0;
   let k = def.geest || 0;
   if (eenhedenVan(g, "vijand").some(u => defVan(g, u).spreukDuurder)) k += 1;
+  if (g.ctx.artefacten.includes("henochtafel") && def.soort === "spreuk") k = Math.max(0, k - 1);
   if (g.ctx.held === "septimus-crane" && !g.stats.spreuken && def.soort === "spreuk") k = 0;
   return k;
 }
@@ -560,7 +563,7 @@ export function aanwijzingKosten(g, def) {
 
 /** Welke doelen een kaart uit de hand kan hebben: vakken (voor kaarten op het veld) of eenheden. */
 export function geldigeDoelen(g, inst) {
-  const d = kaartDef(inst.id, inst.verbeterd);
+  const d = instDef(inst);
   if (d.onspeelbaar) return { soort: "geen-spel", lijst: [] };
   if (isVeldkaart(d)) {
     return { soort: "vak", lijst: legeVakken(g, "speler", "straat") };
@@ -574,7 +577,7 @@ export function geldigeDoelen(g, inst) {
 }
 
 export function kanSpelen(g, inst) {
-  const d = kaartDef(inst.id, inst.verbeterd);
+  const d = instDef(inst);
   if (d.onspeelbaar) return false;
   if (aanwijzingKosten(g, d) > (g.aanwijzingen || 0)) return false;
   const gd = geldigeDoelen(g, inst);
@@ -632,7 +635,7 @@ export function doe(oud, actie) {
       const idx = g.hand.findIndex(i => i.uid === actie.kaart);
       if (idx < 0) throw new Error("Die kaart zit niet in je hand.");
       const inst = g.hand[idx];
-      const d = kaartDef(inst.id, inst.verbeterd);
+      const d = instDef(inst);
       if (d.onspeelbaar) throw new Error("Deze kaart kun je niet spelen.");
       const prijsAanw = aanwijzingKosten(g, d);
       if (prijsAanw > (g.aanwijzingen || 0)) throw new Error("Je hebt niet genoeg Aanwijzingen voor deze Deductie.");
@@ -644,7 +647,7 @@ export function doe(oud, actie) {
       if (isVeldkaart(d)) {
         const { rij, plek } = actie.vak || {};
         if (!RIJEN.includes(rij) || plek < 0 || plek > 2 || g.veld.speler[rij][plek]) throw new Error("Dat vak is niet vrij.");
-        const u = maakEenheid(g, { ...d, soort: d.soort, klasse: d.klasse }, "speler", { verbeterd: !!inst.verbeterd, gewond: !!inst.gewond });
+        const u = maakEenheid(g, { ...d, soort: d.soort, klasse: d.klasse }, "speler", { verbeterd: !!inst.verbeterd, gewond: !!inst.gewond, talisman: inst.talisman || null });
         if (inst.gewond && u.leven != null) {
           u.maxLeven = Math.ceil(u.maxLeven / 2); u.leven = u.maxLeven;
           if (u.aanval) u.aanval = Math.floor(u.aanval / 2);
@@ -667,8 +670,10 @@ export function doe(oud, actie) {
         const hvm = B().helden[g.ctx.held]?.vermogen || {};
         const eersteSpreuk = d.soort === "spreuk" && !g.stats.spreuken;
         if (d.soort === "spreuk") g.stats.spreuken += 1;
-        const effect = g.verlicht && d.effectVerlicht ? d.effectVerlicht : d.effect;
-        if (kost) veranderGeest(g, -kost);
+        let effect = g.verlicht && d.effectVerlicht ? d.effectVerlicht : d.effect;
+        // klasseregel Kennis: verlichte teksten kosten de occultist geen extra Geest
+        if (g.verlicht && d.effectVerlicht && B().klassen[g.ctx.klasse]?.verlichtZonderPrijs) effect = effect.filter(e => !(e.doe === "geest" && e.aantal < 0));
+        if (kost) { veranderGeest(g, -kost); g.stats.geestUitgegeven = (g.stats.geestUitgegeven || 0) + kost; }
         if ((effect || []).some(e => e.doe === "ontmasker") && hvm.eersteOntmaskeringGratis && !g.canulGebruikt) { g.canulGebruikt = true; kostBeurt = false; }
         voerUit(g, effect, { kant: "speler", bron: held, doel, kaart: inst.id });
         // Lied dat bindt (Valentine): een spreuk op een bondgenoot helpt ook de kaarten ernaast
@@ -755,6 +760,8 @@ export function doe(oud, actie) {
 
 /** Een ritueel heeft toegeslagen: het verlaat het veld en gaat naar de aflegstapel. */
 function ritueelKlaar(g, u) {
+  const kr = B().klassen[g.ctx.klasse] || {};
+  if (kr.ritueelGeest) veranderGeest(g, kr.ritueelGeest);
   haalWeg(g, u);
   u.dood = true; u.klaar = true;
   const inst = g.opVeld?.[u.uid];
@@ -853,6 +860,7 @@ export function eindeBeurt(g) {
   }
   controleerEinde(g);
   if (g.uitslag) return;
+  if (g.verlicht) g.stats.verlichtBeurten = (g.stats.verlichtBeurten || 0) + 1;
   g.beurt += 1;
   ev(g, { t: "beurt", nr: g.beurt });
   trek(g, Math.max(0, HANDGROOTTE - g.hand.length));

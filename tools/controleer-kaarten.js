@@ -113,6 +113,14 @@ for (const a of bib.data.artefacten) {
   effecten(`artefact ${a.id}`, a.effect);
 }
 
+for (const t of bib.data.talismannen || []) {
+  artBestaat(`talisman ${t.id}`, t.art);
+  if (!["veld", "bondgenoot", "spel", "spreuk", "alle"].includes(t.voor)) fout(`talisman ${t.id}`, `onbekend 'voor': ${t.voor}`);
+  const w = t.wijzig || {};
+  for (const k of Object.keys(w)) if (!["aanval", "leven", "schroot", "teller", "statussen", "kenmerken", "bijToeslaanVerlicht", "bijVallen", "bijBinnenkomst", "geestMin", "extraSchade", "extraEffect"].includes(k)) fout(`talisman ${t.id}`, `onbekende wijziging '${k}'`);
+  effecten(`talisman ${t.id}`, w.bijToeslaanVerlicht); effecten(`talisman ${t.id}`, w.bijVallen); effecten(`talisman ${t.id}`, w.extraEffect);
+}
+
 for (const o of bib.ontmoetingen) {
   artBestaat(`ontmoeting ${o.id}`, o.art);
   if (o.god && !bib.goden[o.god]) fout(`ontmoeting ${o.id}`, `onbekende god '${o.god}'`);
@@ -127,6 +135,12 @@ for (const o of bib.ontmoetingen) {
 // nieuws
 const nieuws = JSON.parse(fs.readFileSync(path.join(root, "data/nieuws.json"), "utf8"));
 for (let i = 1; i < nieuws.length; i++) if (nieuws[i].id >= nieuws[i - 1].id) fout("nieuws", "het nieuwste bericht moet bovenaan staan, met het hoogste id");
+
+// elke knooppuntsoort moet een waarde en een gewicht hebben, anders verschijnt hij nooit op de kaart
+{
+  const run = await import("../app/motor/run.js");
+  for (const k of Object.keys(run.KNOOPSOORTEN)) if (!["gevecht"].includes(k) && run.WAARDE[k] == null) fout(`knooppunt ${k}`, "geen WAARDE in run.js");
+}
 
 const tel = s => Object.values(bib.kaarten).filter(k => k.soort === s).length;
 console.log(`${Object.keys(bib.kaarten).length} kaarten (${SOORTEN.map(s => `${tel(s)} ${s}`).join(", ")}), ${Object.keys(bib.vijanden).length} vijanden, ${bib.data.artefacten.length} artefacten, ${bib.ontmoetingen.length} ontmoetingen`);

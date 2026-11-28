@@ -9,7 +9,7 @@
 //   node tools/testbot.js --runs 300 --schrijf       resultaten naar ontwerp/balans.json
 import fs from "fs";
 import path from "path";
-import { zetBibliotheek, DATABESTANDEN, B, kaartDef } from "../app/motor/bibliotheek.js";
+import { zetBibliotheek, DATABESTANDEN, B, kaartDef, talismanPast } from "../app/motor/bibliotheek.js";
 import { maakGevecht, doe, alleActies, eindeBeurt, eenhedenVan, levend } from "../app/motor/gevecht.js";
 import { nieuweRun, runActie, huidigGedeelte, aantalBondgenoten, MAX_MIDDELTJES } from "../app/motor/run.js";
 
@@ -43,6 +43,7 @@ function waarde(g) {
   }
   s += Math.min(g.aanwijzingen || 0, 6) * 4;
   s -= (g.golven.length - g.golfNr) * 25 + g.wachtrij.length * 15;
+  s -= (g.nieuweWaanzin?.length || 0) * 18; // Waanzin blijft in je stapel: een redelijke speler vermijdt dat
   return s;
 }
 
@@ -114,6 +115,13 @@ function kaartScore(run, id) {
 
 function kiesRunActie(run) {
   const bib = B();
+  // losse talismannen meteen ophangen: bij voorkeur aan een bondgenoot, anders aan het beste spul
+  if (run.fase !== "gevecht" && run.fase !== "einde" && run.talismannen?.length) {
+    for (let t = 0; t < run.talismannen.length; t++) {
+      const kand = run.stapel.filter(i => talismanPast(run.talismannen[t], i)).sort((a, b) => kaartScore(run, b.id) - kaartScore(run, a.id));
+      if (kand.length) return { soort: "hangTalisman", index: t, inst: kand[0].uid };
+    }
+  }
   switch (run.fase) {
     case "kaart": {
       if (run.pos.pad == null) {
@@ -139,12 +147,14 @@ function kiesRunActie(run) {
         return { soort: st.vervolg.soort, inst: i.uid };
       }
       switch (st.soort) {
-        case "markt": {
+        case "markt": case "boekwinkel": {
+          const ti = (st.talismannen || []).findIndex(w => !w.verkocht && w.prijs + 10 <= run.ponden);
+          if (ti >= 0) return { soort: "koopTalisman", index: ti };
           const opties = st.waren.map((w, i) => ({ w, i })).filter(x => !x.w.verkocht && x.w.prijs <= run.ponden && kaartScore(run, x.w.id) >= 5 && run.stapel.length < 20);
           if (opties.length) { opties.sort((a, b) => kaartScore(run, b.w.id) - kaartScore(run, a.w.id)); return { soort: "koop", index: opties[0].i }; }
           const mi = st.middeltjes.findIndex(m => !m.verkocht && m.prijs <= run.ponden && run.middeltjes.length < MAX_MIDDELTJES);
           if (mi >= 0) return { soort: "koopMiddeltje", index: mi };
-          if (!st.zegel.verkocht && st.zegel.prijs <= run.ponden) {
+          if (st.zegel && !st.zegel.verkocht && st.zegel.prijs <= run.ponden) {
             const kand = run.stapel.filter(i => !i.zegel && ["barricade", "bondgenoot"].includes(kaartDef(i.id).soort));
             if (kand.length) return { soort: "koopZegel", inst: kand[0].uid };
           }
@@ -259,6 +269,8 @@ function main() {
       const ph = (r.perHeld[held] ??= { win: 0, n: 0 });
       r.n++; ph.n++;
       r.beurten += run.stats.beurten; r.gevechten += run.stats.gevechten;
+      const pk = ((r.perKlasseStats ??= {})[klasseVan(held)] ??= { beurten: 0, verlicht: 0, waanzin: 0, geest: 0, runs: 0 });
+      pk.beurten += run.stats.beurten; pk.verlicht += run.stats.verlichtBeurten || 0; pk.waanzin += run.stats.waanzin || 0; pk.geest += run.stats.geestUitgegeven || 0; pk.runs++;
       if (run.uitslag === "gewonnen") {
         r.win++; ph.win++;
         for (const i of run.stapel) r.kaartenInWinst[i.id] = (r.kaartenInWinst[i.id] || 0) + 1;
@@ -285,6 +297,7 @@ function main() {
     resultaat.standen[stand] = uit;
     console.log(`${stand}: ${uit.winkans}% gewonnen (${r.n} runs, ${((Date.now() - t0) / 1000).toFixed(0)} s)`);
     console.log(`  per klasse: ${Object.entries(uit.perKlasse).map(([k, w]) => `${k} ${w}%`).join(", ")}`);
+    for (const [k, x] of Object.entries(r.perKlasseStats || {})) console.log(`  ${k}: verlicht ${Math.round(100 * x.verlicht / Math.max(1, x.beurten))}% van de beurten, ${(x.waanzin / x.runs).toFixed(1)} Waanzin per run, ${(x.geest / x.runs).toFixed(0)} Geest aan spreuken per run`);
     console.log(`  per held: ${Object.entries(uit.perHeld).map(([h, w]) => `${h} ${w}%`).join(", ")}`);
     console.log(`  verloren in akte 1/2/3: ${uit.verlorenPerAkte.join("% / ")}%   beurten per gevecht ${uit.beurtenPerGevecht}`);
     console.log(`  vaakst verloren in: ${Object.entries(uit.verlorenIn).map(([k, v]) => `${k} (${v})`).join(", ")}`);

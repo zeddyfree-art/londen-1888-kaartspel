@@ -2,7 +2,9 @@
 
 Het kaartspel hergebruikt illustraties uit Londen 1888 (`tools/kopieer-uit-londen.js`). Dit bestand bewaart de prompts voor eigen illustraties.
 
-## Stand op 27 november 2026
+## Stand op 28 november 2026
+
+- **Volledige lijst van wat er nog nodig is:** zie `beeldinventaris.md`. Die lijst gaat voor.
 
 - **In het spel.** Het titelscherm, het hoofdkwartier, de vier klassenemblemen, de vier locaties onder Londen, zes barricades, acht Waanzin-kaarten, vijf kaarten uit fase 3 en de achterkant van de trekstapel hebben eigen illustraties. De tabellen behouden de oorspronkelijke prompts en bronformaten. De webversies staan als JPG in `art/`.
 - **Personages en iconen.** Dragers gebruikt het groepsportret in `art/bondgenoten/dragers.jpg`. De bokser, sjouwer, agent, kruidenvrouw en het medium hebben eigen portretten in dezelfde map. Het oog van de speelkamer is beschikbaar als favicon en als geschilderd app-icoon in `app/icoon/`.

@@ -1,7 +1,7 @@
 // De kaart van Londen met de paden, de knooppunten, beloningen, de stapel en het einde van een run.
 import { el, bg, art, ICOON, melding, modaal, banner, reduceMotion, wacht } from "./gemeen.js";
 import { kaartEl, artefactEl, uitlegEl } from "./kaart-dom.js";
-import { B, kaartDef } from "../motor/bibliotheek.js";
+import { B, kaartDef, talismanPast } from "../motor/bibliotheek.js";
 import { KNOOPSOORTEN, huidigGedeelte, maxBondgenoten, aantalBondgenoten } from "../motor/run.js";
 import { speel } from "./geluid.js";
 
@@ -23,12 +23,13 @@ const GLYPH = {
   ontmoeting: "M-3 -3 c0 -6 8 -6 8 -1 c0 3 -4 3 -4 6 M1 6 v1",
   club: "M-6 -8 h12 l-6 8 z M0 0 v7 M-4 8 h8",
   kist: "M-8 -2 h16 v9 h-16 z M-8 -2 c0 -6 16 -6 16 0 M-1 1 h2 v3 h-2 z",
+  boekwinkel: "M-9 -6 c4 -2 7 -2 9 0 c2 -2 5 -2 9 0 v13 c-4 -2 -7 -2 -9 0 c-2 -2 -5 -2 -9 0 z M0 -6 v13 M3 -9 l2 -2 l2 2",
 };
 
 const KNOOPART = {
   markt: "plekken/covent-garden.jpg", ziekenhuis: "plekken/city.jpg", gaarkeuken: "plekken/spitalfields.jpg", kerk: "plekken/westminster.jpg",
   universiteit: "plekken/bloomsbury.jpg", logement: "plekken/whitechapel.jpg", seance: "plekken/marylebone.jpg", club: "plekken/pall-mall.jpg",
-  kist: "plekken/st-katharine-docks.jpg", ontmoeting: "plekken/limehouse.jpg",
+  kist: "plekken/st-katharine-docks.jpg", ontmoeting: "plekken/limehouse.jpg", boekwinkel: "plekken/soho.jpg",
 };
 const AKTE = ["De kades en de East End", "De West End en de salons", "Onder Londen, door de Scheur"];
 const AKTE3 = { start: [110, 330], riolen: [300, 470], ondergrondse: [460, 230], pestputten: [660, 470], hart: [860, 330] };
@@ -184,6 +185,7 @@ export function kaartScherm(app, opties, overzicht = false) {
       el("div", { class: "meter ponden" }, el("span", { html: ICOON.pond, style: { width: "18px", display: "inline-flex" } }), `${run.ponden} Ponden`)),
     run.artefacten.length ? el("div", { class: "artefacten" }, run.artefacten.map(id => { const e = artefactEl(id); e.onclick = () => toonArtefact(id); return e; })) : null,
     run.middeltjes.length ? el("div", { class: "muted", style: { fontSize: "14px" } }, "Middeltjes: " + run.middeltjes.map(id => kaartDef(id).naam).join(", ")) : null,
+    (run.talismannen || []).length ? losseTalismannen(run, actie) : null,
     info,
     knop,
     held.vermogen?.wisselPad && run.pos.pad != null && !(run.padGewisseld || [])[run.pos.akte] && gd.paden[1 - run.pos.pad] && run.pos.stap < gd.paden[1 - run.pos.pad].length
@@ -214,6 +216,30 @@ function vijandRij(def) {
 function toonArtefact(id) {
   const a = B().artefacten[id];
   modaal(a.naam, el("div", { style: { display: "flex", gap: "16px", alignItems: "center" } }, el("div", { class: "artefact-ik", style: { width: "96px", height: "96px", backgroundImage: bg(a.art), flex: "none" } }), el("div", {}, el("p", {}, a.tekst), a.sfeer ? el("p", { class: "muted" }, el("i", {}, a.sfeer)) : null)), [{ tekst: "Sluiten" }]);
+}
+
+/** Losse talismannen: tik er een aan en kies een kaart om hem aan te hangen. */
+export function losseTalismannen(run, actie) {
+  const bib = B();
+  return el("div", { class: "losse-talismannen" },
+    el("b", {}, "Talismannen om op te hangen"),
+    el("div", { class: "talismanrij" }, (run.talismannen || []).map((id, index) => {
+      const t = bib.talismannen[id];
+      return el("button", { class: "talisman-ik", title: `${t.naam}: ${t.tekst}`, style: { backgroundImage: bg(t.art) }, onclick: async () => {
+        const uid = await kiesUitStapel(run, `${t.naam}: aan welke kaart?`, i => talismanPast(id, i), `${t.tekst} Eén talisman per kaart; hij blijft de rest van de run hangen.`);
+        if (uid) actie({ soort: "hangTalisman", index, inst: uid });
+      } });
+    })));
+}
+
+function talismanWaar(w, i, run, actie) {
+  const t = B().talismannen[w.id];
+  const kan = !w.verkocht && run.ponden >= w.prijs;
+  return el("div", { class: `waar talismanwaar ${w.verkocht ? "verkocht" : ""}` },
+    el("button", { class: "keuze", disabled: w.verkocht, onclick: () => kan ? actie({ soort: "koopTalisman", index: i }) : melding("Daar heb je niet genoeg Ponden voor.") },
+      el("div", { style: { display: "flex", gap: "12px", alignItems: "center" } }, el("div", { class: "talisman-ik groot", style: { backgroundImage: bg(t.art) } }), el("b", {}, t.naam)),
+      el("span", {}, t.tekst), t.sfeer ? el("span", { style: { fontStyle: "italic" } }, t.sfeer) : null),
+    el("span", { class: `prijs ${kan || w.verkocht ? "" : "te-duur"}` }, w.verkocht ? "verkocht" : `£ ${w.prijs}`));
 }
 
 async function reserveScherm(run, actie) {
@@ -298,8 +324,12 @@ export function knoopScherm(app, { run, actie }) {
     } }, "Kies een kaart")));
     voet = [el("button", { class: "knop stil", onclick: () => actie({ soort: "slaVervolgOver" }) }, "Overslaan")];
   } else switch (st.soort) {
+    case "boekwinkel":
     case "markt": {
-      inhoud.push(el("p", { class: "uitleg" }, `Je hebt ${run.ponden} Ponden.`));
+      const boek = st.soort === "boekwinkel";
+      inhoud.push(el("p", { class: "uitleg" }, boek
+        ? `Een winkel in Soho die alleen 's avonds opengaat. Achter de toonbank staan boeken die niet in de catalogus staan, en een la vol dingen die je aan een kaart kunt hangen. Je hebt ${run.ponden} Ponden.`
+        : `Je hebt ${run.ponden} Ponden.`));
       const waren = el("div", { class: "waren" });
       st.waren.forEach((w, i) => {
         const k = kaartEl(w.id);
@@ -314,6 +344,11 @@ export function knoopScherm(app, { run, actie }) {
         if (!w.verkocht) k.onclick = () => kan ? actie({ soort: "koopMiddeltje", index: i }) : melding(run.middeltjes.length >= 3 ? "Je zak met middeltjes is vol." : "Daar heb je niet genoeg Ponden voor.");
         mid.append(el("div", { class: `waar ${w.verkocht ? "verkocht" : ""}` }, k, el("span", { class: `prijs ${kan || w.verkocht ? "" : "te-duur"}` }, w.verkocht ? "verkocht" : `£ ${w.prijs}`)));
       });
+      const talis = (st.talismannen || []).length ? [el("h3", { style: { textAlign: "center", color: "var(--goud-licht)" } }, "Talismannen"),
+        el("p", { class: "uitleg" }, "Een talisman hang je aan één kaart. Hij verandert die kaart voor de rest van de run."),
+        el("div", { class: "waren" }, st.talismannen.map((w, i) => talismanWaar(w, i, run, actie)))] : [];
+      if ((run.talismannen || []).length) talis.push(el("div", { style: { maxWidth: "520px", margin: "0 auto" } }, losseTalismannen(run, actie)));
+      if (boek) { inhoud.push(el("div", { class: "waren" }, ...waren.childNodes), ...talis); voet = [verder("Verlaat de boekwinkel")]; break; }
       const zegelKan = !st.zegel.verkocht && run.ponden >= st.zegel.prijs;
       const zegel = el("div", { class: `keuze`, style: { width: "min(420px, 90vw)", margin: "0 auto" } },
         el("b", {}, "Een Zegel"), el("span", {}, "Een kaart met een Zegel zit gegarandeerd in je beginhand en kost geen beurt om te spelen."),
@@ -321,7 +356,7 @@ export function knoopScherm(app, { run, actie }) {
           const uid = await kiesUitStapel(run, "Welke kaart krijgt de Zegel?", i => !i.zegel);
           if (uid) actie({ soort: "koopZegel", inst: uid });
         } }, st.zegel.verkocht ? "Verkocht" : `Koop voor £ ${st.zegel.prijs}`));
-      inhoud.push(waren, el("h3", { style: { textAlign: "center", color: "var(--goud-licht)" } }, "Middeltjes"), mid, zegel);
+      inhoud.push(waren, el("h3", { style: { textAlign: "center", color: "var(--goud-licht)" } }, "Middeltjes"), mid, zegel, ...talis);
       voet = [verder("Verlaat de markt")];
       break;
     }
@@ -444,6 +479,7 @@ function gekregenEl(st) {
   const g = el("div", { class: "gekregen" });
   for (const id of st.gekregen || []) g.append(kaartEl(id));
   for (const id of [st.waanzin, st.waanzin2].filter(Boolean)) g.append(kaartEl(id));
+  if (st.talisman) { const t = B().talismannen[st.talisman]; g.append(el("div", { class: "keuze", style: { width: "260px" } }, el("b", {}, t.naam), el("span", {}, t.tekst + " Hang hem op vanaf de kaart van Londen."))); }
   if (st.artefact) { const a = B().artefacten[st.artefact]; g.append(el("div", { class: "keuze", style: { width: "260px" } }, el("b", {}, a.naam), el("span", {}, a.tekst))); }
   return g;
 }

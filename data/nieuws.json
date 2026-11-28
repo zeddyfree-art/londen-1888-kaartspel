@@ -1,4 +1,14 @@
 [
+ { "id": 8, "datum": "28 november 2026", "titel": "Talismannen en zichtbare statussen",
+   "punten": [
+     "Statussen zie je nu op de kaart zelf: woede is vuur dat van onderaf oplaait en hoger wordt met elke stapel, pest druipt gifgroen over de kaart, mist trekt over het personage, en bescherming is een blauw arcaan schild. Gezegend, Vervloekt, Inkt, Bekoring, Angst en Doorns hebben elk hun eigen laag, en de lagen zitten elkaar niet in de weg.",
+     "Talismannen: vijftien kleine voorwerpen die je aan één kaart hangt, voor de rest van de run. Je koopt ze op de markt en in de nieuwe Occulte boekwinkel, of krijgt ze bij een seance. Hang ze op vanaf de kaart van Londen.",
+     "De Occulte boekwinkel in Soho verkoopt spreuken en rituelen (ook van andere klassen) en talismannen.",
+     "Negen nieuwe artefacten, zoals het Jade masker, de Henochiaanse tafel en de Lens van een vuurtoren. Er zijn er nu 25.",
+     "Kracht en Londen zijn aangevuld met nieuwe kaarten, waaronder Kerkuil, Dr. Philippa Moss, Kleine Robin en een Vlaamse grimoire.",
+     "Kennis gaat beter om met Verlichting: verlichte teksten kosten de occultist geen extra Geest, en een voltrokken ritueel geeft hem 2 Geest terug. Eerst kreeg hij gemiddeld 11 Waanzin-kaarten per run, nu rond de 4. Daar staat tegenover dat zijn held minder vaak toeslaat.",
+     "Kracht is iets zwakker: de held slaat elke 4 slagen toe in plaats van 3, en alleen bondgenoten verdienen Trofeeën. De held van Charisma slaat juist iets harder toe."
+   ] },
  { "id": 7, "datum": "27 november 2026", "titel": "Londen in olieverf",
    "punten": [
      "Op de speeltafel liggen nu kaarten in het gaslicht. In het hoofdkwartier kijk je de achterkamer van de occulte boekwinkel in.",
