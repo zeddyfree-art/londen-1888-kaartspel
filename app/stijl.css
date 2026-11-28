@@ -633,6 +633,10 @@ img { -webkit-user-drag: none; }
 }
 
 .oefenknoppen { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; }
+.lessen { display: grid; gap: 8px; margin-top: 10px; }
+.knop.les { display: flex; flex-direction: column; align-items: flex-start; text-align: left; gap: 2px; width: 100%; }
+.knop.les small { font-weight: normal; opacity: .8; }
+.knop.les.gedaan b { color: var(--goud, #c9a54a); }
 .proefkaarten { display: flex; justify-content: center; gap: 16px; }
 .proefkaarten .kaart { --w: min(33vw,24vh,176px); }
 .verlichtingsproef { text-align: center; }

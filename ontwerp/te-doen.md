@@ -30,6 +30,9 @@ Per fase uit de brief een regel; bovenaan wat er nu speelbaar is. De laatste met
 
 ## Open punten en ideeën
 
+- [x] **Oefenlessen (28 november):** het oefengevecht is nu vijf lessen (`app/scherm/oefening.js`): de basis, statussen, Geest/Verlichting/Waanzin (Ambrose met *De stemmen* in de hand, 1 Geest boven de drempel), de speurder en de aanvoerder. Tips met een voorwaarde verschijnen zodra die voor het eerst klopt. Alle vijf met de testbot gewonnen (40 van 40). Gehaalde lessen staan in `meta.oefeningen`.
+- **Kaarttekst bij Kennis:** de verlichte tekst toont ‘Je verliest 1 Geest’, ook al betaalt de occultist dat niet (`verlichtZonderPrijs`). De les legt het uit; netter is de tekst in de hand aanpassen aan de klasse.
+
 - **Beelden:** `ontwerp/beeldinventaris.md` is de volledige lijst van wat er nog gemaakt moet worden (42 nodig of aanbevolen, 22 mooi om te hebben), met prompts. Tien talismannen gebruiken tot dan de achterkant van de artefactkaarten.
 - **Statuslagen** (`statusLagen` in `app/scherm/kaart-dom.js`, CSS onder "statuslagen" in `app/stijl.css`): elke status een eigen laag, sterkte met `--n` (1 tot 5). Geschilderde texturen kunnen later in dezelfde lagen (zie beeldinventaris B2).
 - [x] **Statustexturen (28 november):** Woede, Pest en Mist gebruiken geschilderde texturen (`art/status/`, omgezet met `tools/maak-statuslaag.py` naar doorzichtige PNG). Bescherming en Vervloekt volgden met nieuwe beelden: een gloeiende rand en runen die vanaf de rand naar binnen kruipen, met het midden vrij.
