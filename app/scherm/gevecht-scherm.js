@@ -569,7 +569,7 @@ export function gevechtScherm(app, opties) {
     for (const e of ev) {
       switch (e.t) {
         case "speel": {
-          speel("kaart-spelen");
+          speel(kaartDef(e.kaart)?.soort === "spreuk" ? "spreuk" : "kaart-spelen");
           const hk = root.querySelector(`.hand .kaart[data-inst="${e.inst}"]`);
           if (hk) { hk.style.transition = "transform .25s, opacity .25s"; hk.style.transform += " translateY(-60%) scale(.8)"; hk.style.opacity = "0"; }
           await t(160);
@@ -580,7 +580,9 @@ export function gevechtScherm(app, opties) {
         case "toeslaan": {
           const k = vind(e.uid);
           animeer(k, k?.closest(".kant.vijand") ? "slaat-l" : "slaat-r");
-          speel("slag");
+          // jouw kant: een vuist; een monster: een klauw; een menselijke vijand slaat ook met de vuist
+          const u = opties.g().eenheden[e.uid];
+          speel(k?.closest(".kant.vijand") && !u?.mens ? "klauw" : "slag");
           await t(260);
           break;
         }
@@ -628,7 +630,7 @@ export function gevechtScherm(app, opties) {
           root.append(sein);
           if (e.aan) {
             root.classList.add("ontlading");
-            speel("donder");
+            speel("verlicht");
           }
           await t(e.aan ? 1300 : 700);
           root.classList.remove("ontlading");

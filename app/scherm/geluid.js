@@ -38,6 +38,8 @@ const SYNTH = {
   kaart: () => ruis(0, 0.12, 1800, 0.25, 0.8, 600),
   tik: () => toon(2400, 0, 0.03, "square", 0.025),
   slag: () => { ruis(0, 0.14, 300, 0.3, 1.2, 120); toon(110, 0, 0.12, "triangle", 0.12, 60); },
+  klauw: () => { ruis(0, 0.2, 1400, 0.3, 0.7, 300); toon(90, 0, 0.18, "sawtooth", 0.05, 55); },
+  spreuk: () => { ruis(0, 0.6, 600, 0.12, 2, 2400); toon(880, 0.05, 0.5, "sine", 0.04, 1320); },
   treffer: () => { ruis(0, 0.18, 500, 0.35, 0.9, 200); toon(90, 0, 0.15, "sine", 0.15, 50); },
   blok: () => { toon(1320, 0, 0.5, "sine", 0.08); toon(1980, 0.02, 0.4, "sine", 0.05); },
   fluitje: () => { toon(2200, 0, 0.5, "square", 0.04, 2350); toon(2600, 0, 0.5, "sine", 0.04); },
@@ -55,7 +57,7 @@ const SYNTH = {
   schat: () => { toon(784, 0, 0.2); toon(988, 0.1, 0.2); toon(1175, 0.2, 0.35); },
 };
 // welk bestand uit Londen 1888 we gebruiken zolang er geen eigen geluid is
-const LEEN = { "kaart-spelen": "kaart", baas: "monster", dood: "slecht", waanzin: "onheil", golf: "gevaar" };
+const LEEN = { "kaart-spelen": "kaart", baas: "monster", dood: "slecht", waanzin: "onheil", golf: "gevaar", klauw: "slag", spreuk: "kaart" };
 const VOLUME = { tik: 0.25, kaart: 0.6, "kaart-spelen": 0.6 };
 
 export function laadGeluiden() {
