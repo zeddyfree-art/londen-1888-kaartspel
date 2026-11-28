@@ -682,7 +682,7 @@ img { -webkit-user-drag: none; }
 
 /* ───────── statuslagen op de kaart ─────────
    Volgorde van onder naar boven: woede, pest, doorns, inkt, vervloekt, angst, bekoring, mist, gezegend, bescherming.
-   --n is de sterkte (1 tot 5). Woede, pest en mist gebruiken een geschilderde textuur (art/status/*.png). Die is op zwart geschilderd
+   --n is de sterkte (1 tot 5). Woede, pest, mist, bescherming en vervloekt gebruiken een geschilderde textuur (art/status/*.png). Die is op zwart geschilderd
    en omgezet naar doorzichtig (alfa = helderheid). mix-blend-mode werkt hier niet: .statuslagen is een eigen stapel. De rest is CSS en SVG. */
 .sluiers { display: none; }
 .kaart.mistig::before { display: none; }
@@ -723,12 +723,11 @@ img { -webkit-user-drag: none; }
   radial-gradient(circle at 15% 78%, #0b0814 0 1.1%, transparent 1.3%);
   filter: contrast(1.1); }
 
-/* Vervloekt: een violet zegel dat traag draait, en een donkere rand */
+/* Vervloekt: geschilderde violette runen die vanaf de rand naar binnen kruipen, en een donkere rand */
 .laag.vervloekt { background: radial-gradient(ellipse at 50% 45%, transparent 40%, #3b0d4ccc 100%); opacity: calc(.6 + var(--n) * .08); }
-.laag.vervloekt::before { left: 50%; top: 38%; width: 70%; aspect-ratio: 1; transform: translate(-50%, -50%);
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='%23d58cff' stroke-width='1.6'%3E%3Ccircle cx='50' cy='50' r='44'/%3E%3Ccircle cx='50' cy='50' r='36' stroke-dasharray='3 5'/%3E%3Cpath d='M50 10 73 82 12 37h76L27 82z'/%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat;
-  filter: drop-shadow(0 0 4px #b54dff); opacity: .55; mix-blend-mode: screen; animation: zegeldraai 14s linear infinite; }
-@keyframes zegeldraai { to { transform: translate(-50%, -50%) rotate(360deg); } }
+.laag.vervloekt::before { inset: 0; background: url("art/status/zegel.png") center / 100% 100% no-repeat;
+  opacity: calc(.75 + var(--n) * .05); animation: zegelpuls 3.6s ease-in-out infinite alternate; }
+@keyframes zegelpuls { from { filter: brightness(.85); } to { filter: brightness(1.3) drop-shadow(0 0 3px #b54dff); } }
 
 /* Angst: koud, ontkleurd, een donkere rand die trilt */
 .laag.angst { background: radial-gradient(ellipse at 50% 45%, transparent 35%, #0a1626e0 100%); mix-blend-mode: multiply; opacity: calc(.5 + var(--n) * .1); }
@@ -757,11 +756,10 @@ img { -webkit-user-drag: none; }
   -webkit-mask: radial-gradient(circle, #000 0, transparent 60%); mask: radial-gradient(circle, #000 0, transparent 60%); animation: stralen 18s linear infinite; }
 @keyframes stralen { to { transform: translateX(-50%) rotate(360deg); } }
 
-/* Bescherming: een arcaan blauw schild over de hele kaart */
+/* Bescherming: een geschilderde rand van blauw arcaan licht, met een gloed die sterker wordt per stapel */
 .laag.bescherming { border-radius: inherit; box-shadow: inset 0 0 calc(4px + var(--n) * 3px) calc(1px + var(--n) * 1px) #5fd0ff, inset 0 0 0 2px #9fe6ff; mix-blend-mode: screen; opacity: calc(.6 + var(--n) * .08); }
 .laag.bescherming::before { inset: 0; border-radius: inherit;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 49'%3E%3Cpath d='M14 0 28 8v16L14 32 0 24V8zM14 32v17' fill='none' stroke='%2379d8ff' stroke-width='1'/%3E%3C/svg%3E") center/22% auto;
-  opacity: .28; -webkit-mask: radial-gradient(ellipse at 50% 50%, transparent 35%, #000 85%); mask: radial-gradient(ellipse at 50% 50%, transparent 35%, #000 85%); }
+  background: url("art/status/schild.png") center / 100% 100% no-repeat; opacity: calc(.8 + var(--n) * .04); }
 .laag.bescherming::after { inset: -50% 0; background: linear-gradient(115deg, transparent 40%, #bff0ff88 50%, transparent 60%); animation: schildglans 3.2s ease-in-out infinite; }
 @keyframes schildglans { 0% { transform: translateY(-40%); } 60%, 100% { transform: translateY(40%); } }
 
