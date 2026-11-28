@@ -7,6 +7,7 @@ import { speelkamer } from "./speelkamer.js";
 import { STATUSNAAM, kaartTekst } from "../motor/tekst.js";
 import { kaartEl, eenheidEl, STATUS_UITLEG } from "./kaart-dom.js";
 import { gevechtScherm } from "./gevecht-scherm.js";
+import { LESSEN, richtLesIn, maakHulp } from "./oefening.js";
 import { kaartScherm, knoopScherm, beloningScherm, eindScherm, stapelScherm, plekArt } from "./run-scherm.js";
 import { laadGeluiden, speel, sfeer, zetMuziek, zetGeluid, geluidAan, muziekIsAan, huidigNummer, volgendNummer } from "./geluid.js";
 
@@ -41,7 +42,7 @@ function startScherm() {
   document.body.classList.remove("verlicht");
   sfeer("sfeer-start");
   speelkamer(app, {
-    nieuw: nieuweRunKiezen, hervat, oefen: oefengevecht, hoofdkwartier,
+    nieuw: nieuweRunKiezen, hervat, oefen: lessenKiezen, hoofdkwartier,
     regels: spelregels, nieuws: nieuwsScherm, muziek: muziekMenu, instellingen: instellingenModaal,
   }, nieuws[0], !!run);
 }
@@ -168,7 +169,6 @@ function toonRun() {
         stuur: async a => { const r = await runDoe(a); return { ev: r.ev }; },
         klaar: () => setTimeout(toonRun, 300),
         menu: runMenu,
-        hulp: run.oefening ? oefenHulp : null,
       });
     }
     case "beloning":
@@ -291,7 +291,7 @@ function spelregels() {
   const S = (t, ...p) => [el("h3", {}, t), ...p.map(x => el("p", {}, x))];
   pagina("Spelregels", [
     el("p", { class: "sfeertekst" }, "Eén nacht in Londen, drie akten, en aan het eind een oude god die wakker wordt. Je trekt met een held en een stapel kaarten door de stad."),
-    el("div", { class: "oefenknoppen" }, el("button", { class: "knop", onclick: oefengevecht }, "Speel het oefengevecht"),
+    el("div", { class: "oefenknoppen" }, el("button", { class: "knop", onclick: lessenKiezen }, "Oefenlessen"),
       el("button", { class: "knop stil", onclick: verlichtingProef }, "Probeer Verlichting")),
     ...S("Het slagveld", "Je speelt links, de vijanden staan rechts. Elke kant heeft twee rijen van drie vakken: de Straat boven en het Riool onder. Het vak het dichtst bij het midden is het voorste. Een kaart valt de voorste vijand in haar eigen rij aan; is die rij leeg, dan de voorste in de andere rij."),
     ...S("Tellers", "Kaarten zijn gratis, maar elke kaart op het veld heeft een teller (het klokje). Aan het eind van elke beurt gaat elke teller 1 omlaag. Op 0 slaat de kaart toe en begint de teller opnieuw. Eerst slaan de vijanden toe, dan jouw kant, in de volgorde van de nummertjes. Een rood vizier toont wie deze beurt wordt aangevallen."),
@@ -310,35 +310,42 @@ function spelregels() {
   ]);
 }
 
-const OEFENHULP = [
-  "<b>Welkom.</b> Sleep een <b>bondgenoot</b> of <b>barricade</b> uit je hand naar een leeg vak aan jouw kant (links). Kaarten zijn gratis, maar je doet <b>één ding per beurt</b>.",
-  "Elke kaart op het veld heeft een <b>teller</b> (het klokje rechtsboven). Na je beurt gaat hij 1 omlaag; op 0 slaat de kaart toe. De nummertjes tonen de <b>volgorde</b>.",
-  "Een <b>rood vizier</b> toont wie deze beurt wordt aangevallen. Sleep een <b>spul</b> naar een vijand om hem te raken, of zet iemand voor je held.",
-  "<b>Big Ben</b> (bovenaan) telt af naar de volgende <b>golf</b>. Versla alle golven om te winnen.",
-  "Slechte hand? Blaas op het <b>politiefluitje</b> voor een nieuwe hand. Na 4 beurten zonder fluiten kost het geen beurt.",
-  "<b>Gruwel</b> kost je held Geest. Bij de helft of lager raak je <b>verlicht</b>. Paarse bliksem markeert je held en de betrokken kaarten. Houd een kaart lang ingedrukt voor alle tekst.",
-];
-function oefenHulp(g) { return OEFENHULP[g.beurt - 1] || null; }
+/* ───────── oefenlessen (app/scherm/oefening.js) ───────── */
+async function lessenKiezen() {
+  const gedaan = new Set(meta.oefeningen || []);
+  const lijst = el("div", { class: "lessen" }, LESSEN.map(les =>
+    el("button", { class: `knop les ${gedaan.has(les.id) ? "gedaan" : ""}`, onclick: () => { lijst.closest(".modaal")?.remove(); oefengevecht(les); } },
+      el("b", {}, les.naam, gedaan.has(les.id) ? " ✓" : ""), el("small", {}, les.kort))));
+  await modaal("Oefenlessen", el("div", {},
+    el("p", {}, "Vijf korte gevechten op Ontspannen. De tips verschijnen zodra er iets voor het eerst gebeurt. Een les telt niet als run."), lijst),
+    [{ tekst: "Sluiten" }]);
+}
 
-function oefengevecht() {
+function oefengevecht(les = LESSEN[0]) {
   const oud = run;
-  const oefen = nieuweRun({ klasse: "kracht", held: "tobias-hale", god: "vathrun", stand: "ontspannen", seed: 1888 });
+  const oefen = nieuweRun({ klasse: les.klasse, held: les.held, god: "vathrun", stand: "ontspannen", seed: 1888 });
   oefen.oefening = true;
-  const def = { id: "oefening", naam: "Oefening op de kade", plek: "wapping", bigben: 5, golven: [["cultist"], ["cultist", { id: "logebroeder", rij: "riool" }]] };
-  oefen.gevecht = maakGevecht(oefen, def);
-  oefen.gevechtDef = def;
+  oefen.gevecht = richtLesIn(les, oefen, (r, def) => { oefen.gevechtDef = def; return maakGevecht(r, def); });
   oefen.fase = "gevecht";
   const ctx = { run: oefen };
+  const hulp = maakHulp(les);
+  const volgende = LESSEN[LESSEN.indexOf(les) + 1];
   gevechtScherm(app, {
-    g: () => ctx.run.gevecht, instellingen, ponden: () => 0, plekArt: plekArt("wapping"),
+    g: () => ctx.run.gevecht, instellingen, ponden: () => 0, plekArt: plekArt(les.plek),
     stuur: async a => { const r = gevechtDoe(ctx.run.gevecht, a); ctx.run.gevecht = r.g; return { ev: r.ev }; },
     klaar: async () => {
       const won = ctx.run.gevecht.uitslag === "gewonnen";
-      await modaal(won ? "Goed gedaan" : "Helaas", won ? "Je kent nu de basis. Een echte run begint met een makkelijk gevecht, en wordt daarna snel zwaarder." : "Probeer het nog eens: zet bondgenoten en barricades vóór je held.", [{ tekst: "Terug" }]);
-      run = oud; startScherm();
+      if (won && !(meta.oefeningen || []).includes(les.id)) { meta.oefeningen = [...(meta.oefeningen || []), les.id]; bewaarMeta(); }
+      const knoppen = won && volgende ? [{ tekst: "Terug", waarde: "terug", soort: "stil" }, { tekst: `Volgende les`, waarde: "volgende" }]
+        : won ? [{ tekst: "Terug", waarde: "terug" }] : [{ tekst: "Terug", waarde: "terug", soort: "stil" }, { tekst: "Opnieuw", waarde: "opnieuw" }];
+      const w = await modaal(won ? "Goed gedaan" : "Helaas", won ? les.klaar : "Probeer het nog eens: zet bondgenoten en barricades vóór je held.", knoppen);
+      run = oud;
+      if (w === "volgende") return oefengevecht(volgende);
+      if (w === "opnieuw") return oefengevecht(les);
+      startScherm();
     },
-    menu: async () => { const w = await modaal("Oefengevecht", "Wil je stoppen met oefenen?", [{ tekst: "Stoppen", waarde: true, soort: "stil" }, { tekst: "Verder", waarde: false }]); if (w) { run = oud; startScherm(); } },
-    hulp: oefenHulp,
+    menu: async () => { const w = await modaal(les.naam, "Wil je stoppen met oefenen?", [{ tekst: "Stoppen", waarde: true, soort: "stil" }, { tekst: "Verder", waarde: false }]); if (w) { run = oud; startScherm(); } },
+    hulp,
   });
 }
 
