@@ -114,6 +114,7 @@ export function kaartEl(id, opties = {}) {
   vak.append(el("div", { class: "gt" }, t.tekst.join(" ") || (def.sfeer ? el("i", {}, def.sfeer) : "")));
   if (t.verlicht.length) vak.append(el("div", { class: "vt" }, t.verlicht.join(" ")));
   k.append(vak);
+  pasTekstIn(vak);
   let aanval = def.aanval, leven = def.leven;
   if (inst.gewond) { if (aanval) aanval = Math.floor(aanval / 2); if (leven) leven = Math.ceil(leven / 2); }
   if (aanval != null && def.soort !== "spul") k.append(stat("aanval", aanval));
@@ -126,6 +127,16 @@ export function kaartEl(id, opties = {}) {
 function talismanTeken(id) {
   const t = B().talismannen[id];
   return el("div", { class: "talisman-teken", title: `${t.naam}: ${t.tekst}`, style: { backgroundImage: bg(t.art) } });
+}
+
+/** Laat de kaarttekst passen: is hij te lang voor het tekstvak, dan wordt hij in kleine stappen kleiner (tot 70%). */
+export function pasTekstIn(vak) {
+  requestAnimationFrame(() => {
+    if (!vak.isConnected || !vak.clientHeight) return;
+    vak.style.fontSize = "";
+    const basis = parseFloat(getComputedStyle(vak).fontSize);
+    for (let f = 1; f >= 0.7 && vak.scrollHeight > vak.clientHeight + 1; f -= 0.05) vak.style.fontSize = `${(basis * f).toFixed(2)}px`;
+  });
 }
 
 /** Een eenheid op het slagveld. */

@@ -30,6 +30,8 @@ Per fase uit de brief een regel; bovenaan wat er nu speelbaar is. De laatste met
 
 ## Open punten en ideeën
 
+- [x] **Leesbaarheid (28 november):** gemeten was de handtekst 8 px op iPad liggend, 6 px staand, 9,5 px op een laptop. Nu: tekstvak 40% van de kaart, `--leesschaal` 1,22 (Instellingen: *Grotere kaarttekst* = 1,45), `pasTekstIn` maakt te lange tekst kleiner (tot 70%), een gekozen handkaart staat groot in de balk boven de hand, minder schuine waaier, en op een tablet staand de hand in 2 × 3 (handtekst 16 px). iPad liggend 9,8 px en laptop 11,6 px: daar leest de balk mee. Een telefoon liggend blijft te klein voor de kaarttekst zelf; daar is de balk het middel.
+
 - [x] **Tik voor meer (28 november):** op het slagveld opent tikken op een vijand zijn kaart (zonder gekozen kaart; met een gekozen kaart is hij het doel), twee keer tikken op een eigen eenheid ook. In winkel, beloning, kist, logement, reserve en stapelkeuze een ⓘ-knopje plus lang drukken (`metInfo` in `app/scherm/run-scherm.js`). De uitleg noemt aanval en Leven. Aanvalsicoon: een inslagster in plaats van een schildje (`ICOON.aanval`).
 
 - [x] **Oefenlessen (28 november):** het oefengevecht is nu vijf lessen (`app/scherm/oefening.js`): de basis, statussen, Geest/Verlichting/Waanzin (Ambrose met *De stemmen* in de hand, 1 Geest boven de drempel), de speurder en de aanvoerder. Tips met een voorwaarde verschijnen zodra die voor het eerst klopt. Alle vijf met de testbot gewonnen (40 van 40). Gehaalde lessen staan in `meta.oefeningen`.

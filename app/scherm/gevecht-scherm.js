@@ -1,7 +1,8 @@
 // Het gevechtsscherm: tekent de toestand en vertaalt aanrakingen naar acties.
 // De motor geeft gebeurtenissen terug; die spelen we hier af als animaties en geluiden.
 import { el, bg, ICOON, banner, melding, wacht, reduceMotion, modaal } from "./gemeen.js";
-import { kaartEl, eenheidEl, werkBij, uitlegEl } from "./kaart-dom.js";
+import { kaartEl, eenheidEl, werkBij, uitlegEl, voorSpeler } from "./kaart-dom.js";
+import { kaartTekst } from "../motor/tekst.js";
 import { B, kaartDef, instDef } from "../motor/bibliotheek.js";
 import {
   geldigeDoelen, kanSpelen, geestKosten, aanwijzingKosten, heldActie, vermogenDoelen, eenhedenVan, volgordeNummers, aanvalsDoelen, fluitjeOpgeladen, verlichtDrempel, FLUITJE_OPLADEN,
@@ -139,8 +140,8 @@ export function gevechtScherm(app, opties) {
       const d = instDef(i);
       const k = kaartEl(i.id, { inst: i, geestKost: geestKosten(g, d), aanwijzingKost: aanwijzingKosten(g, d) });
       k.dataset.inst = i.uid;
-      const hoek = (idx - (n - 1) / 2) * Math.min(3, 17 / Math.max(1, n));
-      const zak = Math.abs(idx - (n - 1) / 2) ** 2 * .65;
+      const hoek = (idx - (n - 1) / 2) * Math.min(1.2, 7 / Math.max(1, n)); // licht gewaaierd: rechte kaarten lezen makkelijker
+      const zak = Math.abs(idx - (n - 1) / 2) ** 2 * .3;
       k.style.transform = `rotate(${hoek}deg) translateY(${zak}px)`;
       if (!kanSpelen(g, i)) k.classList.add("kan-niet");
       if (S.keuze?.soort === "hand" && S.keuze.inst === i.uid) k.classList.add("gekozen");
@@ -214,10 +215,12 @@ export function gevechtScherm(app, opties) {
     const raad = root.querySelector(".speeltip");
     if (S.keuze && raad) {
       const eerste = [...doelen][0] || "";
-      raad.textContent = S.keuze.soort === "eenheid" ? "Kies een vak om te verplaatsen of een bondgenoot om te wisselen." :
+      // bij een gekozen handkaart blijft de kaarttekst staan; de doeluitleg komt erachter
+      const zet = t => { if (raad.classList.contains("kaartlezer")) { raad.querySelector(".doelhint")?.remove(); raad.append(el("span", { class: "doelhint" }, " " + t)); } else raad.textContent = t; };
+      zet(S.keuze.soort === "eenheid" ? "Kies een vak om te verplaatsen of een bondgenoot om te wisselen." :
         eerste.startsWith("vak:") ? "Kies een verlicht vak aan jouw zijde." :
         eerste.startsWith("u:") ? "Kies een verlichte kaart als doel." :
-        eerste === "veld" ? "Kies het slagveld of tik nogmaals op de kaart." : "Deze kaart heeft nu geen geldig doel.";
+        eerste === "veld" ? "Kies het slagveld of tik nogmaals op de kaart." : "Deze kaart heeft nu geen geldig doel.");
     }
   }
 
@@ -494,10 +497,23 @@ export function gevechtScherm(app, opties) {
 
   /* ───────── hulp bij het oefengevecht ───────── */
   function aanwijzing(g) {
+    const kop = el("h2", {}, "Je hand", el("small", {}, String(g.hand.length)));
+    // een gekozen kaart uit je hand: lees de hele tekst groot, boven je hand
+    const inst = S.keuze?.soort === "hand" && g.hand.find(i => i.uid === S.keuze.inst);
+    if (inst) {
+      const d = voorSpeler(instDef(inst)), t = kaartTekst(d), kost = geestKosten(g, d), aanw = aanwijzingKosten(g, d);
+      const verlichtNu = g.verlicht && t.verlicht.length;
+      return el("div", { class: "handregel" }, kop,
+        el("div", { class: "speeltip kaartlezer", role: "status" },
+          el("span", { class: "kn" }, d.naam.replace(/\+$/, "") + (d.isVerbeterd ? "+" : "")),
+          el("span", {}, (verlichtNu ? "" : t.tekst.join(" ")) || (verlichtNu ? "" : d.sfeer || ""), " "),
+          t.verlicht.length ? el("span", { class: "vl" }, (verlichtNu ? "Verlichting actief: " : "Verlicht: ") + t.verlicht.join(" "), " ") : null,
+          kost ? el("span", { class: "kost" }, `· kost ${kost} Geest`) : null,
+          d.deductie ? el("span", { class: "kost" }, ` · kost ${aanw} Aanwijzingen`) : null));
+    }
     const oefen = opties.hulp?.(g);
-    return el("div", { class: "handregel" },
-      el("h2", {}, "Je hand", el("small", {}, String(g.hand.length))),
-      el("div", { class: "speeltip", role: "status", html: oefen || "Sleep een kaart naar het veld of tik op een kaart en daarna op het doel. Tik op een vijand om zijn kaart te bekijken; houd een kaart lang ingedrukt voor alle tekst." }));
+    return el("div", { class: "handregel" }, kop,
+      el("div", { class: "speeltip", role: "status", html: oefen || "Tik op een kaart in je hand om hem hier te lezen, en daarna op het doel. Of sleep hem naar het veld. Tik op een vijand om zijn kaart te bekijken." }));
   }
 
   function meetKaarten() {
