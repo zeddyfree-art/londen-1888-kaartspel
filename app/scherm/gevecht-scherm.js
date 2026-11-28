@@ -2,7 +2,7 @@
 // De motor geeft gebeurtenissen terug; die spelen we hier af als animaties en geluiden.
 import { el, bg, ICOON, banner, melding, wacht, reduceMotion, modaal } from "./gemeen.js";
 import { kaartEl, eenheidEl, werkBij, uitlegEl } from "./kaart-dom.js";
-import { B, kaartDef } from "../motor/bibliotheek.js";
+import { B, kaartDef, instDef } from "../motor/bibliotheek.js";
 import {
   geldigeDoelen, kanSpelen, geestKosten, aanwijzingKosten, heldActie, vermogenDoelen, eenhedenVan, volgordeNummers, aanvalsDoelen, fluitjeOpgeladen, verlichtDrempel, FLUITJE_OPLADEN,
 } from "../motor/gevecht.js";
@@ -105,7 +105,7 @@ export function gevechtScherm(app, opties) {
   function eenheidMetHandlers(u, nr, mik) {
     const k = eenheidEl(u, { g: opties.g(), volgnr: nr, mikpunt: mik });
     k.dataset.doel = `u:${u.uid}`;
-    bindDetail(k, () => (u.soort === "held" ? { ...B().helden[u.id], soort: "held" } : kaartDef(u.id, u.verbeterd)), () => opties.g().eenheden[u.uid]);
+    bindDetail(k, () => (u.soort === "held" ? { ...B().helden[u.id], soort: "held" } : instDef(u)), () => opties.g().eenheden[u.uid]);
     if (u.kant === "speler" && !u.groot) bindSleep(k, { soort: "eenheid", uid: u.uid });
     else {
       toetsActie(k, u.naam, () => tikDoel(`u:${u.uid}`));
@@ -135,7 +135,7 @@ export function gevechtScherm(app, opties) {
     hand.style.setProperty("--aantal", Math.max(g.hand.length, 6));
     const n = g.hand.length;
     g.hand.forEach((i, idx) => {
-      const d = kaartDef(i.id, i.verbeterd);
+      const d = instDef(i);
       const k = kaartEl(i.id, { inst: i, geestKost: geestKosten(g, d), aanwijzingKost: aanwijzingKosten(g, d) });
       k.dataset.inst = i.uid;
       const hoek = (idx - (n - 1) / 2) * Math.min(3, 17 / Math.max(1, n));

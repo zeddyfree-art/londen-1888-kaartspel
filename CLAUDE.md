@@ -6,6 +6,13 @@
 - **Vaste woorden:** gebruik overal de termen uit `ontwerp/woordenlijst.md` (Treffer, Schade, Gruwel, Toeslaan, Spelen, Afleggen, Verbannen, Trekken, Schudden).
 - **Bronnen:** clone `zeddyfree-art/londen-1888` naast deze repo. `node tools/kopieer-uit-londen.js` haalt de art, het geluid en de brongegevens (`bron/`) daaruit.
 
+# Documenten
+
+- `ontwerp/brief.md`: de oorspronkelijke opdracht met alle fasen.
+- `ontwerp/te-doen.md`: stand van de fasen, open punten, laatste balansmeting.
+- `ontwerp/beeldinventaris.md`: alle beelden die nog gemaakt moeten worden, met prompts. `ontwerp/beeldopdracht.md` bewaart de prompts van wat al gemaakt is.
+- `ontwerp/overdracht.md`: een startprompt voor een nieuwe sessie.
+
 # Opbouw
 
 - `app/motor/`: de spelregels als pure functies, zonder DOM. Eén toestand als gewoon JSON-object. Al het toeval via `motor/toeval.js` (seeded).

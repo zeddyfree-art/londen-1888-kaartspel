@@ -1,6 +1,6 @@
 // Een kaart tekenen: CSS en SVG, de afbeelding bovenaan. Namen en getallen komen nooit uit een afbeelding.
 import { el, bg, ICOON, STATUSICOON, art } from "./gemeen.js";
-import { kaartDef, B } from "../motor/bibliotheek.js";
+import { kaartDef, B, metTalisman } from "../motor/bibliotheek.js";
 import { kaartTekst, STATUSNAAM, kenmerkNaam } from "../motor/tekst.js";
 
 const SOORTNAAM = { bondgenoot: "bondgenoot", barricade: "barricade", ritueel: "ritueel", spul: "spul", spreuk: "spreuk", middeltje: "middeltje", waanzin: "waanzin", vijand: "vijand", held: "held" };
@@ -61,13 +61,13 @@ function onweer() {
     '<svg viewBox="0 0 100 140" preserveAspectRatio="none"><path d="M76 -3 60 22 69 19 50 46 58 43 29 81 45 52 37 55 56 28 49 31Z"/><path d="m54 40 14-4 10-13-7 17-19 7zM45 57 30 60 20 74 27 57 49 51z"/></svg>' });
 }
 
-function sluiers(statussen) {
-  const actief = Object.keys(STATUSICOON).filter(s => statussen[s] > 0 && s !== "trofee");
-  return el("div", { class: "sluiers", "aria-hidden": "true" },
-    actief.map((s, i) => el("i", { class: s, style: {
-      "--hoek": `${(230 + i * 137.5) % 360}deg`,
-      "--gloed": String(.42 / Math.sqrt(actief.length)),
-    } })));
+// Statuslagen: elke status een eigen laag boven het portret, in een vaste volgorde (onder → boven),
+// zodat ze elkaar niet bedekken. De sterkte (--n) groeit mee met het aantal stapels, tot 5.
+export const LAAGVOLGORDE = ["woede", "pest", "doorns", "inkt", "vervloekt", "angst", "bekoring", "mist", "gezegend", "bescherming"];
+export function statusLagen(statussen = {}) {
+  return el("div", { class: "statuslagen", "aria-hidden": "true" },
+    LAAGVOLGORDE.filter(s => statussen[s] > 0).map(s => el("div", { class: `laag ${s}`, style: { "--n": String(Math.min(5, statussen[s])) } },
+      s === "pest" ? [el("i"), el("i"), el("i")] : s === "woede" ? [el("i"), el("i")] : s === "mist" ? [el("i"), el("i")] : null)));
 }
 
 /**
@@ -76,7 +76,7 @@ function sluiers(statussen) {
  */
 export function kaartEl(id, opties = {}) {
   const inst = opties.inst || {};
-  const def = opties.def || kaartDef(id, inst.verbeterd);
+  const def = opties.def || metTalisman(kaartDef(id, inst.verbeterd), inst.talisman);
   const k = el("div", { class: `kaart ${randKlasse(def)} ${isOccult(def) ? "occult" : ""} ${inst.gewond ? "gewond" : ""}`, data: { id } });
   k.append(el("div", { class: "beeld", style: { backgroundImage: bg(def.art) } }));
   k.append(el("div", { class: "soortlabel" }, SOORTNAAM[def.soort] || def.soort));
@@ -93,6 +93,7 @@ export function kaartEl(id, opties = {}) {
   }
   if (def.overgelopen) k.append(el("div", { class: "gewondlabel overloper" }, "overgelopen"));
   if (def.statussen) k.append(chips(def.statussen));
+  if (def.talisman) k.append(talismanTeken(def.talisman));
   if (inst.zegel) k.append(el("div", { class: "zegelteken", title: "Zegel: zit in je beginhand en kost geen beurt" }, "Z"));
   if (inst.gewond) k.append(el("div", { class: "gewondlabel" }, "gewond"));
   k.append(el("div", { class: "naam" }, def.naam.replace(/\+$/, ""), def.isVerbeterd ? el("span", { class: "verbeterd-teken" }, " +") : null));
@@ -110,15 +111,21 @@ export function kaartEl(id, opties = {}) {
   return k;
 }
 
+function talismanTeken(id) {
+  const t = B().talismannen[id];
+  return el("div", { class: "talisman-teken", title: `${t.naam}: ${t.tekst}`, style: { backgroundImage: bg(t.art) } });
+}
+
 /** Een eenheid op het slagveld. */
 export function eenheidEl(u, opties = {}) {
-  const def = u.soort === "held" ? { ...B().helden[u.id], soort: "held" } : kaartDef(u.id, u.verbeterd);
+  const def = u.soort === "held" ? { ...B().helden[u.id], soort: "held" } : metTalisman(kaartDef(u.id, u.verbeterd), u.talisman);
   const k = el("div", {
     class: `kaart veld ${u.soort === "held" ? "held" : randKlasse(def)} ${isOccult(def) ? "occult" : ""} ${u.groot ? "groot" : ""} ${u.gewond ? "gewond" : ""} ${u.statussen.mist > 0 ? "mistig" : ""}`,
     data: { uid: u.uid },
   });
   k.append(el("div", { class: "beeld", style: { backgroundImage: bg(def.art || u.art) } }));
-  k.append(sluiers(u.statussen));
+  k.append(statusLagen(u.statussen));
+  if (u.talisman) k.append(talismanTeken(u.talisman));
   if (u.soort === "held" || (u.kant === "speler" && isOccult(def))) k.append(onweer());
   if (u.soort === "held" && opties.g) {
     const { geest, maxGeest } = opties.g;
@@ -144,11 +151,12 @@ export function eenheidEl(u, opties = {}) {
 export function werkBij(k, u) {
   if (!k || !u) return;
   const nieuw = eenheidEl(u);
-  for (const sel of [".stat.aanval", ".stat.leven", ".stat.schroot", ".stat.teller", ".statussen", ".sluiers"]) {
+  for (const sel of [".stat.aanval", ".stat.leven", ".stat.schroot", ".stat.teller", ".statussen", ".statuslagen"]) {
     const oud = k.querySelector(sel), n = nieuw.querySelector(sel);
     if (oud && n) oud.replaceWith(n); else if (oud) oud.remove(); else if (n) k.append(n);
   }
   k.classList.toggle("mistig", u.statussen.mist > 0);
+  k.classList.toggle("angstig", u.statussen.angst > 0);
 }
 
 /** Een uitleg voor de lange-druk- en muisweergave. */
@@ -177,6 +185,7 @@ export function uitlegEl(def, eenheid, opties = {}) {
   if (def.deductie) kinderen.push(el("p", { class: "muted" }, `Deductie: kost ${opties.aanwijzingKost ?? def.deductie} Aanwijzingen. Waarneming krijgt Aanwijzingen van kaarten en telkens als de held toeslaat.`));
   if (eenheid?.mens || def.mens) kinderen.push(el("p", { class: "muted" }, "Een mens, geen monster."));
   if (def.baas) kinderen.push(el("p", { class: "muted" }, "Baas: versla hem en de rest slaat op de vlucht."));
+  if (def.talisman) { const t = B().talismannen[def.talisman]; kinderen.push(el("p", {}, el("b", {}, `Talisman, ${t.naam}: `), t.tekst)); }
   if (def.sfeer) kinderen.push(el("p", { class: "sfeer" }, def.sfeer));
   return kinderen;
 }

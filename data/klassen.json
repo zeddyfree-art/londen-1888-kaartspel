@@ -12,11 +12,10 @@
    "teller": 3
   },
   "kenmerken": [],
-  "spreukVersnelt": 1,
-  "regel": "Elke spreuk die je speelt, zet de teller van je held 1 lager. Je held begint elk gevecht met 4 Bescherming.",
-  "beginStatus": {
-   "bescherming": 4
-  }
+  "regel": "Verlichte teksten kosten je geen extra Geest. Een voltrokken ritueel geeft 2 Geest terug, en na elk gevecht herstel je 3 Geest.",
+  "verlichtZonderPrijs": true,
+  "ritueelGeest": 2,
+  "naGevechtGeest": 3
  },
  {
   "id": "waarneming",
@@ -45,12 +44,10 @@
   "kort": "Trofeeën, barricades, Doorns, Gezegend en Bescherming. Wie doodt, wordt sterker.",
   "held": {
    "aanval": 3,
-   "teller": 3
+   "teller": 4
   },
-  "kenmerken": [
-   "trofee"
-  ],
-  "regel": "Trofee: een kaart van Kracht die een vijand doodt, krijgt +1 aanval voor de rest van het gevecht."
+  "kenmerken": [],
+  "regel": "Trofee: een bondgenoot van Kracht die een vijand doodt, krijgt +1 aanval voor de rest van het gevecht."
  },
  {
   "id": "charisma",

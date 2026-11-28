@@ -1,7 +1,7 @@
 // Een run: één nacht in drie akten. De kaart met paden, knooppunten, beloningen en het verloop.
 // runActie(run, actie) geeft een nieuwe run terug plus gebeurtenissen. Alles is gewoon JSON.
 import { willekeurig, geheel, kies, kiesMeerdere, schud, maakSeed } from "./toeval.js";
-import { B, kaartDef } from "./bibliotheek.js";
+import { B, kaartDef, talismanPast } from "./bibliotheek.js";
 import { maakGevecht, doe as gevechtDoe } from "./gevecht.js";
 
 export const VERSIE = 1;
@@ -25,8 +25,9 @@ export const KNOOPSOORTEN = {
   ontmoeting: { naam: "Ontmoeting", tekst: "Iemand in de nacht. Een keuze." },
   club: { naam: "Club", tekst: "Hoor wat de baas van deze akte doet." },
   kist: { naam: "Kist", tekst: "Kies een spul of barricade." },
+  boekwinkel: { naam: "Occulte boekwinkel", tekst: "Spreuken, rituelen en talismannen te koop." },
 };
-const GEWICHT = { ontmoeting: 3, markt: 1.6, kist: 1.6, ziekenhuis: 1.3, gaarkeuken: 1, kerk: 1, universiteit: 1.2, logement: 1, seance: 0.7, club: 0.5, scheur: 1.1 };
+const GEWICHT = { boekwinkel: 1, ontmoeting: 3, markt: 1.6, kist: 1.6, ziekenhuis: 1.3, gaarkeuken: 1, kerk: 1, universiteit: 1.2, logement: 1, seance: 0.7, club: 0.5, scheur: 1.1 };
 const PRIJS = { gewoon: 30, ongewoon: 45, zeldzaam: 70, start: 25 };
 
 const kloon = x => JSON.parse(JSON.stringify(x));
@@ -41,7 +42,7 @@ export function nieuweRun({ klasse, held, god, stand = "normaal", klokken = [], 
   const run = {
     versie: VERSIE, seed, rng: seed >>> 0, klasse, held, god, stand, klokken,
     maxLichaam: Math.round(h.lichaam * (1 + st.heldPlus)), maxGeest: Math.round(h.geest * (1 + st.heldPlus)),
-    ponden: 20, stapel: [], reserve: [], middeltjes: ["brandewijn"], artefacten: [],
+    ponden: 20, stapel: [], reserve: [], middeltjes: ["brandewijn"], artefacten: [], talismannen: [],
     akte: 1, pos: { akte: 0, gedeelte: 0, pad: null, stap: 0 },
     fase: "kaart", knoop: null, beloning: null, gevecht: null, uitslag: null,
     uid: 0, stats: { gevechten: 0, beurten: 0, doden: 0, gespeeld: 0, spreuken: 0, verlorenIn: null },
@@ -93,10 +94,10 @@ export function aantalBondgenoten(run) {
 // Beide paden van een gedeelte zijn even lang en ongeveer even veel waard, maar voelen anders.
 const CATEGORIE = {
   herstel: ["ziekenhuis", "gaarkeuken", "logement"],
-  stapel: ["markt", "kist", "universiteit", "kerk"],
+  stapel: ["markt", "boekwinkel", "kist", "universiteit", "kerk"],
   gok: ["ontmoeting", "seance", "scheur", "club"],
 };
-export const WAARDE = { markt: 3, kist: 3, universiteit: 3, logement: 3, ziekenhuis: 3, gaarkeuken: 2.5, kerk: 2.5, ontmoeting: 2.5, seance: 2, club: 1.5, scheur: 3.5 };
+export const WAARDE = { markt: 3, boekwinkel: 3, kist: 3, universiteit: 3, logement: 3, ziekenhuis: 3, gaarkeuken: 2.5, kerk: 2.5, ontmoeting: 2.5, seance: 2, club: 1.5, scheur: 3.5 };
 const padWaarde = pad => pad.reduce((x, k) => x + WAARDE[k.soort], 0);
 
 function maakPadenPaar(run, a, g, akte) {
@@ -155,6 +156,12 @@ export function huidigPad(run) {
 export function runActie(oud, actie) {
   const run = kloon(oud);
   run._ev = [];
+  if (actie.soort === "hangTalisman") {
+    if (run.fase === "gevecht") throw new Error("Tijdens een gevecht kun je geen talisman ophangen.");
+    hangTalisman(run, actie.index, actie.inst);
+    const e = run._ev; delete run._ev;
+    return { run, ev: e };
+  }
   switch (run.fase) {
     case "kaart": kaartActie(run, actie); break;
     case "knoop": knoopActie(run, actie); break;
@@ -242,6 +249,7 @@ export function verwerkGevecht(run) {
   run.stats.doden += g.stats.doden;
   run.stats.gespeeld += g.stats.gespeeld;
   run.stats.spreuken += g.stats.spreuken;
+  for (const k of ["verlichtBeurten", "waanzin", "geestUitgegeven"]) run.stats[k] = (run.stats[k] || 0) + (g.stats[k] || 0);
   run.geest = Math.max(1, Math.min(run.maxGeest, g.geest));
   run.middeltjes = [...g.zak];
   if (g.scarabeeGebruikt) run.scarabeeGebruikt = true;
@@ -273,10 +281,13 @@ export function verwerkGevecht(run) {
     if (ad?.haak !== "na-gevecht") continue;
     if (ad.lichaam) run.lichaam = Math.min(run.maxLichaam, run.lichaam + ad.lichaam);
     if (ad.ponden) extraPonden += ad.ponden;
-    if (ad.geest) run.geest = Math.max(1, run.geest + ad.geest);
+    if (ad.geest) run.geest = Math.max(1, Math.min(run.maxGeest, run.geest + ad.geest));
+    if (ad.maxLichaam) { run.maxLichaam += ad.maxLichaam; run.lichaam += ad.maxLichaam; }
   }
   if (hv.naGevechtLichaam) run.lichaam = Math.min(run.maxLichaam, run.lichaam + hv.naGevechtLichaam);
   if (hv.naGevechtPonden) extraPonden += hv.naGevechtPonden;
+  const kr = bib.klassen[run.klasse] || {};
+  if (kr.naGevechtGeest) run.geest = Math.min(run.maxGeest, run.geest + kr.naGevechtGeest);
   const st = bib.standen[run.stand];
   const soort = g.soortGevecht;
   const basis = soort === "baas" ? 30 : soort === "elite" ? 22 : 12 + 3 * run.pos.akte + geheel(run, 6);
@@ -412,6 +423,16 @@ function openKnoop(run, knoop) {
       const mid = kiesMeerdere(run, bib.data.middeltjes, 2);
       st.middeltjes = mid.map(m => ({ id: m.id, prijs: prijs(run, m.prijs), verkocht: false }));
       st.zegel = { prijs: prijs(run, 40), verkocht: false };
+      st.talismannen = talismanWaren(run, 1);
+      break;
+    }
+    case "boekwinkel": {
+      let pool = kaartPool(run, { soorten: ["spreuk", "ritueel"] });
+      // te weinig spreuken in je eigen klasse? Dan liggen er ook boeken van andere klassen
+      if (pool.length < 4) pool = pool.concat(kaartPool(run, { soorten: ["spreuk", "ritueel"], klassen: ["kennis", "waarneming", "kracht", "charisma"] }).filter(c => !pool.includes(c)));
+      st.waren = kiesMeerdere(run, pool, 3).map(c => ({ id: c.id, prijs: prijs(run, PRIJS[c.zeldzaamheid] + geheel(run, 8)), verkocht: false }));
+      st.middeltjes = [];
+      st.talismannen = talismanWaren(run, 2);
       break;
     }
     case "logement": {
@@ -449,6 +470,23 @@ function openKnoop(run, knoop) {
   ev(run, { t: "knoop", soort: knoop.soort });
 }
 
+function talismanWaren(run, n) {
+  return kiesMeerdere(run, B().data.talismannen || [], n).map(t => ({ id: t.id, prijs: prijs(run, t.prijs || 35), verkocht: false }));
+}
+
+/** Hang een losse talisman aan een kaart in je stapel. Kan altijd tussen de gevechten door. */
+export function hangTalisman(run, index, uid) {
+  const id = run.talismannen[index];
+  if (!id) throw new Error("Die talisman heb je niet.");
+  const i = run.stapel.find(x => x.uid === uid) || run.reserve.find(x => x.uid === uid);
+  if (!i) throw new Error("Die kaart zit niet in je stapel.");
+  if (i.talisman) throw new Error("Aan die kaart hangt al een talisman.");
+  if (!talismanPast(id, i)) throw new Error("Die talisman past niet bij deze kaart.");
+  i.talisman = id;
+  run.talismannen.splice(index, 1);
+  ev(run, { t: "talisman", kaart: i.id, talisman: id });
+}
+
 function vind(run, uid) {
   const i = run.stapel.find(x => x.uid === uid);
   if (!i) throw new Error("Die kaart zit niet in je stapel.");
@@ -462,7 +500,16 @@ function knoopActie(run, actie) {
   // vervolgstappen van een ontmoeting (kaart kwijt, verbeteren)
   if (st.vervolg) { vervolgActie(run, actie); return; }
   switch (st.soort) {
-    case "markt": {
+    case "markt":
+    case "boekwinkel": {
+      if (actie.soort === "koopTalisman") {
+        const w = st.talismannen?.[actie.index];
+        if (!w || w.verkocht) throw new Error("Die talisman is er niet meer.");
+        if (run.ponden < w.prijs) throw new Error("Daar heb je niet genoeg Ponden voor.");
+        run.ponden -= w.prijs; w.verkocht = true; (run.talismannen ??= []).push(w.id);
+        ev(run, { t: "gekocht", talisman: w.id });
+        return;
+      }
       if (actie.soort === "koop") {
         const w = st.waren[actie.index];
         if (!w || w.verkocht) throw new Error("Dat is er niet meer.");
@@ -535,9 +582,13 @@ function knoopActie(run, actie) {
       if (st.klaar) return;
       if (actie.soort === "kies" && actie.index === 0) {
         run.geest -= 3;
-        const [a] = artefactKeuze(run, 1);
-        if (a) neemArtefact(run, a);
-        st.artefact = a;
+        if (willekeurig(run) < 0.5 && (B().data.talismannen || []).length) {
+          const t = kies(run, B().data.talismannen); (run.talismannen ??= []).push(t.id); st.talisman = t.id;
+        } else {
+          const [a] = artefactKeuze(run, 1);
+          if (a) neemArtefact(run, a);
+          st.artefact = a;
+        }
         if (willekeurig(run) < 0.4) { const w = kies(run, bib.data.waanzin); voegToe(run, w.id); st.waanzin = w.id; }
         if (run.geest <= 0) { const w = kies(run, bib.data.waanzin); voegToe(run, w.id); st.waanzin2 = w.id; run.geest = Math.ceil(run.maxGeest / 2); }
       }

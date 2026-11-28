@@ -7,7 +7,7 @@ Per fase uit de brief een regel; bovenaan wat er nu speelbaar is. De laatste met
 - [x] **Fase 0. Opzet.** Repo, `CLAUDE.md`, PWA (manifest, service worker, offline), `tools/bouw.js`, Pages-workflow, `tools/kopieer-uit-londen.js`, woordenlijst.
 - [x] **Fase 1. Gevecht.** Motor met tellers, rijen, golven, de beurt, het politiefluitje, terugroepen, alle 10 statussen, Gruwel, Geest, Verlichting en Waanzin. Kracht, Vathrûn. Testbot speelt 1000 gevechten in een paar seconden.
 - [x] **Fase 2. Run.** Kaart van Londen met paden, alle knooppunten behalve de Occulte boekwinkel, kaartbeloningen, winkel, rust met een keuze, ontmoetingen, opslaan en hervatten, de drie bazen van Vathrûn (Moeder Brine, de Bisschop van het Slib, Vathrûn in drie fasen).
-- [~] **Fase 3. Klassen.** Klaar (27 november): Kennis, Waarneming en Charisma met hun pools (Kennis 27, Waarneming 27, Charisma 30 kaarten inclusief start), rituelen, Aanwijzingen en Deducties, Ontmaskeren, Overtuigen (ook voorgoed), klasseregels, alle 28 helden met vermogen en persoonlijke voorwerpen, vermogens die je inzet met een knop. Nog te doen: Kracht en Londen aanvullen tot 25 en 30 kaarten, talismannen (±15), meer artefacten (25), Occulte boekwinkel.
+- [x] **Fase 3. Klassen.** Klaar (28 november): vier klassen met hun pools (Kennis 29, Waarneming 25, Kracht 27, Charisma 28, Londen 30 kaarten), rituelen, Aanwijzingen en Deducties, Ontmaskeren, Overtuigen, klasseregels, alle 28 helden met vermogen en persoonlijke voorwerpen, 15 talismannen, 25 artefacten en de Occulte boekwinkel.
 - [ ] **Fase 4. Goden.** De andere 11 goden met monsters (elk 1 nieuw monster erbij), gevechten, godsregels, luitenants, epische monsters, eindbazen met fasen en minstens 4 ontmoetingen per god.
 - [ ] **Fase 5. Hoofdkwartier en moeilijkheid.** Ontgrendelingen via uitdagingen, de dertien klokken (de motor kent er al een paar), geschatte winkans per stand en klok, balans per klasse en god.
 - [ ] **Fase 6. Afwerking.** Nieuwe art (`ontwerp/beeldopdracht.md`) en geluiden (`ontwerp/geluidsopdracht.md`), meer animaties, toegankelijkheid.
@@ -29,6 +29,11 @@ Per fase uit de brief een regel; bovenaan wat er nu speelbaar is. De laatste met
 - Oefengevecht met hulpteksten bij de Spelregels.
 
 ## Open punten en ideeën
+
+- **Beelden:** `ontwerp/beeldinventaris.md` is de volledige lijst van wat er nog gemaakt moet worden (42 nodig of aanbevolen, 22 mooi om te hebben), met prompts. Tien talismannen gebruiken tot dan de achterkant van de artefactkaarten.
+- **Statuslagen** (`statusLagen` in `app/scherm/kaart-dom.js`, CSS onder "statuslagen" in `app/stijl.css`): elke status een eigen laag, sterkte met `--n` (1 tot 5). Geschilderde texturen kunnen later in dezelfde lagen (zie beeldinventaris B2).
+- **Verlichting en Kennis:** gemeten met de testbot. Zonder hulp kreeg Kennis 11 Waanzin-kaarten per run (de rest 2 tot 4). Nu: verlichte teksten kosten Kennis geen extra Geest, rituelen geven 2 Geest terug, na elk gevecht +3 Geest. Kennis is het vaakst verlicht van alle klassen, met rond de 4 Waanzin per run.
+- **Luitenants voor fase 4:** Greaves (Ysmara) was een bondgenoot; die kaart is nu Obadiah Penrose. Haversham en Kettering staan nog als beeld op twee Charisma-kaarten tot hun eigen illustratie er is.
 
 - **Paden gebalanceerd (27 november):** beide paden van een gedeelte even lang (2 of 3), elk hooguit één herstel-, één stapel- en één gok-knooppunt, en ongeveer even veel waard (`WAARDE` in `app/motor/run.js`). Gemiddeld waardeverschil van 2,5 naar 0,35; scheve keuzes van 31% naar 0%. Winkans testbot: Ontspannen 94%, Normaal 71%, Genadeloos 30%.
 
