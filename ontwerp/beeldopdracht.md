@@ -142,3 +142,13 @@ Een voorwerp, geen persoon, geen tekst. 1:1, 1024 × 1024.
 | `kaarten/rijtuig-bestellen.png` | a black hansom cab pulling up at a foggy kerb at night, the driver tipping his hat, lamps glowing | `art/kaarten/rijtuig-bestellen.jpg` |
 | `kaarten/tralies-yard.png` | a heavy iron cell door with bars, unbolted and propped across an alley as a barricade, a police lantern hanging from it | `art/kaarten/tralies-yard.jpg` |
 | `kaarten/zeven-kaarsen.png` | seven tall black candles in a circle on a stone floor, one already guttering out, faint violet smoke rising | `art/kaarten/zeven-kaarsen.jpg` |
+
+## 10. Statustexturen
+
+Op zuiver zwart geschilderd, zonder de stijlregel. In het spel omgezet naar doorzichtige PNG (alfa = helderheid), 512 px.
+
+| Bron | Prompt | In het spel |
+|---|---|---|
+| `status/vuur.png` | tongues of orange and crimson flame rising from the bottom edge, embers drifting upwards, painterly, isolated on a pure black background | `art/status/vuur.png` (Woede) |
+| `status/gif.png` | thick toxic green slime dripping down from the top edge in long drops, glowing faintly, painterly, isolated on a pure black background | `art/status/gif.png` (Pest) |
+| `status/mist.png` | soft drifting banks of pale yellow-grey fog, wispy and layered, painterly, isolated on a pure black background | `art/status/mist.png` (Mist) |

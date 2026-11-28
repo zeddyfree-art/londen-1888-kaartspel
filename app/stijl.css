@@ -682,30 +682,27 @@ img { -webkit-user-drag: none; }
 
 /* ───────── statuslagen op de kaart ─────────
    Volgorde van onder naar boven: woede, pest, doorns, inkt, vervloekt, angst, bekoring, mist, gezegend, bescherming.
-   --n is de sterkte (1 tot 5). Alles is CSS en SVG, zonder afbeeldingen. */
+   --n is de sterkte (1 tot 5). Woede, pest en mist gebruiken een geschilderde textuur (art/status/*.png). Die is op zwart geschilderd
+   en omgezet naar doorzichtig (alfa = helderheid). mix-blend-mode werkt hier niet: .statuslagen is een eigen stapel. De rest is CSS en SVG. */
 .sluiers { display: none; }
 .kaart.mistig::before { display: none; }
 .statuslagen { position: absolute; inset: 0; z-index: 1; overflow: hidden; border-radius: inherit; pointer-events: none; }
 .laag { position: absolute; inset: 0; pointer-events: none; }
 .laag::before, .laag::after, .laag i { content: ""; position: absolute; pointer-events: none; }
 
-/* Woede: vuur van onderaf, hoger met elke stapel */
-.laag.woede { inset: auto 0 0 0; height: calc(24% + var(--n) * 10%); mix-blend-mode: screen; }
-.laag.woede::before { inset: 0; background:
-  radial-gradient(ellipse 34% 90% at 22% 100%, #ffd27a 0, #ff7a2a 30%, #c2240e 58%, transparent 72%),
-  radial-gradient(ellipse 30% 100% at 55% 100%, #ffe7a6 0, #ff8a2e 28%, #b8200c 60%, transparent 74%),
-  radial-gradient(ellipse 32% 80% at 86% 100%, #ffc76a 0, #ff6a22 32%, #a5190a 60%, transparent 74%);
-  filter: blur(1px); animation: vlammen 1.1s ease-in-out infinite alternate; transform-origin: 50% 100%; }
-.laag.woede::after { inset: 0; background: linear-gradient(0deg, #ff5a1fbb, transparent 70%); opacity: calc(.25 + var(--n) * .1); }
+/* Woede: geschilderd vuur van onderaf, hoger met elke stapel */
+.laag.woede { inset: auto 0 0 0; height: calc(30% + var(--n) * 10%); }
+.laag.woede::before { inset: 0; background: url("art/status/vuur.png") center bottom / 100% auto no-repeat;
+  opacity: calc(.7 + var(--n) * .06); animation: vlammen 1.1s ease-in-out infinite alternate; transform-origin: 50% 100%; }
+.laag.woede::after { inset: 0; background: linear-gradient(0deg, #ff5a1f99, transparent 60%); opacity: calc(.15 + var(--n) * .08); }
 .laag.woede i { width: 3px; height: 3px; border-radius: 50%; background: #ffd08a; box-shadow: 0 0 6px 2px #ff7a2a; bottom: 10%; opacity: 0; animation: vonk 1.6s linear infinite; }
 .laag.woede i:nth-child(1) { left: 30%; } .laag.woede i:nth-child(2) { left: 68%; animation-delay: .8s; }
-@keyframes vlammen { 0% { transform: scaleY(.9) scaleX(1.02); filter: blur(1px) brightness(.95); } 100% { transform: scaleY(1.08) scaleX(.97); filter: blur(1.4px) brightness(1.15); } }
+@keyframes vlammen { 0% { transform: scaleY(.94) scaleX(1.02); filter: brightness(.9); } 100% { transform: scaleY(1.06) scaleX(.98); filter: brightness(1.15); } }
 @keyframes vonk { 0% { transform: translateY(0); opacity: 0; } 15% { opacity: 1; } 100% { transform: translateY(-260%) translateX(6px); opacity: 0; } }
 
-/* Pest: gifgroene druppels die van boven over de kaart lopen */
-.laag.pest::before { inset: 0 0 auto 0; height: calc(9% + var(--n) * 5%);
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 60' preserveAspectRatio='none'%3E%3Cpath fill='%2386ff3a' d='M0 0h100v8c-4 0-4 10-7 22-2 8-8 8-8 0 0-10-3-16-7-16s-4 30-8 36c-3 5-9 4-9-3 0-12-2-25-6-25s-3 12-6 18c-2 4-7 4-7-1 0-9-3-15-7-15s-3 8-6 14c-2 4-6 3-6-1 0-7-2-11-6-11s-4 18-8 22c-2 3-7 2-7-2 0-8-2-14-7-14z'/%3E%3C/svg%3E") top/100% 100% no-repeat;
-  filter: drop-shadow(0 0 3px #4cff1a) drop-shadow(0 2px 2px #0a2a00); opacity: .72; }
+/* Pest: geschilderd gifgroen slijm dat van boven over de kaart druipt, langer met elke stapel */
+.laag.pest::before { inset: 0 0 auto 0; height: calc(28% + var(--n) * 12%);
+  background: url("art/status/gif.png") center top / 100% 100% no-repeat; opacity: calc(.62 + var(--n) * .07); }
 .laag.pest::after { inset: 0; background: linear-gradient(180deg, #3cff1a30, transparent 55%); opacity: calc(.4 + var(--n) * .1); }
 .laag.pest i { top: 12%; width: 5%; aspect-ratio: 2/3; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; background: radial-gradient(circle at 35% 35%, #e2ffb8, #7cff2a 45%, #2f9a00); box-shadow: 0 0 5px #5cff20; opacity: 0; animation: druppel 2.4s ease-in infinite; }
 .laag.pest i:nth-child(1) { left: 18%; } .laag.pest i:nth-child(2) { left: 52%; animation-delay: .9s; } .laag.pest i:nth-child(3) { left: 79%; animation-delay: 1.6s; }
@@ -745,13 +742,11 @@ img { -webkit-user-drag: none; }
   filter: drop-shadow(0 0 3px #ff4fa8); opacity: calc(.35 + var(--n) * .1); background-size: 80% auto; animation: harten 6s linear infinite; }
 @keyframes harten { to { background-position: 0 -100%; } }
 
-/* Mist: dikke slierten over het personage, die langzaam voorbij drijven */
-.laag.mist { opacity: calc(.45 + var(--n) * .1); }
-.laag.mist i { inset: 20% -60% 15% -60%; background:
-  radial-gradient(ellipse 22% 30% at 20% 50%, #d8dcc0d0, transparent 70%), radial-gradient(ellipse 26% 26% at 50% 30%, #c9cfb4c8, transparent 70%),
-  radial-gradient(ellipse 22% 34% at 78% 62%, #d1d6bbc8, transparent 70%);
-  filter: blur(6px); animation: mistdrift 9s ease-in-out infinite alternate; }
-.laag.mist i:nth-child(2) { inset: 45% -60% -10% -60%; opacity: .8; animation-duration: 12s; animation-direction: alternate-reverse; }
+/* Mist: geschilderde slierten over het personage, die langzaam voorbij drijven */
+.laag.mist { opacity: calc(.5 + var(--n) * .1); }
+.laag.mist i { inset: 5% -60% 10% -60%; background: url("art/status/mist.png") center / auto 100% repeat-x;
+  animation: mistdrift 9s ease-in-out infinite alternate; }
+.laag.mist i:nth-child(2) { inset: 40% -60% -15% -60%; opacity: .7; animation-duration: 12s; animation-direction: alternate-reverse; }
 .laag.mist::after { inset: 0; background: linear-gradient(180deg, transparent 20%, #c8cdb466 70%, #c8cdb4aa); }
 @keyframes mistdrift { from { transform: translateX(-12%); } to { transform: translateX(12%); } }
 
