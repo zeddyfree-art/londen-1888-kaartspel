@@ -5,7 +5,7 @@ import { nieuweRun, runActie, VERSIE } from "../motor/run.js";
 import { maakGevecht, veranderGeest, verlichtDrempel, doe as gevechtDoe } from "../motor/gevecht.js";
 import { speelkamer } from "./speelkamer.js";
 import { STATUSNAAM, kaartTekst } from "../motor/tekst.js";
-import { kaartEl, eenheidEl, STATUS_UITLEG } from "./kaart-dom.js";
+import { kaartEl, eenheidEl, STATUS_UITLEG, zetSpeelklasse } from "./kaart-dom.js";
 import { gevechtScherm } from "./gevecht-scherm.js";
 import { LESSEN, richtLesIn, maakHulp } from "./oefening.js";
 import { kaartScherm, knoopScherm, beloningScherm, eindScherm, stapelScherm, plekArt } from "./run-scherm.js";
@@ -39,6 +39,7 @@ const bewaarInst = () => { const i = opslag.lees("instellingen", {}); opslag.sch
 /* ───────── startscherm ───────── */
 
 function startScherm() {
+  zetSpeelklasse(null);
   document.body.classList.remove("verlicht");
   sfeer("sfeer-start");
   speelkamer(app, {
@@ -54,6 +55,7 @@ function hervat() { toonRun(); }
 function heldVrij(h) { return meta.alles || h.vrij || meta.ontgrendeld.includes(h.id); }
 
 function nieuweRunKiezen() {
+  zetSpeelklasse(null);
   const keuze = { klasse: null, held: null, god: null, stand: "normaal" };
   const bib = B();
   const kop = (titel, terug) => el("div", { class: "kop" }, el("button", { class: "icoonknop", html: ICOON.terug, "aria-label": "Terug", onclick: terug }), el("h2", {}, titel));
@@ -155,6 +157,7 @@ async function runDoe(actie) {
 
 function toonRun() {
   if (!run) return startScherm();
+  zetSpeelklasse(run.klasse);
   sfeer(`sfeer-${run.god}`);
   document.body.classList.toggle("verlicht", false);
   switch (run.fase) {
@@ -237,6 +240,7 @@ function pagina(titel, inhoud, achtergrond = "plekken/bloomsbury.jpg") {
 }
 
 function hoofdkwartier() {
+  zetSpeelklasse(null);
   const bib = B();
   const kracht = bib.data.helden;
   pagina("Het hoofdkwartier", [
@@ -325,6 +329,7 @@ function oefengevecht(les = LESSEN[0]) {
   const oud = run;
   const oefen = nieuweRun({ klasse: les.klasse, held: les.held, god: "vathrun", stand: "ontspannen", seed: 1888 });
   oefen.oefening = true;
+  zetSpeelklasse(les.klasse);
   oefen.gevecht = richtLesIn(les, oefen, (r, def) => { oefen.gevechtDef = def; return maakGevecht(r, def); });
   oefen.fase = "gevecht";
   const ctx = { run: oefen };

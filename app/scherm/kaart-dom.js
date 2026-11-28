@@ -75,9 +75,20 @@ export function statusLagen(statussen = {}) {
  * Een kaart uit de hand, de stapel of de winkel.
  * opties: { inst, geestKost, klein }
  */
+/* De klasse waarmee nu gespeeld wordt. Kennis betaalt geen extra Geest voor verlichte teksten
+   (klasseregel verlichtZonderPrijs, zie gevecht.js); de kaarten laten die prijs dan ook weg. */
+let speelklasse = null;
+export function zetSpeelklasse(klasse) { speelklasse = klasse || null; }
+const verlichtGratis = () => !!(speelklasse && B().klassen[speelklasse]?.verlichtZonderPrijs);
+/** De kaart zoals hij voor deze klasse werkt: bij Kennis zonder "Je verliest Geest" in de verlichte speeltekst. */
+export function voorSpeler(def) {
+  if (!def?.effectVerlicht || !verlichtGratis() || !def.effectVerlicht.some(e => e.doe === "geest" && e.aantal < 0)) return def;
+  return { ...def, effectVerlicht: def.effectVerlicht.filter(e => !(e.doe === "geest" && e.aantal < 0)), verlichtPrijsVervalt: true };
+}
+
 export function kaartEl(id, opties = {}) {
   const inst = opties.inst || {};
-  const def = opties.def || metTalisman(kaartDef(id, inst.verbeterd), inst.talisman);
+  const def = voorSpeler(opties.def || metTalisman(kaartDef(id, inst.verbeterd), inst.talisman));
   const k = el("div", { class: `kaart ${randKlasse(def)} ${isOccult(def) ? "occult" : ""} ${inst.gewond ? "gewond" : ""}`, data: { id } });
   k.append(el("div", { class: "beeld", style: { backgroundImage: bg(def.art) } }));
   k.append(el("div", { class: "soortlabel" }, SOORTNAAM[def.soort] || def.soort));
@@ -162,6 +173,7 @@ export function werkBij(k, u) {
 
 /** Een uitleg voor de lange-druk- en muisweergave. */
 export function uitlegEl(def, eenheid, opties = {}) {
+  def = voorSpeler(def);
   const t = kaartTekst(def);
   const kinderen = [el("h3", {}, def.naam)];
   if (def.soort === "held") kinderen.push(el("p", {}, el("b", {}, def.vermogen.naam + ": "), def.vermogen.tekst));
@@ -170,6 +182,7 @@ export function uitlegEl(def, eenheid, opties = {}) {
   }
   for (const r of t.tekst) kinderen.push(el("p", {}, r));
   if (t.verlicht.length) kinderen.push(el("p", { class: "vl" }, el("b", {}, opties.g?.verlicht ? "Verlichting actief: " : "Verlicht: "), t.verlicht.join(" ")));
+  if (def.verlichtPrijsVervalt) kinderen.push(el("p", { class: "muted" }, "Als occultist betaal je geen extra Geest voor de verlichte tekst."));
   if (opties.g && JSON.stringify(def).includes('"perWaanzin"')) {
     const n = waanzinInStapel(opties.g);
     kinderen.push(el("p", { class: "vl" }, el("b", {}, "Waanzin in je stapel: "), n ? `${n}, dus +${n}.` : "geen, dus nog niets extra."));

@@ -1,4 +1,9 @@
 [
+ { "id": 15, "datum": "28 november 2026", "titel": "Verlichte teksten kloppen voor de occultist",
+   "punten": [
+     "Speel je met Kennis, dan tonen de kaarten in hun verlichte tekst geen ‘Je verliest 1 Geest’ meer, en ook geen −1 op het paarse fiche. De occultist betaalde die prijs al niet; nu zie je dat ook.",
+     "In de uitleg van zo'n kaart staat: als occultist betaal je geen extra Geest voor de verlichte tekst. Bij de andere klassen blijft de prijs gewoon staan."
+   ] },
  { "id": 14, "datum": "28 november 2026", "titel": "Tik voor meer",
    "punten": [
      "Tik op een vijand om zijn kaart te bekijken: wat hij doet als hij toeslaat, zijn vermogens, zijn statussen en wat de getallen betekenen. Heb je eerst een kaart gekozen, dan is de vijand gewoon je doel.",
