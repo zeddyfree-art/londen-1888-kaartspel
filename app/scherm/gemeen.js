@@ -24,7 +24,8 @@ export const art = pad => (pad ? `art/${pad}` : "");
 export const bg = pad => (pad ? `url("${art(pad)}")` : "none");
 
 export const ICOON = {
-  aanval: `<svg viewBox="0 0 40 40"><path d="M20 2 L36 9 L33 28 L20 38 L7 28 L4 9Z" fill="#6e1a14" stroke="#e8cf86" stroke-width="2.2"/></svg>`,
+  // aanval: een inslag (sterretje van een klap), niet te verwarren met een schild
+  aanval: `<svg viewBox="0 0 40 40"><path d="M20.0 0.5 L23.9 8.1 L32.0 3.4 L30.1 12.7 L37.9 14.2 L32.5 20.0 L39.0 26.2 L30.1 27.3 L31.0 35.1 L23.9 31.9 L20.0 40.4 L16.1 31.9 L8.8 35.5 L9.9 27.3 L0.8 26.2 L7.5 20.0 L2.0 14.1 L9.9 12.7 L8.4 4.0 L16.1 8.1Z" fill="#8e1f16" stroke="#e8cf86" stroke-width="2" stroke-linejoin="round"/><circle cx="20" cy="20" r="10.5" fill="#6e1a14"/></svg>`,
   leven: `<svg viewBox="0 0 40 40"><path d="M20 37 C6 27 2 19 4 12 C6 5 15 3 20 10 C25 3 34 5 36 12 C38 19 34 27 20 37Z" fill="#a8342a" stroke="#f5c9bd" stroke-width="2.2"/></svg>`,
   schroot: `<svg viewBox="0 0 40 40"><path d="M20 2 L36 11 L36 29 L20 38 L4 29 L4 11Z" fill="#545b61" stroke="#d6dde2" stroke-width="2.2"/></svg>`,
   teller: `<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="17" fill="#e8d8a8" stroke="#5a4520" stroke-width="3"/><path d="M20 5v3M20 32v3M5 20h3M32 20h3" stroke="#5a4520" stroke-width="2"/></svg>`,

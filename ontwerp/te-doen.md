@@ -30,6 +30,8 @@ Per fase uit de brief een regel; bovenaan wat er nu speelbaar is. De laatste met
 
 ## Open punten en ideeën
 
+- [x] **Tik voor meer (28 november):** op het slagveld opent tikken op een vijand zijn kaart (zonder gekozen kaart; met een gekozen kaart is hij het doel), twee keer tikken op een eigen eenheid ook. In winkel, beloning, kist, logement, reserve en stapelkeuze een ⓘ-knopje plus lang drukken (`metInfo` in `app/scherm/run-scherm.js`). De uitleg noemt aanval en Leven. Aanvalsicoon: een inslagster in plaats van een schildje (`ICOON.aanval`).
+
 - [x] **Oefenlessen (28 november):** het oefengevecht is nu vijf lessen (`app/scherm/oefening.js`): de basis, statussen, Geest/Verlichting/Waanzin (Ambrose met *De stemmen* in de hand, 1 Geest boven de drempel), de speurder en de aanvoerder. Tips met een voorwaarde verschijnen zodra die voor het eerst klopt. Alle vijf met de testbot gewonnen (40 van 40). Gehaalde lessen staan in `meta.oefeningen`.
 - **Kaarttekst bij Kennis:** de verlichte tekst toont ‘Je verliest 1 Geest’, ook al betaalt de occultist dat niet (`verlichtZonderPrijs`). De les legt het uit; netter is de tekst in de hand aanpassen aan de klasse.
 

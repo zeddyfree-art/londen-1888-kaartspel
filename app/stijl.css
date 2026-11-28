@@ -122,6 +122,9 @@ img { -webkit-user-drag: none; }
 .kaart .verbeterd-teken { color: var(--groen); }
 
 /* getallen: aanval, leven, schroot, teller */
+.infoknop { position: absolute; top: .35em; left: 50%; transform: translateX(-50%); z-index: 4; width: 1.7em; height: 1.7em; border-radius: 50%;
+  border: 1px solid var(--goud); background: #1b170fd9; color: var(--goud-licht); font: italic 700 .95em/1 Georgia, serif; display: grid; place-items: center; cursor: pointer; padding: 0; }
+.infoknop:hover, .infoknop:focus-visible { background: #3a2f18; }
 .stat { position: absolute; display: grid; place-items: center; font-weight: 700; font-size: 1.25em; color: #fff; text-shadow: 0 1px 2px #000; z-index: 3; }
 .stat svg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; filter: drop-shadow(0 1px 2px rgba(0,0,0,.8)); }
 .stat.aanval { left: .2em; bottom: .2em; width: 2.2em; height: 2.2em; }

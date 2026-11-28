@@ -184,6 +184,13 @@ export function uitlegEl(def, eenheid, opties = {}) {
     for (const [s, n] of statussen) dl.append(el("div", {}, el("dt", {}, el("i", { class: `uitlegicoon ${s}`, html: STATUSICOON[s] }), `${STATUSNAAM[s]} ${n}: `), el("dd", {}, STATUS_UITLEG[s])));
     kinderen.push(dl);
   }
+  if (eenheid?.aanval != null || eenheid?.leven != null) {
+    const delen = [];
+    if (eenheid.aanval != null) delen.push(`Aanval ${Math.max(0, eenheid.aanval + (eenheid.statussen?.woede || 0) - (eenheid.statussen?.angst || 0))} (het sterretje): zoveel schade doet een treffer.`);
+    if (eenheid.schroot != null) delen.push(`Schroot ${eenheid.schroot}: elke treffer kost 1.`);
+    else if (eenheid.leven != null) delen.push(`Leven ${eenheid.leven} van ${eenheid.maxLeven} (het hart).`);
+    kinderen.push(el("p", { class: "muted" }, delen.join(" ")));
+  }
   if (eenheid?.teller != null) kinderen.push(el("p", { class: "muted" }, `Slaat toe over ${eenheid.teller} ${eenheid.teller === 1 ? "slag" : "slagen"}${eenheid.statussen.mist ? " (staat stil door Mist)" : ""}.`));
   if (eenheid?.gruwel) kinderen.push(el("p", { class: "muted" }, `Doet ${eenheid.gruwel} Gruwel per treffer.`));
   if (eenheid?.ontmaskerd) kinderen.push(el("p", {}, el("b", {}, "Ontmaskerd: "), "neemt extra schade van elke treffer."));
