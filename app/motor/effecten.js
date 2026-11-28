@@ -3,7 +3,7 @@
 import { kies } from "./toeval.js";
 import {
   treffer, geefStatus, veranderTeller, genees, veranderGeest, veranderLichaam, trek, roepOp,
-  eenhedenVan, rijVan, eenheidOp, levend, ev, snap, andereKant, overtuig, laatVerdwijnen, naarAchter,
+  eenhedenVan, rijVan, eenheidOp, levend, ev, snap, andereKant, overtuig, laatVerdwijnen, naarAchter, waanzinInStapel,
 } from "./gevecht.js";
 import { B } from "./bibliotheek.js";
 
@@ -65,7 +65,7 @@ export function voerUit(g, effecten, ctx) {
   for (const e of effecten || []) {
     if (g.uitslag) return;
     const doelen = kiesDoelen(g, e.op || "doel", ctx).filter(levend);
-    const n = e.aantal ?? 0;
+    const n = (e.aantal ?? 0) + (e.perWaanzin ? e.perWaanzin * waanzinInStapel(g) : 0);
     switch (e.doe) {
       case "schade":
       case "gruwel":

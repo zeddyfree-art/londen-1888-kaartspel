@@ -25,6 +25,10 @@ export function laadData() {
 
 /* ───────── een gevecht spelen ───────── */
 
+/* Kaarten die sterker worden per Waanzin-kaart: met twee of meer daarvan houdt de bot zijn Waanzin liever. */
+const gebruiktWaanzin = id => JSON.stringify(kaartDef(id)).includes('"perWaanzin"');
+const waanzinKaarten = lijst => lijst.filter(i => gebruiktWaanzin(i.id)).length;
+
 function waarde(g) {
   if (g.uitslag === "verloren") return -1e6;
   const h = g.eenheden[g.held];
@@ -43,7 +47,9 @@ function waarde(g) {
   }
   s += Math.min(g.aanwijzingen || 0, 6) * 4;
   s -= (g.golven.length - g.golfNr) * 25 + g.wachtrij.length * 15;
-  s -= (g.nieuweWaanzin?.length || 0) * 18; // Waanzin blijft in je stapel: een redelijke speler vermijdt dat
+  // Waanzin blijft in je stapel: een redelijke speler vermijdt dat, tenzij zijn spreuken er sterker van worden
+  const wk = Math.min(2, waanzinKaarten([...g.hand, ...g.trek, ...g.afleg, ...g.verbannen]));
+  s -= (g.nieuweWaanzin?.length || 0) * (18 - 6 * wk);
   return s;
 }
 
@@ -110,6 +116,7 @@ function kaartScore(run, id) {
   if (d.soort === "bondgenoot") s += aantalBondgenoten(run) < 4 ? 4 : -3;
   if (d.soort === "barricade" || d.soort === "ritueel") s += 1;
   if (d.soort === "spreuk" && run.geest <= 3) s -= 2;
+  if (gebruiktWaanzin(id)) s += run.stapel.filter(i => kaartDef(i.id).soort === "waanzin").length >= 2 ? 3 : 1;
   return s;
 }
 
@@ -164,7 +171,8 @@ function kiesRunActie(run) {
         case "gaarkeuken": return st.klaar ? { soort: "klaar" } : { soort: "kies", index: run.geest < run.maxGeest * 0.6 ? 0 : 1 };
         case "kerk": {
           if ((st.verwijderd || 0) >= 2) return { soort: "klaar" };
-          const kand = run.stapel.filter(i => kaartDef(i.id).soort === "waanzin" || (run.stapel.length > 12 && kaartDef(i.id).zeldzaamheid === "start" && kaartDef(i.id).soort === "spul"));
+          const houdWaanzin = waanzinKaarten(run.stapel) >= 2 && run.stapel.filter(i => kaartDef(i.id).soort === "waanzin").length <= 4;
+          const kand = run.stapel.filter(i => (kaartDef(i.id).soort === "waanzin" && !houdWaanzin) || (run.stapel.length > 12 && kaartDef(i.id).zeldzaamheid === "start" && kaartDef(i.id).soort === "spul"));
           return kand.length ? { soort: "verwijder", inst: kand[0].uid } : { soort: "klaar" };
         }
         case "universiteit": {

@@ -30,10 +30,11 @@ function zin(e, vijand) {
       if (e.extraMonster) t += ` (+${e.extraMonster} tegen monsters)`;
       if (e.extraOntmaskerd) t += ` (+${e.extraOntmaskerd} tegen een ontmaskerde vijand)`;
       if (e.perAanwijzing) t += `, plus ${e.perAanwijzing} per Aanwijzing die je hebt`;
+      if (e.perWaanzin) t += `, plus ${e.perWaanzin} per Waanzin-kaart in je stapel`;
       return t + ".";
     }
     case "gruwel": return `Doe ${n} Gruwel aan ${w}.`;
-    case "status": return `${hoofd(w)} ${w.startsWith("al") ? "krijgen" : "krijgt"} ${n} ${S[e.status]}.`;
+    case "status": return `${hoofd(w)} ${w.startsWith("al") ? "krijgen" : "krijgt"} ${n} ${S[e.status]}${e.perWaanzin ? `, plus ${e.perWaanzin} per Waanzin-kaart in je stapel` : ""}.`;
     case "teller": return n < 0 ? `Zet de teller van ${w} ${-n} lager.` : `Zet de teller van ${w} ${n} hoger.`;
     case "genees": return e.op === "held" ? `Je held herstelt ${n} Lichaam.` : `${hoofd(w)} ${w.startsWith("al") ? "herstellen" : "herstelt"} ${n} Leven.`;
     case "geest": return n < 0 ? `Je verliest ${-n} Geest.` : `Je held herstelt ${n} Geest.`;

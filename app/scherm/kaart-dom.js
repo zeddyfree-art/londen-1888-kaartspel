@@ -1,6 +1,7 @@
 // Een kaart tekenen: CSS en SVG, de afbeelding bovenaan. Namen en getallen komen nooit uit een afbeelding.
 import { el, bg, ICOON, STATUSICOON, art } from "./gemeen.js";
 import { kaartDef, B, metTalisman } from "../motor/bibliotheek.js";
+import { waanzinInStapel } from "../motor/gevecht.js";
 import { kaartTekst, STATUSNAAM, kenmerkNaam } from "../motor/tekst.js";
 
 const SOORTNAAM = { bondgenoot: "bondgenoot", barricade: "barricade", ritueel: "ritueel", spul: "spul", spreuk: "spreuk", middeltje: "middeltje", waanzin: "waanzin", vijand: "vijand", held: "held" };
@@ -169,6 +170,10 @@ export function uitlegEl(def, eenheid, opties = {}) {
   }
   for (const r of t.tekst) kinderen.push(el("p", {}, r));
   if (t.verlicht.length) kinderen.push(el("p", { class: "vl" }, el("b", {}, opties.g?.verlicht ? "Verlichting actief: " : "Verlicht: "), t.verlicht.join(" ")));
+  if (opties.g && JSON.stringify(def).includes('"perWaanzin"')) {
+    const n = waanzinInStapel(opties.g);
+    kinderen.push(el("p", { class: "vl" }, el("b", {}, "Waanzin in je stapel: "), n ? `${n}, dus +${n}.` : "geen, dus nog niets extra."));
+  }
   if (def.soort === "spreuk") kinderen.push(el("p", { class: "muted" }, `Kost ${opties.geestKost ?? def.geest ?? 0} Geest.`));
   const statussen = Object.entries(eenheid?.statussen || def.statussen || {}).filter(([, n]) => n > 0);
   const kenm = (eenheid?.kenmerken || def.kenmerken || []);

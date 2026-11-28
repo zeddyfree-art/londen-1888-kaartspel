@@ -3,16 +3,16 @@
  "runsPerStand": 224,
  "standen": {
   "ontspannen": {
-   "winkans": 86.6,
+   "winkans": 86.2,
    "perHeld": {
     "ambrose-pell": 100,
     "hester-quayle": 100,
     "bridie-kavanagh": 87.5,
     "septimus-crane": 100,
     "julian-hartwell": 100,
-    "pema-lhamo": 75,
-    "khalil-nasr": 100,
-    "odile-fairweather": 100,
+    "pema-lhamo": 100,
+    "khalil-nasr": 87.5,
+    "odile-fairweather": 87.5,
     "silas-rook": 87.5,
     "winnie-lusk": 100,
     "owen-marsh": 100,
@@ -30,52 +30,52 @@
     "cordelia-vane": 87.5,
     "esme-valentine": 50,
     "clementine-ashby": 62.5,
-    "ezra-whitlock": 50,
+    "ezra-whitlock": 37.5,
     "paddy-flynn": 87.5,
     "benedict-ashcombe": 62.5
    },
    "perKlasse": {
-    "kennis": 94.6,
-    "waarneming": 96.4,
+    "kennis": 96.4,
+    "waarneming": 94.6,
     "kracht": 85.7,
-    "charisma": 69.6
+    "charisma": 67.9
    },
    "verlorenPerAkte": [
     0,
     4,
-    9.4
+    9.8
    ],
    "verlorenIn": {
-    "Vathrûn ontwaakt": 16,
+    "Vathrûn ontwaakt": 17,
     "De Bisschop van het Slib": 9,
-    "De deur met zeven zegels": 3,
-    "De riolen van Bazalgette": 2
+    "De riolen van Bazalgette": 3,
+    "De deur met zeven zegels": 2
    },
-   "beurtenPerGevecht": 17.6,
-   "gevechtenPerRun": 10.3,
+   "beurtenPerGevecht": 17.4,
+   "gevechtenPerRun": 10.4,
    "vaakstInWinst": {
-    "etherische-projectie": 106,
+    "etherische-projectie": 108,
     "jachtkruisboog": 102,
-    "dynamiet": 88,
-    "zakhorloge-zilver": 79,
+    "dynamiet": 98,
+    "zakhorloge-zilver": 76,
     "boksbeugel": 73,
-    "obsidiaanspiegel": 69,
-    "kruidenmengsel": 66,
-    "noorderkompas": 60,
-    "veldkijker": 56,
-    "fosforbom": 56
+    "obsidiaanspiegel": 68,
+    "kruidenmengsel": 64,
+    "stormlantaarn-kist": 61,
+    "noorderkompas": 58,
+    "zilveren-kogels": 55
    }
   },
   "normaal": {
    "winkans": 59.8,
    "perHeld": {
-    "ambrose-pell": 37.5,
-    "hester-quayle": 62.5,
-    "bridie-kavanagh": 62.5,
-    "septimus-crane": 75,
-    "julian-hartwell": 87.5,
+    "ambrose-pell": 50,
+    "hester-quayle": 75,
+    "bridie-kavanagh": 75,
+    "septimus-crane": 50,
+    "julian-hartwell": 62.5,
     "pema-lhamo": 75,
-    "khalil-nasr": 62.5,
+    "khalil-nasr": 75,
     "odile-fairweather": 75,
     "silas-rook": 37.5,
     "winnie-lusk": 75,
@@ -105,43 +105,44 @@
     "charisma": 51.8
    },
    "verlorenPerAkte": [
-    2.2,
-    9.8,
-    28.1
+    1.8,
+    11.2,
+    27.2
    ],
    "verlorenIn": {
-    "Vathrûn ontwaakt": 37,
-    "De deur met zeven zegels": 23,
-    "De Bisschop van het Slib": 12,
-    "Een Scheur onder het museum": 10,
-    "Een Scheur aan de Theems": 5,
-    "De riolen van Bazalgette": 3
+    "Vathrûn ontwaakt": 41,
+    "De deur met zeven zegels": 17,
+    "De Bisschop van het Slib": 14,
+    "Een Scheur onder het museum": 11,
+    "Een Scheur aan de Theems": 4,
+    "De riolen van Bazalgette": 2,
+    "De pestput onder Aldgate": 1
    },
-   "beurtenPerGevecht": 17.6,
-   "gevechtenPerRun": 9.6,
+   "beurtenPerGevecht": 17.4,
+   "gevechtenPerRun": 9.7,
    "vaakstInWinst": {
     "etherische-projectie": 74,
-    "dynamiet": 60,
     "boksbeugel": 60,
     "jachtkruisboog": 58,
-    "zakhorloge-zilver": 42,
-    "obsidiaanspiegel": 42,
-    "chloroform": 41,
-    "bevel": 41,
-    "dokterstas": 40,
-    "stormlantaarn-kist": 40
+    "waanzin-gefluister": 51,
+    "waanzin-slapeloos": 48,
+    "dynamiet": 48,
+    "obsidiaanspiegel": 46,
+    "zakhorloge-zilver": 44,
+    "waanzin-teken": 44,
+    "waanzin-stemmen": 43
    }
   },
   "genadeloos": {
-   "winkans": 25.9,
+   "winkans": 27.2,
    "perHeld": {
-    "ambrose-pell": 0,
+    "ambrose-pell": 25,
     "hester-quayle": 25,
     "bridie-kavanagh": 25,
-    "septimus-crane": 12.5,
-    "julian-hartwell": 37.5,
-    "pema-lhamo": 50,
-    "khalil-nasr": 25,
+    "septimus-crane": 37.5,
+    "julian-hartwell": 50,
+    "pema-lhamo": 12.5,
+    "khalil-nasr": 37.5,
     "odile-fairweather": 25,
     "silas-rook": 25,
     "winnie-lusk": 37.5,
@@ -165,39 +166,39 @@
     "benedict-ashcombe": 25
    },
    "perKlasse": {
-    "kennis": 25,
+    "kennis": 30.4,
     "waarneming": 28.6,
     "kracht": 25,
     "charisma": 25
    },
    "verlorenPerAkte": [
-    12.5,
-    29.9,
-    31.7
+    13.4,
+    25.9,
+    33.5
    ],
    "verlorenIn": {
-    "Vathrûn ontwaakt": 39,
-    "Een Scheur onder het museum": 37,
-    "De Bisschop van het Slib": 27,
-    "De deur met zeven zegels": 25,
-    "Een Scheur aan de Theems": 19,
-    "Moeder Brine in de wasserij": 9,
-    "De riolen van Bazalgette": 7,
-    "Onder de markt van Covent Garden": 2
+    "Vathrûn ontwaakt": 41,
+    "Een Scheur onder het museum": 32,
+    "De deur met zeven zegels": 26,
+    "De Bisschop van het Slib": 24,
+    "Een Scheur aan de Theems": 18,
+    "Moeder Brine in de wasserij": 12,
+    "De riolen van Bazalgette": 8,
+    "Een loge in Pall Mall": 1
    },
-   "beurtenPerGevecht": 17.7,
-   "gevechtenPerRun": 7.6,
+   "beurtenPerGevecht": 17.5,
+   "gevechtenPerRun": 7.8,
    "vaakstInWinst": {
-    "obsidiaanspiegel": 32,
+    "obsidiaanspiegel": 36,
+    "etherische-projectie": 34,
     "jachtkruisboog": 32,
-    "etherische-projectie": 28,
-    "vleierij": 26,
-    "bevel": 23,
-    "reiscamera": 22,
-    "kruidenmengsel": 21,
-    "dynamiet": 20,
-    "tralies-yard": 20,
-    "zakhorloge-zilver": 19
+    "waanzin-lach": 29,
+    "waanzin-hoogmoed": 25,
+    "vleierij": 24,
+    "zakhorloge-zilver": 24,
+    "waanzin-natte-voeten": 23,
+    "waanzin-slapeloos": 23,
+    "waanzin-stemmen": 23
    }
   }
  }
