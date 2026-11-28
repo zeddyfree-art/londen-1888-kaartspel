@@ -29,7 +29,7 @@ const GLYPH = {
 const KNOOPART = {
   markt: "plekken/covent-garden.jpg", ziekenhuis: "plekken/city.jpg", gaarkeuken: "plekken/spitalfields.jpg", kerk: "plekken/westminster.jpg",
   universiteit: "plekken/bloomsbury.jpg", logement: "plekken/whitechapel.jpg", seance: "plekken/marylebone.jpg", club: "plekken/pall-mall.jpg",
-  kist: "plekken/st-katharine-docks.jpg", ontmoeting: "plekken/limehouse.jpg", boekwinkel: "plekken/soho.jpg",
+  kist: "plekken/st-katharine-docks.jpg", ontmoeting: "plekken/limehouse.jpg", boekwinkel: "plekken/occulte-boekwinkel.jpg",
 };
 const AKTE = ["De kades en de East End", "De West End en de salons", "Onder Londen, door de Scheur"];
 const AKTE3 = { start: [110, 330], riolen: [300, 470], ondergrondse: [460, 230], pestputten: [660, 470], hart: [860, 330] };
@@ -526,7 +526,7 @@ export function eindScherm(app, { run, ontgrendeld, opnieuw, naarStart }) {
   const gewonnen = run.uitslag === "gewonnen";
   const held = B().helden[run.held], god = B().goden[run.god];
   app.replaceChildren(el("div", { class: `scherm einde ${gewonnen ? "" : "verloren"}` },
-    el("div", { class: "achtergrond", style: { backgroundImage: bg(gewonnen ? "scherm/titel-kaartspel.jpg" : god.art) } }),
+    el("div", { class: "achtergrond", style: { backgroundImage: bg(gewonnen ? "scherm/dageraad.jpg" : "scherm/verzwolgen.jpg") } }),
     el("div", { class: "inhoud paneel", style: { padding: "28px" } },
       el("h1", {}, gewonnen ? "De nacht is voorbij" : "Je held valt"),
       el("p", { class: "sfeertekst" }, gewonnen

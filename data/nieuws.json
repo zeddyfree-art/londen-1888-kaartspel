@@ -1,4 +1,9 @@
 [
+ { "id": 9, "datum": "28 november 2026", "titel": "Nieuwe illustraties",
+   "punten": [
+     "Tien talismannen en negen kaarten hebben een eigen illustratie.",
+     "De Occulte boekwinkel heeft een eigen achtergrond. Aan het einde van een run zie je de dageraad boven de Theems of de mist die Londen opslokt."
+   ] },
  { "id": 8, "datum": "28 november 2026", "titel": "Talismannen en zichtbare statussen",
    "punten": [
      "Statussen zie je nu op de kaart zelf: woede is vuur dat van onderaf oplaait en hoger wordt met elke stapel, pest druipt gifgroen over de kaart, mist trekt over het personage, en bescherming is een blauw arcaan schild. Gezegend, Vervloekt, Inkt, Bekoring, Angst en Doorns hebben elk hun eigen laag, en de lagen zitten elkaar niet in de weg.",

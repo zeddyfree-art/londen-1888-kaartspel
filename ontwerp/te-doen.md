@@ -14,6 +14,8 @@ Per fase uit de brief een regel; bovenaan wat er nu speelbaar is. De laatste met
 
 ## Wat nu speelbaar is (versie 7)
 
+- Tien talismannen en negen kaarten hebben een eigen illustratie. De Occulte boekwinkel en beide eindschermen hebben nieuwe achtergronden.
+
 - Dertig eigen illustraties voor schermen, klassenemblemen, akte 3, kaarten en de trekstapel.
 
 - Het oog uit de speelkamer als favicon en een vierkant amethistoog als app-icoon.
