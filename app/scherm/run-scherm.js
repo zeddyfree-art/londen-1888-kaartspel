@@ -246,7 +246,7 @@ async function reserveScherm(run, actie) {
   const inhoud = el("div", { style: { display: "grid", gap: "12px" } }, el("p", { class: "muted" }, `Je hebt maximaal ${maxBondgenoten(run)} bondgenoten in je stapel. Tik op een bondgenoot in de reserve om hem te wisselen.`));
   const rij = el("div", { class: "kaartrij" });
   for (const i of run.reserve) {
-    const k = kaartEl(i.id, { inst: i });
+    const k = metInfo(kaartEl(i.id, { inst: i }), i);
     k.style.setProperty("--w", "140px");
     k.onclick = async () => {
       document.querySelector(".modaal")?.remove();
@@ -266,6 +266,7 @@ export function kiesUitStapel(run, titel, mag = () => true, uitleg) {
     const grid = el("div", { class: "stapelgrid" });
     for (const i of sorteer(run.stapel)) {
       const k = kaartEl(i.id, { inst: i });
+      if (mag(i)) metInfo(k, i);
       if (!mag(i)) k.classList.add("niet");
       else k.onclick = () => { m.remove(); klaar(i.uid); };
       grid.append(k);
@@ -294,6 +295,23 @@ export function stapelScherm(app, run, terug) {
     el("div", { class: "kop" }, el("button", { class: "icoonknop", html: ICOON.terug, "aria-label": "Terug", onclick: terug }), el("h2", {}, `Je stapel (${run.stapel.length})`), el("div", { class: "ruimte" }),
       el("span", { class: "muted" }, "Tik op een kaart voor de verbeterde en verlichte tekst.")),
     el("div", { class: "midden" }, grid, reserve)));
+}
+
+/** Een kaart waarop tikken iets doet (kopen, kiezen): een ⓘ-knopje en lang drukken tonen eerst de hele kaart. */
+function metInfo(k, inst) {
+  const open = () => toonKaart(inst);
+  k.append(el("button", { class: "infoknop", "aria-label": "Meer over deze kaart", title: "Meer over deze kaart",
+    onclick: e => { e.stopPropagation(); open(); } }, "i"));
+  let timer = null, lang = false, start = null;
+  k.addEventListener("pointerdown", e => {
+    lang = false; start = { x: e.clientX, y: e.clientY }; clearTimeout(timer);
+    timer = setTimeout(() => { lang = true; open(); }, 480);
+  });
+  k.addEventListener("pointermove", e => { if (start && Math.hypot(e.clientX - start.x, e.clientY - start.y) > 10) clearTimeout(timer); });
+  for (const t of ["pointerup", "pointercancel", "pointerleave"]) k.addEventListener(t, () => clearTimeout(timer));
+  k.addEventListener("click", e => { if (lang) { e.stopImmediatePropagation(); e.preventDefault(); lang = false; } }, true);
+  k.addEventListener("contextmenu", e => e.preventDefault());
+  return k;
 }
 
 function toonKaart(i) {
@@ -332,14 +350,14 @@ export function knoopScherm(app, { run, actie }) {
         : `Je hebt ${run.ponden} Ponden.`));
       const waren = el("div", { class: "waren" });
       st.waren.forEach((w, i) => {
-        const k = kaartEl(w.id);
+        const k = metInfo(kaartEl(w.id), { id: w.id });
         const kan = !w.verkocht && run.ponden >= w.prijs;
         if (!w.verkocht) k.onclick = () => kan ? actie({ soort: "koop", index: i }) : melding("Daar heb je niet genoeg Ponden voor.");
         waren.append(el("div", { class: `waar ${w.verkocht ? "verkocht" : ""}` }, k, el("span", { class: `prijs ${kan || w.verkocht ? "" : "te-duur"}` }, w.verkocht ? "verkocht" : `£ ${w.prijs}`)));
       });
       const mid = el("div", { class: "waren" });
       st.middeltjes.forEach((w, i) => {
-        const k = kaartEl(w.id);
+        const k = metInfo(kaartEl(w.id), { id: w.id });
         const kan = !w.verkocht && run.ponden >= w.prijs && run.middeltjes.length < 3;
         if (!w.verkocht) k.onclick = () => kan ? actie({ soort: "koopMiddeltje", index: i }) : melding(run.middeltjes.length >= 3 ? "Je zak met middeltjes is vol." : "Daar heb je niet genoeg Ponden voor.");
         mid.append(el("div", { class: `waar ${w.verkocht ? "verkocht" : ""}` }, k, el("span", { class: `prijs ${kan || w.verkocht ? "" : "te-duur"}` }, w.verkocht ? "verkocht" : `£ ${w.prijs}`)));
@@ -400,7 +418,8 @@ export function knoopScherm(app, { run, actie }) {
         : "Een ijzeren kist, het slot is al geforceerd. Kies er één."));
       const rij = el("div", { class: "kaartrij" });
       st.opties.forEach((id, i) => {
-        const k = kaartEl(id, run.achtergelaten && id === run.achtergelaten.id && st.soort === "logement" ? { inst: { gewond: true } } : {});
+        const gewond = run.achtergelaten && id === run.achtergelaten.id && st.soort === "logement";
+        const k = metInfo(kaartEl(id, gewond ? { inst: { gewond: true } } : {}), { id, gewond });
         if (st.gekozen === id) k.classList.add("gekozen");
         if (!st.klaar) k.onclick = () => actie({ soort: "kies", index: i });
         rij.append(k);
@@ -502,7 +521,7 @@ export function beloningScherm(app, { run, actie }) {
   inhoud.push(el("h3", { style: { textAlign: "center", color: "var(--goud-licht)", marginTop: "8px" } }, b.kaartGekozen ? (b.kaartGekozen === "overgeslagen" ? "Je liet de kaarten liggen" : "Nieuw in je stapel") : "Kies een kaart voor je stapel"));
   const rij = el("div", { class: "kaartrij" });
   b.kaarten.forEach((id, i) => {
-    const k = kaartEl(id);
+    const k = metInfo(kaartEl(id), { id });
     if (b.kaartGekozen === id) k.classList.add("gekozen");
     else if (b.kaartGekozen) k.style.opacity = ".35";
     else k.onclick = () => { speel("kaart"); actie({ soort: "neemKaart", index: i }); };

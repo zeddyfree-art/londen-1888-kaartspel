@@ -1,4 +1,11 @@
 [
+ { "id": 14, "datum": "28 november 2026", "titel": "Tik voor meer",
+   "punten": [
+     "Tik op een vijand om zijn kaart te bekijken: wat hij doet als hij toeslaat, zijn vermogens, zijn statussen en wat de getallen betekenen. Heb je eerst een kaart gekozen, dan is de vijand gewoon je doel.",
+     "Tik twee keer op een eigen kaart op het veld voor dezelfde uitleg. Lang drukken werkt overal nog, ook op een iPad.",
+     "In de winkel, bij een beloning, in de kist en in het logement heeft elke kaart een ⓘ-knopje: lees eerst, kies daarna.",
+     "De aanval staat nu in een sterretje van een klap in plaats van in een schildje, zodat je hem niet meer voor bescherming aanziet."
+   ] },
  { "id": 13, "datum": "28 november 2026", "titel": "Vijf oefenlessen",
    "punten": [
      "Het oefengevecht is nu een reeks van vijf korte lessen: de basis, statussen, Geest en Verlichting, de speurder en de aanvoerder. Je vindt ze onder Oefengevecht en bij de Spelregels.",

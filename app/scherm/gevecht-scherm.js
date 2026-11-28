@@ -108,8 +108,9 @@ export function gevechtScherm(app, opties) {
     bindDetail(k, () => (u.soort === "held" ? { ...B().helden[u.id], soort: "held" } : instDef(u)), () => opties.g().eenheden[u.uid]);
     if (u.kant === "speler" && !u.groot) bindSleep(k, { soort: "eenheid", uid: u.uid });
     else {
-      toetsActie(k, u.naam, () => tikDoel(`u:${u.uid}`));
-      bindLang(k, () => tikDoel(`u:${u.uid}`));
+      const tik = () => { if (S.keuze) tikDoel(`u:${u.uid}`); else toonDetail(k); };
+      toetsActie(k, u.naam, tik);
+      bindLang(k, tik);
     }
     return k;
   }
@@ -314,6 +315,12 @@ export function gevechtScherm(app, opties) {
     if (wat.soort === "eenheid" && S.keuze && (S.keuze.soort !== "eenheid" || S.keuze.uid !== wat.uid)) {
       tikDoel(`u:${wat.uid}`); return;
     }
+    if (JSON.stringify(S.keuze) === JSON.stringify(wat) && wat.soort === "eenheid") {
+      S.keuze = null; render();
+      const nieuw = root.querySelector(`[data-uid="${wat.uid}"]`);
+      if (nieuw) toonDetail(nieuw);
+      return;
+    }
     if (JSON.stringify(S.keuze) === JSON.stringify(wat)) {
       const a = actieVoor(wat, "veld");
       if (a) { voerUit(a); return; }
@@ -490,7 +497,7 @@ export function gevechtScherm(app, opties) {
     const oefen = opties.hulp?.(g);
     return el("div", { class: "handregel" },
       el("h2", {}, "Je hand", el("small", {}, String(g.hand.length))),
-      el("div", { class: "speeltip", role: "status", html: oefen || "Sleep een kaart naar het veld of tik op een kaart en daarna op het doel." }));
+      el("div", { class: "speeltip", role: "status", html: oefen || "Sleep een kaart naar het veld of tik op een kaart en daarna op het doel. Tik op een vijand om zijn kaart te bekijken; houd een kaart lang ingedrukt voor alle tekst." }));
   }
 
   function meetKaarten() {
