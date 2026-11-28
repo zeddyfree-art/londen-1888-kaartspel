@@ -222,6 +222,11 @@ export function trek(g, n) {
 
 /* ───────── Geest, Verlichting, Waanzin ───────── */
 
+/** Hoeveel Waanzin-kaarten er in dit gevecht in je stapel zitten (hand, trekstapel, aflegstapel en verbannen). */
+export function waanzinInStapel(g) {
+  return [g.hand, g.trek, g.afleg, g.verbannen].reduce((n, l) => n + (l || []).filter(i => instDef(i).soort === "waanzin").length, 0);
+}
+
 export function verlichtDrempel(g) {
   const h = B().helden[g.ctx.held];
   let d = h?.vermogen?.verlichtDrempel ?? 0.5;

@@ -6,14 +6,13 @@
   "kleur": "#7b4fa8",
   "kleur2": "#c9a54a",
   "speelbaar": true,
-  "kort": "Spreuken en rituelen. Rituelen hebben een lange teller en een groot effect. Speelt het meest met Verlichting.",
+  "kort": "Spreuken en rituelen. Rituelen hebben een lange teller en een groot effect. Speelt het meest met Verlichting, en haalt kracht uit Waanzin.",
   "held": {
    "aanval": 2,
    "teller": 4
   },
   "kenmerken": [],
-  "regel": "Verlichte teksten kosten je geen extra Geest. Een voltrokken ritueel geeft 2 Geest terug.",
-  "ritueelGeest": 2,
+  "regel": "Verlichte teksten kosten je geen extra Geest. Drie verlichte spreuken worden sterker per Waanzin-kaart in je stapel.",
   "verlichtZonderPrijs": true
  },
  {

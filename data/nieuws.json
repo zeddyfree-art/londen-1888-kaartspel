@@ -1,4 +1,10 @@
 [
+ { "id": 9, "datum": "28 november 2026", "titel": "Hoeveel durf je te weten?",
+   "punten": [
+     "Voor de occultist is Waanzin nu niet alleen een last. Drie spreuken van Kennis worden sterker per Waanzin-kaart in je stapel, zolang je verlicht bent: Fluistering van de doden (+1 schade), Ontbinding (+1 Pest) en Grote verbanning (+1 schade aan elke vijand).",
+     "Tik tijdens een gevecht op zo'n spreuk om te zien hoeveel Waanzin je nu hebt en hoeveel dat oplevert. Laat je Waanzin in de Kerk wegnemen, of houd je hem?",
+     "Een voltrokken ritueel geeft de occultist geen 2 Geest meer terug. Verlichte teksten kosten hem nog steeds geen extra Geest."
+   ] },
  { "id": 8, "datum": "28 november 2026", "titel": "Talismannen en zichtbare statussen",
    "punten": [
      "Statussen zie je nu op de kaart zelf: woede is vuur dat van onderaf oplaait en hoger wordt met elke stapel, pest druipt gifgroen over de kaart, mist trekt over het personage, en bescherming is een blauw arcaan schild. Gezegend, Vervloekt, Inkt, Bekoring, Angst en Doorns hebben elk hun eigen laag, en de lagen zitten elkaar niet in de weg.",

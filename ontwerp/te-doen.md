@@ -32,7 +32,8 @@ Per fase uit de brief een regel; bovenaan wat er nu speelbaar is. De laatste met
 
 - **Beelden:** `ontwerp/beeldinventaris.md` is de volledige lijst van wat er nog gemaakt moet worden (42 nodig of aanbevolen, 22 mooi om te hebben), met prompts. Tien talismannen gebruiken tot dan de achterkant van de artefactkaarten.
 - **Statuslagen** (`statusLagen` in `app/scherm/kaart-dom.js`, CSS onder "statuslagen" in `app/stijl.css`): elke status een eigen laag, sterkte met `--n` (1 tot 5). Geschilderde texturen kunnen later in dezelfde lagen (zie beeldinventaris B2).
-- **Verlichting en Kennis:** gemeten met de testbot. Zonder hulp kreeg Kennis 11 Waanzin-kaarten per run (de rest 2 tot 4). Nu: verlichte teksten kosten Kennis geen extra Geest en rituelen geven 2 Geest terug; daar staat een held met teller 4 tegenover. Kennis is het vaakst verlicht van alle klassen (45% van de beurten op Normaal), met 3,6 Waanzin per run (de anderen 1 tot 4).
+- [x] **Waanzin als brandstof (28 november):** drie verlichte Kennis-spreuken worden sterker per Waanzin-kaart in je stapel (effectveld `perWaanzin`, werkt op schade en statussen): *Fluistering van de doden* (+1 schade), *Ontbinding* (+1 Pest) en *Grote verbanning* (+1 schade aan elke vijand). De bonus geldt alleen bij Verlichting; ook op de onverlichte tekst was Kennis te sterk (71% op Normaal). Rituelen geven geen 2 Geest meer terug; verlichte teksten blijven gratis (zonder die regel: 9 tot 10 Waanzin en 43 tot 47% winst). De kaartuitleg in een gevecht toont hoeveel Waanzin je nu hebt. De testbot houdt Waanzin bij twee of meer van die spreuken (tot 4 kaarten, niet naar de Kerk).
+- **Verlichting en Kennis:** Kennis is het vaakst verlicht (57% van de beurten op Normaal) en loopt nu 5,6 Waanzin per run op (was 3,6; de anderen 1 tot 4). Het doel van 6 tot 7 is net niet gehaald. Kan later met meer spreuken die `perWaanzin` gebruiken, of een ritueel dat Waanzin verbant en iets teruggeeft.
 - **Luitenants voor fase 4:** Greaves (Ysmara) was een bondgenoot; die kaart is nu Obadiah Penrose. Haversham en Kettering staan nog als beeld op twee Charisma-kaarten tot hun eigen illustratie er is.
 
 - **Paden gebalanceerd (27 november):** beide paden van een gedeelte even lang (2 of 3), elk hooguit één herstel-, één stapel- en één gok-knooppunt, en ongeveer even veel waard (`WAARDE` in `app/motor/run.js`). Gemiddeld waardeverschil van 2,5 naar 0,35; scheve keuzes van 31% naar 0%. Winkans testbot: Ontspannen 94%, Normaal 71%, Genadeloos 30%.
@@ -46,23 +47,24 @@ Per fase uit de brief een regel; bovenaan wat er nu speelbaar is. De laatste met
 
 ## Laatste meting
 
-28 november 2026, alle vier klassen en alle 28 helden (224 runs per stand, 56 per klasse), Vathrûn:
+28 november 2026, na *Waanzin als brandstof*: alle vier klassen en alle 28 helden (224 runs per stand, 56 per klasse), Vathrûn:
 
 | Stand | Winkans | Kennis | Waarneming | Kracht | Charisma | Doel |
 |---|---|---|---|---|---|---|
-| Ontspannen | 87% | 95% | 96% | 86% | 70% | 85–90% |
+| Ontspannen | 86% | 96% | 95% | 86% | 68% | 85–90% |
 | Normaal | 60% | 66% | 52% | 70% | 52% | 55–65% |
-| Genadeloos | 26% | 25% | 29% | 25% | 25% | 25–35% |
+| Genadeloos | 27% | 30% | 29% | 25% | 25% | 25–35% |
 
 Op Normaal, per klasse:
 
 | Klasse | Beurten verlicht | Waanzin per run | Geest aan spreuken per run |
 |---|---|---|---|
-| Kennis | 45% | 3,6 | 45 |
+| Kennis | 57% | 5,6 | 44 |
 | Waarneming | 28% | 1,1 | 2 |
 | Kracht | 35% | 3,8 | 5 |
 | Charisma | 38% | 3,2 | 9 |
 
+- Kennis wint even vaak als vóór de wijziging (66% op Normaal), maar loopt meer Waanzin op en is vaker verlicht. Op Genadeloos 30% (was 25%).
 - Op Normaal liggen alle klassen binnen 10 punten van het gemiddelde (Kracht net aan). Charisma is op Ontspannen de zwakste.
 - Klassewaarden nu: Kennis held 2/teller 4, Waarneming 3/3, Kracht 3/4, Charisma 2/3.
 - De meeste runs sneuvelen tegen Vathrûn zelf, in de Scheuren en bij de Bisschop.
