@@ -682,8 +682,9 @@ img { -webkit-user-drag: none; }
 
 /* ───────── statuslagen op de kaart ─────────
    Volgorde van onder naar boven: woede, pest, doorns, inkt, vervloekt, angst, bekoring, mist, gezegend, bescherming.
-   --n is de sterkte (1 tot 5). Woede, pest, mist, bescherming en vervloekt gebruiken een geschilderde textuur (art/status/*.png). Die is op zwart geschilderd
-   en omgezet naar doorzichtig (alfa = helderheid). mix-blend-mode werkt hier niet: .statuslagen is een eigen stapel. De rest is CSS en SVG. */
+   --n is de sterkte (1 tot 5). Alle statussen gebruiken een geschilderde textuur (art/status/*.png), op zwart of
+   (inkt, angst) op wit geschilderd en met tools/maak-statuslaag.py omgezet naar doorzichtig.
+   mix-blend-mode werkt hier niet: .statuslagen is een eigen stapel. */
 .sluiers { display: none; }
 .kaart.mistig::before { display: none; }
 .statuslagen { position: absolute; inset: 0; z-index: 1; overflow: hidden; border-radius: inherit; pointer-events: none; }
@@ -708,20 +709,12 @@ img { -webkit-user-drag: none; }
 .laag.pest i:nth-child(1) { left: 18%; } .laag.pest i:nth-child(2) { left: 52%; animation-delay: .9s; } .laag.pest i:nth-child(3) { left: 79%; animation-delay: 1.6s; }
 @keyframes druppel { 0% { transform: translateY(0) scale(.6); opacity: 0; } 10% { opacity: .95; } 85% { opacity: .9; } 100% { transform: translateY(520%) scale(1); opacity: 0; } }
 
-/* Doorns: een rand van doornige ranken */
-.laag.doorns { inset: 0; opacity: calc(.55 + var(--n) * .09);
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 40'%3E%3Cpath d='M10 0q-6 10 0 20t0 20' stroke='%23476b2a' stroke-width='2.4' fill='none'/%3E%3Cpath d='M9 6l-6-2 5 5zM11 15l7-1-6 4zM9 26l-7 0 6 3zM11 35l6-3-5 5z' fill='%2393b35a'/%3E%3C/svg%3E") left top/11% auto repeat-y,
-  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 40'%3E%3Cpath d='M10 0q6 10 0 20t0 20' stroke='%23476b2a' stroke-width='2.4' fill='none'/%3E%3Cpath d='M11 6l6-2-5 5zM9 15l-7-1 6 4zM11 26l7 0-6 3zM9 35l-6-3 5 5z' fill='%2393b35a'/%3E%3C/svg%3E") right top/11% auto repeat-y;
-  filter: drop-shadow(0 0 2px #000); }
+/* Doorns: geschilderde doornranken langs de randen */
+.laag.doorns { inset: 0; background: url("art/status/doorns.png") center / 100% 100% no-repeat;
+  opacity: calc(.6 + var(--n) * .08); filter: drop-shadow(0 0 2px #000) brightness(calc(1.1 + var(--n) * .06)); }
 
-/* Inkt: zwarte vlekken die vanuit de hoeken uitlopen */
-.laag.inkt { background:
-  radial-gradient(ellipse calc(12% + var(--n) * 6%) calc(10% + var(--n) * 5%) at 4% 6%, #07050cf2 60%, transparent 62%),
-  radial-gradient(ellipse calc(9% + var(--n) * 5%) calc(8% + var(--n) * 4%) at 96% 10%, #0b0814ee 58%, transparent 61%),
-  radial-gradient(ellipse calc(8% + var(--n) * 5%) calc(7% + var(--n) * 4%) at 8% 92%, #0b0814e6 58%, transparent 61%),
-  radial-gradient(circle at 20% 22%, #0b0814 0 1.4%, transparent 1.6%), radial-gradient(circle at 85% 26%, #0b0814 0 1%, transparent 1.2%),
-  radial-gradient(circle at 15% 78%, #0b0814 0 1.1%, transparent 1.3%);
-  filter: contrast(1.1); }
+/* Inkt: geschilderde inktvlekken die vanuit de hoeken uitlopen */
+.laag.inkt { background: url("art/status/inkt.png") center / 100% 100% no-repeat; opacity: calc(.65 + var(--n) * .07); }
 
 /* Vervloekt: geschilderde violette runen die vanaf de rand naar binnen kruipen, en een donkere rand */
 .laag.vervloekt { background: radial-gradient(ellipse at 50% 45%, transparent 40%, #3b0d4ccc 100%); opacity: calc(.6 + var(--n) * .08); }
@@ -729,17 +722,17 @@ img { -webkit-user-drag: none; }
   opacity: calc(.75 + var(--n) * .05); animation: zegelpuls 3.6s ease-in-out infinite alternate; }
 @keyframes zegelpuls { from { filter: brightness(.85); } to { filter: brightness(1.3) drop-shadow(0 0 3px #b54dff); } }
 
-/* Angst: koud, ontkleurd, een donkere rand die trilt */
-.laag.angst { background: radial-gradient(ellipse at 50% 45%, transparent 35%, #0a1626e0 100%); mix-blend-mode: multiply; opacity: calc(.5 + var(--n) * .1); }
-.laag.angst::before { inset: 0; background: #6d86a8; mix-blend-mode: color; opacity: calc(.12 + var(--n) * .08); }
+/* Angst: schaduwhanden die vanaf de rand naar binnen grijpen, het portret wordt koud en trilt */
+.laag.angst { opacity: calc(.7 + var(--n) * .06); }
+.laag.angst::after { inset: 0; background: url("art/status/angst.png") center / 100% 100% no-repeat;
+  filter: drop-shadow(0 0 1px #b9d2f2) drop-shadow(0 0 3px #7f9cc4aa); }
+.laag.angst::before { inset: 0; background: #6d86a8; opacity: calc(.06 + var(--n) * .04); }
 .kaart.angstig .beeld { animation: rillen .18s steps(2) infinite; }
 @keyframes rillen { 50% { transform: translate(.6px, -.4px); } }
 
-/* Bekoring: een roze waas met opstijgende hartjes */
-.laag.bekoring { background: radial-gradient(ellipse at 50% 100%, #ff6fb066, transparent 60%), radial-gradient(ellipse at 0 50%, #ff8ccb44, transparent 45%), radial-gradient(ellipse at 100% 50%, #ff8ccb44, transparent 45%); mix-blend-mode: screen; opacity: calc(.6 + var(--n) * .08); }
-.laag.bekoring::before { inset: 0; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60'%3E%3Cpath fill='%23ff9fd2' d='M15 52c-7-5-9-8-8-11 1-3 6-3 8 1 2-4 7-4 8-1 1 3-1 6-8 11zM44 24c-5-4-6-6-6-8 1-3 4-3 6 0 2-3 5-3 6 0 0 2-1 4-6 8z'/%3E%3C/svg%3E") 0 0/50% auto repeat;
-  filter: drop-shadow(0 0 3px #ff4fa8); opacity: calc(.35 + var(--n) * .1); background-size: 80% auto; animation: harten 6s linear infinite; }
-@keyframes harten { to { background-position: 0 -100%; } }
+/* Bekoring: roze gloed en rozenblaadjes die langs de randen opstijgen */
+.laag.bekoring { background: url("art/status/bekoring.png") center / 100% 100% no-repeat; opacity: calc(.6 + var(--n) * .08); animation: bekoorpuls 3s ease-in-out infinite alternate; }
+@keyframes bekoorpuls { from { filter: brightness(.9); } to { filter: brightness(1.2); } }
 
 /* Mist: geschilderde slierten over het personage, die langzaam voorbij drijven */
 .laag.mist { opacity: calc(.5 + var(--n) * .1); }
@@ -749,15 +742,12 @@ img { -webkit-user-drag: none; }
 .laag.mist::after { inset: 0; background: linear-gradient(180deg, transparent 20%, #c8cdb466 70%, #c8cdb4aa); }
 @keyframes mistdrift { from { transform: translateX(-12%); } to { transform: translateX(12%); } }
 
-/* Gezegend: goudlicht van boven, een stralenkrans */
-.laag.gezegend { background: radial-gradient(ellipse 60% 40% at 50% 0, #fff1b8cc, #ffd56a55 45%, transparent 75%); mix-blend-mode: screen; opacity: calc(.55 + var(--n) * .09); }
-.laag.gezegend::before { left: 50%; top: -30%; width: 140%; aspect-ratio: 1; transform: translateX(-50%);
-  background: repeating-conic-gradient(from 0deg, #ffe9a033 0 4deg, transparent 4deg 14deg);
-  -webkit-mask: radial-gradient(circle, #000 0, transparent 60%); mask: radial-gradient(circle, #000 0, transparent 60%); animation: stralen 18s linear infinite; }
-@keyframes stralen { to { transform: translateX(-50%) rotate(360deg); } }
+/* Gezegend: geschilderd goudlicht dat van boven neervalt */
+.laag.gezegend { background: url("art/status/zegen.png") center top / 100% 100% no-repeat; opacity: calc(.6 + var(--n) * .08); animation: zegengloed 4s ease-in-out infinite alternate; }
+@keyframes zegengloed { from { filter: brightness(.9); } to { filter: brightness(1.2); } }
 
 /* Bescherming: een geschilderde rand van blauw arcaan licht, met een gloed die sterker wordt per stapel */
-.laag.bescherming { border-radius: inherit; box-shadow: inset 0 0 calc(4px + var(--n) * 3px) calc(1px + var(--n) * 1px) #5fd0ff, inset 0 0 0 2px #9fe6ff; mix-blend-mode: screen; opacity: calc(.6 + var(--n) * .08); }
+.laag.bescherming { border-radius: inherit; box-shadow: inset 0 0 calc(4px + var(--n) * 3px) calc(1px + var(--n) * 1px) #5fd0ff, inset 0 0 0 2px #9fe6ff; opacity: calc(.6 + var(--n) * .08); }
 .laag.bescherming::before { inset: 0; border-radius: inherit;
   background: url("art/status/schild.png") center / 100% 100% no-repeat; opacity: calc(.8 + var(--n) * .04); }
 .laag.bescherming::after { inset: -50% 0; background: linear-gradient(115deg, transparent 40%, #bff0ff88 50%, transparent 60%); animation: schildglans 3.2s ease-in-out infinite; }
