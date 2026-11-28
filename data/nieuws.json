@@ -1,4 +1,11 @@
 [
+ { "id": 17, "datum": "28 november 2026", "titel": "Beter leesbare kaarten",
+   "punten": [
+     "De tekst op kaarten is groter en heeft meer ruimte. Past een lange tekst niet, dan wordt hij op die kaart iets kleiner, zodat er nooit iets wegvalt.",
+     "Tik op een kaart in je hand en je leest zijn hele tekst groot in de balk boven je hand, met wat hij kost. Daarna tik je op het doel, zoals eerst.",
+     "Op een tablet die rechtop staat, liggen je handkaarten in twee rijen van drie, bijna twee keer zo groot. De kaarten in je hand staan ook minder scheef.",
+     "Nog groter? Zet in Instellingen de schakelaar Grotere kaarttekst aan."
+   ] },
  { "id": 16, "datum": "28 november 2026", "titel": "Nieuwe schilderijen",
    "punten": [
      "De kaart van Londen heeft geschilderde medaillons van messing: gekruiste sabels voor een gevecht, een doornenkroon voor de baas, een paarse Scheur, een weegschaal voor de markt en zo verder.",

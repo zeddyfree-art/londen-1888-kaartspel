@@ -218,11 +218,17 @@ async function runMenu() {
   }
 }
 
+function zetLeesschaal() {
+  document.documentElement.style.setProperty("--leesschaal", instellingen.groteTekst ? "1.45" : "1.22");
+}
+zetLeesschaal();
+
 async function instellingenModaal() {
   const rij = (tekst, aan, zet) => el("label", { class: "schakel" }, el("span", {}, tekst), el("input", { type: "checkbox", checked: aan, onchange: e => zet(e.target.checked) }));
   const inhoud = el("div", {},
     rij("Geluid", geluidAan(), v => zetGeluid(v)),
     rij("Muziek", muziekIsAan(), v => zetMuziek(v)),
+    rij("Grotere kaarttekst", !!instellingen.groteTekst, v => { instellingen.groteTekst = v; bewaarInst(); zetLeesschaal(); }),
     rij("Snelle animaties", !!instellingen.snel, v => { instellingen.snel = v; bewaarInst(); }),
     rij("Volgorde van toeslaan tonen", instellingen.volgorde !== false, v => { instellingen.volgorde = v; bewaarInst(); }),
     rij("Vraag bevestiging bij het politiefluitje", instellingen.vraagFluitje !== false, v => { instellingen.vraagFluitje = v; bewaarInst(); }),
