@@ -32,7 +32,7 @@ Per fase uit de brief een regel; bovenaan wat er nu speelbaar is. De laatste met
 
 - **Beelden:** `ontwerp/beeldinventaris.md` is de volledige lijst van wat er nog gemaakt moet worden (42 nodig of aanbevolen, 22 mooi om te hebben), met prompts. Tien talismannen gebruiken tot dan de achterkant van de artefactkaarten.
 - **Statuslagen** (`statusLagen` in `app/scherm/kaart-dom.js`, CSS onder "statuslagen" in `app/stijl.css`): elke status een eigen laag, sterkte met `--n` (1 tot 5). Geschilderde texturen kunnen later in dezelfde lagen (zie beeldinventaris B2).
-- **Verlichting en Kennis:** gemeten met de testbot. Zonder hulp kreeg Kennis 11 Waanzin-kaarten per run (de rest 2 tot 4). Nu: verlichte teksten kosten Kennis geen extra Geest, rituelen geven 2 Geest terug, na elk gevecht +3 Geest. Kennis is het vaakst verlicht van alle klassen, met rond de 4 Waanzin per run.
+- **Verlichting en Kennis:** gemeten met de testbot. Zonder hulp kreeg Kennis 11 Waanzin-kaarten per run (de rest 2 tot 4). Nu: verlichte teksten kosten Kennis geen extra Geest en rituelen geven 2 Geest terug; daar staat een held met teller 4 tegenover. Kennis is het vaakst verlicht van alle klassen (45% van de beurten op Normaal), met 3,6 Waanzin per run (de anderen 1 tot 4).
 - **Luitenants voor fase 4:** Greaves (Ysmara) was een bondgenoot; die kaart is nu Obadiah Penrose. Haversham en Kettering staan nog als beeld op twee Charisma-kaarten tot hun eigen illustratie er is.
 
 - **Paden gebalanceerd (27 november):** beide paden van een gedeelte even lang (2 of 3), elk hooguit één herstel-, één stapel- en één gok-knooppunt, en ongeveer even veel waard (`WAARDE` in `app/motor/run.js`). Gemiddeld waardeverschil van 2,5 naar 0,35; scheve keuzes van 31% naar 0%. Winkans testbot: Ontspannen 94%, Normaal 71%, Genadeloos 30%.
@@ -46,15 +46,23 @@ Per fase uit de brief een regel; bovenaan wat er nu speelbaar is. De laatste met
 
 ## Laatste meting
 
-27 november 2026, alle vier klassen en alle 28 helden (8 runs per held, 56 per klasse), Vathrûn:
+28 november 2026, alle vier klassen en alle 28 helden (224 runs per stand, 56 per klasse), Vathrûn:
 
 | Stand | Winkans | Kennis | Waarneming | Kracht | Charisma | Doel |
 |---|---|---|---|---|---|---|
-| Ontspannen | 87% | 91% | 93% | 86% | 77% | 85–90% |
-| Normaal | 59% | 55% | 54% | 71% | 54% | 55–65% |
-| Genadeloos | 27% | 18% | 29% | 39% | 23% | 25–35% |
+| Ontspannen | 87% | 95% | 96% | 86% | 70% | 85–90% |
+| Normaal | 60% | 66% | 52% | 70% | 52% | 55–65% |
+| Genadeloos | 26% | 25% | 29% | 25% | 25% | 25–35% |
 
-- Kracht ligt op Normaal 13 punten boven het gemiddelde (doel: hooguit 10). De startbondgenoten van Kracht zijn al iets zwakker gemaakt; volgende stap is de Trofee alleen voor bondgenoten, niet voor de held.
-- Genadeloos geeft vijanden nu +10% Leven (was +20%) en 80% van de Ponden.
-- 56 runs per klasse geeft nog ongeveer ±6 punten ruis. Meer runs per held nodig om helden onderling te vergelijken.
-- De meeste runs sneuvelen tegen Vathrûn zelf, daarna in de Scheuren (elite) en bij de Bisschop.
+Op Normaal, per klasse:
+
+| Klasse | Beurten verlicht | Waanzin per run | Geest aan spreuken per run |
+|---|---|---|---|
+| Kennis | 45% | 3,6 | 45 |
+| Waarneming | 28% | 1,1 | 2 |
+| Kracht | 35% | 3,8 | 5 |
+| Charisma | 38% | 3,2 | 9 |
+
+- Op Normaal liggen alle klassen binnen 10 punten van het gemiddelde (Kracht net aan). Charisma is op Ontspannen de zwakste.
+- Klassewaarden nu: Kennis held 2/teller 4, Waarneming 3/3, Kracht 3/4, Charisma 2/3.
+- De meeste runs sneuvelen tegen Vathrûn zelf, in de Scheuren en bij de Bisschop.

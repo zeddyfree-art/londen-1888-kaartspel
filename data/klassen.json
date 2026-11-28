@@ -8,14 +8,13 @@
   "speelbaar": true,
   "kort": "Spreuken en rituelen. Rituelen hebben een lange teller en een groot effect. Speelt het meest met Verlichting.",
   "held": {
-   "aanval": 3,
-   "teller": 3
+   "aanval": 2,
+   "teller": 4
   },
   "kenmerken": [],
-  "regel": "Verlichte teksten kosten je geen extra Geest. Een voltrokken ritueel geeft 2 Geest terug, en na elk gevecht herstel je 3 Geest.",
-  "verlichtZonderPrijs": true,
+  "regel": "Verlichte teksten kosten je geen extra Geest. Een voltrokken ritueel geeft 2 Geest terug.",
   "ritueelGeest": 2,
-  "naGevechtGeest": 3
+  "verlichtZonderPrijs": true
  },
  {
   "id": "waarneming",
@@ -57,7 +56,7 @@
   "speelbaar": true,
   "kort": "Veel bondgenoten (tot zes) en Ponden. Overtuigt menselijke vijanden om over te lopen.",
   "held": {
-   "aanval": 1,
+   "aanval": 2,
    "teller": 3
   },
   "kenmerken": [],
