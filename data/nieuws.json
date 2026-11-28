@@ -1,4 +1,12 @@
 [
+ { "id": 16, "datum": "28 november 2026", "titel": "Nieuwe schilderijen",
+   "punten": [
+     "De kaart van Londen heeft geschilderde medaillons van messing: gekruiste sabels voor een gevecht, een doornenkroon voor de baas, een paarse Scheur, een weegschaal voor de markt en zo verder.",
+     "Win je, dan zie je de dageraad boven de Theems. Verlies je, dan slokt de mist de straat op.",
+     "De occulte boekwinkel in Soho heeft een eigen interieur, en de tien talismannen zijn nu elk een eigen voorwerp: een hoefijzer, een haarlok, een broche met een oog en meer.",
+     "Negen kaarten van Waarneming en Charisma hebben hun eigen schilderij, zoals Het motief, Arrestatie, Vleierij en Een goed woord.",
+     "In het hoofdkwartier zie je de wachtkamer van de helden en de vijf hoeken die later opengaan."
+   ] },
  { "id": 15, "datum": "28 november 2026", "titel": "Verlichte teksten kloppen voor de occultist",
    "punten": [
      "Speel je met Kennis, dan tonen de kaarten in hun verlichte tekst geen ‘Je verliest 1 Geest’ meer, en ook geen −1 op het paarse fiche. De occultist betaalde die prijs al niet; nu zie je dat ook.",
