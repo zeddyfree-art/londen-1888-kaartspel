@@ -15,9 +15,9 @@
 | A7. Occulte boekwinkel | 1 | Sterk aanbevolen | Nieuw knooppunt; nu het straatbeeld van Soho. |
 | **Totaal nodig en aanbevolen** | **42** | | |
 | B1. Knooppunt-medaillons | 14 | Mooi | De kaart gebruikt nu getekende symbolen. Die werken. |
-| B2. Statustexturen | 5 | Mooi | De statuseffecten zijn nu CSS en SVG. Een geschilderde textuur maakt ze rijker. |
+| B2. Statustexturen | 2 | Mooi | Vuur, gif en mist zitten erin (28 november). Schild en zegel opnieuw: ze bedekten het gezicht. |
 | B3. Extra barricades | 3 | Mooi | Meer variatie voor Kracht. |
-| **Totaal mooi** | **22** | | |
+| **Totaal mooi** | **19** | | |
 
 **Advies.** Maak eerst A1 tot en met A4 (33 beelden): daarmee zijn fase 3 en 4 inhoudelijk af. Daarna A5 tot en met A7 (9 beelden). B alleen als er tijd over is.
 
@@ -166,17 +166,25 @@ Precies zoals in `beeldopdracht.md`. Kort:
 | `knooppunten/club.png` | a cocktail glass |
 | `knooppunten/kist.png` | an iron-bound chest |
 
-## B2. Statustexturen (5)
+## B2. Statustexturen (2 opnieuw)
 
-De statuseffecten op de kaarten zijn nu getekend in CSS en SVG (vuur, druppels, mist, schild, zegel …) en werken al. Met een geschilderde textuur worden ze rijker. Lever ze op een **zuiver zwarte achtergrond**: het spel legt ze er met *screen* overheen, zodat zwart doorzichtig wordt. 1:1, 1024 × 1024. Laat bij deze vijf de stijlregel weg en gebruik alleen: *painterly, isolated on a pure black background, no text*.
+**Zo gebruikt het spel deze beelden.** De laag ligt over het **hele portret van een kaart op het veld** (staand, 5:7, op een telefoon maar 70 tot 120 pixels breed). Het zwart wordt doorzichtig: het beeld wordt omgezet met alfa = helderheid. Alles wat licht is, ligt dus óver het gezicht. Daarom:
+
+- **Het midden moet leeg zijn.** Het effect zit aan de randen, of komt van één kant (onder of boven), nooit als een voorwerp in het midden.
+- **Geen herkenbaar ding:** geen schild, geen cirkel, geen ster als middelpunt. Op 80 pixels wordt dat een vlek over het gezicht.
+- **Zuiver zwart (#000)** waar niets is, zonder vignet of grijze waas.
+- **Staand, 1024 × 1434 (5:7).**
+
+Omzetten: `python3 -I tools/maak-statuslaag.py <bron.png> art/status/<naam>.png`, daarna in `app/stijl.css` de laag (`.laag.bescherming`, `.laag.vervloekt`) op het beeld zetten.
+
+Vuur (Woede), gif (Pest) en mist (Mist) zijn klaar en staan in `beeldopdracht.md` §10. Schild en zegel werkten niet: het schild was een groot blauw wapenschild en het zegel een pentagram, allebei recht over het gezicht. Nieuwe prompts, zonder de stijlregel:
 
 | Bestand | Status | Prompt |
 |---|---|---|
-| `status/vuur.png` | Woede | tongues of orange and crimson flame rising from the bottom edge, embers drifting upwards, painterly, isolated on a pure black background |
-| `status/gif.png` | Pest | thick toxic green slime dripping down from the top edge in long drops, glowing faintly, painterly, isolated on a pure black background |
-| `status/mist.png` | Mist | soft drifting banks of pale yellow-grey fog, wispy and layered, painterly, isolated on a pure black background |
-| `status/schild.png` | Bescherming | a translucent arcane shield of pale blue light with a faint hexagonal lattice, glowing edges, painterly, isolated on a pure black background |
-| `status/zegel.png` | Vervloekt | a glowing violet occult sigil circle with runes and a five-pointed star, thin lines, painterly, isolated on a pure black background |
+| `status/schild.png` | Bescherming | the inner rim of a protective bubble of pale blue arcane light, seen from inside: a bright thin glowing line running along all four edges of a tall rectangular frame, with a faint honeycomb lattice of light only within the outer tenth of the image, fading out quickly towards the centre; a few tiny blue sparks along the rim; the entire centre of the image, about seventy percent, is completely empty pure black; no shield shape, no object, no emblem, no symbol in the middle; tall portrait format 5:7; painterly, isolated on a pure black background, no text |
+| `status/zegel.png` | Vervloekt | a curse creeping in from the border: small glowing violet occult glyphs, broken arcs of runes and hair-thin lines clustered in the four corners and along the left and right edges of a tall rectangular frame, with thin wisps of violet smoke curling between them; the centre of the image, about sixty-five percent, is completely empty pure black so a face behind it stays visible; no pentagram, no star, no full circle, no large central sigil; tall portrait format 5:7; painterly, isolated on a pure black background, no text |
+
+Controleer voor je ze aanlevert: leg het beeld half doorzichtig over een portret. Zie je het gezicht nog duidelijk, dan is het goed.
 
 ## B3. Extra barricades (3)
 
