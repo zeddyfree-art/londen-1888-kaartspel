@@ -15,9 +15,9 @@
 | A7. Occulte boekwinkel | 1 | Sterk aanbevolen | Nieuw knooppunt; nu het straatbeeld van Soho. |
 | **Totaal nodig en aanbevolen** | **42** | | |
 | B1. Knooppunt-medaillons | 14 | Mooi | De kaart gebruikt nu getekende symbolen. Die werken. |
-| B2. Statustexturen | 5 | Mooi | Vuur, gif, mist, schild en zegel zitten erin. Nog: Gezegend, Doorns, Bekoring (op zwart), Inkt en Angst (op wit). |
+| B2. Statustexturen | 0 | Klaar | Alle tien statussen hebben een geschilderde laag (28 november). |
 | B3. Extra barricades | 3 | Mooi | Meer variatie voor Kracht. |
-| **Totaal mooi** | **22** | | |
+| **Totaal mooi** | **17** | | |
 
 **Advies.** Maak eerst A1 tot en met A4 (33 beelden): daarmee zijn fase 3 en 4 inhoudelijk af. Daarna A5 tot en met A7 (9 beelden). B alleen als er tijd over is.
 
@@ -166,27 +166,16 @@ Precies zoals in `beeldopdracht.md`. Kort:
 | `knooppunten/club.png` | a cocktail glass |
 | `knooppunten/kist.png` | an iron-bound chest |
 
-## B2. Statustexturen (5 nog te maken)
+## B2. Statustexturen (klaar)
 
-Vuur, gif, mist, schild en zegel zitten in het spel (prompts in `beeldopdracht.md` §10). Deze vijf volgen. Dezelfde regels:
+Alle tien statussen hebben een geschilderde laag; de prompts staan in `beeldopdracht.md` §10. Een nieuwe statustextuur volgt dezelfde regels:
 
 - De laag ligt over het **hele portret van een kaart op het veld** (staand 5:7, op een telefoon 70 tot 120 pixels breed).
 - **Het midden moet leeg zijn.** Het effect zit aan de randen, of komt van één kant, nooit als een voorwerp in het midden.
 - **Staand 1024 × 1434 (5:7)**, zonder de stijlregel.
-- **Lichte effecten op zuiver zwart (#000)**: zwart wordt doorzichtig, dus alleen wat licht is blijft over.
-- **Donkere effecten op zuiver wit (#FFF)**: daar wordt wit doorzichtig. Inkt en Angst zijn donker; op zwart zouden ze verdwijnen.
-- Geen grijze waas of vignet in de achtergrond: die wordt een sluier over het hele gezicht.
-- Snelle check: leg het beeld half doorzichtig over een portret. Zie je het gezicht nog, dan is het goed.
-
-Omzetten: `python3 -I tools/maak-statuslaag.py <bron.png> art/status/<naam>.png`, met `--wit` voor Inkt en Angst. Daarna de laag in `app/stijl.css` op het beeld zetten.
-
-| Bestand | Status | Achtergrond | Prompt |
-|---|---|---|---|
-| `status/zegen.png` | Gezegend | zwart | warm golden holy light pouring down from the top edge of a tall rectangular frame: soft diagonal god-rays and a gentle glowing haze in the top quarter, a scattering of tiny golden motes of dust drifting down, fading to nothing by the middle of the image; the lower two thirds and the centre are completely empty pure black; no halo ring, no figure, no cross, no symbol; tall portrait format 5:7; painterly, isolated on a pure black background, no text |
-| `status/doorns.png` | Doorns | zwart | thorny bramble stems creeping up along the left and right edges and curling into the four corners of a tall rectangular frame, sharp curved thorns, a few small leaves; lit by a cold pale moonlight rim so the stems glow sickly green-white and the thorn tips catch bright highlights; the centre of the image, about seventy percent, is completely empty pure black; no roses, no flowers, no branches crossing the middle; tall portrait format 5:7; painterly, isolated on a pure black background, no text |
-| `status/bekoring.png` | Bekoring | zwart | a soft enchanting glow of rose-pink and pale lilac light rising from the bottom corners of a tall rectangular frame, with drifting glowing rose petals and a few tiny sparkles floating upwards along the left and right edges, thin ribbons of pink perfume-like haze curling at the sides; the centre of the image, about sixty-five percent, is completely empty pure black; no hearts, no faces, no lips, no symbols; tall portrait format 5:7; painterly, isolated on a pure black background, no text |
-| `status/inkt.png` | Inkt | **wit** | thick blots and splatters of deep blue-black ink bleeding in from the four corners of a tall rectangular sheet, with fine spatter droplets and a few thin drips running along the edges, the ink soaking into the paper with feathered edges; the centre of the image, about sixty percent, is completely clean pure white; no handwriting, no letters, no shapes, no paper texture or shading; tall portrait format 5:7; painterly, isolated on a pure white background, no text |
-| `status/angst.png` | Angst | **wit** | dark cold shadows creeping in from the edges of a tall rectangular frame: thin black shadow silhouettes of long bony fingers and grasping hands reaching inwards from the left, right and bottom edges, dissolving into wisps of dark blue-grey smoke; the centre of the image, about sixty percent, is completely clean pure white; no full figures, no faces, no eyes, no background shading; tall portrait format 5:7; painterly, isolated on a pure white background, no text |
+- **Lichte effecten op zuiver zwart (#000)**, **donkere effecten op zuiver wit (#FFF)**.
+- Donkere effecten verdwijnen op donkere portretten. Angst kreeg daarom in CSS een koude lichte omlijning (`drop-shadow` op `.laag.angst::after`).
+- Omzetten: `python3 -I tools/maak-statuslaag.py <bron.png> art/status/<naam>.png` (met `--wit` voor een witte achtergrond), daarna de laag in `app/stijl.css` op het beeld zetten.
 
 ## B3. Extra barricades (3)
 
