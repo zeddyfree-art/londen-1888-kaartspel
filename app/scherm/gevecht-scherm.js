@@ -509,7 +509,9 @@ export function gevechtScherm(app, opties) {
           el("span", {}, (verlichtNu ? "" : t.tekst.join(" ")) || (verlichtNu ? "" : d.sfeer || ""), " "),
           t.verlicht.length ? el("span", { class: "vl" }, (verlichtNu ? "Verlichting actief: " : "Verlicht: ") + t.verlicht.join(" "), " ") : null,
           kost ? el("span", { class: "kost" }, `· kost ${kost} Geest`) : null,
-          d.deductie ? el("span", { class: "kost" }, ` · kost ${aanw} Aanwijzingen`) : null));
+          d.deductie ? el("span", { class: "kost" }, ` · kost ${aanw} Aanwijzingen`) : null),
+        el("button", { class: "terugleggen", type: "button", "aria-label": `${d.naam} terugleggen in je hand`,
+          onclick: e => { e.stopPropagation(); S.keuze = null; speel("klik"); render(); } }, "✕ Terugleggen"));
     }
     const oefen = opties.hulp?.(g);
     return el("div", { class: "handregel" }, kop,

@@ -491,6 +491,8 @@ img { -webkit-user-drag: none; }
 .speeltip.kaartlezer .vl { color: #d8b8f2; font-style: italic; }
 .speeltip.kaartlezer .kost { color: #b9b29c; white-space: nowrap; }
 .speeltip.kaartlezer .doelhint { color: #9fd0b8; font-size: .9em; }
+.handregel .terugleggen { flex: none; margin-left: auto; padding: 8px 14px; min-height: 40px; border-radius: 4px; border: 1px solid #857557; background: #241f16; color: #f0dfb9; font: 600 .95rem var(--body); cursor: pointer; white-space: nowrap; }
+.handregel .terugleggen:hover, .handregel .terugleggen:focus-visible { background: #3a3020; border-color: var(--goud); }
 .speeltip b { color: #f0dfb9; }
 .gevecht .onder { flex: none; height: calc(var(--hb) * 1.4 + 28px); align-items: center; gap: clamp(4px,1vw,14px); background: linear-gradient(175deg,#202b26,#101715 80%); }
 .hand { container-type: inline-size; align-items: center; padding-block: 4px; }

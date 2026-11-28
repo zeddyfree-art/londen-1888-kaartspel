@@ -1,4 +1,8 @@
 [
+ { "id": 19, "datum": "28 november 2026", "titel": "Een kaart terugleggen",
+   "punten": [
+     "Heb je een kaart uit je hand gekozen en bedenk je je? Tik op Terugleggen rechts in de balk boven je hand. Op een lege plek tikken of Escape werkt ook."
+   ] },
  { "id": 18, "datum": "28 november 2026", "titel": "Nieuwe geluiden in het gevecht",
    "punten": [
      "Een aanval klinkt nu als een echte stoot. Monsters klinken anders: een klauw die scheurt, met een grauw. Zo hoor je wie er toeslaat.",
